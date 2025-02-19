@@ -15,13 +15,13 @@
         "url": "https://github.com/SugarChain-Studio/echo-activity-ext"
     },
     "rollupSetting": {
-        "output": "mod.js",
+        "output": "bc-activity.js",
         "input": "src/main.js",
         "componentDir": "src/components",
-        "loaderName": "BC_Activity.user.js",
+        "loaderName": "bc-activity.user.js",
         "beta": {
-            "output": "mod-beta.js",
-            "loaderName": "BC_Activity-beta.user.js"
+            "output": "bc-activity-beta.js",
+            "loaderName": "bc-activity-beta.user.js"
         }
     },
     "displayName": "动作拓展",
