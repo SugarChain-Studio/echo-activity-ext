@@ -1,6 +1,5 @@
 {
     "name": "echo-activity-ext",
-    "version": "0.2.6",
     "scripts": {
         "type-check": "tsc --noEmit --allowJs --checkJs -p jsconfig.json",
         "build": "rollup -c rollup.config.js",
