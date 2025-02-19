@@ -1,0 +1,52 @@
+{
+    "name": "echo-activity-ext",
+    "version": "0.2.6",
+    "scripts": {
+        "type-check": "tsc --noEmit --allowJs --checkJs -p jsconfig.json",
+        "build": "rollup -c rollup.config.js",
+        "dev": "pnpm type-check && pnpm build --configDebug --configBaseURL \"http://localhost:8081/\"",
+        "dev:beta": "pnpm type-check && pnpm build --configDebug --configBeta --configBaseURL \"http://localhost:8081/\"",
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+        "serve": "http-server -p 8081 --cors public",
+        "git:release": "git checkout release && git merge origin/main && git push && git checkout main"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SugarChain-Studio/echo-activity-ext"
+    },
+    "rollupSetting": {
+        "output": "mod.js",
+        "input": "src/main.js",
+        "componentDir": "src/components",
+        "loaderName": "BC_Activity.user.js",
+        "beta": {
+            "output": "mod-beta.js",
+            "loaderName": "BC_Activity-beta.user.js"
+        }
+    },
+    "displayName": "动作拓展",
+    "modFullName": "Echo的动作拓展",
+    "author": "Echo",
+    "description": "更多可爱有趣的互动",
+    "devDependencies": {
+        "@rollup/plugin-alias": "^5.1.1",
+        "@rollup/plugin-commonjs": "^25.0.8",
+        "@rollup/plugin-node-resolve": "^15.2.4",
+        "@rollup/plugin-replace": "^5.0.7",
+        "@rollup/plugin-terser": "^0.4.4",
+        "bc-stubs": "^111.0.0",
+        "bondage-club-mod-sdk": "^1.2.0",
+        "rollup": "^4.22.4",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "rollup-plugin-copy": "^3.5.0",
+        "rollup-plugin-import-css": "^3.5.7",
+        "conventional-changelog-cli": "^5.0.0",
+        "copyfiles": "^2.4.1",
+        "fs-extra": "^11.2.0",
+        "github-markdown-css": "^5.7.0",
+        "http-server": "^14.1.1",
+        "marked": "^14.1.2",
+        "typescript": "^5.6.2"
+    },
+    "packageManager": "pnpm@9.12.2"
+}
