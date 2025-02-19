@@ -6,6 +6,8 @@
         "dev": "pnpm type-check && pnpm build --configDebug --configBaseURL \"http://localhost:8081/\"",
         "dev:beta": "pnpm type-check && pnpm build --configDebug --configBeta --configBaseURL \"http://localhost:8081/\"",
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+        "resources:rel": "node ./scripts/.resource.js --rel",
+        "resources:dev": "node ./scripts/.resource.js --dev",
         "serve": "http-server -p 8081 --cors public",
         "git:release": "git checkout release && git merge origin/main && git push && git checkout main"
     },
