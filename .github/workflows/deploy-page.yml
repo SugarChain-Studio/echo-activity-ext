@@ -46,6 +46,16 @@ jobs:
           append_to_pre_release_tag: 'beta'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: GitHub CLI
+        run: gh auth setup-git
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+      - name: Fetch GitHub Pages URL
+        run: |
+          URL=$(gh api repos/${{ github.repository }} | jq -r '.html_url' | sed 's/github.com/github.io/' )
+          echo "GitHub Pages URL: $URL"
+
       - name: Set page url
         run: |
           REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
@@ -66,7 +76,11 @@ jobs:
         run: pnpm build --configBaseURL $PAGE_URL --configBeta
       
       - name: Create Change Log and Page
-        run: pnpm changelog && pnpm changelog:page
+        run: |
+          git tag | grep 'beta' | xargs -r git tag -d
+          pnpm changelog 
+          pnpm changelog:page
+          git fetch --tags
 
       - name: Checkout release
         uses: actions/checkout@v3
