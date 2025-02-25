@@ -46,13 +46,6 @@ jobs:
           append_to_pre_release_tag: 'beta'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch GitHub Pages URL
-        run: |
-          URL=$(gh api repos/${{ github.repository }} | jq -r '.html_url' | sed 's/github.com/github.io/' )
-          echo "GitHub Pages URL: $URL"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Set page url
         run: |
           REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
