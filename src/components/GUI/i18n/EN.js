@@ -27,6 +27,7 @@ const values = {
     "Setting::Misc::ClearArousal": "Clear Counter",
     "Setting::Misc::LoadCrafting": "Load Crafting",
     "Setting::Misc::SaveCrafting": "Save Crafting",
+    "Setting::Misc::SaveCrafting::Retired": "This feature has been retired due to technical reasons",
 };
 
 export { values };

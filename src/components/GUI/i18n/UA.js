@@ -26,7 +26,8 @@ const values = {
     "Setting::Misc::KeepArousal": "Зберегти підрахунок оргазму",
     "Setting::Misc::ClearArousal": "Очистити підрахунок оргазму",
     "Setting::Misc::SaveCrafting": "Зберегти крафти",
-    "Setting::Misc::LoadCrafting": "Завантажити крафти"
+    "Setting::Misc::LoadCrafting": "Завантажити крафти",
+    "Setting::Misc::SaveCrafting::Retired": "Ця функція була відключена з технічних причин",
 };
 
 export { values };

@@ -27,6 +27,7 @@ const values = {
     "Setting::Misc::ClearArousal": "清空高潮次数",
     "Setting::Misc::SaveCrafting": "储存制作",
     "Setting::Misc::LoadCrafting": "读取制作",
+    "Setting::Misc::SaveCrafting::Retired": "此功能由于技术原因已经停用",
 };
 
 export { values };

@@ -27,6 +27,7 @@ const values = {
     "Setting::Misc::ClearArousal": "Очистить счетчик оргазма",
     "Setting::Misc::SaveCrafting": "Сохранить создание",
     "Setting::Misc::LoadCrafting": "Загрузить создание",
+    "Setting::Misc::SaveCrafting::Retired": "Эта функция была отключена по техническим причинам",
 };
 
 export { values };

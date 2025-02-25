@@ -1,7 +1,6 @@
 import { Path } from "@mod-utils/path";
 import { BaseSubscreen } from "./gui";
 import { 设置高潮数据, 高潮数据开关 } from "../保存数据/保存高潮";
-import { 保存制作物品, 读取制作物品 } from "../保存数据/保存制作物品";
 import { RDrawCheckbox, RDrawIconButton, RDrawImageResize, RDrawText, RMouseIn } from "./RDraw";
 import { i18n } from "./i18n";
 
@@ -34,21 +33,23 @@ export class 高潮计数保留设置 extends BaseSubscreen {
         RDrawIconButton(
             this.saveCraftingButtonRect,
             i18n("Setting::Misc::SaveCrafting"),
-            "White",
-            "Icons/Crafting.png"
+            "Gray",
+            "Icons/Crafting.png",
+            i18n("Setting::Misc::SaveCrafting::Retired"),
+            true
         );
         RDrawIconButton(
             this.loadCraftingButtonRect,
             i18n("Setting::Misc::LoadCrafting"),
-            "White",
-            "Icons/Crafting.png"
+            "Gray",
+            "Icons/Crafting.png",
+            i18n("Setting::Misc::SaveCrafting::Retired"),
+            true
         );
     }
     click() {
         if (RMouseIn(this.exitButtonRect)) this.exit();
         else if (RMouseIn(this.checkBoxRect)) 设置高潮数据({ 高潮开关: !高潮数据开关() });
         else if (RMouseIn(this.clearButtonRect)) 设置高潮数据({ 高潮次数: 0 });
-        else if (RMouseIn(this.saveCraftingButtonRect)) 保存制作物品();
-        else if (RMouseIn(this.loadCraftingButtonRect)) 读取制作物品();
     }
 }
