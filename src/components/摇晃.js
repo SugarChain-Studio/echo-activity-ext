@@ -1,5 +1,5 @@
 import ActivityManager from "@mod-utils/ActivityManager";
-import ChatRoomOrder from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 
 /**
 * 道具切换

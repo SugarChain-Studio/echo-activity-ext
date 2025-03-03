@@ -1,5 +1,5 @@
 import ActivityManager from "@mod-utils/ActivityManager";
-import ChatRoomOrder from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import ModManager from "@mod-utils/ModManager";
 
 /** @type { ActivityManagerInterface.ICustomActivity} */
