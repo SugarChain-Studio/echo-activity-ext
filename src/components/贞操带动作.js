@@ -6,6 +6,7 @@ const activity = {
         Name: "贞操带互动",
         Prerequisite: [
             "UseArms",
+            "UseHands",
             (_1, _2, acted, group) => {
                 return (
                     acted.HasEffect("Chaste") &&
