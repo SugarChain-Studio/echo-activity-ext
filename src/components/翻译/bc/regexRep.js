@@ -465,44 +465,48 @@ const translationsDTF = [
 const act_dialogs = [
     {
         regex: /(.+) moans uncontrollably as (.+)'s drug takes effect\./,
-        replacement: "当$2的药物生效时,$1不由自主地呻吟起来."
+        replacement: "随着$2的药物生效，$1不由自主地呻吟起来。"
     },
     {
         regex: /(.+) quivers as (.+) body is flooded with (.+)'s aphrodisiac\./,
-        replacement: "当$1的身体被$3的催情剂充斥时,$2颤抖不止."
+        replacement: "当$3的催情剂充斥$2的身体时，$1止不住地颤抖。"
     },
     {
         regex: /(.+)'s eyes roll back as a wave of pleasure washes over (.+) body\./,
-        replacement: "当一阵愉悦感席卷$1的身体时,$2的眼睛向后翻转."
+        replacement: "当一阵强烈的快感席卷$2的身体时，$1的双眼不由自主地向上翻起。"
     },
     {
         regex: /(.+) sighs as a cool relaxing calm glides through (.+) body, fighting to keep (.+) eyes open\./,
-        replacement: "当一阵清凉、放松、平静的感觉流过$1的身体时,$2叹息着,努力睁开$3的眼睛."
+        replacement: "当一阵清凉、放松的平静感流过$2的身体时，$1叹了口气，努力保持$3的眼睛睁开。"
     },
     {
         regex: /(.+)'s muscles relax as (.+)'s sedative courses through (.+) body/,
-        replacement: "随着$2的镇静剂在$3的身体里起作用,$1的肌肉放松下来."
+        replacement: "随着$2的镇静剂在$3体内流动，$1的肌肉逐渐放松下来。"
     },
     {
         regex: /(.+) fights to stay conscious against the relentless weight of (.+)'s drug\./,
-        replacement: "$1奋力抵抗着$2的药物那持续不断的作用以保持清醒."
+        replacement: "$1努力保持清醒，抵抗着$2的药物带来的持续压迫感。"
     },
     {
         regex: /(.+)'s eyes droop as (.+) fights to stay conscious against the cool, welcoming weight of (.+)'s drug\./,
-        replacement: "$1的眼睛耷拉下来,而$2在对抗着$3的药物那清凉、令人舒缓的压力努力保持清醒."
+        replacement: "$1的眼皮渐渐垂下，$2在$3清凉舒缓的药效下竭力保持清醒。"
     },
     {
         regex: /(.+) moans thankfully as (.+)'s medicine heals (.+)\./,
-        replacement: "当$2的药物治愈了$3,$1满怀感激地呻吟着."
+        replacement: "在$2的药物治愈$3时，$1发出感激的呻吟声。"
     },
     {
         regex: /(.+)'s body glows slightly as (.+)'s cure washes warmly over (.+)\./,
-        replacement: "当$2的治愈方法温暖地作用于$3时,$1的身体微微发光."
+        replacement: "随着$2的治疗能量温暖地流遍$3，$1的身体泛起微光。"
     },
+
+
     {
         regex: /(.+)'s drug rushes warmly through (.+)'s body, curing what ails (.+)\./,
         replacement: "$1 的药物温暖地在 $2 的身体里涌动,治愈了困扰 $3 的病症."
     },
+    
+
     {
         regex: /(.+) gulps and swallows (.+)'s drink, a cool relaxing feeling starting to spread through (.+) body\./,
         replacement: "$1 大口吞咽着 $2 的饮料,一种清凉放松的感觉开始在 $3 的身体里扩散开来."
@@ -962,14 +966,14 @@ const act_dialogs = [
     },
     {
         regex: /(.+) gasps, blinking as the magic affecting (.+) is removed\./,
-        replacement: "当作用于$2的魔法被移除时,$1喘着气,眨着眼."
+        replacement: "当$1身上的负面效果被消除时,$2大口喘气的同时眨了眨眼睛."
     },
     {
         regex: /(.+) gasps, blinking as any magic affecting (.+) is removed\./,
-        replacement: "当任何作用于$2的魔法被移除时,$1喘着气,眨着眼睛."
+        replacement: "当$1身上的负面效果被消除时,$2大口喘气的同时眨了眨眼睛."
     },
     { regex: /(.+) trembles as (.+) clothing shimmers and morphs around (.+)\./, replacement: "$1颤抖着,当$2的衣物闪烁并在$3周围发生形态变化时." },
-    { regex: /(.+) squeaks as (.+) clothing shimmers and morphs around (.+)\./, replacement: "$1尖叫着,当$2的衣服闪烁并在$3周围变形的时候." },
+    { regex: /(.+) squeaks as (.+) clothing shimmers and morphs around (.+)\./, replacement: "当$1的衣服闪烁并在$2周围变形的时候,$1发出短促的尖叫." },
     { regex: /(.+) trembles as (.+) body shimmers and morphs\./, replacement: "$1颤抖着,当$2的身体闪烁并变形时." },
     { regex: /(.+) squeaks as (.+) body shimmers and morphs\./, replacement: "$1尖叫着,当$2的身体闪烁并变形时." },
     { regex: /(.+) squirms as (.+) arousal is paired\./, replacement: "$1扭动着,当$2的高潮被同步到自己身上时." },
@@ -999,7 +1003,7 @@ const act_dialogs = [
     { regex: /(.+)'s eyes flutter and start to open sleepily\.\.\./, replacement: "$1的眼睛微微颤动,开始困倦地睁开……" },
     {
         regex: /(.+) moans and trembles in frustration as (.+) is held right at the edge\.\.\./,
-        replacement: "$1沮丧地呻吟着并颤抖着,当$2被正好困在高潮边缘时……"
+        replacement: "$1在高潮的边缘沮丧地呻吟并颤抖着……"
     },
     { regex: /(.+) leads (.+) out of the room by the ear\./, replacement: "$1揪着$2的耳朵把其带出房间." },
     { regex: /(.+) roughly pulls (.+) out of the room by the arm\./, replacement: "$1粗暴地拽着$2的胳膊把其带出房间." },
@@ -1427,6 +1431,10 @@ const act_dialogs = [
     {
         regex: /Rule violations will not be logged/,
         replacement: "规则违规将不会被记录",
+    },
+    {
+        regex: /A magic barrier appear around (.+)\./,
+        replacement: "一道魔法屏障出现在$1周围.",
     },
 
     // {
