@@ -1436,6 +1436,10 @@ const act_dialogs = [
         regex: /A magic barrier appear around (.+)\./,
         replacement: "一道魔法屏障出现在$1周围.",
     },
+   {
+        regex: /(.+)'s body seems to be cursed and the (.+) just falls off her body\./,
+        replacement: "$1的身体被施加了诅咒, $2从她身上掉落.",
+    },
 
     // {
     //     regex: /(.+)\./,
