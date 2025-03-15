@@ -1,48 +1,13 @@
 import ModManager from "@mod-utils/ModManager";
 
-function sendShareHelp(shareName) {
-    ChatRoomSendLocal(
-        `<span style="font-size: 1.5em;">分享格式帮助</span>
-<br/>
-格式说明:
-* 开头键入: <span style="color: red;">/分享</span> <span style="color: red;">[链接]</span>  (注意空格)
-<br/>
-网易云: 
-网页版点开歌曲详情 => 唱片底下的蓝色字体'生成外链播放器' => 点击'复制代码'
-客户端版 => 点击歌曲的分享 => 复制链接
-示例: "/分享 https://music.163.com/song?id=******"  (在发送前会过滤掉其他uri参数，不会发送userid等信息)
-<br/>
-B站: 
-点击视频下面的分享按钮 => 复制嵌入式链接
-示例: "/分享 &lt;iframe src=&quot;//...aid=*******&amp;bvid=*******&amp;cid=*********...&gt; &lt;/iframe&gt;"
-<br/>
-YouTube: 
-点击分享按钮 => 直接点复制按钮
-示例: "/分享 https://youtu.be/*******?si=*******"
-<br/>
-那啥站: 复制网址
-点击视频 => 直接复制浏览器地址栏的网址
-示例: "/分享 https://cn.pornhub.com/view_video.php?viewkey=**********"
-`,
-        30000
-    );
-}
-
-function shareErrReport() {
-    ChatRoomSendLocal(
-        `不支持你分享的链接，目前支持的有：${Object.keys(frame).join("，")}。使用"/分享"获取帮助! `,
-        5000
-    );
-}
-
 /**
  * @typedef { "nm" | "bili" | "ytb" | "phb" } ShareType
  */
 
-/** @type {Record<ShareType, { displayName: string, get: (info: string) => string }>} */
+/** @type {Record<ShareType, { displayName: string | (() => string), get: (info: string) => string }>} */
 const frame = {
     nm: {
-        displayName: "网易云",
+        displayName: () => (TranslationLanguage == "CN" ? "网易云" : "Netease Cloud Music"),
         get: (Id) =>
             `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=${Id}&auto=0&height=66"></iframe>`,
     },
@@ -67,6 +32,146 @@ const frame = {
     },
 };
 
+/** @type {(str: string | (()=>string))=>string} */
+const valuify = (str) => (typeof str === "function" ? str() : str);
+
+const flex = "display: flex; flex-direction: column;";
+const h2 = "font-size: min(2vw,4vh); color: rgb(32, 87, 129);";
+const h3 = "font-size: min(1.5vw,3vh); color: rgb(79, 149, 157);";
+const hx = "font-size: min(1vw,2vh);";
+
+const h3c = "color: rgb(79, 149, 157);";
+
+const margin = (top, bottom) => `margin-top: ${top}; margin-bottom: ${bottom};`;
+const def_margin = margin("0.2em", "0");
+
+function buildExampe(title, steps, example_prefix, example, em) {
+    return `
+    <div style="${def_margin} ${flex}">
+    <h3 style="${def_margin} line-height: 1; ${h3}">${title}</h3>
+    ${
+        example.length
+            ? `<ul style="padding-top: 0; ${def_margin} line-height: 1; ${flex}">
+      ${steps.map((step) => `<li style="line-height: 1; ${hx}">${step}</li>`).join("")}
+    </ul>`
+            : ""
+    }
+    <p style="${def_margin} ${flex} ${hx}">
+    <span style="">${example_prefix}</span>
+    <code style="${def_margin} margin-inline-start: 2em; ${hx}">${example}</code></p>
+    ${em ? `<em style="${def_margin} ${hx}">（${em}）</em>` : ""}
+    </div>
+    `;
+}
+
+const i18n = {
+    CN: {
+        shareHelp: `
+<div style="${flex}">
+  <h2 style="${margin("0.5em", "0")} line-height: 1; ${h2}">分享链接指令帮助</h2>
+  <div style="${flex}">
+    ${buildExampe("基本格式", [], 
+        "示例：", "/分享 [链接]")}
+    ${buildExampe(
+        "网易云音乐",
+        [
+            "网页版：打开歌曲详情页 → 播放器下方蓝色「生成外链播放器」→ 点击「复制代码」",
+            "客户端：点击歌曲分享 → 复制链接",
+        ],
+        "示例：",
+        "/分享 https://music.163.com/song?id=******",
+        "在发送前会过滤掉其他URL参数，不会发送用户ID信息"
+    )}
+    ${buildExampe(
+        "哔哩哔哩",
+        ["点击视频下方分享按钮 → 选择「嵌入代码」"],
+        "示例：",
+        "/分享 &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
+    )}
+    ${buildExampe(
+        "YouTube",
+        ["点击分享按钮 → 复制链接"],
+        "示例：",
+        "/分享 https://youtu.be/******?si=******"
+    )}
+    ${buildExampe(
+        "PornHub",
+        ["复制浏览器地址栏的网址"],
+        "示例：",
+        "/分享 https://cn.pornhub.com/view_video.php?viewkey=**********"
+    )}
+  </div>
+</div>
+`,
+        shareUnsupport: "不支持你分享的链接，目前支持的有：%s。使用'/分享'获取帮助! ",
+        shareInfo: "一个 %s 嵌入分享 ╰(*°▽°*)╯",
+    },
+    EN: {
+        shareHelp: `
+<div style="${flex}">
+  <h2 style="margin: 5px;line-height: 1; ${h2}">Share Link Command Help</h2>
+  <div style="${flex}">
+    ${buildExampe("Basic Format", [], 
+        "Example：", "/sharelink [link]")}
+    ${buildExampe(
+        "Netease Cloud Music",
+        [
+            "Web: Open the song details page → Blue 'Generate external link player' below the player → Click 'Copy Code'",
+            "Client: Click the song share → Copy link",
+        ],
+        "Example：", 
+        "/sharelink https://music.163.com/song?id=******",
+        "Other URL parameters will be filtered out before sending, and user ID information will not be sent"
+    )}
+    ${buildExampe(
+        "Bilibili",
+        ["Click the share button below the video → Select 'Embed Code'"],
+        "Example：", 
+        "/share &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
+    )}
+    ${buildExampe(
+        "YouTube",
+        ["Click the share button → Copy the link"],
+        "Example：", 
+        "/sharelink https://youtu.be/******?si=******"
+    )}
+    ${buildExampe(
+        "PornHub",
+        ["Copy the URL in the browser address bar"],
+        "Example：", 
+        "/sharelink https://www.pornhub.com/view_video.php?viewkey=**********"
+    )}
+  </div>
+</div>
+`,
+        shareUnsupport:
+            "The link you shared is not supported, currently supported are: %s. Use '/sharelink' to get help! ",
+        shareInfo: "A %s embedded share ╰(*°▽°*)╯",
+    },
+};
+
+/**
+ * @param {"CN" | "EN"} lang
+ * @returns {Record<string, string>}
+ */
+function text(lang) {
+    return i18n[lang] ?? i18n["EN"];
+}
+/**
+ * @param {"CN" | "EN"} lang
+ */
+function sendShareHelp(lang = "CN") {
+    const shareHelp = text(lang).shareHelp;
+    ChatRoomSendLocal(shareHelp);
+}
+
+function shareErrReport(lang) {
+    const supportList = Object.values(frame)
+        .map((v) => valuify(v.displayName))
+        .join(", ");
+    ChatRoomSendLocal(text(lang).shareUnsupport.replace("%s", supportList));
+}
+
 /**
  * @typedef { { linkType: ShareType, info: string } } ShareInfo
  */
@@ -74,9 +179,10 @@ const frame = {
 /**
  * 处理发送分享媒体
  * @param {string} parsed 传入命令的参数
+ * @param {"CN" | "EN"} lang
  * @returns void
  */
-function shareHandle(parsed) {
+function shareHandle(parsed, lang = "CN") {
     const shareContent = parsed;
 
     /** @type {ShareInfo | undefined} */
@@ -96,18 +202,19 @@ function shareHandle(parsed) {
                     info: btoa(JSON.stringify([match[1], match[2], match[3]])),
                 };
         } else if (shareContent.startsWith("https://youtu.be/")) {
-            const match = shareContent.match(/([A-Za-z0-9_-]+)\?si=([A-Za-z0-9_-]+)/);
+            const match = shareContent.match(/youtu\.be\/([A-Za-z0-9_-]+)[?&].*[?&]?si=([A-Za-z0-9_-]+)&?/);
             if (match) return { linkType: "ytb", info: btoa(JSON.stringify([match[1], match[2]])) };
         } else if (shareContent.includes("pornhub.com/view_video.php")) {
             const match = shareContent.match(/viewkey=([A-Za-z0-9]+)/);
             if (match) return { linkType: "phb", info: btoa(match[1]) };
         }
 
-        shareErrReport();
         return undefined;
     })();
 
-    if (!sendv) return;
+    if (!sendv) {
+        shareErrReport(lang);
+    }
 
     // 发送
     ServerSend("ChatRoomChat", {
@@ -117,7 +224,7 @@ function shareHandle(parsed) {
         Sender: Player.MemberNumber,
     });
     // 发送*号消息
-    ChatRoomSendEmote(`一个 ${frame[sendv.linkType].displayName} 嵌入分享 ╰(*°▽°*)╯`);
+    ChatRoomSendLocal(text(lang).shareInfo.replace("%s", valuify(frame[sendv.linkType].displayName)));
     // 清理输入框内容
     ElementValue("InputChat", "");
 }
@@ -142,6 +249,18 @@ export default function () {
             else {
                 const ori = msg.substring(msg.indexOf(" ") + 1);
                 shareHandle(ori);
+            }
+        },
+    });
+
+    CommandCombine({
+        Tag: "sharelink",
+        Description: 'Share media link, use "/sharelink" to get help! ',
+        Action: (parsed, msg) => {
+            if (parsed === "") sendShareHelp("EN");
+            else {
+                const ori = msg.substring(msg.indexOf(" ") + 1);
+                shareHandle(ori, "EN");
             }
         },
     });
