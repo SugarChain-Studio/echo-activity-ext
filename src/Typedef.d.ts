@@ -34,8 +34,10 @@ type CustomActivityPrerequisite =
     | 'NeedSuitLower鱼鱼尾_Luzi'
     | 'Need阿巴阿巴_Luzi';
 
-type CustomActivity = import("@sugarch/bc-activity-manager").CustomActivity<CustomActivityPrerequisite>;
+type CustomActivity = import('@sugarch/bc-activity-manager').CustomActivity<CustomActivityPrerequisite>;
 
-type PrerequisiteCheckFunction = import("@sugarch/bc-activity-manager").PrerequisiteCheckFunction<CustomActivityPrerequisite>;
+type PrerequisiteCheckFunction =
+    import('@sugarch/bc-activity-manager').PrerequisiteCheckFunction<CustomActivityPrerequisite>;
 
-type CustomActivityPrerequisiteItem = import("@sugarch/bc-activity-manager").CustomActivityPrerequisiteItem<CustomActivityPrerequisite>;
+type CustomActivityPrerequisiteItem =
+    import('@sugarch/bc-activity-manager').CustomActivityPrerequisiteItem<CustomActivityPrerequisite>;

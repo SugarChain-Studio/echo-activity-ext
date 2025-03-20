@@ -42,6 +42,7 @@
         "@sugarch/bc-activity-manager": "^0.2.0",
         "@sugarch/bc-event-handler": "^0.4.0",
         "@sugarch/bc-mod-hook-manager": "^0.2.11",
+        "@sugarch/bc-mod-types": "^0.6.0",
         "@sugarch/bc-mod-utility": "^0.1.10",
         "bc-stubs": "^114.0.0",
         "bondage-club-mod-sdk": "^1.2.0",
