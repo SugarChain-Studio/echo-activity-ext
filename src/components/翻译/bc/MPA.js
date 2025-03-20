@@ -12,7 +12,7 @@ const translation = {
     "Virtual Pet": "虚拟宠物",
     "Virtual Pet Hud": "虚拟宠物状态显示",
     "Virtual Pet Conditions": "虚拟宠物状态效果",
-    
+
     // Profile Settings
     "Use a preset profile or make your own": "使用预设档案或创建自己的档案",
     "While deafened certain pet keywords can be picked up": "在失聪状态下仍能识别某些宠物关键词",
@@ -32,7 +32,8 @@ const translation = {
     "Who will be able to trigger the clicker": "谁可以触发训练器",
 
     // Virtual Pet Settings
-    "Become a virtual pet! Requiring: food, water, sleep, and affection": "成为虚拟宠物！需要：食物、水分、睡眠和亲密度",
+    "Become a virtual pet! Requiring: food, water, sleep, and affection":
+        "成为虚拟宠物！需要：食物、水分、睡眠和亲密度",
     "How many hours until you are completely out of food; 0 to disable": "多少小时后食物完全耗尽；设为0以禁用",
     "How many hours until you are completely out of water; 0 to disable": "多少小时后水分完全耗尽；设为0以禁用",
     "How many hours until you are completely out of sleep; 0 to disable": "多少小时后睡眠完全耗尽；设为0以禁用",
@@ -66,7 +67,7 @@ const translation = {
     "Takes longer to leave the room when hungry": "饥饿时离开房间需要更长时间",
     "Orgasms make you lose some hydration": "高潮会消耗一些水分",
     "Orgasms make you lose some energy": "高潮会消耗一些体力",
-    
+
     // Misc
     "Next Page": "下一页",
     "Previous Page": "上一页",
@@ -88,11 +89,12 @@ const translation = {
     "Human": "人类",
     "Whitelist": "白名单",
     "Public": "公开",
-    
+
     // Phrases with additional descriptions
-    "Enable hardcore mode; Will set certain settings and prevent changing them back": "启用硬核模式；将设置某些选项并防止更改回来",
+    "Enable hardcore mode; Will set certain settings and prevent changing them back":
+        "启用硬核模式；将设置某些选项并防止更改回来",
     "Phrases that trigger the click; Separate phrases with a comma": "触发训练器的短语；用逗号分隔",
-    "Allow BCX 听我的声音 rule to trigger the clicker; Requires BCX": "允许BCX\"听我的声音\"规则触发训练器；需要BCX"
+    "Allow BCX 听我的声音 rule to trigger the clicker; Requires BCX": '允许BCX"听我的声音"规则触发训练器；需要BCX',
 };
 
-export { translation};
+export { translation };

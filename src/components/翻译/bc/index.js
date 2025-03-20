@@ -16,16 +16,17 @@ const translations = [BCAR, BCX, FBC, LSCG, MBS, WCE, MPA, DOGS, BCTweaks].reduc
 );
 
 function tryReplaceWithNames(key) {
+    let nKey = key;
     const PName = Player?.Name;
     const SName = InformationSheetSelection?.Name;
-    if (!PName || !SName) return key;
-    if (key.includes(PName) || key.includes(SName)) {
-        translationsDTF.forEach(({ regex, replacement }) => (key = key.replace(regex, replacement)));
+    if (!PName || !SName) return nKey;
+    if (nKey.includes(PName) || nKey.includes(SName)) {
+        translationsDTF.forEach(({ regex, replacement }) => (nKey = nKey.replace(regex, replacement)));
     } else {
         // TODO 不知道这样写对不对 0 0    这个是翻译不带玩家名字的文本的
-        translationsDTF2.forEach(({ regex, replacement }) => (key = key.replace(regex, replacement)));
+        translationsDTF2.forEach(({ regex, replacement }) => (nKey = nKey.replace(regex, replacement)));
     }
-    return key;
+    return nKey;
 }
 
 /**
@@ -35,10 +36,11 @@ function tryReplaceWithNames(key) {
  */
 function replaceTranslate(key) {
     if (!key) return key;
-
     if (TranslationLanguage !== "CN" && TranslationLanguage !== "TW") return key;
-    key = tryReplaceWithNames(key);
-    return translations[key] || key;
+
+    let nKey = key;
+    nKey = tryReplaceWithNames(nKey);
+    return translations[nKey] || nKey;
 }
 
 export function setup() {

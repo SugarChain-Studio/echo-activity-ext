@@ -12,7 +12,7 @@ class 高潮数据 {
 
         /** @type {{高潮开关:boolean, 高潮次数:number }} */
         const data = (() => {
-            let ret = load(高潮数据key);
+            const ret = load(高潮数据key);
             if (Object.keys(ret).length === 0) return load(高潮数据.name);
             return ret;
         })();
@@ -78,7 +78,7 @@ export default function () {
             // 如果存在旧数据
             const { 高潮开关, 高潮次数 } = olddata;
             if (高潮开关 !== undefined || 高潮次数 !== undefined) {
-                console.log("迁移高潮数据");
+                console.info("迁移高潮数据");
                 data.设置值(olddata);
                 delete olddata["高潮开关"];
                 delete olddata["高潮次数"];

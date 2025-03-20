@@ -86,7 +86,7 @@ function removingCheck(pool, { SourceCharacter, TargetCharacter }, { time, posi 
 
 function removeCallback(groups) {
     return function (player, sender, info) {
-        if (player.MemberNumber != info.TargetCharacter) return;
+        if (player.MemberNumber !== info.TargetCharacter) return;
         removingCheck(
             player.Appearance.filter((item) => groups.includes(item.Asset.Group.Name)),
             { SourceCharacter: sender, TargetCharacter: player },

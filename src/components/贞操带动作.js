@@ -7,12 +7,9 @@ const activity = {
         Prerequisite: [
             "UseArms",
             "UseHands",
-            (_1, _2, acted, group) => {
-                return (
-                    acted.HasEffect("Chaste") &&
-                    InventoryGroupIsBlocked(acted, /**@type {AssetGroupItemName}*/ (group.Name))
-                );
-            },
+            (_1, _2, acted, group) =>
+                acted.HasEffect("Chaste") &&
+                InventoryGroupIsBlocked(acted, /**@type {AssetGroupItemName}*/ (group.Name)),
         ],
         MaxProgress: 95,
         Target: ["ItemVulva", "ItemVulvaPiercings"],

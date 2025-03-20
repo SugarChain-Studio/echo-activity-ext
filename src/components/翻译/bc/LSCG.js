@@ -5,7 +5,8 @@ const activities = {
     "Headbutt": "头槌",
     "SourceCharacter headbutts TargetCharacter.": "SourceCharacter 用头撞了 TargetCharacter.",
     "Nuzzle": "用鼻子轻蹭",
-    "SourceCharacter nuzzles against the side of TargetCharacter's head.": "SourceCharacter 用鼻子轻蹭 TargetCharacter 头部的一侧.",
+    "SourceCharacter nuzzles against the side of TargetCharacter's head.":
+        "SourceCharacter 用鼻子轻蹭 TargetCharacter 头部的一侧.",
     "SourceCharacter nuzzles into TargetCharacter's neck.": "SourceCharacter 把鼻子轻蹭进 TargetCharacter 的脖颈.",
     "SourceCharacter nuzzles into TargetCharacter's arms.": "SourceCharacter 把鼻子轻蹭进 TargetCharacter 的胳膊.",
     "SourceCharacter nuzzles underneath TargetCharacter's hand.": "SourceCharacter 在 TargetCharacter 的手下轻蹭.",
@@ -135,7 +136,8 @@ const activities = {
         "SourceCharacter 从 TargetCharacter 的嘴里抽出自己的脚.",
     "Tug": "拽",
     "SourceCharacter tugs on TargetCharacter's crotch rope.": "SourceCharacter 拉扯着 TargetCharacter 胯下的绳子.",
-    "SourceCharacter tugs lewdly on PronounPossessive own crotch rope.": "SourceCharacter 淫荡地拉扯着自己的胯下的绳子.",
+    "SourceCharacter tugs lewdly on PronounPossessive own crotch rope.":
+        "SourceCharacter 淫荡地拉扯着自己的胯下的绳子.",
     "Flick Ear": "轻弹耳朵",
     "SourceCharacter flicks TargetCharacter's ear.": "SourceCharacter 轻轻弹了 TargetCharacter 的耳朵.",
     "SourceCharacter flicks PronounPossessive own ear.": "SourceCharacter 轻轻弹了自己的耳朵.",
@@ -200,8 +202,7 @@ const activities = {
     "Shoot Netgun": "射击网枪",
     "SourceCharacter takes aim at TargetCharacter with PronounPossessive net gun.":
         "SourceCharacter 用自己的网枪瞄准 TargetCharacter.",
-    "SourceCharacter turns PronounPossessive net gun on PronounSelf.":
-        "SourceCharacter 将自己的网枪对准自己.",
+    "SourceCharacter turns PronounPossessive net gun on PronounSelf.": "SourceCharacter 将自己的网枪对准自己.",
     "Pour into Funnel": "倒入漏斗",
     "SourceCharacter pours PronounPossessive ActivityAsset into TargetCharacter's funnel.":
         "SourceCharacter 将自己的 ActivityAsset 倒入 TargetCharacter 的漏斗中.",
@@ -218,7 +219,8 @@ const activities = {
     "SourceCharacter places PronounPossessive ActivityAsset around PronounPossessive own neck.":
         "SourceCharacter 把自己的 ActivityAsset 放在自己的脖子周围.",
     "Take Gag": "取下口球",
-    "SourceCharacter removes TargetCharacter's ActivityAsset.": "SourceCharacter 移除了 TargetCharacter 的 ActivityAsset.",
+    "SourceCharacter removes TargetCharacter's ActivityAsset.":
+        "SourceCharacter 移除了 TargetCharacter 的 ActivityAsset.",
     "SourceCharacter pulls the ActivityAsset from PronounPossessive mouth.":
         "SourceCharacter从PronounPossessive的嘴里取下了ActivityAsset.",
     "SourceCharacter takes TargetCharacter's ActivityAsset from around TargetPronounPossessive neck.":
@@ -438,7 +440,8 @@ const translation = {
     "Hypnotized Eye Color:": "催眠眼睛颜色:",
     "Hypnotized Eye Type:": "催眠眼睛类型:",
     "If checked, allowed users can modify these settings.": "打勾的话, 允许的用户可以修改这些设置.",
-    "If checked, remote access is only possible while actively hypnotized.": "打勾的话, 远程访问仅在被积极催眠时才有可.",
+    "If checked, remote access is only possible while actively hypnotized.":
+        "打勾的话, 远程访问仅在被积极催眠时才有可.",
     "If checked, only the user who hypnotized you can access your settings (after matching other conditions).":
         "打勾的话, 只有催眠你的用户在匹配其他条件后才能访问你的设置.",
     "If checked, any remote users can change your Override Member Id list (otherwise, only owner can).":
@@ -475,7 +478,8 @@ const translation = {
     "Update": "更新",
     "Enabled the Choking Collar Features.": "打勾的话, 启用窒息项圈功能.",
     "Enables Remote Access to Collar Settings.": "打勾的话, 启用对项圈设置的远程访问.",
-    "Allowes Remote Access Users to lock you out of these settings.": "打勾的话, 允许远程访问用户将您锁定在这些设置之外.",
+    "Allowes Remote Access Users to lock you out of these settings.":
+        "打勾的话, 允许远程访问用户将您锁定在这些设置之外.",
     "Comma separated list of member IDs who can activate the collar. Leave empty for item permissions.":
         "可以激活项圈的成员 ID 的逗号分隔列表. 留空则使用物品权限.",
     "Limits collar activation to crafted user and allowed list. If no crafted user will use item permissions.":
@@ -498,7 +502,8 @@ const translation = {
     "Heartbeat Sound:": "心跳声:",
     "Chaotic Net Gun:": "混乱网枪:",
     "Enable Enhanced Drinks, Injectors and Net Gun.": "打勾的话, 增强饮料、注射器和网枪.",
-    "If true, will allow respirators to deliver a continuous supply of drugged gas.": "允许乳胶呼吸器提供持续的麻醉气体.",
+    "If true, will allow respirators to deliver a continuous supply of drugged gas.":
+        "允许乳胶呼吸器提供持续的麻醉气体.",
     'Activates for any injector or drink with "horny" or "aphrodisiac" in its crafted name or description.':
         '对于任何在其精心制作的名称或描述中包含"horny"或"aphrodisiac"的注射器或饮料,将激活.',
     'Activates for any injector or drink with "sedative" or "tranquilizer" in its crafted name or description.':
@@ -729,7 +734,8 @@ const translation = {
     "Induce New Suggestion": "添加暗示",
     "Induce a new hypnotic suggestion into the subject.": "向受试者诱导一个新的催眠暗示.",
     "Trigger phrase for this suggestion.": "这个是暗示的触发短语",
-    "If checked, only the creator of this suggestion can view, edit, or trigger it.": "如果勾选,只有此建议的创建者可以查看、编辑或触发它.",
+    "If checked, only the creator of this suggestion can view, edit, or trigger it.":
+        "如果勾选,只有此建议的创建者可以查看、编辑或触发它.",
     "A suggested instruction.": "一个催眠指令",
     "Target": "目标",
     "Self": "自己",
@@ -784,7 +790,6 @@ const translation = {
     "Create a magic barrier that protect and reflect incoming spell": "创造一个魔法屏障，保护并反射来袭的法术",
     "Disarming": "移除手持物品",
     "Disarm the target": "移除目标的手持物品",
-
 };
 
 export { activities, translation };

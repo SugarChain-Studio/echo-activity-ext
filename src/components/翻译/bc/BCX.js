@@ -164,7 +164,8 @@ const translation = {
     '- Commands: Description of the command: "Typing task" -': '- 指令描述: "输入任务" -',
     '- Commands: Description of the command: "Forced typing task" -': '- 指令描述: "强制输入任务" -',
     "- Global: Enable/Disable BCX's modules -": "- 全局: 启用/禁用BCX的模块 -",
-    "Warning: Disabling a module will reset all its settings and stored data!": "警告: 禁用模块将重置其所有设置和存储的数据!",
+    "Warning: Disabling a module will reset all its settings and stored data!":
+        "警告: 禁用模块将重置其所有设置和存储的数据!",
     "Authority module permissions (continued)": "权限模块权限 (延续)",
     "Behaviour Log module permissions": "行为日志模块权限",
     "Behaviour Log module permissions (continued)": "行为日志模块权限 (延续)",
@@ -738,7 +739,8 @@ const translation = {
     "Minimum role still allowed to send whisper:": "仍允许发送耳语的最低角色:",
     "Member numbers still allowed to be beeped:": "仍允许蜂鸣消息的玩家编号:",
     "BCX: You are not allowed to talk openly in chatrooms!": "BCX: 你不能在聊天室中公开说话!",
-    "BCX: A BCX rule prevents you from using this while unable to see!": "BCX: 一个BCX规则阻止你在无法看到的情况下使用这个!",
+    "BCX: A BCX rule prevents you from using this while unable to see!":
+        "BCX: 一个BCX规则阻止你在无法看到的情况下使用这个!",
     "Instant Messenger (Disabled by BCX)": "即时通讯(被BCX禁用)",
     "BCX: You are not allowed to use emotes in chatrooms!": "BCX: 不允许在聊天室使用表情!",
     "BCX: You are not allowed to change the emoticon!": "BCX: 不允许更改表情!",
@@ -826,8 +828,6 @@ const translation = {
     "Hierachy of roles": "角色权限结构",
     "[Log message deleted]": "[日志消息已删除]",
     "删除 all log entries": "删除所有日志条目",
-
-
 
     // EBCH
     "EBCH: Turn on Ungarble (Hearing Whitelist)": "EBCH: 打开去噪(听觉白名单)",

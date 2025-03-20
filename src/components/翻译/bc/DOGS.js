@@ -28,7 +28,7 @@ const translation = {
     "change your appearance, now you don't need to be": "远程更改你的外观，现在你无需",
     "in the same room to change items of your friends.": "在同一房间内就能更改好友的装扮。",
     "If remote control is disabled then no one can use": "如果远程控制被禁用，任何人都无法",
-    "it on you. Type \"/dogs remote <member number>\" to": "对你使用此功能。输入 \"/dogs remote <成员编号>\" 来",
+    'it on you. Type "/dogs remote <member number>" to': '对你使用此功能。输入 "/dogs remote <成员编号>" 来',
     "connect remotely. ": "建立远程连接。",
 
     // 恶作剧锁说明
@@ -37,7 +37,7 @@ const translation = {
     "settings you can add notes and configure access": "设置中，你可以添加备注并设置",
     "rights. By default these padlocks are disabled": "访问权限。默认情况下，这些锁是禁用的",
     "and cannot be used on you, but you can always": "且无法对你使用，但你随时可以",
-    "change it :3": "更改这个设置哦 :3"
+    "change it :3": "更改这个设置哦 :3",
 };
 
 export { translation };

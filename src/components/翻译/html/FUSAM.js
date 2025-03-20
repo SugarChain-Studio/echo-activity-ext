@@ -78,18 +78,17 @@ const translation = {
     "SAVE": "保存",
     "Debug": "调试",
 
-    "Displays user Fetish and Arousal preferences in Bios, and calculates compatibility between players.": "在个人简介中显示用户的癖好和动作偏好, 并计算玩家之间的癖好相似度",
+    "Displays user Fetish and Arousal preferences in Bios, and calculates compatibility between players.":
+        "在个人简介中显示用户的癖好和动作偏好, 并计算玩家之间的癖好相似度",
     "Maple's BC FetishShare": "Maple 的 BC 癖好分享(个人资料拓展)",
     "Moon Cards Editor BC": "BC 月亮卡牌编辑",
     "Adds the ability to view and edit your cards decks from online room": "从在线房间中查看和编辑您的卡牌牌组功能",
 
-    // TODO Saki救救 (BCX的 .help 不知道怎么替换 ，还有LSCG的绿色弹窗) 
+    // TODO Saki救救 (BCX的 .help 不知道怎么替换 ，还有LSCG的绿色弹窗)
     // "BCX commands are organized into categories": "BCX 命令被组织成不同的类别。",
-    // "To view help texts for all commands in a category, use '.help &lt;category&gt;' (e.g. '.help utility')": 
+    // "To view help texts for all commands in a category, use '.help &lt;category&gt;' (e.g. '.help utility')":
     // "要查看某个类别下所有命令的帮助文本，请使用 '.help &lt;category&gt;'（例如 '.help utility'）。",
     // "List of categories:": "类别列表：",
-
-
 };
 
 const htmlTags = [
@@ -102,4 +101,3 @@ const htmlTags = [
 ];
 
 export { htmlTags, translation };
-

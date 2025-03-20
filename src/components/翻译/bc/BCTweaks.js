@@ -49,7 +49,7 @@ const translation = {
     "Show Room Name directly to:": "直接向以下对象显示房间名称：",
     "BF Lock Permission": "最好的朋友(BF) 锁权限",
     "Normal": "普通",
-    "BF Timer Lock Permission": "最好的朋友(BF) 计时锁权限"
+    "BF Timer Lock Permission": "最好的朋友(BF) 计时锁权限",
 };
 
-export { translation }; 
+export { translation };

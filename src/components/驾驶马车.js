@@ -7,13 +7,9 @@ const activity = {
         Name: "驾驶马车",
         Prerequisite: [
             "UseFeet",
-            (prereq, acting, acted, group) => {
-                return (
-                    (!InventoryGet(acting, "ItemDevices") ||
-                        InventoryIsItemInList(acting, "ItemDevices", ["马车_Luzi"])) &&
-                    InventoryIsItemInList(acted, "ItemDevices", ["马车前_Luzi"])
-                );
-            },
+            (_prereq, acting, acted, _group) =>
+                (!InventoryGet(acting, "ItemDevices") || InventoryIsItemInList(acting, "ItemDevices", ["马车_Luzi"])) &&
+                InventoryIsItemInList(acted, "ItemDevices", ["马车前_Luzi"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso"],

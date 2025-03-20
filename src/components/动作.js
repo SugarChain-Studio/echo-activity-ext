@@ -241,7 +241,7 @@ const activities = [
             EN: "SourceCharacter softly pants.",
             RU: "SourceCharacter тихо вздыхает.",
             UA: "SourceCharacter ніжно піддихає під ритм серця.",
-        }
+        },
     },
     {
         activity: {
@@ -843,7 +843,6 @@ const activities = [
             EN: "Rub Face",
             RU: "Потереть Лицо",
             UA: "Потерти обличчя",
-
         },
         dialogSelf: {
             CN: "SourceCharacter揉了揉自己的脸.",
@@ -2802,7 +2801,6 @@ const activities = [
             CN: "SourceCharacter用鱼尾揉了揉PronounPossessive自己的脸.",
             EN: "SourceCharacter rubs PronounPossessive face with a fish tail.",
             UA: "SourceCharacter тре своє лице риб'ячим хвостом.",
-
         },
     },
     {

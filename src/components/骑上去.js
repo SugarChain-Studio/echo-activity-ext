@@ -6,12 +6,9 @@ const activity = {
     activity: {
         Name: "骑上去",
         Prerequisite: [
-            (prereq, acting, acted, group) => {
-                return (
-                    InventoryIsItemInList(acting, "ItemTorso", ["缰绳_Luzi"]) &&
-                    InventoryIsItemInList(acted, "ItemTorso", ["鞍_Luzi"])
-                );
-            },
+            (_prereq, acting, acted, _group) =>
+                InventoryIsItemInList(acting, "ItemTorso", ["缰绳_Luzi"]) &&
+                InventoryIsItemInList(acted, "ItemTorso", ["鞍_Luzi"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso"],

@@ -6,13 +6,10 @@ const activity = {
     activity: {
         Name: "拉到身边",
         Prerequisite: [
-            (prereq, acting, acted, group) => {
-                return (
-                    (!InventoryGet(acting, "ItemHandheld") ||
-                        InventoryIsItemInList(acting, "ItemHandheld", ["拉紧的牵绳_Luzi"])) &&
-                    InventoryIsItemInList(acted, "ItemNeckRestraints", ["CollarLeash"])
-                );
-            },
+            (_prereq, acting, acted, _group) =>
+                (!InventoryGet(acting, "ItemHandheld") ||
+                    InventoryIsItemInList(acting, "ItemHandheld", ["拉紧的牵绳_Luzi"])) &&
+                InventoryIsItemInList(acted, "ItemNeckRestraints", ["CollarLeash"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso", "ItemNeckRestraints", "ItemNeck"],

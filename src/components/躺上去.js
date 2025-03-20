@@ -7,14 +7,13 @@ const activities = [
         activity: {
             Name: "躺上去",
             Prerequisite: [
-                (prereq, acting, acted, group) => {
-                    return InventoryIsItemInList(acted, "ItemDevices", ["Bed", "床左边_Luzi"]);
-                },
+                (_prereq, _acting, acted, _group) =>
+                    InventoryIsItemInList(acted, "ItemDevices", ["Bed", "床左边_Luzi"]),
             ],
             MaxProgress: 50,
             Target: ["ItemTorso"],
         },
-        run: (player, sender, info) => {
+        run: (player, _, info) => {
             if (info.TargetCharacter === player.MemberNumber) {
                 const asset = AssetGet("Female3DCG", "ItemDevices", "床左边_Luzi");
                 if (!asset) return;

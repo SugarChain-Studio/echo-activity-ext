@@ -6,14 +6,12 @@ const activity = {
     activity: {
         Name: "扛起",
         Prerequisite: [
-            (prereq, acting, acted, group) => {
-                return InventoryIsItemInList(acted, "ItemDevices", ["BurlapSack"]);
-            },
+            (_prereq, _acting, acted, _group) => InventoryIsItemInList(acted, "ItemDevices", ["BurlapSack"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso"],
     },
-    run: (player, sender, {SourceCharacter, TargetCharacter}) => {
+    run: (player, sender, { SourceCharacter, TargetCharacter }) => {
         if (TargetCharacter === player.MemberNumber) {
             const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter);
             if (!SrcChara) return;

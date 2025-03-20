@@ -22,7 +22,7 @@ export function activityName(actName) {
 function validate(data) {
     /** @type {Record<string, ActivityData>} */
     const ret = {};
-    if (typeof ret != "object") return ret;
+    if (typeof ret !== "object") return ret;
 
     Object.entries(data).forEach(([key, value]) => {
         if (typeof key !== "string" || typeof value !== "object" || !value) return;
@@ -42,7 +42,7 @@ class 动作数据 {
         /** @type {Record<string, ActivityData>} */
         this.data = validate(
             (() => {
-                let ret = load(动作数据key);
+                const ret = load(动作数据key);
                 if (Object.keys(ret).length === 0) return load(动作数据.name);
                 return ret;
             })()
@@ -152,12 +152,12 @@ export default function () {
             // 如果存在旧数据
             const { 炉子ActivityFemale3DCG, 炉子ActivityDictionary } = olddata;
             if (炉子ActivityFemale3DCG !== undefined && 炉子ActivityDictionary !== undefined) {
-                console.log("迁移动作数据");
+                console.info("迁移动作数据");
                 try {
                     /** @type {Activity[]} */
-                    let decompressedActivity = JSON.parse(LZString.decompressFromUTF16(炉子ActivityFemale3DCG));
+                    const decompressedActivity = JSON.parse(LZString.decompressFromUTF16(炉子ActivityFemale3DCG));
                     /** @type {[string,string][]} */
-                    let decompressedDictionary = JSON.parse(LZString.decompressFromUTF16(炉子ActivityDictionary));
+                    const decompressedDictionary = JSON.parse(LZString.decompressFromUTF16(炉子ActivityDictionary));
 
                     const oldPrefix = "笨蛋笨Luzi_";
 
@@ -179,11 +179,11 @@ export default function () {
 
                     resultActivity.forEach((data) => {
                         const selfdialog = decompressedDictionary.find(
-                            ([k, v]) => k === `ChatSelf-${data.TargetSelf}-${oldPrefix}${data.Name}`
+                            ([k]) => k === `ChatSelf-${data.TargetSelf}-${oldPrefix}${data.Name}`
                         );
                         if (selfdialog) data.DialogSelf = selfdialog[1];
                         const targetdialog = decompressedDictionary.find(
-                            ([k, v]) => k === `ChatOther-${data.Target}-${oldPrefix}${data.Name}`
+                            ([k]) => k === `ChatOther-${data.Target}-${oldPrefix}${data.Name}`
                         );
                         if (selfdialog) data.Dialog = targetdialog[1];
                     });
@@ -192,7 +192,9 @@ export default function () {
                     delete olddata["炉子ActivityFemale3DCG"];
                     delete olddata["炉子ActivityDictionary"];
                     ServerAccountUpdate.QueueData({ OnlineSettings: Player.OnlineSettings });
-                } catch (e) {}
+                } catch (e) {
+                    Logger.error(e);
+                }
             }
         }
     });

@@ -12,7 +12,7 @@ export function getInputElementById(id) {
 export function ReqInputElementById(id) {
     const ele = document.getElementById(id);
     if (ele instanceof HTMLInputElement) return { then: (fn) => fn(ele) };
-    else return { then: (fn) => {} };
+    else return { then: (_) => {} };
 }
 
 /**
@@ -22,7 +22,7 @@ export function ReqInputElementById(id) {
 export function ReqTextAreaElementById(id) {
     const ele = document.getElementById(id);
     if (ele instanceof HTMLTextAreaElement) return { then: (fn) => fn(ele) };
-    else return { then: (fn) => {} };
+    else return { then: (_) => {} };
 }
 
 export function ElementInputShowOrCreate(id, type, value, maxLength) {

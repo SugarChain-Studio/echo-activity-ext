@@ -47,7 +47,7 @@ export class 自定义动作设置_删除 extends BaseSubscreen {
             "White",
             "",
             acts.length > 0 ? `${i18n("General::Delete")}[${acts[this.actIndex]}]` : "",
-            acts.length == 0
+            acts.length === 0
         );
         RDrawButton(this.deleteAllButtonRect, "♻", "red", "", i18n("Setting::Act::DeleteAll"));
     }

@@ -1,21 +1,20 @@
 import { ActivityManager } from "../activityForward";
 
 /**
-* 道具切换
-* @param {string} item1 - 道具名称 1
-* @param {string} item2 - 道具名称 2
-*/// @ts-ignore
+ * 道具切换
+ * @param {string} item1 - 道具名称 1
+ * @param {string} item2 - 道具名称 2
+ */ // @ts-ignore
 function shakeTail(player, itemgroup, item1, item2) {
     for (let i = 0; i < 2; i++) {
         setTimeout(() => {
             if (InventoryGet(player, itemgroup).Asset.Name === item1) {
-                let propColor = InventoryGet(player, itemgroup).Color;
+                const propColor = InventoryGet(player, itemgroup).Color;
 
                 InventoryWear(player, item2, itemgroup, propColor);
                 ChatRoomCharacterUpdate(player); // Update appearance
-
             } else if (InventoryGet(player, itemgroup).Asset.Name === item2) {
-                let propColor = InventoryGet(player, itemgroup).Color;
+                const propColor = InventoryGet(player, itemgroup).Color;
 
                 InventoryWear(player, item1, itemgroup, propColor);
                 ChatRoomCharacterUpdate(player); // Update appearance
@@ -54,20 +53,18 @@ const activities = [
         label: {
             CN: "摇晃尾巴",
             EN: "Wag Tail",
-            RU: "Вилять хвостом"
+            RU: "Вилять хвостом",
         },
         dialog: {
             CN: "SourceCharacter 摇晃 PronounPossessive 的尾巴.",
             EN: "SourceCharacter wags PronounPossessive tail.",
-            RU: "SourceCharacter виляет хвостом."
+            RU: "SourceCharacter виляет хвостом.",
         },
     },
     {
         activity: {
             Name: "摇晃耳朵",
-            Prerequisite: [
-                (prereq, acting, acted, group) => !!InventoryGet(acted, "HairAccessory2"),
-            ],
+            Prerequisite: [(_prereq, _acting, acted, _group) => !!InventoryGet(acted, "HairAccessory2")],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemEars"],

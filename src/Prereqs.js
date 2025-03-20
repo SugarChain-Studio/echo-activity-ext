@@ -4,9 +4,7 @@ class Acting {
      * @returns {PrerequisiteCheckFunction}
      */
     static TargetGroupEmpty() {
-        return (_, acting, _1, group) => {
-            return acting.Appearance.every((item) => item.Asset.Group.Name !== group.Name);
-        };
+        return (_, acting, _1, group) => acting.Appearance.every((item) => item.Asset.Group.Name !== group.Name);
     }
 
     /**
@@ -46,9 +44,7 @@ class Acting {
     static GroupEmpty(groups) {
         const groupNameSet = new Set(groups);
 
-        return (_, acting, _1, _2) => {
-            return acting.Appearance.every((item) => !groupNameSet.has(item.Asset.Group.Name));
-        };
+        return (_, acting, _1, _2) => acting.Appearance.every((item) => !groupNameSet.has(item.Asset.Group.Name));
     }
 
     /**
@@ -56,9 +52,7 @@ class Acting {
      * @param { AssetGroupItemName } group
      */
     static GroupAccessible(group) {
-        return (_, acting, _1, _2) => {
-            return !InventoryGroupIsBlocked(acting, group);
-        };
+        return (_, acting, _1, _2) => !InventoryGroupIsBlocked(acting, group);
     }
 }
 
@@ -68,9 +62,7 @@ class Acted {
      * @returns {PrerequisiteCheckFunction}
      */
     static TargetGroupEmpty() {
-        return (_, _1, acted, group) => {
-            return acted.Appearance.every((item) => item.Asset.Group.Name !== group.Name);
-        };
+        return (_, _1, acted, group) => acted.Appearance.every((item) => item.Asset.Group.Name !== group.Name);
     }
 
     /**
@@ -109,9 +101,7 @@ class Acted {
     static GroupEmpty(groups) {
         const groupNameSet = new Set(groups);
 
-        return (_, _1, acted, _2) => {
-            return acted.Appearance.every((item) => !groupNameSet.has(item.Asset.Group.Name));
-        };
+        return (_, _1, acted, _2) => acted.Appearance.every((item) => !groupNameSet.has(item.Asset.Group.Name));
     }
 
     /**
@@ -119,9 +109,7 @@ class Acted {
      * @param { AssetGroupItemName } group
      */
     static GroupAccessible(group) {
-        return (_, _1, acted, _2) => {
-            return !InventoryGroupIsBlocked(acted, group);
-        };
+        return (_, _1, acted, _2) => !InventoryGroupIsBlocked(acted, group);
     }
 }
 

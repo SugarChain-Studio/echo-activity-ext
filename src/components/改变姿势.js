@@ -15,7 +15,6 @@ const activities = [
             CN: "跪下",
             EN: "Kneel Down",
             UA: "Сісти на коліна",
-    
         },
         dialogSelf: {
             CN: "SourceCharacter轻轻地跪了下来.",

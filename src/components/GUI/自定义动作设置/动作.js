@@ -141,7 +141,7 @@ export class 自定义动作设置_动作 extends BaseSubscreen {
         }
 
         if (RMouseIn(this.saveButtonRect)) {
-            const { ret, what } = this.canSaveReport();
+            const { ret } = this.canSaveReport();
             if (ret) {
                 const act = {
                     Name: getInputElementById(this.actNameId)?.value || "",

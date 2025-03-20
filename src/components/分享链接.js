@@ -7,7 +7,7 @@ import { HookManager } from "@sugarch/bc-mod-hook-manager";
 /** @type {Record<ShareType, { displayName: string | (() => string), get: (info: string) => string }>} */
 const frame = {
     nm: {
-        displayName: () => (TranslationLanguage == "CN" ? "网易云" : "Netease Cloud Music"),
+        displayName: () => (TranslationLanguage === "CN" ? "网易云" : "Netease Cloud Music"),
         get: (Id) =>
             `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=${Id}&auto=0&height=66"></iframe>`,
     },
@@ -40,19 +40,18 @@ const h2 = "font-size: min(2vw,4vh); color: rgb(32, 87, 129);";
 const h3 = "font-size: min(1.5vw,3vh); color: rgb(79, 149, 157);";
 const hx = "font-size: min(1vw,2vh);";
 
-const h3c = "color: rgb(79, 149, 157);";
-
 const margin = (top, bottom) => `margin-top: ${top}; margin-bottom: ${bottom};`;
 const def_margin = margin("0.2em", "0");
 
 function buildExampe(title, steps, example_prefix, example, em) {
+    /* eslint-disable indent */
     return `
     <div style="${def_margin} ${flex}">
     <h3 style="${def_margin} line-height: 1; ${h3}">${title}</h3>
     ${
         example.length
             ? `<ul style="padding-top: 0; ${def_margin} line-height: 1; ${flex}">
-      ${steps.map((step) => `<li style="line-height: 1; ${hx}">${step}</li>`).join("")}
+    ${steps.map((step) => `<li style="line-height: 1; ${hx}">${step}</li>`).join("")}
     </ul>`
             : ""
     }
@@ -62,6 +61,7 @@ function buildExampe(title, steps, example_prefix, example, em) {
     ${em ? `<em style="${def_margin} ${hx}">（${em}）</em>` : ""}
     </div>
     `;
+    /* eslint-enable indent */
 }
 
 const i18n = {

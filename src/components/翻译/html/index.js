@@ -10,23 +10,24 @@ const doneAttr = "data-translation-done";
 const translationsDTF2 = [
     {
         regex: /MISSING ACTIVITY DESCRIPTION FOR KEYWORD Activity(.+)/,
-        replacement: "$1"
+        replacement: "$1",
     },
 ];
 
 function applyReplacements(text) {
+    let newValue = text;
     // 应用 translationsDTF2 中的替换规则
     for (const rule of translationsDTF2) {
-        text = text.replace(rule.regex, rule.replacement);
+        newValue = newValue.replace(rule.regex, rule.replacement);
     }
-    return text;
+    return newValue;
 }
 
 function runReplaceInIds() {
     /** @type {Node[]} */
     const eleToCheck = tags.map((tag) => document.querySelector(tag)).filter((ele) => ele !== null);
     while (eleToCheck.length > 0) {
-        let ele = eleToCheck.pop();
+        const ele = eleToCheck.pop();
         if (ele.nodeType === Node.TEXT_NODE) {
             let newValue = ele.nodeValue;
             if (translations[newValue]) {

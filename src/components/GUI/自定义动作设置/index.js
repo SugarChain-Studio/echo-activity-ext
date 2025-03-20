@@ -39,7 +39,7 @@ export class 自定义动作设置 extends BaseSubscreen {
             AssetGroup.filter(
                 (g) => g.IsItem() && !g.MirrorActivitiesFrom && AssetActivitiesForGroup("Female3DCG", g.Name).length
             ).forEach((g) => {
-                const targeted = this.targetGroup == g;
+                const targeted = this.targetGroup === g;
                 g.Zone.forEach((z) => {
                     const [X, Y, W, H] = z.map((x) => x * DisplayRatio);
                     if (targeted) DrawEmptyRect(DisplayBase.X + X, DisplayBase.Y + Y, W, H, "cyan");

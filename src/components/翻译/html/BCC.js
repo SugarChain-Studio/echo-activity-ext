@@ -139,7 +139,6 @@ const translation = {
     "  - Report bug": "  - 报告错误",
     "  - Open Bondage Club Chaos help menu": "  - 打开 Bondage Club Chaos 帮助菜单",
 
-    
     " ask 她 to set them up in Arousal Preferences.": "  请询问她在兴奋-爱好设置它们",
     "Activities not configured, ask 她 to set them up in Arousal Preferences.": "  请询问她在兴奋-行动设置它们",
     "  set them up in Arousal Preferences.": "  在兴奋-爱好设置它们",
@@ -173,7 +172,7 @@ const htmlTags = [
     "#Menu_MBCFSFetishes-0",
     "#Menu_MBCFSActivities-0",
     "#Menu_MBCFSFetishes-1",
-    "#Menu_MBCFSActivities-1",  
+    "#Menu_MBCFSActivities-1",
 ];
 
 export { htmlTags, translation };
