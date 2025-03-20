@@ -1,6 +1,6 @@
-import ModManager from "@mod-utils/ModManager";
+import { HookManager } from "@sugarch/bc-mod-hook-manager";
 import { ModInfo } from "@mod-utils/rollupHelper";
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 import { makeTooltipIcon } from "@mod-utils/Tooltip";
 
 const hanburgerIcon = `data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
@@ -26,7 +26,7 @@ FhZ6IIeuA4OENTMzowCWlpaMrVpt8gL6EJROpwGYmpoyJfHc3Fxrfyv0QP4D/SuQTlQPpN30FwcY
 PMrnpTehAAAAAElFTkSuQmCC`;
 
 export default function () {
-    ModManager.hookFunction("ElementButton.CreateForActivity", 0, (args, next) => {
+    HookManager.hookFunction("ElementButton.CreateForActivity", 0, (args, next) => {
         const _args = /** @type {any[]} */ (args);
         const ret = /** @type {HTMLButtonElement} */ (next(args));
         if (ActivityManager.activityIsCustom(_args[1].Activity.Name)) {

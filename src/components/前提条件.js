@@ -1,7 +1,6 @@
-import { RecordEntries } from "@mod-utils/fp";
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 
-/** @type { Record<Exclude<CustomActivityPrerequisite,ActivityPrerequisite>, ActivityManagerInterface.PrerequisiteCheckFunction> }  */
+/** @type { Record<Exclude<CustomActivityPrerequisite,ActivityPrerequisite>, PrerequisiteCheckFunction> }  */
 const prereqStorage = {
     TargetHasTail: (prereq, acting, acted, group) => !!InventoryGet(acted, "TailStraps"),
     TargetHasWings: (prereq, acting, acted, group) => !!InventoryGet(acted, "Wings"),
@@ -36,5 +35,10 @@ const prereqStorage = {
 };
 
 export default function () {
-    ActivityManager.addPrerequisites(RecordEntries(prereqStorage).map(([k, v]) => ({ name: k, test: v })));
+    /** @type {CustomActivityPrerequisiteItem[]} */
+    const prereqs = [];
+    for (const [k, test] of Object.entries(prereqStorage)) {
+        prereqs.push({ name: /** @type {CustomActivityPrerequisite}*/ (k), test });
+    }
+    ActivityManager.addPrerequisites(prereqs);
 }

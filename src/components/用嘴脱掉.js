@@ -1,4 +1,4 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 import { Tools } from "@mod-utils/Tools";
 import { Prereqs } from "../Prereqs";
 
@@ -95,7 +95,7 @@ function removeCallback(groups) {
     };
 }
 
-/** @type { ActivityManagerInterface.ICustomActivity []} */
+/** @type { CustomActivity []} */
 const activities = [
     {
         activity: {

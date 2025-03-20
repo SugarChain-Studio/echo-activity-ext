@@ -1,5 +1,5 @@
-import { Path } from "@mod-utils/path";
-import 保存动作, { 动作数据管理 } from "../../保存数据/保存动作";
+import { Path } from "../../../resouce";
+import { 动作数据管理 } from "../../保存数据/保存动作";
 import { BaseSubscreen } from "../gui";
 import {
     getInputElementById,
@@ -9,7 +9,6 @@ import {
     ReqTextAreaElementById,
 } from "../utils";
 import { RElementPositionFixed, RDrawButton, RMouseIn, RDrawText, RDrawTextCentered } from "../RDraw";
-import ActivityManager from "@mod-utils/ActivityManager";
 import { i18n } from "../i18n";
 
 export class 自定义动作设置_动作 extends BaseSubscreen {

@@ -1,6 +1,6 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 
-/** @type { ActivityManagerInterface.ICustomActivity} */
+/** @type { CustomActivity} */
 const activity = {
     activity: {
         Name: "贞操带互动",

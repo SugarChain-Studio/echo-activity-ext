@@ -1,7 +1,7 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 
-/** @type { ActivityManagerInterface.ICustomActivity} */
+/** @type { CustomActivity} */
 const activity = {
     activity: {
         Name: "拉到身边",

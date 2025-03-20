@@ -1,7 +1,7 @@
 class Acting {
     /**
      * 动作目标身体部位为空
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static TargetGroupEmpty() {
         return (_, acting, _1, group) => {
@@ -12,7 +12,7 @@ class Acting {
     /**
      * 动作目标身体部位物品范围
      * @param {string[]} assetNames
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static TargetGroupIs(assetNames) {
         const assetNameSet = new Set(assetNames);
@@ -27,7 +27,7 @@ class Acting {
      * 身体部位物品范围
      * @param {CustomGroupName} group
      * @param {string[]} assetNames
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static GroupIs(group, assetNames) {
         const assetNameSet = new Set(assetNames);
@@ -41,7 +41,7 @@ class Acting {
     /**
      * 身体部位为空
      * @param {CustomGroupName[]} groups
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static GroupEmpty(groups) {
         const groupNameSet = new Set(groups);
@@ -65,7 +65,7 @@ class Acting {
 class Acted {
     /**
      * 动作目标身体部位为空
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static TargetGroupEmpty() {
         return (_, _1, acted, group) => {
@@ -76,7 +76,7 @@ class Acted {
     /**
      * 动作目标身体部位物品范围
      * @param {string[]} assetNames
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static TargetGroupIs(assetNames) {
         const assetNameSet = new Set(assetNames);
@@ -91,7 +91,7 @@ class Acted {
      * 身体部位物品范围
      * @param {CustomGroupName} group
      * @param {string[]} assetNames
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static GroupIs(group, assetNames) {
         const assetNameSet = new Set(assetNames);
@@ -104,7 +104,7 @@ class Acted {
     /**
      * 身体部位为空
      * @param {CustomGroupName[]} groups
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @returns {PrerequisiteCheckFunction}
      */
     static GroupEmpty(groups) {
         const groupNameSet = new Set(groups);
@@ -133,35 +133,35 @@ export class Prereqs {
     static Acted = Acted;
 
     /**
-     * @param {ActivityManagerInterface.PrerequisiteCheckFunction} prereqFunc
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @param {PrerequisiteCheckFunction} prereqFunc
+     * @returns {PrerequisiteCheckFunction}
      */
     static not(prereqFunc) {
         return (...args) => !prereqFunc(...args);
     }
 
     /**
-     * @param {ActivityManagerInterface.PrerequisiteCheckFunction} lhs
-     * @param {ActivityManagerInterface.PrerequisiteCheckFunction} rhs
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @param {PrerequisiteCheckFunction} lhs
+     * @param {PrerequisiteCheckFunction} rhs
+     * @returns {PrerequisiteCheckFunction}
      */
     static and(lhs, rhs) {
         return (...args) => lhs(...args) && rhs(...args);
     }
 
     /**
-     * @param {ActivityManagerInterface.PrerequisiteCheckFunction} lhs
-     * @param {ActivityManagerInterface.PrerequisiteCheckFunction} rhs
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @param {PrerequisiteCheckFunction} lhs
+     * @param {PrerequisiteCheckFunction} rhs
+     * @returns {PrerequisiteCheckFunction}
      */
     static or(lhs, rhs) {
         return (...args) => lhs(...args) || rhs(...args);
     }
 
     /**
-     * @param {ActivityManagerInterface.PrerequisiteCheckFunction} lhs
-     * @param {ActivityManagerInterface.PrerequisiteCheckFunction} rhs
-     * @returns {ActivityManagerInterface.PrerequisiteCheckFunction}
+     * @param {PrerequisiteCheckFunction} lhs
+     * @param {PrerequisiteCheckFunction} rhs
+     * @returns {PrerequisiteCheckFunction}
      */
     static xor(lhs, rhs) {
         return (...args) => lhs(...args) !== rhs(...args);

@@ -1,4 +1,4 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 import { Prereqs } from "../Prereqs";
 
 /**
@@ -6,7 +6,7 @@ import { Prereqs } from "../Prereqs";
  * @param {string} assetName
  * @param {Translation.Entry} label
  * @param {Translation.Entry} dialog
- * @returns {ActivityManagerInterface.ICustomActivity}
+ * @returns {CustomActivity}
  */
 function activityBuilder(assetName, label, dialog) {
     return {
@@ -21,16 +21,16 @@ function activityBuilder(assetName, label, dialog) {
             Target: ["ItemMouth"],
         },
         useImage: ["ItemMouth", assetName],
-        run: (player, sender, info) => {
-            if (info.SourceCharacter === player.MemberNumber) {
+        run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
+            if (SourceCharacter === player.MemberNumber) {
                 const asset = AssetGet("Female3DCG", "ItemMouth", assetName);
                 if (!asset) return;
 
                 // 获取 TargetCharacter 玩家信息
-                const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === info.TargetCharacter);
+                const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === TargetCharacter);
                 if (!target) return;
 
-                InventoryRemove(target, info.ActivityGroup);
+                InventoryRemove(target, ActivityGroup.Name);
                 InventoryWear(player, assetName, "ItemMouth");
                 InventoryRemove(player, "ItemHandheld");
 
@@ -44,7 +44,7 @@ function activityBuilder(assetName, label, dialog) {
     };
 }
 
-/** @type { ActivityManagerInterface.ICustomActivity []} */
+/** @type { CustomActivity []} */
 const activities = [
     activityBuilder(
         "棒棒糖_Luzi",

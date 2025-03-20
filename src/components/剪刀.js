@@ -1,4 +1,4 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 
 /**@type {Partial<Record<AssetGroupItemName, CustomGroupName[]>>} */
 const groupMap = {
@@ -10,7 +10,7 @@ const groupMap = {
     ItemBoots: ["Shoes"],
 };
 
-/** @type { ActivityManagerInterface.ICustomActivity } */
+/** @type { CustomActivity } */
 const activity = {
     activity: {
         Name: "剪刀剪掉上衣",
@@ -20,10 +20,10 @@ const activity = {
         TargetSelf: true,
     },
     useImage: ["ItemHandheld", "Scissors"],
-    mode: "OnSelf",
+    mode: "AnyOnSelf",
     run: (player, sender, info) => {
         // 使用动作拓展才会被剪衣服，可以只处理收到消息的情况
-        const groups = groupMap[info.ActivityGroup];
+        const groups = groupMap[info.ActivityGroup.Name];
         if (groups) {
             player.Appearance = player.Appearance.filter((i) => !groups.includes(i.Asset.Group.Name));
             ChatRoomCharacterUpdate(player);

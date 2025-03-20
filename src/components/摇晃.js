@@ -1,5 +1,4 @@
-import ActivityManager from "@mod-utils/ActivityManager";
-import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
+import { ActivityManager } from "../activityForward";
 
 /**
 * 道具切换
@@ -25,7 +24,7 @@ function shakeTail(player, itemgroup, item1, item2) {
     }
 }
 
-/** @type { ActivityManagerInterface.ICustomActivity []} */
+/** @type { CustomActivity []} */
 const activities = [
     {
         activity: {

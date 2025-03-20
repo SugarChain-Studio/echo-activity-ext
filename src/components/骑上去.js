@@ -1,7 +1,7 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 
-/** @type { ActivityManagerInterface.ICustomActivity} */
+/** @type { CustomActivity } */
 const activity = {
     activity: {
         Name: "骑上去",
@@ -16,9 +16,9 @@ const activity = {
         MaxProgress: 50,
         Target: ["ItemTorso"],
     },
-    run: (player, sender, info) => {
-        if (info.TargetCharacter === player.MemberNumber) {
-            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.SourceCharacter);
+    run: (player, sender, { TargetCharacter, SourceCharacter }) => {
+        if (TargetCharacter === player.MemberNumber) {
+            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter);
             if (!SrcChara) return;
             ChatRoomOrder.setDrawOrder({
                 prevCharacter: SrcChara.MemberNumber,
@@ -28,8 +28,8 @@ const activity = {
                 },
             });
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
-        } else if (info.SourceCharacter === player.MemberNumber) {
-            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
+        } else if (SourceCharacter === player.MemberNumber) {
+            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter);
             if (!TgtChara) return;
             ChatRoomOrder.setDrawOrder({
                 nextCharacter: TgtChara.MemberNumber,

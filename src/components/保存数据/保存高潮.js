@@ -1,4 +1,4 @@
-import ModManager from "@mod-utils/ModManager";
+import { HookManager } from "@sugarch/bc-mod-hook-manager";
 import { load, save } from "./dataAccess";
 
 const 高潮数据key = "高潮数据";
@@ -70,7 +70,7 @@ export function 高潮数据开关() {
 }
 
 export default function () {
-    ModManager.afterPlayerLogin(() => {
+    HookManager.afterPlayerLogin(() => {
         data = new 高潮数据();
 
         const olddata = /** @type {any} */ (Player.OnlineSettings).ECHO;
@@ -87,14 +87,14 @@ export default function () {
         }
     });
 
-    ModManager.hookFunction("ChatRoomRun", 1, (args, next) => {
+    HookManager.hookFunction("ChatRoomRun", 1, (args, next) => {
         if (data?.高潮开关 && Player.ArousalSettings?.OrgasmCount !== undefined) {
             Player.ArousalSettings.OrgasmCount = data?.高潮次数;
         }
         next(args);
     });
 
-    ModManager.hookFunction("ActivityOrgasmStart", 1, (args, next) => {
+    HookManager.hookFunction("ActivityOrgasmStart", 1, (args, next) => {
         const [C] = args;
         if (C.IsPlayer() && !ActivityOrgasmRuined) {
             data?.增加();

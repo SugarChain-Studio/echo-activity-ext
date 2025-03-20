@@ -1,7 +1,7 @@
-import ModManager from "@mod-utils/ModManager";
-import ActivityManager from "@mod-utils/ActivityManager";
+import { HookManager } from "@sugarch/bc-mod-hook-manager";
+import { ActivityManager } from "../../activityForward";
 import { load, save } from "./dataAccess";
-import log from "@mod-utils/log";
+import { Logger } from "@mod-utils/log";
 
 /**
  * @typedef { {Name:string, Target?:string, TargetSelf?: string, Dialog?:string, DialogSelf?:string} } ActivityData
@@ -100,11 +100,11 @@ class 动作数据 {
      */
     注册动作(act) {
         if (!act.Name) {
-            log.warn(`动作名称为空 : ${JSON.stringify(act)}`);
+            Logger.warn(`动作名称为空 : ${JSON.stringify(act)}`);
             return;
         }
 
-        /** @type { ActivityManagerInterface.ICustomActivity } */
+        /** @type { CustomActivity } */
         const nAct = {
             activity: {
                 Name: activityName(act.Name),
@@ -144,7 +144,7 @@ class 动作数据 {
 /** @type {动作数据 | undefined} */
 let data = undefined;
 export default function () {
-    ModManager.afterPlayerLogin(() => {
+    HookManager.afterPlayerLogin(() => {
         data = new 动作数据();
 
         const olddata = /** @type {any} */ (Player.OnlineSettings).ECHO;

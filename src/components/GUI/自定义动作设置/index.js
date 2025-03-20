@@ -1,9 +1,9 @@
 import { BaseSubscreen } from "../gui";
 
-import log from "@mod-utils/log";
+import { Logger } from "@mod-utils/log";
 import { 动作数据管理 } from "../../保存数据/保存动作";
 import { 移除清空输入框 } from "../utils";
-import { Path } from "@mod-utils/path";
+import { Path } from "../../../resouce";
 import { RDrawImageResize, RMouseIn } from "../RDraw";
 import { 自定义动作设置_动作 } from "./动作";
 import { 自定义动作设置_删除 } from "./删除";
@@ -71,7 +71,7 @@ export class 自定义动作设置 extends BaseSubscreen {
     click() {
         if (RMouseIn(this.exitButtonRect)) {
             动作数据管理()?.保存();
-            log.info("已存储进个人设置");
+            Logger.info("已存储进个人设置");
             this.exit();
         }
 

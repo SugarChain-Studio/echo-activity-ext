@@ -1,4 +1,4 @@
-import ModManager from "@mod-utils/ModManager";
+import { HookManager } from "@sugarch/bc-mod-hook-manager";
 
 /**
  * @typedef { "nm" | "bili" | "ytb" | "phb" } ShareType
@@ -70,8 +70,7 @@ const i18n = {
 <div style="${flex}">
   <h2 style="${margin("0.5em", "0")} line-height: 1; ${h2}">分享链接指令帮助</h2>
   <div style="${flex}">
-    ${buildExampe("基本格式", [], 
-        "示例：", "/分享 [链接]")}
+    ${buildExampe("基本格式", [], "示例：", "/分享 [链接]")}
     ${buildExampe(
         "网易云音乐",
         [
@@ -88,12 +87,7 @@ const i18n = {
         "示例：",
         "/分享 &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
     )}
-    ${buildExampe(
-        "YouTube",
-        ["点击分享按钮 → 复制链接"],
-        "示例：",
-        "/分享 https://youtu.be/******?si=******"
-    )}
+    ${buildExampe("YouTube", ["点击分享按钮 → 复制链接"], "示例：", "/分享 https://youtu.be/******?si=******")}
     ${buildExampe(
         "PornHub",
         ["复制浏览器地址栏的网址"],
@@ -111,34 +105,33 @@ const i18n = {
 <div style="${flex}">
   <h2 style="margin: 5px;line-height: 1; ${h2}">Share Link Command Help</h2>
   <div style="${flex}">
-    ${buildExampe("Basic Format", [], 
-        "Example：", "/sharelink [link]")}
+    ${buildExampe("Basic Format", [], "Example：", "/sharelink [link]")}
     ${buildExampe(
         "Netease Cloud Music",
         [
             "Web: Open the song details page → Blue 'Generate external link player' below the player → Click 'Copy Code'",
             "Client: Click the song share → Copy link",
         ],
-        "Example：", 
+        "Example：",
         "/sharelink https://music.163.com/song?id=******",
         "Other URL parameters will be filtered out before sending, and user ID information will not be sent"
     )}
     ${buildExampe(
         "Bilibili",
         ["Click the share button below the video → Select 'Embed Code'"],
-        "Example：", 
+        "Example：",
         "/share &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
     )}
     ${buildExampe(
         "YouTube",
         ["Click the share button → Copy the link"],
-        "Example：", 
+        "Example：",
         "/sharelink https://youtu.be/******?si=******"
     )}
     ${buildExampe(
         "PornHub",
         ["Copy the URL in the browser address bar"],
-        "Example：", 
+        "Example：",
         "/sharelink https://www.pornhub.com/view_video.php?viewkey=**********"
     )}
   </div>
@@ -230,7 +223,7 @@ function shareHandle(parsed, lang = "CN") {
 }
 
 export default function () {
-    ModManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
+    HookManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
         const { Content, Dictionary } = args[0];
         if (Content === "Share_Link") {
             const { linkType, info } = /** @type { any } */ (Dictionary[0]);

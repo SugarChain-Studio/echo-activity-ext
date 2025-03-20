@@ -1,4 +1,4 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 import { Prereqs } from "../Prereqs";
 
 /**
@@ -6,7 +6,7 @@ import { Prereqs } from "../Prereqs";
  * @param {string} assetName
  * @param {Translation.Entry} label
  * @param {Translation.Entry} dialog
- * @returns {ActivityManagerInterface.ICustomActivity}
+ * @returns {CustomActivity}
  */
 function activityBuilder(assetName, label, dialog) {
     return {
@@ -31,11 +31,11 @@ function activityBuilder(assetName, label, dialog) {
                 if (!target) return;
 
                 // 给棒棒糖
-                InventoryWear(target, assetName, info.ActivityGroup);
+                InventoryWear(target, assetName, info.ActivityGroup.Name);
                 InventoryRemove(player, "ItemHandheld");
 
                 // 更新外观
-                ChatRoomCharacterItemUpdate(target, info.ActivityGroup);
+                ChatRoomCharacterItemUpdate(target, info.ActivityGroup.Name);
                 ChatRoomCharacterItemUpdate(player, "ItemHandheld");
                 CharacterRefresh(player, true);
             }
@@ -45,7 +45,7 @@ function activityBuilder(assetName, label, dialog) {
     };
 }
 
-/** @type { ActivityManagerInterface.ICustomActivity []} */
+/** @type { CustomActivity []} */
 const activities = [
     activityBuilder(
         "棒棒糖_Luzi",

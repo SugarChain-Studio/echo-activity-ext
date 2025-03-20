@@ -1,8 +1,11 @@
-import { Path } from "@mod-utils/path";
+import { Path } from "../../resouce";
 import { BaseSubscreen } from "./gui";
 import { 设置高潮数据, 高潮数据开关 } from "../保存数据/保存高潮";
 import { RDrawCheckbox, RDrawIconButton, RDrawImageResize, RDrawText, RMouseIn } from "./RDraw";
 import { i18n } from "./i18n";
+
+Path.preload("image/选择界面.png");
+Path.preload("image/返回白.png");
 
 export class 高潮计数保留设置 extends BaseSubscreen {
     constructor(prev) {

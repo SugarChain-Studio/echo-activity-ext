@@ -1,4 +1,4 @@
-import { Path } from "@mod-utils/path";
+import { Path } from "../../resouce";
 import { BaseSubscreen, setCurrentScreen, setDefaultScreen } from "./gui";
 import { 高潮计数保留设置 } from "./高潮计数保留设置";
 import { 自定义动作设置 } from "./自定义动作设置";
@@ -6,6 +6,11 @@ import { RDrawImageResize, RMouseIn } from "./RDraw";
 import { discord } from "./icon";
 import { ModInfo } from "@mod-utils/rollupHelper";
 import { i18n } from "./i18n";
+
+Path.preload("image/选择界面.png");
+Path.preload("image/返回白.png");
+Path.preload("image/界面选择.png");
+Path.preload("image/界面缠绕.png");
 
 class 动作拓展设置 extends BaseSubscreen {
     constructor(prev) {

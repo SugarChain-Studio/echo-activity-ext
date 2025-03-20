@@ -1,7 +1,7 @@
-import { Path } from "@mod-utils/path";
-import ActivityManager from "@mod-utils/ActivityManager";
+import { Path } from "../resouce";
+import { ActivityManager } from "../activityForward";
 
-/** @type { ActivityManagerInterface.ICustomActivity } */
+/** @type { CustomActivity } */
 const activity = {
     activity: {
         Name: "阿巴阿巴",

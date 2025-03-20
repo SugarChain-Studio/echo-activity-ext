@@ -1,4 +1,4 @@
-import ModManager from "@mod-utils/ModManager";
+import { HookManager } from "@sugarch/bc-mod-hook-manager";
 import { translation as BCAR } from "./BCAR";
 import { translation as BCX } from "./BCX";
 import { translation as FBC } from "./FBC";
@@ -10,7 +10,10 @@ import { translation as DOGS } from "./DOGS";
 import { translation as BCTweaks } from "./BCTweaks";
 import { translationsDTF, translationsDTF2, act_dialogs, pronouns } from "./regexRep";
 
-const translations = [BCAR, BCX, FBC, LSCG, MBS, WCE, MPA, DOGS, BCTweaks].reduce((pv, cv) => Object.assign(pv, cv), {});
+const translations = [BCAR, BCX, FBC, LSCG, MBS, WCE, MPA, DOGS, BCTweaks].reduce(
+    (pv, cv) => Object.assign(pv, cv),
+    {}
+);
 
 function tryReplaceWithNames(key) {
     const PName = Player?.Name;
@@ -39,33 +42,33 @@ function replaceTranslate(key) {
 }
 
 export function setup() {
-    ModManager.hookFunction("DrawText", 10, (args, next) => {
+    HookManager.hookFunction("DrawText", 10, (args, next) => {
         args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
-    ModManager.hookFunction("DrawTextFit", 10, (args, next) => {
+    HookManager.hookFunction("DrawTextFit", 10, (args, next) => {
         args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
-    ModManager.hookFunction("DrawTextWrap", 10, (args, next) => {
+    HookManager.hookFunction("DrawTextWrap", 10, (args, next) => {
         args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
-    ModManager.hookFunction("DynamicDrawText", 10, (args, next) => {
+    HookManager.hookFunction("DynamicDrawText", 10, (args, next) => {
         args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
-    ModManager.hookFunction("ActivityDictionaryText", 1, (args, next) => {
+    HookManager.hookFunction("ActivityDictionaryText", 1, (args, next) => {
         const ret = next(args);
         if (TranslationLanguage === "CN" || TranslationLanguage === "TW") return activities[ret] || ret;
         return ret;
     });
 
-    ModManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
+    HookManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
         if (TranslationLanguage === "CN" || TranslationLanguage === "TW") {
             const { Content, Type, Dictionary } = args[0];
             if (Content === "Beep" && Type === "Action") {

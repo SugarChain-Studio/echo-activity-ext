@@ -1,4 +1,4 @@
-import { Path } from "@mod-utils/path";
+import { Path } from "../../../resouce";
 import { 动作数据管理 } from "../../保存数据/保存动作";
 import { BaseSubscreen } from "../gui";
 import { RDrawBackNextButton, RDrawButton, RMouseIn } from "../RDraw";

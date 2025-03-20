@@ -1,8 +1,7 @@
-import ActivityManager from "@mod-utils/ActivityManager";
+import { ActivityManager } from "../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
-import ModManager from "@mod-utils/ModManager";
 
-/** @type { ActivityManagerInterface.ICustomActivity} */
+/** @type { CustomActivity } */
 const activity = {
     activity: {
         Name: "驾驶马车",
