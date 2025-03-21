@@ -11,6 +11,8 @@ Path.preload("image/选择界面.png");
 Path.preload("image/返回白.png");
 Path.preload("image/界面选择.png");
 Path.preload("image/界面缠绕.png");
+Path.preload("image/条线.png");
+Path.preload("image/白箭头右.png");
 
 class 动作拓展设置 extends BaseSubscreen {
     constructor(prev) {
