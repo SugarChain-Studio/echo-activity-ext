@@ -28,7 +28,7 @@ const activity = {
     },
     run: (_player, _sender, _info) => {
         // 不论是谁都要播放一下音效
-        AudioPlayInstantSound(Path.resolve("Audio/阿巴阿巴.mp3"));
+        AudioPlayInstantSound(Path.resolve("audio/阿巴阿巴.mp3"));
     },
     useImage: ["ItemHandheld", "阿巴阿巴_Luzi"],
     label: {
