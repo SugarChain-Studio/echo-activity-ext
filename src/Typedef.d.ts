@@ -34,7 +34,7 @@ type CustomActivityPrerequisite =
     | 'NeedSuitLower鱼鱼尾_Luzi'
     | 'Need阿巴阿巴_Luzi';
 
-type CustomActivity = import('@sugarch/bc-activity-manager').CustomActivity<CustomActivityPrerequisite>;
+type CustomActivity = import('@sugarch/bc-activity-manager').CustomActivity<string, CustomActivityPrerequisite>;
 
 type PrerequisiteCheckFunction =
     import('@sugarch/bc-activity-manager').PrerequisiteCheckFunction<CustomActivityPrerequisite>;
