@@ -3,7 +3,7 @@ import { ModInfo } from "@mod-utils/rollupHelper";
 import { ActivityManager } from "../activityForward";
 import { makeTooltipIcon } from "@mod-utils/Tooltip";
 
-const hanburgerIcon = `data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+const hanburgerIcon = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
 G3RFWHRTb2Z0d2FyZQBDZWxzeXMgU3R1ZGlvIFRvb2zBp+F8AAAEEUlEQVRoge2Zz28bRRTHP7Pr
 eO3Gie38gDQ/jCg/QkBquSEhgcqZK1xBSAiQKv6DglTErUekSvwQHLgAF6Qc4EYlUDnAoVITqWpC
 aNqGlKRJYyeOvbG9MxzGnllYN3VKSW3j72XHb96beZ/x7M7zWiil6AaJHkibqQcCkEqlAgAppdOw
