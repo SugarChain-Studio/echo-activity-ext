@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "泡沫剑架在脖子上",
-            Prerequisite: ["UseHands", "UseArms", "NeedSword"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_HasSword"],
             MaxProgress: 50,
             Target: ["ItemNeck"],
             TargetSelf: true,
@@ -27,7 +27,7 @@ const activities = [
     {
         activity: {
             Name: "泡沫剑拍脸",
-            Prerequisite: ["UseHands", "UseArms", "NeedSword"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_HasSword"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
         },

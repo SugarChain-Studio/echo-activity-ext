@@ -63,9 +63,9 @@ const activities = [
         activity: {
             Name: "跪着张开腿",
             Prerequisite: [
-                Prereqs.ActingCheck(
-                    (acting) =>
-                        acting.PoseMapping.BodyLower === "Kneel" && PoseAvailable(acting, "BodyLower", "KneelingSpread")
+                Prereqs.and(
+                    Prereqs.Acting.PoseIs("BodyLower", "Kneel"),
+                    Prereqs.Acting.PoseAnyAvailable("BodyLower", "KneelingSpread")
                 ),
             ],
             MaxProgress: 50,
@@ -90,9 +90,9 @@ const activities = [
         activity: {
             Name: "跪着并拢腿",
             Prerequisite: [
-                Prereqs.ActingCheck(
-                    (acting) =>
-                        acting.PoseMapping.BodyLower === "KneelingSpread" && PoseAvailable(acting, "BodyLower", "Kneel")
+                Prereqs.and(
+                    Prereqs.Acting.PoseIs("BodyLower", "KneelingSpread"),
+                    Prereqs.Acting.PoseAnyAvailable("BodyLower", "Kneel")
                 ),
             ],
             MaxProgress: 50,
@@ -116,12 +116,14 @@ const activities = [
     {
         activity: {
             Name: "四肢着地",
-            Prerequisite: ["UseArms"],
+            Prerequisite: [Prereqs.Acting.PoseAnyAvailable("BodyFull", "AllFours")],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemBoots"],
         },
         useImage: "Wiggle",
+        mode: "SelfOnSelf",
+        run: (player) => PoseSetActive(player, "AllFours"),
         labelSelf: {
             CN: "四肢着地",
             EN: "All Fours",
@@ -136,12 +138,19 @@ const activities = [
     {
         activity: {
             Name: "起身跪下",
-            Prerequisite: ["UseArms"],
+            Prerequisite: [
+                Prereqs.and(
+                    Prereqs.Acting.PoseIs("BodyFull", "AllFours"),
+                    Prereqs.Acting.PoseAnyAvailable("BodyLower", "Kneel")
+                ),
+            ],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemBoots"],
         },
         useImage: "Wiggle",
+        mode: "SelfOnSelf",
+        run: (player) => PoseSetActive(player, "Kneel"),
         labelSelf: {
             CN: "起身跪下",
             EN: "Get Up and Kneel",
@@ -151,29 +160,6 @@ const activities = [
             CN: "SourceCharacter起身跪下.",
             EN: "SourceCharacter get up and kneels down.",
             UA: "SourceCharacter встає і сідає на коліна.",
-        },
-    },
-    {
-        activity: {
-            Name: "夹紧双腿",
-            Prerequisite: ["TargetHasItemVulva"],
-            MaxProgress: 50,
-            MaxProgressSelf: 500,
-            Target: [],
-            TargetSelf: ["ItemLegs"],
-        },
-        useImage: "Wiggle",
-        labelSelf: {
-            CN: "夹紧双腿",
-            EN: "Squeeze thighs",
-            RU: "Сжать Ляжки",
-            UA: "Стиснути стегна",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter夹紧了自己的腿.",
-            EN: "SourceCharacter squeezes their thighs.",
-            RU: "SourceCharacter сжимает свои ляжки.",
-            UA: "SourceCharacter стискає свої стегна.",
         },
     },
 ];

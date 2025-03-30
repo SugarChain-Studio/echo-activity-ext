@@ -12,31 +12,23 @@ interface Rect {
 
 type CustomActivityPrerequisite =
     | ActivityPrerequisite
-    | 'TargetHasTail'
-    | 'TargetHasWings'
-    | 'TargetHasLeash'
-    | 'TargetHasCatTail'
-    | 'TargetHasTentacles'
-    | 'NeedTentacles'
-    | 'NeedPawMittens'
-    | 'NeedPetSuit'
-    | 'NeedKennel'
-    | 'TargetHasItemVulvaPiercings'
-    | 'TargetHasItemVulva'
-    | 'NeedSword'
-    | 'NeedScissors'
-    | 'NeedCloth'
-    | 'NeedNoCloth'
-    | 'NeedNoClothLower'
-    | 'NeedBra'
-    | 'NeedPanties'
-    | 'NeedSocks'
-    | 'NeedSuitLower鱼鱼尾_Luzi'
-    | 'Need阿巴阿巴_Luzi'
-    | 'IsStanding'
-    | 'KneelOrAllFours'
-    | 'TargetKneelOrAllFours'
-    | 'Luzi_CharacterViewWithinReach';
+    | 'Luzi_TargetHasTail'
+    | 'Luzi_TargetHasWings'
+    | 'Luzi_TargetHasLeash'
+    | 'Luzi_TargetHasCatTail'
+    | 'Luzi_TargetHasTentacles'
+    | 'Luzi_HasTentacles'
+    | 'Luzi_HasPawMittens'
+    | 'Luzi_HasPetSuit'
+    | 'Luzi_HasKennel'
+    | 'Luzi_Luzi_TargetHasItemVulvaPiercings'
+    | 'Luzi_TargetHasItemVulva'
+    | 'Luzi_HasSword'
+    | 'Luzi_Has鱼鱼尾'
+    | 'Luzi_CharacterViewWithinReach'
+    | 'Luzi_IsStanding'
+    | 'Luzi_KneelOrAllFours'
+    | 'Luzi_TargetKneelOrAllFours';
 
 type CustomActivity = import('@sugarch/bc-activity-manager').CustomActivity<string, CustomActivityPrerequisite>;
 

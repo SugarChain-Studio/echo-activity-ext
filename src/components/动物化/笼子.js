@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "撞笼子",
-            Prerequisite: ["NeedKennel"],
+            Prerequisite: ["Luzi_HasKennel"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemArms"],
@@ -27,7 +27,7 @@ const activities = [
     {
         activity: {
             Name: "咬笼子",
-            Prerequisite: ["NeedKennel"],
+            Prerequisite: ["Luzi_HasKennel"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemMouth"],
@@ -49,7 +49,7 @@ const activities = [
     {
         activity: {
             Name: "摇晃笼子",
-            Prerequisite: ["NeedKennel"],
+            Prerequisite: ["Luzi_HasKennel"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemArms"],

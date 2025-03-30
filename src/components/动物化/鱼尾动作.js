@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾揉脸",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -35,7 +35,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾戳脸",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -65,7 +65,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾抚脸",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -95,7 +95,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾担膝盖",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi", "TargetKneeling"],
+            Prerequisite: ["Luzi_Has鱼鱼尾", "TargetKneeling"],
             MaxProgress: 50,
             Target: ["ItemLegs"],
         },
@@ -114,7 +114,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾揉乳房",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemBreast"],
             TargetSelf: true,
@@ -144,7 +144,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾扇风",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -174,7 +174,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾戳乳头",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemNipples"],
             TargetSelf: true,
@@ -204,7 +204,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾碰手",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemHands"],
         },
@@ -223,7 +223,7 @@ const activities = [
     {
         activity: {
             Name: "鱼尾抚弄大腿",
-            Prerequisite: ["NeedSuitLower鱼鱼尾_Luzi"],
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
             Target: ["ItemLegs"],
         },

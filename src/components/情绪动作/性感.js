@@ -1,3 +1,4 @@
+import { Prereqs } from "../../Prereqs";
 import { ActivityManager } from "../../activityForward";
 
 /** @type { CustomActivity []} */
@@ -111,6 +112,29 @@ const activities = [
     },
     {
         activity: {
+            Name: "夹紧双腿",
+            Prerequisite: ["Luzi_TargetHasItemVulva", Prereqs.Acting.PoseIs("BodyLower", ["LegsClosed", "Kneel"])],
+            MaxProgress: 50,
+            MaxProgressSelf: 500,
+            Target: [],
+            TargetSelf: ["ItemLegs"],
+        },
+        useImage: "Wiggle",
+        labelSelf: {
+            CN: "夹紧双腿",
+            EN: "Squeeze thighs",
+            RU: "Сжать Ляжки",
+            UA: "Стиснути стегна",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter夹紧了自己的腿.",
+            EN: "SourceCharacter squeezes their thighs.",
+            RU: "SourceCharacter сжимает свои ляжки.",
+            UA: "SourceCharacter стискає свої стегна.",
+        },
+    },
+    {
+        activity: {
             Name: "手指插进阴道",
             Prerequisite: ["UseHands", "ZoneNaked", "TargetZoneNaked"],
             MaxProgress: 90,
@@ -200,7 +224,7 @@ const activities = [
     {
         activity: {
             Name: "流出液体",
-            Prerequisite: ["TargetHasItemVulva"],
+            Prerequisite: ["Luzi_TargetHasItemVulva"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemVulva"],
@@ -222,7 +246,7 @@ const activities = [
     {
         activity: {
             Name: "失禁",
-            Prerequisite: ["TargetHasItemVulva"],
+            Prerequisite: ["Luzi_TargetHasItemVulva"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemVulva"],

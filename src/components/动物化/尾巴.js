@@ -28,7 +28,7 @@ const activities = [
     {
         activity: {
             Name: "摇晃尾巴",
-            Prerequisite: ["TargetHasTail"],
+            Prerequisite: ["Luzi_TargetHasTail"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemButt"],
@@ -93,7 +93,7 @@ const activities = [
     {
         activity: {
             Name: "竖起尾巴",
-            Prerequisite: ["TargetHasCatTail"],
+            Prerequisite: ["Luzi_TargetHasCatTail"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemButt"],
@@ -115,7 +115,7 @@ const activities = [
     {
         activity: {
             Name: "炸毛",
-            Prerequisite: ["TargetHasCatTail"],
+            Prerequisite: ["Luzi_TargetHasCatTail"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemButt"],
@@ -137,7 +137,7 @@ const activities = [
     {
         activity: {
             Name: "舔尾巴",
-            Prerequisite: ["TargetHasCatTail"],
+            Prerequisite: ["Luzi_TargetHasCatTail"],
             MaxProgress: 50,
             Target: ["ItemButt"],
             TargetSelf: true,
@@ -171,7 +171,7 @@ const activities = [
     {
         activity: {
             Name: "轻抚尾巴",
-            Prerequisite: ["TargetHasTail"],
+            Prerequisite: ["Luzi_TargetHasTail"],
             MaxProgress: 50,
             Target: ["ItemButt"],
             TargetSelf: true,
@@ -205,7 +205,7 @@ const activities = [
     {
         activity: {
             Name: "尾巴叼在嘴里",
-            Prerequisite: ["TargetHasCatTail"],
+            Prerequisite: ["Luzi_TargetHasCatTail"],
             MaxProgress: 50,
             Target: ["ItemButt"],
             TargetSelf: true,

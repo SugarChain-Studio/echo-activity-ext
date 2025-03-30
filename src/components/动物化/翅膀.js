@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "扇动翅膀",
-            Prerequisite: ["TargetHasWings"],
+            Prerequisite: ["Luzi_TargetHasWings"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemArms"],

@@ -1,11 +1,12 @@
 import { Path } from "../../resouce";
 import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity } */
 const activity = {
     activity: {
         Name: "阿巴阿巴",
-        Prerequisite: ["Need阿巴阿巴_Luzi"],
+        Prerequisite: ["UseArms", "UseHands", Prereqs.Acting.GroupIs("ItemHandheld", ["阿巴阿巴_Luzi"])],
         MaxProgress: 50,
         Target: [
             "ItemBreast",

@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -71,7 +72,7 @@ const activities = [
     {
         activity: {
             Name: "脚托起下巴",
-            Prerequisite: ["UseFeet", "IsStanding", "TargetKneelOrAllFours"],
+            Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
         },
@@ -92,7 +93,7 @@ const activities = [
     {
         activity: {
             Name: "双腿颤抖",
-            Prerequisite: ["TargetHasItemVulva"],
+            Prerequisite: ["Luzi_TargetHasItemVulva"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],

@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity []} */
 
@@ -6,7 +7,7 @@ const activities = [
     {
         activity: {
             Name: "爬到脚边",
-            Prerequisite: ["Luzi_CharacterViewWithinReach", "KneelOrAllFours"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "Luzi_KneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemBoots"],
         },
@@ -27,7 +28,7 @@ const activities = [
     {
         activity: {
             Name: "蹭大腿",
-            Prerequisite: ["Luzi_CharacterViewWithinReach", "KneelOrAllFours"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "Luzi_KneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemLegs"],
         },
@@ -48,7 +49,7 @@ const activities = [
     {
         activity: {
             Name: "蹭小腿",
-            Prerequisite: ["Luzi_CharacterViewWithinReach", "KneelOrAllFours"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", Prereqs.Acting.PoseIsKneelingOrAllFours()],
             MaxProgress: 50,
             Target: ["ItemFeet"],
         },
@@ -69,7 +70,7 @@ const activities = [
     {
         activity: {
             Name: "抱腿",
-            Prerequisite: ["Luzi_CharacterViewWithinReach", "UseArms", "KneelOrAllFours"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "UseArms", "Luzi_KneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemLegs"],
         },
@@ -90,7 +91,7 @@ const activities = [
     {
         activity: {
             Name: "托起脚",
-            Prerequisite: ["Luzi_CharacterViewWithinReach", "UseHands", "UseArms", "KneelOrAllFours"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "UseHands", "UseArms", "Luzi_KneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemBoots"],
         },

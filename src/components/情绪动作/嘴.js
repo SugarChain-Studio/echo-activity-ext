@@ -5,12 +5,14 @@ const activities = [
     {
         activity: {
             Name: "张开嘴",
-            Prerequisite: [],
+            Prerequisite: ["UseMouth"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
         useImage: "Kiss",
+        mode: "SelfOnSelf",
+        run: (player) => CharacterSetFacialExpression(player, "Mouth", "Open"),
         labelSelf: {
             CN: "张开嘴",
             EN: "Open Mouth",
@@ -22,6 +24,26 @@ const activities = [
             EN: "SourceCharacter open mouth.",
             RU: "SourceCharacter открыла рот.",
             UA: "SourceCharacter відкриває рот.",
+        },
+    },
+    {
+        activity: {
+            Name: "闭上嘴",
+            Prerequisite: ["UseMouth"],
+            MaxProgress: 50,
+            Target: [],
+            TargetSelf: ["ItemMouth"],
+        },
+        useImage: "Kiss",
+        mode: "SelfOnSelf",
+        run: (player) => CharacterSetFacialExpression(player, "Mouth", null),
+        labelSelf: {
+            CN: "闭上嘴",
+            EN: "Close Mouth",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter闭上了嘴.",
+            EN: "SourceCharacter closes mouth.",
         },
     },
     {

@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪挠手",
-            Prerequisite: ["NeedPawMittens", "UseArms"],
+            Prerequisite: ["Luzi_HasPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemHands"],
         },
@@ -26,7 +26,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪挠手臂",
-            Prerequisite: ["NeedPawMittens", "UseArms"],
+            Prerequisite: ["Luzi_HasPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemArms"],
         },
@@ -47,7 +47,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪舔手",
-            Prerequisite: ["NeedPawMittens", "UseArms", "UseTongue"],
+            Prerequisite: ["Luzi_HasPawMittens", "UseArms", "UseTongue"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemHands"],
@@ -69,7 +69,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪戳脸",
-            Prerequisite: ["NeedPawMittens", "UseArms"],
+            Prerequisite: ["Luzi_HasPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -91,7 +91,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪戳鼻子",
-            Prerequisite: ["NeedPawMittens", "UseArms"],
+            Prerequisite: ["Luzi_HasPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemNose"],
             TargetSelf: true,
@@ -113,7 +113,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪揉脸",
-            Prerequisite: ["NeedPawMittens", "UseArms"],
+            Prerequisite: ["Luzi_HasPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -135,7 +135,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪揉鼻子",
-            Prerequisite: ["NeedPawMittens", "UseArms"],
+            Prerequisite: ["Luzi_HasPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemNose"],
             TargetSelf: true,

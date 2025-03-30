@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /**@type {Partial<Record<AssetGroupItemName, CustomGroupName[]>>} */
 const groupMap = {
@@ -14,7 +15,7 @@ const groupMap = {
 const activity = {
     activity: {
         Name: "剪刀剪掉上衣",
-        Prerequisite: ["UseHands", "UseArms", "NeedScissors"],
+        Prerequisite: ["UseHands", "UseArms", Prereqs.Acting.GroupIs("ItemHandheld", "Scissors")],
         MaxProgress: 50,
         Target: ["ItemTorso", "ItemLegs", "ItemBreast", "ItemVulvaPiercings", "ItemFeet", "ItemBoots"],
         TargetSelf: true,

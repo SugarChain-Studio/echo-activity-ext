@@ -1,14 +1,27 @@
 import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity []} */
 const activities = [
     {
         activity: {
             Name: "掰开双腿",
-            Prerequisite: ["UseHands", "UseArms"],
+            Prerequisite: [
+                "UseHands",
+                "UseArms",
+                Prereqs.and(
+                    Prereqs.Acted.PoseIs("BodyLower", ["Kneel", "LegsClosed"]),
+                    Prereqs.Acted.PoseAnyAvailable("BodyUpper", ["KneelingSpread", "BaseLower"])
+                ),
+            ],
             MaxProgress: 500,
             MaxProgressSelf: 50,
             Target: ["ItemLegs"],
+        },
+        mode: "OthersOnSelf",
+        run: (player) => {
+            if (player.IsKneeling()) PoseSetActive(player, "KneelingSpread");
+            else PoseSetActive(player, "BaseLower");
         },
         useImage: "Wiggle",
         label: {

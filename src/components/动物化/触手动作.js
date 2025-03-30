@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "舔触手",
-            Prerequisite: ["TargetHasTentacles"],
+            Prerequisite: ["Luzi_TargetHasTentacles"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemMouth"],
@@ -27,7 +27,7 @@ const activities = [
     {
         activity: {
             Name: "触手摸头",
-            Prerequisite: ["NeedTentacles"],
+            Prerequisite: ["Luzi_HasTentacles"],
             MaxProgress: 50,
             Target: ["ItemHead"],
             TargetSelf: true,
@@ -61,7 +61,7 @@ const activities = [
     {
         activity: {
             Name: "触手戳鼻子",
-            Prerequisite: ["NeedTentacles"],
+            Prerequisite: ["Luzi_HasTentacles"],
             MaxProgress: 50,
             Target: ["ItemNose"],
             TargetSelf: true,
@@ -95,7 +95,7 @@ const activities = [
     {
         activity: {
             Name: "触手戳脸",
-            Prerequisite: ["NeedTentacles"],
+            Prerequisite: ["Luzi_HasTentacles"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -129,7 +129,7 @@ const activities = [
     {
         activity: {
             Name: "触手揉鼻子",
-            Prerequisite: ["NeedTentacles"],
+            Prerequisite: ["Luzi_HasTentacles"],
             MaxProgress: 50,
             Target: ["ItemNose"],
             TargetSelf: true,
@@ -163,7 +163,7 @@ const activities = [
     {
         activity: {
             Name: "触手掀裙子",
-            Prerequisite: ["NeedTentacles"],
+            Prerequisite: ["Luzi_HasTentacles"],
             MaxProgress: 50,
             Target: ["ItemButt"],
             TargetSelf: true,
@@ -197,7 +197,7 @@ const activities = [
     {
         activity: {
             Name: "触手揉脸",
-            Prerequisite: ["NeedTentacles"],
+            Prerequisite: ["Luzi_HasTentacles"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,

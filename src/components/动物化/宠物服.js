@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "宠物服爬到脚边",
-            Prerequisite: ["NeedPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit"],
             MaxProgress: 50,
             Target: ["ItemBoots"],
         },
@@ -26,7 +26,7 @@ const activities = [
     {
         activity: {
             Name: "宠物服蹭小腿",
-            Prerequisite: ["NeedPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit"],
             MaxProgress: 50,
             Target: ["ItemFeet"],
         },
@@ -47,7 +47,7 @@ const activities = [
     {
         activity: {
             Name: "宠物服蹭大腿",
-            Prerequisite: ["NeedPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit"],
             MaxProgress: 50,
             Target: ["ItemLegs"],
         },
@@ -68,7 +68,7 @@ const activities = [
     {
         activity: {
             Name: "宠物服趴下",
-            Prerequisite: ["NeedPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
@@ -90,7 +90,7 @@ const activities = [
     {
         activity: {
             Name: "宠物服跪立",
-            Prerequisite: ["NeedPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
@@ -112,7 +112,7 @@ const activities = [
     {
         activity: {
             Name: "宠物服扑",
-            Prerequisite: ["NeedPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit"],
             MaxProgress: 50,
             Target: ["ItemArms"],
         },
