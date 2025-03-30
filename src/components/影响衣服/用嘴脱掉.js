@@ -1,6 +1,6 @@
-import { ActivityManager } from "../activityForward";
+import { ActivityManager } from "../../activityForward";
 import { Tools } from "@mod-utils/Tools";
-import { Prereqs } from "../Prereqs";
+import { Prereqs } from "../../Prereqs";
 
 /** @type {CustomGroupName[]} */
 const gloves = ["Gloves", "Gloves_笨笨蛋Luzi", "Gloves_笨笨笨蛋Luzi2"];

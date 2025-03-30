@@ -1,4 +1,4 @@
-import { ActivityManager } from "../activityForward";
+import { ActivityManager } from "../../activityForward";
 
 /**@type {Partial<Record<AssetGroupItemName, CustomGroupName[]>>} */
 const groupMap = {
