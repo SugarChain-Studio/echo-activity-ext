@@ -114,8 +114,7 @@ const activities = [
         activity: {
             Name: "夹紧双腿",
             Prerequisite: ["Luzi_TargetHasItemVulva", Prereqs.Acting.PoseIs("BodyLower", ["LegsClosed", "Kneel"])],
-            MaxProgress: 50,
-            MaxProgressSelf: 500,
+            MaxProgress: 90,
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
@@ -209,8 +208,8 @@ const activities = [
         },
         useImage: "Pinch",
         label: {
-            CN: "快速抽插",
-            EN: "Quickly Thrust",
+            CN: "用手快速抽插",
+            EN: "Quickly Thrust With Hand",
             RU: "Интим",
             UA: "Вштовхувати",
         },

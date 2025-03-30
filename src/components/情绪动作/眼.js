@@ -19,7 +19,7 @@ const activities = [
         },
         dialogSelf: {
             CN: "SourceCharacter撇了TargetCharacter一眼.",
-            EN: "SourceCharacter rolls its eyes at TargetCharacter.",
+            EN: "SourceCharacter rolls eyes at TargetCharacter.",
             RU: "SourceCharacter закатывает глаза смотря на TargetCharacter.",
             UA: "SourceCharacter закочує очі на TargetCharacter.",
         },
