@@ -6,7 +6,7 @@ const activities = [
     {
         activity: {
             Name: "爬到脚边",
-            Prerequisite: ["NeedKennel"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "KneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemBoots"],
         },
@@ -27,7 +27,7 @@ const activities = [
     {
         activity: {
             Name: "蹭大腿",
-            Prerequisite: ["NeedKennel"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "KneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemLegs"],
         },
@@ -48,7 +48,7 @@ const activities = [
     {
         activity: {
             Name: "蹭小腿",
-            Prerequisite: ["NeedKennel"],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "KneelOrAllFours"],
             MaxProgress: 50,
             Target: ["ItemFeet"],
         },
@@ -64,6 +64,27 @@ const activities = [
             EN: "SourceCharacter gently nuzzles DestinationCharacter shin.",
             RU: "SourceCharacter нежно трется головой об голень TargetCharacter.",
             UA: "SourceCharacter ніжно треться об гомілку TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "抱腿",
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "UseArms", "KneelOrAllFours"],
+            MaxProgress: 50,
+            Target: ["ItemLegs"],
+        },
+        useImage: "Caress",
+        label: {
+            CN: "抱腿",
+            EN: "Hug Legs",
+            RU: "Обнять Ноги",
+            UA: "Обійняти ноги",
+        },
+        dialog: {
+            CN: "SourceCharacter抱住TargetCharacter的腿.",
+            EN: "SourceCharacter hugs DestinationCharacter legs.",
+            RU: "SourceCharacter обнимает TargetCharacter за ноги.",
+            UA: "SourceCharacter Обіймає ноги TargetCharacter.",
         },
     },
 ];
