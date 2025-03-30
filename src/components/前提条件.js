@@ -43,6 +43,10 @@ const prereqStorage = {
         acting.PoseMapping?.BodyLower === "Kneel" ||
         acting.PoseMapping?.BodyLower === "KneelingSpread" ||
         acting.PoseMapping?.BodyFull === "AllFours",
+    TargetKneelOrAllFours: (_prereq, _acting, acted, _group) =>
+        acted.PoseMapping?.BodyLower === "Kneel" ||
+        acted.PoseMapping?.BodyLower === "KneelingSpread" ||
+        acted.PoseMapping?.BodyFull === "AllFours",
     TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulvaPiercings"),
     TargetHasItemVulva: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulva"),
     NeedSword: (_prereq, acting, _acted, _group) => InventoryIsItemInList(acting, "ItemHandheld", ["Sword"]),
@@ -79,6 +83,8 @@ const prereqStorage = {
 
         return true;
     },
+    IsStanding: (_prereq, acting, _acted, _group) =>
+        /** @type {AssetPoseName[]}*/ (PoseAllStanding).includes(acting.PoseMapping.BodyLower),
 };
 
 export default function () {

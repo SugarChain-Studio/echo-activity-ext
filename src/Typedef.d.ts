@@ -33,7 +33,9 @@ type CustomActivityPrerequisite =
     | 'NeedSocks'
     | 'NeedSuitLower鱼鱼尾_Luzi'
     | 'Need阿巴阿巴_Luzi'
+    | 'IsStanding'
     | 'KneelOrAllFours'
+    | 'TargetKneelOrAllFours'
     | 'Luzi_CharacterViewWithinReach';
 
 type CustomActivity = import('@sugarch/bc-activity-manager').CustomActivity<string, CustomActivityPrerequisite>;

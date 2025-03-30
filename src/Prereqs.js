@@ -121,6 +121,24 @@ export class Prereqs {
     static Acted = Acted;
 
     /**
+     * 获得一个只检查动作发起者的函数
+     * @param {(acting:Character)=>boolean} prereqFunc
+     * @returns {PrerequisiteCheckFunction}
+     */
+    static ActingCheck = (prereqFunc) => {
+        return (_, acting, _1, _2) => prereqFunc(acting);
+    };
+
+    /**
+     * 获得一个只检查动作目标的函数
+     * @param {(acted:Character)=>boolean} prereqFunc
+     * @returns {PrerequisiteCheckFunction}
+     */
+    static ActedCheck = (prereqFunc) => {
+        return (_, _1, acted, _2) => prereqFunc(acted);
+    };
+
+    /**
      * @param {PrerequisiteCheckFunction} prereqFunc
      * @returns {PrerequisiteCheckFunction}
      */
