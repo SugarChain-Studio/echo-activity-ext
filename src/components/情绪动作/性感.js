@@ -197,6 +197,50 @@ const activities = [
             UA: "SourceCharacter швидко вштовхує своїми пальцями в вагіну TargetCharacter дразливо бавлячись з PronounPossessive ж вагіною.",
         },
     },
+    {
+        activity: {
+            Name: "流出液体",
+            Prerequisite: ["TargetHasItemVulva"],
+            MaxProgress: 50,
+            Target: [],
+            TargetSelf: ["ItemVulva"],
+        },
+        useImage: "MoanGagWhimper",
+        labelSelf: {
+            CN: "流出液体",
+            EN: "Liquid Flows",
+            RU: "Потечь",
+            UA: "Підтікати",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter股间有液体顺着的大腿流下.",
+            EN: "Liquid flows down SourceCharacter's thighs.",
+            RU: "Жидкость стекает по ляжкам SourceCharacter.",
+            UA: "SourceCharacter стікає своєю рідиною по своїх стегнах.",
+        },
+    },
+    {
+        activity: {
+            Name: "失禁",
+            Prerequisite: ["TargetHasItemVulva"],
+            MaxProgress: 50,
+            Target: [],
+            TargetSelf: ["ItemVulva"],
+        },
+        useImage: "MoanGagWhimper",
+        labelSelf: {
+            CN: "失禁",
+            EN: "Incontinence",
+            RU: "Недержание",
+            UA: "Недержання",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter的尿液顺着PronounPossessive大腿流下.",
+            EN: "SourceCharacter's urine flows down PronounPossessive thighs.",
+            RU: "SourceCharacter не выдерживает и писается, обтекая мочой на ногах.",
+            UA: "Сеча тече по стегнам SourceCharacter.",
+        },
+    },
 ];
 
 export default function () {

@@ -89,6 +89,72 @@ const activities = [
             UA: "SourceCharacter підставляє свою ногу на підборідок TargetCharacter.",
         },
     },
+    {
+        activity: {
+            Name: "双腿颤抖",
+            Prerequisite: ["TargetHasItemVulva"],
+            MaxProgress: 50,
+            Target: [],
+            TargetSelf: ["ItemLegs"],
+        },
+        useImage: "Wiggle",
+        labelSelf: {
+            CN: "双腿颤抖",
+            EN: "Shaking legs",
+            RU: "Ноги Дрожат",
+            UA: "Трясти ногами",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter颤抖着双腿.",
+            EN: "SourceCharacter's legs tremble.",
+            RU: "Ноги SourceCharacter трясутся от страха.",
+            UA: "Ноги SourceCharacter трусяться.",
+        },
+    },
+    {
+        activity: {
+            Name: "摇晃双腿",
+            Prerequisite: [],
+            MaxProgress: 50,
+            Target: [],
+            TargetSelf: ["ItemLegs"],
+        },
+        useImage: "Wiggle",
+        labelSelf: {
+            CN: "摇晃双腿",
+            EN: "Shake Legs",
+            RU: "Трясти Ногами",
+            UA: "Трясти ногами",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter摇晃PronounPossessive的双腿.",
+            EN: "SourceCharacter shakes own legs.",
+            RU: "SourceCharacter трясет своими ногами.",
+            UA: "SourceCharacter трусить своїми ногами.",
+        },
+    },
+    {
+        activity: {
+            Name: "跺脚",
+            Prerequisite: [],
+            MaxProgress: 50,
+            Target: [],
+            TargetSelf: ["ItemBoots"],
+        },
+        useImage: "Step",
+        labelSelf: {
+            CN: "跺脚",
+            EN: "Stamp Feet",
+            RU: "Топать",
+            UA: "Тупотіти ногами",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter不停地跺脚.",
+            EN: "SourceCharacter keeps stamping PronounPossessive feet.",
+            RU: "SourceCharacter недовольно топает ногами.",
+            UA: "SourceCharacter тупотить своїми ногами.",
+        },
+    },
 ];
 
 export default function () {
