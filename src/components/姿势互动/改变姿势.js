@@ -1,4 +1,4 @@
-import { Prereqs } from "src/Prereqs";
+import { Prereqs } from "../../Prereqs";
 import { ActivityManager } from "../../activityForward";
 
 /** @type { CustomActivity []} */

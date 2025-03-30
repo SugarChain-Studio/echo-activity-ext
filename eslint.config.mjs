@@ -74,7 +74,7 @@ export default [
     },
     {
         // 覆盖规则：忽略 src/components/翻译 目录
-        files: ["src/components/翻译/**/*.js"],
+        files: ["src/components/1功能/翻译/**/*.js"],
         rules: {
             "no-restricted-syntax": "off", // 禁用 no-restricted-syntax 规则
         },
