@@ -23,18 +23,6 @@ const activities = [
             RU: "SourceCharacter приставляет к шее TargetCharacter поролоновый меч.",
             UA: "SourceCharacter прикладає паралоновий меч на шию TargetCharacter.",
         },
-        labelSelf: {
-            CN: "泡沫剑架在脖子上",
-            EN: "Foam Sword Rests on the Neck",
-            RU: "Приставить Поролоновый Меч",
-            UA: "Прикласти меч на шию",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter把泡沫剑架在自己的脖子上.",
-            EN: "SourceCharacter places the Foam Sword on own neck.",
-            RU: "SourceCharacter приставляет поролоновый меч к собственной шее.",
-            UA: "SourceCharacter прикладає паралоновий меч собі на шию.",
-        },
     },
     {
         activity: {

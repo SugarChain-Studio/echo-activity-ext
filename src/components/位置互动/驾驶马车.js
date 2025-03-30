@@ -1,4 +1,4 @@
-import { ActivityManager } from "../activityForward";
+import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 
 /** @type { CustomActivity } */
