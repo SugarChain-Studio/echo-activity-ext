@@ -1,9 +1,9 @@
 import { BaseSubscreen } from "../gui";
 
 import { Logger } from "@mod-utils/log";
-import { 动作数据管理 } from "../../保存数据/保存动作";
+import { 动作数据管理 } from "../../../保存数据/保存动作";
 import { 移除清空输入框 } from "../utils";
-import { Path } from "../../../resouce";
+import { Path } from "../../../../resouce";
 import { RDrawImageResize, RMouseIn } from "../RDraw";
 import { 自定义动作设置_动作 } from "./动作";
 import { 自定义动作设置_删除 } from "./删除";

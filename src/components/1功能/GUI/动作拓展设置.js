@@ -1,4 +1,4 @@
-import { Path } from "../../resouce";
+import { Path } from "../../../resouce";
 import { BaseSubscreen, setCurrentScreen, setDefaultScreen } from "./gui";
 import { 高潮计数保留设置 } from "./高潮计数保留设置";
 import { 自定义动作设置 } from "./自定义动作设置";
