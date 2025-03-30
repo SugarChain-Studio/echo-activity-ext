@@ -18,7 +18,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter爬到TargetCharacter脚边.",
-            EN: "SourceCharacter crawls to TargetCharacter's feet like a pet.",
+            EN: "SourceCharacter crawls to DestinationCharacter feet like a pet.",
             RU: "SourceCharacter игриво ползет к ногам TargetCharacter.",
             UA: "SourceCharacter повзе на чотирьох до TargetCharacter.",
         },
@@ -39,7 +39,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter蹭TargetCharacter的腿.",
-            EN: "SourceCharacter rubs against TargetCharacter's legs like a pet.",
+            EN: "SourceCharacter rubs against DestinationCharacter legs like a pet.",
             RU: "SourceCharacter игриво трется головой об ляжки TargetCharacter.",
             UA: "SourceCharacter грайливо треться об стегна TargetCharacter.",
         },
@@ -60,7 +60,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter蹭TargetCharacter的腿.",
-            EN: "SourceCharacter rubs against TargetCharacter's legs like a pet.",
+            EN: "SourceCharacter rubs against DestinationCharacter legs like a pet.",
             RU: "SourceCharacter игриво трется об ноги TargetCharacter.",
             UA: "SourceCharacter грайливо треться об ноги TargetCharacter.",
         },

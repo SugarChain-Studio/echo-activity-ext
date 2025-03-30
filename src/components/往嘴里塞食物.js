@@ -56,7 +56,7 @@ const activities = [
         },
         {
             CN: "SourceCharacter将手里的棒棒糖塞进TargetCharacter的嘴里.",
-            EN: "SourceCharacter stuffs TargetCharacter's mouth with lollipop.",
+            EN: "SourceCharacter stuffs DestinationCharacter mouth with lollipop.",
             UA: "SourceCharacter наповнює рот TargetCharacter льодяником.",
         }
     ),
@@ -68,7 +68,7 @@ const activities = [
         },
         {
             CN: "SourceCharacter将手里的烤鱼塞进TargetCharacter的嘴里.",
-            EN: "SourceCharacter stuffs TargetCharacter's mouth with Grilled Fish.",
+            EN: "SourceCharacter stuffs DestinationCharacter mouth with Grilled Fish.",
         }
     ),
     activityBuilder(
@@ -79,7 +79,7 @@ const activities = [
         },
         {
             CN: "SourceCharacter将手里的鸡腿塞进TargetCharacter的嘴里.",
-            EN: "SourceCharacter stuffs TargetCharacter's mouth with Roasted Chicken Leg.",
+            EN: "SourceCharacter stuffs DestinationCharacter mouth with Roasted Chicken Leg.",
         }
     ),
 ];

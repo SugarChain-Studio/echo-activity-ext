@@ -41,7 +41,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手摸了摸TargetCharacter的头.",
-            EN: "SourceCharacter pets TargetCharacter's head with tentacles.",
+            EN: "SourceCharacter pets DestinationCharacter head with tentacles.",
             RU: "SourceCharacter гладит TargetCharacter по голове тентаклями.",
             UA: "SourceCharacter гладить TargetCharacter по голові щупальцями.",
         },
@@ -75,7 +75,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手戳了戳TargetCharacter的鼻子.",
-            EN: "SourceCharacter pokes TargetCharacter's nose with tentacles.",
+            EN: "SourceCharacter pokes DestinationCharacter nose with tentacles.",
             RU: "SourceCharacter косается носа TargetCharacter своими тентаклями.",
             UA: "SourceCharacter тицяє ніс TargetCharacter своїми щупальцями.",
         },
@@ -109,7 +109,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手戳了戳TargetCharacter的脸.",
-            EN: "SourceCharacter pokes TargetCharacter's face with tentacles.",
+            EN: "SourceCharacter pokes DestinationCharacter face with tentacles.",
             RU: "SourceCharacter касается лица TargetCharacter своими тентаклями.",
             UA: "SourceCharacter ніжно гладить щічку TargetCharacter своїми щупальцями.",
         },
@@ -143,7 +143,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手揉了揉TargetCharacter的鼻子.",
-            EN: "SourceCharacter rubs TargetCharacter's nose with tentacles.",
+            EN: "SourceCharacter rubs DestinationCharacter nose with tentacles.",
             RU: "SourceCharacter трогает нос TargetCharacter своими тентаклями.",
             UA: "SourceCharacter тре ніс TargetCharacter своїми щупальцями.",
         },
@@ -177,7 +177,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手掀开TargetCharacter的裙子.",
-            EN: "SourceCharacter lifts TargetCharacter's skirt with PronounPossessive tentacles.",
+            EN: "SourceCharacter lifts DestinationCharacter skirt with PronounPossessive tentacles.",
             RU: "SourceCharacter приподнимает юбку TargetCharacter с помощью своих тентаклей.",
             UA: "SourceCharacter піднямає спідницю TargetCharacter своїми щупальцями.",
         },
@@ -211,7 +211,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手揉了揉TargetCharacter的脸.",
-            EN: "SourceCharacter rubs TargetCharacter's face with PronounPossessive tentacles.",
+            EN: "SourceCharacter rubs DestinationCharacter face with PronounPossessive tentacles.",
             RU: "SourceCharacter трогает лицо TargetCharacter своими тентаклями.",
             UA: "SourceCharacter тре лице TargetCharacter своїми щупальцями.",
         },

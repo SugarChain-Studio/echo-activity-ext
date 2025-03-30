@@ -19,7 +19,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter爬到TargetCharacter的脚边.",
-            EN: "SourceCharacter crawls to TargetCharacter's feet.",
+            EN: "SourceCharacter crawls to DestinationCharacter feet.",
             RU: "SourceCharacter ползет к ногам TargetCharacter.",
             UA: "SourceCharacter повзе до ніг TargetCharacter.",
         },
@@ -40,7 +40,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用头轻轻蹭TargetCharacter的大腿.",
-            EN: "SourceCharacter gently nuzzles TargetCharacter's thigh.",
+            EN: "SourceCharacter gently nuzzles DestinationCharacter thigh.",
             RU: "SourceCharacter нежно трется головой об ляжку TargetCharacter.",
             UA: "SourceCharacter ніжно треться об стегно TargetCharacter.",
         },
@@ -61,7 +61,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用头轻轻蹭TargetCharacter的小腿.",
-            EN: "SourceCharacter gently nuzzles TargetCharacter's shin.",
+            EN: "SourceCharacter gently nuzzles DestinationCharacter shin.",
             RU: "SourceCharacter нежно трется головой об голень TargetCharacter.",
             UA: "SourceCharacter ніжно треться об гомілку TargetCharacter.",
         },

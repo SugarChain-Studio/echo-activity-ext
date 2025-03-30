@@ -1,4 +1,4 @@
-import { ActivityManager } from "../activityForward";
+import { ActivityManager } from "../../activityForward";
 
 /**
  * 道具切换

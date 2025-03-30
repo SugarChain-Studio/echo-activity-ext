@@ -1,5 +1,5 @@
-import { Path } from "../resouce";
-import { ActivityManager } from "../activityForward";
+import { Path } from "../../resouce";
+import { ActivityManager } from "../../activityForward";
 
 /** @type { CustomActivity } */
 const activity = {

@@ -46,7 +46,7 @@ const activity = {
     },
     dialog: {
         CN: "SourceCharacter骑在TargetCharacter的背上.",
-        EN: "SourceCharacter Rides on TargetCharacter's Back.",
+        EN: "SourceCharacter Rides on DestinationCharacter Back.",
         RU: "SourceCharacter ocедлала спину TargetCharacter.",
     },
 };

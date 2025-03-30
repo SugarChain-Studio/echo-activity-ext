@@ -151,7 +151,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter舔TargetCharacter的手.",
-            EN: "SourceCharacter licks TargetCharacter's hand.",
+            EN: "SourceCharacter licks DestinationCharacter hand.",
             RU: "SourceCharacter облизывает руку TargetCharacter.",
             UA: "SourceCharacter облизує руку TargetCharacter.",
         },
@@ -185,7 +185,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter舔TargetCharacter的手指.",
-            EN: "SourceCharacter licks TargetCharacter's fingers.",
+            EN: "SourceCharacter licks DestinationCharacter fingers.",
             RU: "SourceCharacter облизывает пальцы TargetCharacter.",
             UA: "SourceCharacter облизує пальці TargetCharacter.",
         },
@@ -219,7 +219,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter吮吸TargetCharacter的手指.",
-            EN: "SourceCharacter sucks on TargetCharacter's fingers.",
+            EN: "SourceCharacter sucks on DestinationCharacter fingers.",
             RU: "SourceCharacter посасывает пальцы TargetCharacter.",
             UA: "SourceCharacter смокче пальці TargetCharacter.",
         },
@@ -252,7 +252,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter舔TargetCharacter的脸.",
-            EN: "SourceCharacter licks TargetCharacter's face.",
+            EN: "SourceCharacter licks DestinationCharacter face.",
             RU: "SourceCharacter облизывает лицо TargetCharacter.",
             UA: "SourceCharacter облизує лице TargetCharacter",
         },
@@ -274,7 +274,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter 舔 TargetCharacter 的脚.",
-            EN: "SourceCharacter licks TargetCharacter's feet.",
+            EN: "SourceCharacter licks DestinationCharacter feet.",
             RU: "SourceCharacter облизывает ноги TargetCharacter.",
             UA: "SourceCharacter облизує ноги TargetCharacter.",
         },

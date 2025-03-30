@@ -18,7 +18,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子挠了一下TargetCharacter的手.",
-            EN: "SourceCharacter scratches TargetCharacter's hand with mitten claws like a pet.",
+            EN: "SourceCharacter scratches DestinationCharacter hand with mitten claws like a pet.",
             RU: "SourceCharacter игриво шкребет ладонь TargetCharacter своими коготками.",
             UA: "SourceCharacter дряпає долоню TargetCharacter кігтями.",
         },
@@ -39,7 +39,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子挠了一下TargetCharacter的手臂.",
-            EN: "SourceCharacter scratches TargetCharacter's arm with mitten claws like a pet.",
+            EN: "SourceCharacter scratches DestinationCharacter arm with mitten claws like a pet.",
             RU: "SourceCharacter игриво шкребет руку TargetCharacter своими коготками.",
             UA: "SourceCharacter дряпає руку TargetCharacter кігтями.",
         },
@@ -83,7 +83,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子戳了戳TargetCharacter的脸.",
-            EN: "SourceCharacter's pokes TargetCharacter's face with PronounPossessive mitten claws like a pet.",
+            EN: "SourceCharacter's pokes DestinationCharacter face with PronounPossessive mitten claws like a pet.",
             RU: "SourceCharacter тыкает в лицо TargetCharacter своим коготками.",
             UA: "SourceCharacter тицяє TargetCharacter в лице своїми кігтями.",
         },
@@ -117,7 +117,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子戳了戳TargetCharacter的鼻子.",
-            EN: "SourceCharacter's pokes TargetCharacter's nose with mitten claws.",
+            EN: "SourceCharacter's pokes DestinationCharacter nose with mitten claws.",
             RU: "SourceCharacter тыкает своими коготками в нос TargetCharacter.",
             UA: "SourceCharacter тицяє TargetCharacter в ніс своїми кігтями.",
         },
@@ -151,7 +151,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子揉了揉TargetCharacter的脸.",
-            EN: "SourceCharacter uses PronounPossessive claws to rub TargetCharacter's face.",
+            EN: "SourceCharacter uses PronounPossessive claws to rub DestinationCharacter face.",
             RU: "SourceCharacter царапает лицо TargetCharacter своими коготками.",
             UA: "SourceCharacter царапає своїми кігтями лице TargetCharacter.",
         },
@@ -185,7 +185,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子揉了揉TargetCharacter的鼻子.",
-            EN: "SourceCharacter uses PronounPossessive claws to rub TargetCharacter's nose.",
+            EN: "SourceCharacter uses PronounPossessive claws to rub DestinationCharacter nose.",
             RU: "SourceCharacter царапает нос TargetCharacter своими коготками",
             UA: "SourceCharacter царапає ніс TargetCharacter кігтями.",
         },

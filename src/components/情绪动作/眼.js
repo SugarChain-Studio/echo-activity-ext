@@ -77,7 +77,7 @@ const activities = [
         },
         useImage: "Wiggle",
         mode: "SelfOnSelf",
-        run: (player, sender, info) => {
+        run: (player, sender) => {
             if (sender.MemberNumber === player.MemberNumber) {
                 CharacterSetFacialExpression(player, "Eyes", "Closed");
             }

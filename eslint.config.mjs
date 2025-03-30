@@ -55,6 +55,28 @@ export default [
             "no-implied-eval": "error",
             "no-param-reassign": "warn",
             "prefer-spread": "warn",
+
+            // 检查字符串中的"TargetCharacter's"
+            "no-restricted-syntax": [
+                "error",
+                {
+                    // 匹配普通字符串字面量
+                    selector: "Literal[value=/TargetCharacter's/]",
+                    message: "请使用 'DestinationCharacter' 代替 'TargetCharacter's'，保持正确所有格形式。",
+                },
+                {
+                    // 匹配模板字符串中的内容
+                    selector: "TemplateElement[value.raw=/TargetCharacter's/]",
+                    message: "请使用 'DestinationCharacter' 代替 'TargetCharacter's'，保持正确所有格形式。",
+                },
+            ],
+        },
+    },
+    {
+        // 覆盖规则：忽略 src/components/翻译 目录
+        files: ["src/components/翻译/**/*.js"],
+        rules: {
+            "no-restricted-syntax": "off", // 禁用 no-restricted-syntax 规则
         },
     },
 ];

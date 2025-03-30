@@ -112,7 +112,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter尝试用嘴脱掉TargetCharacter的手套.",
-            EN: "SourceCharacter tries to take off TargetCharacter's gloves with mouth.",
+            EN: "SourceCharacter tries to take off DestinationCharacter gloves with mouth.",
         },
     },
     {
@@ -130,7 +130,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter尝试用嘴脱掉TargetCharacter的鞋子.",
-            EN: "SourceCharacter tries to take off TargetCharacter's shoes with mouth.",
+            EN: "SourceCharacter tries to take off DestinationCharacter shoes with mouth.",
         },
     },
     {
@@ -153,7 +153,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter尝试用嘴脱掉TargetCharacter的袜子.",
-            EN: "SourceCharacter tries to take off TargetCharacter's socks with mouth.",
+            EN: "SourceCharacter tries to take off DestinationCharacter socks with mouth.",
         },
     },
 ];

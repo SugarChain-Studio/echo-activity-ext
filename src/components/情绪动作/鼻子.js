@@ -19,7 +19,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter 用鼻子嗅了嗅 TargetCharacter 的手.",
-            EN: "SourceCharacter sniffs TargetCharacter's hand.",
+            EN: "SourceCharacter sniffs DestinationCharacter hand.",
             RU: "SourceCharacter нюхает руку TargetCharacter.",
             UA: "SourceCharacter винюхує руку TargetCharacter.",
         },

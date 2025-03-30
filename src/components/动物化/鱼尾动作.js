@@ -18,7 +18,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用鱼尾揉了揉TargetCharacter的脸.",
-            EN: "SourceCharacter rubs TargetCharacter's face with a fish tail.",
+            EN: "SourceCharacter rubs DestinationCharacter face with a fish tail.",
             UA: "SourceCharacter тре лице TargetCharacter своїм риб'ячим хвостом.",
         },
         labelSelf: {
@@ -48,7 +48,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用鱼尾戳了戳TargetCharacter的脸.",
-            EN: "SourceCharacter pokes TargetCharacter's face with a fish tail.",
+            EN: "SourceCharacter pokes DestinationCharacter face with a fish tail.",
             UA: "SourceCharacter тицяє лице TargetCharacter риб'ячим хвостом.",
         },
         labelSelf: {
@@ -78,7 +78,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用鱼尾轻抚TargetCharacter的脸颊.",
-            EN: "SourceCharacter gently strokes TargetCharacter's cheek with a fish tail.",
+            EN: "SourceCharacter gently strokes DestinationCharacter cheek with a fish tail.",
             UA: "SourceCharacter ніжно гладить лице TargetCharacter своїм риб'ячим хвостом.",
         },
         labelSelf: {
@@ -107,7 +107,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter将鱼尾担在了TargetCharacter的膝盖上.",
-            EN: "SourceCharacter rests PronounPossessive fish tail on TargetCharacter's thighs.",
+            EN: "SourceCharacter rests PronounPossessive fish tail on DestinationCharacter thighs.",
             UA: "SourceCharacter кладе свій риб'ячий хвіст на стегна TargetCharacter.",
         },
     },
@@ -127,7 +127,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用鱼尾揉了揉TargetCharacter的乳房.",
-            EN: "SourceCharacter rubs TargetCharacter's breasts with PronounPossessive fish tail.",
+            EN: "SourceCharacter rubs DestinationCharacter breasts with PronounPossessive fish tail.",
             UA: "SourceCharacter тре груди TargetCharacter своїм риб'ячим хвостом.",
         },
         labelSelf: {
@@ -157,7 +157,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用鱼尾给TargetCharacter的脸扇了扇风.",
-            EN: "SourceCharacter fanned TargetCharacter's face with PronounPossessive fish tail.",
+            EN: "SourceCharacter fanned DestinationCharacter face with PronounPossessive fish tail.",
             UA: "SourceCharacter піддуває лице TargetCharacter своїм риб'ячим хвостом.",
         },
         labelSelf: {
@@ -187,7 +187,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用鱼尾戳了戳TargetCharacter的乳头.",
-            EN: "SourceCharacter pokes TargetCharacter's nipples with PronounPossessive fish tail.",
+            EN: "SourceCharacter pokes DestinationCharacter nipples with PronounPossessive fish tail.",
             UA: "SourceCharacter тицяє своїм хвостом в соски TargetCharacter.",
         },
         labelSelf: {
@@ -235,7 +235,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用鱼尾抚弄TargetCharacter的大腿.",
-            EN: "SourceCharacter strokes TargetCharacter's thigh with PronounPossessive fish tail.",
+            EN: "SourceCharacter strokes DestinationCharacter thigh with PronounPossessive fish tail.",
             UA: "SourceCharacter глядить стегна TargetCharacter своїм риб'ячим хвостом.",
         },
     },

@@ -65,12 +65,12 @@ const activity = {
             ItemBoots: "SourceCharacter用剪刀剪掉了TargetCharacter的鞋子.",
         },
         EN: {
-            ItemTorso: "SourceCharacter Cuts Off TargetCharacter's Top with Scissors.",
-            ItemLegs: "SourceCharacter Cuts Off TargetCharacter's Bottom with Scissors.",
-            ItemBreast: "SourceCharacter Cuts Off TargetCharacter's Bra with Scissors.",
-            ItemVulvaPiercings: "SourceCharacter Cuts Off TargetCharacter's Underwear with Scissors.",
-            ItemFeet: "SourceCharacter Cuts Off TargetCharacter's Socks with Scissors.",
-            ItemBoots: "SourceCharacter Cuts Off TargetCharacter's Shoes with Scissors.",
+            ItemTorso: "SourceCharacter Cuts Off DestinationCharacter Top with Scissors.",
+            ItemLegs: "SourceCharacter Cuts Off DestinationCharacter Bottom with Scissors.",
+            ItemBreast: "SourceCharacter Cuts Off DestinationCharacter Bra with Scissors.",
+            ItemVulvaPiercings: "SourceCharacter Cuts Off DestinationCharacter Underwear with Scissors.",
+            ItemFeet: "SourceCharacter Cuts Off DestinationCharacter Socks with Scissors.",
+            ItemBoots: "SourceCharacter Cuts Off DestinationCharacter Shoes with Scissors.",
         },
         UA: {
             ItemTorso: "SourceCharacter ріже верхній одяг TargetCharacter ножицями.",

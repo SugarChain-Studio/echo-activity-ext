@@ -4,28 +4,6 @@ import { ActivityManager } from "../activityForward";
 const activities = [
     {
         activity: {
-            Name: "歪头",
-            Prerequisite: [],
-            MaxProgress: 50,
-            Target: [],
-            TargetSelf: ["ItemNeck"],
-        },
-        useImage: "Wiggle",
-        labelSelf: {
-            CN: "歪头",
-            EN: "Tilt Head",
-            UA: "Нахилити голову",
-            RU: "Наклонить Голову",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter歪头.",
-            EN: "SourceCharacter tilts head.",
-            UA: "SourceCharacter Підхиляє голову.",
-            RU: "SourceCharacter наклоняет голову.",
-        },
-    },
-    {
-        activity: {
             Name: "踮起双脚",
             Prerequisite: ["UseFeet"],
             MaxProgress: 50,
@@ -107,7 +85,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter掰开TargetCharacter的双腿.",
-            EN: "SourceCharacter spreads TargetCharacter's legs.",
+            EN: "SourceCharacter spreads DestinationCharacter legs.",
             RU: "SourceCharacter раздвигает ноги TargetCharacter.",
             UA: "SourceCharacter Розширює ноги TargetCharacter.",
         },
@@ -151,87 +129,12 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用脚托起TargetCharacter的下巴.",
-            EN: "SourceCharacter places foot on TargetCharacter's chin.",
+            EN: "SourceCharacter places foot on DestinationCharacter chin.",
             RU: "SourceCharacter ставит ногу на подбородок TargetCharacter",
             UA: "SourceCharacter підставляє свою ногу на підборідок TargetCharacter.",
         },
     },
-    {
-        activity: {
-            Name: "阴部轻蹭手",
-            Prerequisite: [],
-            MaxProgress: 50,
-            Target: ["ItemHands"],
-        },
-        useImage: "Wiggle",
-        label: {
-            CN: "阴部轻蹭",
-            EN: "Groin Nuzzle",
-            RU: "Ласка пахом",
-            UA: "Тертя пахом",
-        },
-        dialog: {
-            CN: "SourceCharacter用阴部轻蹭TargetCharacter的手.",
-            EN: "SourceCharacter nuzzles TargetCharacter's hand with their groin.",
-            RU: "SourceCharacter нежно трется пахом о руку TargetCharacter.",
-            UA: "SourceCharacter ніжно треться пахом об руку TargetCharacter.",
-        },
-    },
-    {
-        activity: {
-            Name: "阴部轻蹭小腿",
-            Prerequisite: [],
-            MaxProgress: 50,
-            Target: ["ItemFeet"],
-        },
-        useImage: "Wiggle",
-        label: {
-            CN: "阴部轻蹭",
-            EN: "Groin Nuzzle",
-            RU: "Ласка пахом",
-            UA: "Тертя пахом",
-        },
-        dialog: {
-            CN: "SourceCharacter用阴部轻蹭TargetCharacter的小腿.",
-            EN: "SourceCharacter nuzzles TargetCharacter's calf with their groin.",
-            RU: "SourceCharacter нежно трется пахом о голень TargetCharacter.",
-            UA: "SourceCharacter ніжно треться пахом об гомілку TargetCharacter.",
-        },
-    },
-    {
-        activity: {
-            Name: "戳脸",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemMouth"],
-            TargetSelf: true,
-        },
-        useImage: "Caress",
-        label: {
-            CN: "戳脸",
-            EN: "Poke Face",
-            RU: "Тыкнуть в Лицо",
-            UA: "Тицяти обличчя.",
-        },
-        dialog: {
-            CN: "SourceCharacter戳了戳TargetCharacter的脸.",
-            EN: "SourceCharacter pokes TargetCharacter's face.",
-            RU: "SourceCharacter тыкает в лицо TargetCharacter.",
-            UA: "SourceCharacter тицяє обличчя TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "戳脸",
-            EN: "Poke Face",
-            RU: "Тыкнуть в Лицо",
-            UA: "Тицяти обличчя.",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter戳了戳自己的脸.",
-            EN: "SourceCharacter pokes own face.",
-            RU: "SourceCharacter тычет в собственное лицо.",
-            UA: "SourceCharacter тицяє собі в обличчя.",
-        },
-    },
+
     {
         activity: {
             Name: "捏脸",
@@ -249,7 +152,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter捏了捏TargetCharacter的脸.",
-            EN: "SourceCharacter pinches TargetCharacter's face.",
+            EN: "SourceCharacter pinches DestinationCharacter face.",
             RU: "SourceCharacter щипает TargetCharacter за лицо.",
             UA: "SourceCharacter вщипує обличчя TargetCharacter.",
         },
@@ -283,7 +186,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter戳了戳TargetCharacter的手臂.",
-            EN: "SourceCharacter pokes TargetCharacter's arm.",
+            EN: "SourceCharacter pokes DestinationCharacter arm.",
             RU: "SourceCharacter тыкает TargetCharacter в руку.",
             UA: "SourceCharacter тицяє руку TargetCharacter.",
         },
@@ -317,7 +220,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter揉了揉TargetCharacter的脸.",
-            EN: "SourceCharacter rubs TargetCharacter's face.",
+            EN: "SourceCharacter rubs DestinationCharacter face.",
             RU: "SourceCharacter трет лицо TargetCharacter.",
             UA: "SourceCharacter тре обличчя TargetCharacter.",
         },
@@ -351,7 +254,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter摇晃TargetCharacter的手臂.",
-            EN: "SourceCharacter shakes TargetCharacter's arms.",
+            EN: "SourceCharacter shakes DestinationCharacter arms.",
             RU: "SourceCharacter трясет TargetCharacter за плечи .",
             UA: "SourceCharacter трусить руки TargetCharacter.",
         },
@@ -384,7 +287,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用手轻推TargetCharacter的身体.",
-            EN: "SourceCharacter lightly pushes TargetCharacter's body.",
+            EN: "SourceCharacter lightly pushes DestinationCharacter body.",
             RU: "SourceCharacter легонько толкает TargetCharacter",
             UA: "SourceCharacter легенько штовхає TargetCharacter.",
         },
@@ -405,7 +308,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter托起TargetCharacter的脚.",
-            EN: "SourceCharacter lifts TargetCharacter's foot.",
+            EN: "SourceCharacter lifts DestinationCharacter foot.",
             RU: "SourceCharacter приподнимает ступню TargetCharacter",
             UA: "SourceCharacter ніжно піднімає ногу TargetCharacter.",
         },
@@ -471,7 +374,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用手盖住了TargetCharacter的耳朵.",
-            EN: "SourceCharacter covers TargetCharacter's ears with hands.",
+            EN: "SourceCharacter covers DestinationCharacter ears with hands.",
             RU: "SourceCharacter прикрывает уши TargetCharacter руками.",
             UA: "SourceCharacter закриває вуха TargetCharacter.",
         },
@@ -505,7 +408,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用手遮住了TargetCharacter的眼睛.",
-            EN: "SourceCharacter covers TargetCharacter's eyes with hands.",
+            EN: "SourceCharacter covers DestinationCharacter eyes with hands.",
             RU: "SourceCharacter прикрывает глазки TargetCharacter своими руками.",
             UA: "SourceCharacter закриває очі TargetCharacter.",
         },
@@ -539,7 +442,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter捂住TargetCharacter的头.",
-            EN: "SourceCharacter covers TargetCharacter's head with hands.",
+            EN: "SourceCharacter covers DestinationCharacter head with hands.",
             RU: "SourceCharacter закрывает голову TargetCharacter руками.",
             UA: "SourceCharacter прикриває голову TargetCharacter своїми руками.",
         },
@@ -573,7 +476,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter捂住TargetCharacter的下体.",
-            EN: "SourceCharacter covers TargetCharacter's groin with hands.",
+            EN: "SourceCharacter covers DestinationCharacter groin with hands.",
             RU: "SourceCharacter прикрывает промежность TargetCharacter своими руками.",
             UA: "SourceCharacter прикриває пах TargetCharacter.",
         },
@@ -607,7 +510,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter掀开TargetCharacter的裙子.",
-            EN: "SourceCharacter lifts TargetCharacter's skirt.",
+            EN: "SourceCharacter lifts DestinationCharacter skirt.",
             RU: "SourceCharacter приподнимает юбку TargetCharacter.",
             UA: "SourceCharacter піднімає спідничку TargetCharacter.",
         },
@@ -705,7 +608,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用手托起TargetCharacter的下巴.",
-            EN: "SourceCharacter places hand under TargetCharacter's chin.",
+            EN: "SourceCharacter places hand under DestinationCharacter chin.",
             RU: "SourceCharacter берет TargetCharacter рукой за подбородок.",
             UA: "SourceCharacter протягує свою руку ставиши на підборідок TargetCharacter.",
         },
@@ -726,7 +629,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter拽TargetCharacter的链子.",
-            EN: "SourceCharacter pulls TargetCharacter's chain.",
+            EN: "SourceCharacter pulls DestinationCharacter chain.",
             RU: "SourceCharacter тянет TargetCharacter за поводок.",
             UA: "SourceCharacter тягне TargetCharacter за ланцюг.",
         },
@@ -747,7 +650,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter弹了一下TargetCharacter的额头.",
-            EN: "SourceCharacter flicks TargetCharacter's forehead.",
+            EN: "SourceCharacter flicks DestinationCharacter forehead.",
             RU: "SourceCharacter ставит щелбан в лоб TargetCharacter.",
             UA: "SourceCharacter замахує пальцем в лоб TargetCharacter.",
         },
@@ -768,7 +671,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter弹了一下TargetCharacter的阴蒂.",
-            EN: "SourceCharacter flicks TargetCharacter's clitoris.",
+            EN: "SourceCharacter flicks DestinationCharacter clitoris.",
             RU: "SourceCharacter щелкает TargetCharacter по клитору.",
             UA: "SourceCharacter замахується пальцем об клітор TargetCharacter.",
         },
@@ -789,7 +692,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter抱住TargetCharacter的腿.",
-            EN: "SourceCharacter hugs TargetCharacter's legs.",
+            EN: "SourceCharacter hugs DestinationCharacter legs.",
             RU: "SourceCharacter обнимает TargetCharacter за ноги.",
             UA: "SourceCharacter Обіймає ноги TargetCharacter.",
         },
@@ -810,7 +713,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用手拉扯TargetCharacter的衣角.",
-            EN: "SourceCharacter tugs at TargetCharacter's clothes.",
+            EN: "SourceCharacter tugs at DestinationCharacter clothes.",
             RU: "SourceCharacter тянет TargetCharacter за одежду.",
             UA: "SourceCharacter тягне TargetCharacter за одяг.",
         },
@@ -831,7 +734,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter拍打TargetCharacter的头.",
-            EN: "SourceCharacter hits TargetCharacter's head.",
+            EN: "SourceCharacter hits DestinationCharacter head.",
             RU: "SourceCharacter бьет TargetCharacter по голове.",
             UA: "SourceCharacter б'є по голові TargetCharacter.",
         },
@@ -897,7 +800,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter舔TargetCharacter的尾巴.",
-            EN: "SourceCharacter licks TargetCharacter's tail.",
+            EN: "SourceCharacter licks DestinationCharacter tail.",
             RU: "SourceCharacter облизывает хвост TargetCharacter.",
             UA: "SourceCharacter вилизує хвіст TargetCharacter.",
         },
@@ -931,7 +834,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter轻抚TargetCharacter的尾巴.",
-            EN: "SourceCharacter gently strokes TargetCharacter's tail.",
+            EN: "SourceCharacter gently strokes DestinationCharacter tail.",
             RU: "SourceCharacter нежно гладит TargetCharacter за хвостик.",
             UA: "SourceCharacter ніжно гладить хвіст TargetCharacter.",
         },
@@ -965,7 +868,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter叼起TargetCharacter的尾巴.",
-            EN: "SourceCharacter holds TargetCharacter's tail in mouth.",
+            EN: "SourceCharacter holds DestinationCharacter tail in mouth.",
             RU: "SourceCharacter сует хвост TargetCharacter себе в рот.",
             UA: "SourceCharacter всовує хвіст TargetCharacter собі в рот і тримає ніжно.",
         },
@@ -1042,7 +945,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter把下巴搭在TargetCharacter的肩膀上.",
-            EN: "SourceCharacter places chin on TargetCharacter's shoulder.",
+            EN: "SourceCharacter places chin on DestinationCharacter shoulder.",
             RU: "SourceCharacter ложит подбородок на плечо TargetCharacter.",
             UA: "SourceCharacter ставить свій підборідок на плече TargetCharacter.",
         },
@@ -1063,7 +966,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter把手臂搭在TargetCharacter的肩膀上.",
-            EN: "SourceCharacter places arm on TargetCharacter's shoulder.",
+            EN: "SourceCharacter places arm on DestinationCharacter shoulder.",
             RU: "SourceCharacter кладет свою руку на плечо TargetCharacter.",
             UA: "SourceCharacter ставить свою руку на плече TargetCharacter.",
         },
@@ -1084,7 +987,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter搂住TargetCharacter的腰.",
-            EN: "SourceCharacter embraces TargetCharacter's waist.",
+            EN: "SourceCharacter embraces DestinationCharacter waist.",
             RU: "SourceCharacter приобнимает TargetCharacter за талию.",
             UA: "SourceCharacter обіймає TargetCharacter за талію тягнучи їх ближче до SourceCharacter.",
         },
@@ -1172,7 +1075,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter托起TargetCharacter的双乳.",
-            EN: "SourceCharacter lifts TargetCharacter's breasts.",
+            EN: "SourceCharacter lifts DestinationCharacter breasts.",
             RU: "SourceCharacter приподнимает грудь TargetCharacter.",
             UA: "SourceCharacter ніжно піднямає груди TargetCharacter.",
         },
@@ -1206,7 +1109,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter揉搓TargetCharacter的乳头.",
-            EN: "SourceCharacter uses hands to pinch TargetCharacter's nipples, rubbing them.",
+            EN: "SourceCharacter uses hands to pinch DestinationCharacter nipples, rubbing them.",
             RU: "SourceCharacter вытягивает соски TargetCharacter и массирует их.",
             UA: "SourceCharacter ніжно щипає соски TargetCharacter підтягуючи їх перед тим, як терти їх пальцями.",
         },
@@ -1372,7 +1275,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter手指插进TargetCharacter的阴道内.",
-            EN: "SourceCharacter inserts finger into TargetCharacter's vagina.",
+            EN: "SourceCharacter inserts finger into DestinationCharacter vagina.",
             RU: "SourceCharacter вставляет палец в вагину TargetCharacter.",
             UA: "SourceCharacter вставляє палець у вагіну TargetCharacter.",
         },
@@ -1406,7 +1309,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter从TargetCharacter的阴道内拔出自己的手指,手指连着PronounPossessive的爱液.",
-            EN: "SourceCharacter removes own finger from TargetCharacter's vagina, the finger coated with PronounPossessive love fluids.",
+            EN: "SourceCharacter removes own finger from DestinationCharacter vagina, the finger coated with PronounPossessive love fluids.",
             RU: "SourceCharacter вынимает покрытый любовным соком палец из вагины TargetCharacter.",
             UA: "SourceCharacter витягує палець покритий тонким шаром сексапільного соку з вагіни TargetCharacter.",
         },
@@ -1440,7 +1343,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter在TargetCharacter的阴道内蠕动手指.",
-            EN: "SourceCharacter wriggles a finger inside TargetCharacter's vagina.",
+            EN: "SourceCharacter wriggles a finger inside DestinationCharacter vagina.",
             RU: "SourceCharacter двигает пальцем внутри вагины TargetCharacter.",
             UA: "SourceCharacter TargetCharacter.",
         },
@@ -1474,7 +1377,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter的手在TargetCharacter的阴道内快速抽插.",
-            EN: "SourceCharacter's hand quickly thrusts in and out of TargetCharacter's vagina, rubbing and kneading.",
+            EN: "SourceCharacter's hand quickly thrusts in and out of DestinationCharacter vagina, rubbing and kneading.",
             RU: "Рука SourceCharacter быстро входит и выходит из вагины TargetCharacter, растягивая и разминая её.",
             UA: "SourceCharacter швидко вштовхує своїми пальцями в вагіну TargetCharacter дразливо бавлячись з PronounPossessive ж вагіною.",
         },
@@ -1508,7 +1411,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter钩住TargetCharacter的阴蒂环.",
-            EN: "SourceCharacter hooks onto TargetCharacter's clitoral piercing.",
+            EN: "SourceCharacter hooks onto DestinationCharacter clitoral piercing.",
             RU: "SourceCharacter цепляется за пирсинг на клиторе TargetCharacter.",
             UA: "SourceCharacter підтягує кліторальний пірсінг TargetCharacter дразнячи PronounPossessive.",
         },
@@ -1542,7 +1445,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter拉了一下TargetCharacter的阴蒂环.",
-            EN: "SourceCharacter tugs on TargetCharacter's clitoral piercing and then releases it.",
+            EN: "SourceCharacter tugs on DestinationCharacter clitoral piercing and then releases it.",
             RU: "SourceCharacter тянет за пирсинг на клиторе TargetCharacter.",
             UA: "SourceCharacter підтягує кліторальний пірсінг TargetCharacter дразнячи PronounPossessive.",
         },
@@ -1557,61 +1460,6 @@ const activities = [
             EN: "SourceCharacter tugs on own clitoral piercing and then releases it.",
             RU: "SourceCharacter тянет за пирсинг на своем клиторе.",
             UA: "SourceCharacter підтягує свій кліторальний пірсінг ніжно дразнячи себе.",
-        },
-    },
-    {
-        activity: {
-            Name: "泡沫剑架在脖子上",
-            Prerequisite: ["UseHands", "UseArms", "NeedSword"],
-            MaxProgress: 50,
-            Target: ["ItemNeck"],
-            TargetSelf: true,
-        },
-        useImage: ["ItemHandheld", "Sword"],
-        label: {
-            CN: "泡沫剑架在脖子上",
-            EN: "Foam Sword Rests on the Neck",
-            RU: "Приставить Поролоновый Меч",
-            UA: "Прикласти меч на шию",
-        },
-        dialog: {
-            CN: "SourceCharacter把泡沫剑架在TargetCharacter的脖子上",
-            EN: "SourceCharacter places the Foam Sword on TargetCharacter's Neck",
-            RU: "SourceCharacter приставляет к шее TargetCharacter поролоновый меч.",
-            UA: "SourceCharacter прикладає паралоновий меч на шию TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "泡沫剑架在脖子上",
-            EN: "Foam Sword Rests on the Neck",
-            RU: "Приставить Поролоновый Меч",
-            UA: "Прикласти меч на шию",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter把泡沫剑架在自己的脖子上.",
-            EN: "SourceCharacter places the Foam Sword on own neck.",
-            RU: "SourceCharacter приставляет поролоновый меч к собственной шее.",
-            UA: "SourceCharacter прикладає паралоновий меч собі на шию.",
-        },
-    },
-    {
-        activity: {
-            Name: "泡沫剑拍脸",
-            Prerequisite: ["UseHands", "UseArms", "NeedSword"],
-            MaxProgress: 50,
-            Target: ["ItemMouth"],
-        },
-        useImage: ["ItemHandheld", "Sword"],
-        label: {
-            CN: "泡沫剑拍脸",
-            EN: "Foam Sword Hits the Face",
-            RU: "Ударить Мечем по Лицу ",
-            UA: "Вдарити мечем по лиці",
-        },
-        dialog: {
-            CN: "SourceCharacter用泡沫剑轻轻拍了拍一下TargetCharacter的脸",
-            EN: "SourceCharacter gently hits TargetCharacter's face with a Foam Sword",
-            RU: "SourceCharacter аккуратно бьет TargetCharacter по лицу поролоновым мечем.",
-            UA: "SourceCharacter ніжно б'є TargetCharacter паралоновим мечем.",
         },
     },
 ];
