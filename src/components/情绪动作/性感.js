@@ -157,7 +157,7 @@ const activities = [
         activity: {
             Name: "蠕动手指",
             Prerequisite: ["UseHands", "ZoneNaked", "TargetZoneNaked"],
-            MaxProgress: 100,
+            MaxProgress: 90,
             Target: ["ItemVulva"],
             TargetSelf: true,
         },
@@ -192,7 +192,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter的手在TargetCharacter的阴道内快速抽插.",
-            EN: "SourceCharacter's hand quickly thrusts in and out of DestinationCharacter vagina, rubbing and kneading.",
+            EN: "SourceCharacter hand quickly thrusts in and out of DestinationCharacter vagina, rubbing and kneading.",
             RU: "Рука SourceCharacter быстро входит и выходит из вагины TargetCharacter, растягивая и разминая её.",
             UA: "SourceCharacter швидко вштовхує своїми пальцями в вагіну TargetCharacter дразливо бавлячись з PronounPossessive ж вагіною.",
         },

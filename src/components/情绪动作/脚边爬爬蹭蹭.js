@@ -1,4 +1,4 @@
-import { ActivityManager } from "../activityForward";
+import { ActivityManager } from "../../activityForward";
 
 /** @type { CustomActivity []} */
 
@@ -85,6 +85,27 @@ const activities = [
             EN: "SourceCharacter hugs DestinationCharacter legs.",
             RU: "SourceCharacter обнимает TargetCharacter за ноги.",
             UA: "SourceCharacter Обіймає ноги TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "托起脚",
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "UseHands", "UseArms", "KneelOrAllFours"],
+            MaxProgress: 50,
+            Target: ["ItemBoots"],
+        },
+        useImage: "Caress",
+        label: {
+            CN: "托起脚",
+            EN: "Lift Foot",
+            RU: "Приподнять Ступню",
+            UA: "Підняти ногу",
+        },
+        dialog: {
+            CN: "SourceCharacter托起TargetCharacter的脚.",
+            EN: "SourceCharacter lifts DestinationCharacter foot.",
+            RU: "SourceCharacter приподнимает ступню TargetCharacter",
+            UA: "SourceCharacter ніжно піднімає ногу TargetCharacter.",
         },
     },
 ];

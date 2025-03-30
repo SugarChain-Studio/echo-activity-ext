@@ -4,139 +4,6 @@ import { ActivityManager } from "../activityForward";
 const activities = [
     {
         activity: {
-            Name: "踮起双脚",
-            Prerequisite: ["UseFeet"],
-            MaxProgress: 50,
-            Target: [],
-            TargetSelf: ["ItemBoots"],
-        },
-        useImage: "Kick",
-        labelSelf: {
-            CN: "踮起双脚",
-            EN: "Stand on Tiptoes",
-            RU: "Встать на Цыпочки",
-            UA: "Встати навшпиньках",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter踮起PronounPossessive的双脚.",
-            EN: "SourceCharacter stands on tiptoes.",
-            RU: "SourceCharacter встает на цыпочки.",
-            UA: "SourceCharacter встає навшпиньках",
-        },
-    },
-    {
-        activity: {
-            Name: "摇晃脚踝",
-            Prerequisite: [],
-            MaxProgress: 50,
-            Target: [],
-            TargetSelf: ["ItemBoots"],
-        },
-        useImage: "Wiggle",
-        labelSelf: {
-            CN: "摇晃脚踝",
-            EN: "Wiggle Ankles",
-            RU: "Покачиваться",
-            UA: "Трусити щиколотками",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter摇晃PronounPossessive的脚踝.",
-            EN: "SourceCharacter wiggles PronounPossessive ankles.",
-            RU: "SourceCharacter покачивается стоя на ногах.",
-            UA: "SourceCharacter трусить щиколотками.",
-        },
-    },
-    {
-        activity: {
-            Name: "伸出脚",
-            Prerequisite: [],
-            MaxProgress: 50,
-            Target: [],
-            TargetSelf: ["ItemBoots"],
-        },
-        useImage: "Kick",
-        labelSelf: {
-            CN: "伸出脚",
-            EN: "Extend Leg",
-            RU: "Приподнять Ногу",
-            UA: "Підставити ногу",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter伸出PronounPossessive的脚.",
-            EN: "SourceCharacter extends PronounPossessive leg.",
-            RU: "SourceCharacter приподнимает свою ногу.",
-            UA: "SourceCharacter підставляє ногу.",
-        },
-    },
-    {
-        activity: {
-            Name: "掰开双腿",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 500,
-            MaxProgressSelf: 50,
-            Target: ["ItemLegs"],
-        },
-        useImage: "Wiggle",
-        label: {
-            CN: "掰开双腿",
-            EN: "Spread Legs",
-            RU: "Раздвинуть Ноги",
-            UA: "Розширити ноги",
-        },
-        dialog: {
-            CN: "SourceCharacter掰开TargetCharacter的双腿.",
-            EN: "SourceCharacter spreads DestinationCharacter legs.",
-            RU: "SourceCharacter раздвигает ноги TargetCharacter.",
-            UA: "SourceCharacter Розширює ноги TargetCharacter.",
-        },
-    },
-    {
-        activity: {
-            Name: "夹紧双腿",
-            Prerequisite: ["TargetHasItemVulva"],
-            MaxProgress: 50,
-            MaxProgressSelf: 500,
-            Target: [],
-            TargetSelf: ["ItemLegs"],
-        },
-        useImage: "Wiggle",
-        labelSelf: {
-            CN: "夹紧双腿",
-            EN: "Squeeze thighs",
-            RU: "Сжать Ляжки",
-            UA: "Стиснути стегна",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter夹紧了自己的腿.",
-            EN: "SourceCharacter clamps PronounPossessive own thighs.",
-            RU: "SourceCharacter сжимает свои ляжки.",
-            UA: "SourceCharacter стискає свої стегна",
-        },
-    },
-    {
-        activity: {
-            Name: "脚托起下巴",
-            Prerequisite: ["TargetKneeling"],
-            MaxProgress: 50,
-            Target: ["ItemMouth"],
-        },
-        useImage: "Wiggle",
-        label: {
-            CN: "脚托起下巴",
-            EN: "Foot on Chin",
-            RU: "Ногу на Подбородок",
-            UA: "Ногу на підборідок",
-        },
-        dialog: {
-            CN: "SourceCharacter用脚托起TargetCharacter的下巴.",
-            EN: "SourceCharacter places foot on DestinationCharacter chin.",
-            RU: "SourceCharacter ставит ногу на подбородок TargetCharacter",
-            UA: "SourceCharacter підставляє свою ногу на підборідок TargetCharacter.",
-        },
-    },
-
-    {
-        activity: {
             Name: "捏脸",
             Prerequisite: ["UseHands", "UseArms"],
             MaxProgress: 50,
@@ -155,18 +22,6 @@ const activities = [
             EN: "SourceCharacter pinches DestinationCharacter face.",
             RU: "SourceCharacter щипает TargetCharacter за лицо.",
             UA: "SourceCharacter вщипує обличчя TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "捏脸",
-            EN: "Pinch Face",
-            RU: "Ущипнуть за Лицо",
-            UA: "Вщипнути обличчя",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter捏了捏自己的脸.",
-            EN: "SourceCharacter pinches own face.",
-            RU: "SourceCharacter щипает свое лицо.",
-            UA: "SourceCharacter вщипує своє обличчя.",
         },
     },
     {
@@ -189,18 +44,6 @@ const activities = [
             EN: "SourceCharacter pokes DestinationCharacter arm.",
             RU: "SourceCharacter тыкает TargetCharacter в руку.",
             UA: "SourceCharacter тицяє руку TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "戳手臂",
-            EN: "Poke Arm",
-            RU: "Тыкнуть в Руку",
-            UA: "Тицяти руку",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter戳了戳自己的手臂.",
-            EN: "SourceCharacter pokes own arm.",
-            RU: "SourceCharacter тычет в собственную руку.",
-            UA: "SourceCharacter тицяє свою руку.",
         },
     },
     {
@@ -270,27 +113,6 @@ const activities = [
     },
     {
         activity: {
-            Name: "托起脚",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemBoots"],
-        },
-        useImage: "Caress",
-        label: {
-            CN: "托起脚",
-            EN: "Lift Foot",
-            RU: "Приподнять Ступню",
-            UA: "Підняти ногу",
-        },
-        dialog: {
-            CN: "SourceCharacter托起TargetCharacter的脚.",
-            EN: "SourceCharacter lifts DestinationCharacter foot.",
-            RU: "SourceCharacter приподнимает ступню TargetCharacter",
-            UA: "SourceCharacter ніжно піднімає ногу TargetCharacter.",
-        },
-    },
-    {
-        activity: {
             Name: "扭动手腕",
             Prerequisite: ["UseHands", "UseArms"],
             MaxProgress: 50,
@@ -354,18 +176,6 @@ const activities = [
             RU: "SourceCharacter прикрывает уши TargetCharacter руками.",
             UA: "SourceCharacter закриває вуха TargetCharacter.",
         },
-        labelSelf: {
-            CN: "盖住耳朵",
-            EN: "Cover Ears",
-            RU: "Закрыть Уши",
-            UA: "Закрити вуха",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用手盖住了自己的耳朵.",
-            EN: "SourceCharacter covers own ears with hands.",
-            RU: "SourceCharacter прикрывает свои уши руками.",
-            UA: "SourceCharacter закриває свої вуха",
-        },
     },
     {
         activity: {
@@ -388,86 +198,6 @@ const activities = [
             RU: "SourceCharacter прикрывает глазки TargetCharacter своими руками.",
             UA: "SourceCharacter закриває очі TargetCharacter.",
         },
-        labelSelf: {
-            CN: "遮住眼睛",
-            EN: "Cover Eyes",
-            RU: "Прикрыть Глазки",
-            UA: "Прикрити очі",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用手遮住了自己的眼睛.",
-            EN: "SourceCharacter covers PronounPossessive own eyes with hands.",
-            RU: "SourceCharacter прикрывает свои глазки руками.",
-            UA: "SourceCharacter прикриває свої очі руками.",
-        },
-    },
-    {
-        activity: {
-            Name: "捂住头",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemHead"],
-            TargetSelf: true,
-        },
-        useImage: "HandGag",
-        label: {
-            CN: "捂住头",
-            EN: "Cover Head",
-            RU: "Прикрыть Голову",
-            UA: "Прикрити голову",
-        },
-        dialog: {
-            CN: "SourceCharacter捂住TargetCharacter的头.",
-            EN: "SourceCharacter covers DestinationCharacter head with hands.",
-            RU: "SourceCharacter закрывает голову TargetCharacter руками.",
-            UA: "SourceCharacter прикриває голову TargetCharacter своїми руками.",
-        },
-        labelSelf: {
-            CN: "捂住头",
-            EN: "Cover Head",
-            RU: "Прикрыть Голову",
-            UA: "Прикрити голову",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter捂住自己的头.",
-            EN: "SourceCharacter covers own head with hands.",
-            RU: "SourceCharacter закрывает свою голову руками.",
-            UA: "SourceCharacter прикриває свою голову руками.",
-        },
-    },
-    {
-        activity: {
-            Name: "捂住下体",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemVulva"],
-            TargetSelf: true,
-        },
-        useImage: "HandGag",
-        label: {
-            CN: "捂住下体",
-            EN: "Cover Groin",
-            RU: "Прикрыть Промежность",
-            UA: "Прикрити пах",
-        },
-        dialog: {
-            CN: "SourceCharacter捂住TargetCharacter的下体.",
-            EN: "SourceCharacter covers DestinationCharacter groin with hands.",
-            RU: "SourceCharacter прикрывает промежность TargetCharacter своими руками.",
-            UA: "SourceCharacter прикриває пах TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "捂住下体",
-            EN: "Cover Groin",
-            RU: "Прикрыть Промежность",
-            UA: "Прикрити пах",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter捂住自己的下体.",
-            EN: "SourceCharacter covers own groin with hands.",
-            RU: "SourceCharacter прикрывает свою промежность руками.",
-            UA: "SourceCharacter прикриває свій пах.",
-        },
     },
     {
         activity: {
@@ -489,104 +219,6 @@ const activities = [
             EN: "SourceCharacter lifts DestinationCharacter skirt.",
             RU: "SourceCharacter приподнимает юбку TargetCharacter.",
             UA: "SourceCharacter піднімає спідничку TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "掀开裙子",
-            EN: "Lift Skirt",
-            RU: "Приподнять Юбку",
-            UA: "Підняти спідницю",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter掀开PronounPossessive的裙子.",
-            EN: "SourceCharacter lifts PronounPossessive's skirt.",
-            RU: "SourceCharacter приподнимает свою юбку.",
-            UA: "SourceCharacter піднімає свою спідничку.",
-        },
-    },
-    {
-        activity: {
-            Name: "挥手",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemHands"],
-        },
-        useImage: "Slap",
-        label: {
-            CN: "挥手",
-            EN: "Wave Hand",
-            RU: "Помахать Рукой",
-            UA: "Помахати рукою",
-        },
-        dialog: {
-            CN: "SourceCharacter向TargetCharacter挥手.",
-            EN: "SourceCharacter waves hand at TargetCharacter.",
-            RU: "SourceCharacter машет рукой в сторону TargetCharacter.",
-            UA: "SourceCharacter махає рукою в сторону TargetCharacter.",
-        },
-    },
-    {
-        activity: {
-            Name: "伸出手",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: [],
-            TargetSelf: ["ItemHands"],
-        },
-        useImage: "Caress",
-        labelSelf: {
-            CN: "伸出手",
-            EN: "Reach Out Hand",
-            RU: "Протянуть Руку",
-            UA: "Тягнутись рукою",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter伸出自己的手.",
-            EN: "SourceCharacter reaches out own hand.",
-            RU: "SourceCharacter протягивает руку.",
-            UA: "SourceCharacter протягує свою руку.",
-        },
-    },
-    {
-        activity: {
-            Name: "捂住胸",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: [],
-            TargetSelf: ["ItemBreast"],
-        },
-        useImage: "Pull",
-        labelSelf: {
-            CN: "捂住胸",
-            EN: "Cover Chest",
-            RU: "Прикрыть Грудь",
-            UA: "Прикрити груди",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter捂住自己的胸.",
-            EN: "SourceCharacter covers own chest.",
-            RU: "SourceCharacter прикрывает свою грудь.",
-            UA: "SourceCharacter прикриває свої груди.",
-        },
-    },
-    {
-        activity: {
-            Name: "手托起下巴",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemMouth"],
-        },
-        useImage: "Caress",
-        label: {
-            CN: "手托起下巴",
-            EN: "Hand under Chin",
-            RU: "Взять за Подбородок",
-            UA: "Руку на підборідок",
-        },
-        dialog: {
-            CN: "SourceCharacter用手托起TargetCharacter的下巴.",
-            EN: "SourceCharacter places hand under DestinationCharacter chin.",
-            RU: "SourceCharacter берет TargetCharacter рукой за подбородок.",
-            UA: "SourceCharacter протягує свою руку ставиши на підборідок TargetCharacter.",
         },
     },
     {
@@ -612,27 +244,6 @@ const activities = [
     },
     {
         activity: {
-            Name: "弹额头",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemHead"],
-        },
-        useImage: "Pinch",
-        label: {
-            CN: "弹额头",
-            EN: "Flick Forehead",
-            RU: "Поставить Щелбан",
-            UA: "Замахнути пальцем в лоб",
-        },
-        dialog: {
-            CN: "SourceCharacter弹了一下TargetCharacter的额头.",
-            EN: "SourceCharacter flicks DestinationCharacter forehead.",
-            RU: "SourceCharacter ставит щелбан в лоб TargetCharacter.",
-            UA: "SourceCharacter замахує пальцем в лоб TargetCharacter.",
-        },
-    },
-    {
-        activity: {
             Name: "拉扯衣角",
             Prerequisite: ["UseHands", "UseArms"],
             MaxProgress: 50,
@@ -650,27 +261,6 @@ const activities = [
             EN: "SourceCharacter tugs at DestinationCharacter clothes.",
             RU: "SourceCharacter тянет TargetCharacter за одежду.",
             UA: "SourceCharacter тягне TargetCharacter за одяг.",
-        },
-    },
-    {
-        activity: {
-            Name: "拍头",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemHead"],
-        },
-        useImage: "Slap",
-        label: {
-            CN: "拍头",
-            EN: "Hit The Head",
-            RU: "Ударить по Голове",
-            UA: "Вдарити по голові",
-        },
-        dialog: {
-            CN: "SourceCharacter拍打TargetCharacter的头.",
-            EN: "SourceCharacter hits DestinationCharacter head.",
-            RU: "SourceCharacter бьет TargetCharacter по голове.",
-            UA: "SourceCharacter б'є по голові TargetCharacter.",
         },
     },
     {
@@ -693,48 +283,6 @@ const activities = [
             EN: "SourceCharacter bends over, lifting PronounPossessive buttocks.",
             RU: "SourceCharacter наклоняется, приподнимая свои ягодицы.",
             UA: "SourceCharacter нахиляється, піднімаючи і показуючи свої сідниці.",
-        },
-    },
-    {
-        activity: {
-            Name: "下巴搭在肩膀上",
-            Prerequisite: [],
-            MaxProgress: 50,
-            Target: ["ItemNeck"],
-        },
-        useImage: "RestHead",
-        label: {
-            CN: "下巴搭在肩膀上",
-            EN: "Chin on Shoulder",
-            RU: "Подбородок на Плечо.",
-            UA: "Підборідок на плечі",
-        },
-        dialog: {
-            CN: "SourceCharacter把下巴搭在TargetCharacter的肩膀上.",
-            EN: "SourceCharacter places chin on DestinationCharacter shoulder.",
-            RU: "SourceCharacter ложит подбородок на плечо TargetCharacter.",
-            UA: "SourceCharacter ставить свій підборідок на плече TargetCharacter.",
-        },
-    },
-    {
-        activity: {
-            Name: "手臂搭在肩膀上",
-            Prerequisite: ["UseArms"],
-            MaxProgress: 50,
-            Target: ["ItemNeck"],
-        },
-        useImage: "Slap",
-        label: {
-            CN: "手臂搭在肩膀上",
-            EN: "Arm on Shoulder",
-            RU: "Руку на Плечо",
-            UA: "Рука на плече",
-        },
-        dialog: {
-            CN: "SourceCharacter把手臂搭在TargetCharacter的肩膀上.",
-            EN: "SourceCharacter places arm on DestinationCharacter shoulder.",
-            RU: "SourceCharacter кладет свою руку на плечо TargetCharacter.",
-            UA: "SourceCharacter ставить свою руку на плече TargetCharacter.",
         },
     },
     {

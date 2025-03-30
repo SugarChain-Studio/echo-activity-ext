@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪挠手",
-            Prerequisite: ["NeedPawMittens"],
+            Prerequisite: ["NeedPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemHands"],
         },
@@ -26,7 +26,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪挠手臂",
-            Prerequisite: ["NeedPawMittens"],
+            Prerequisite: ["NeedPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemArms"],
         },
@@ -47,7 +47,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪舔手",
-            Prerequisite: ["NeedPawMittens"],
+            Prerequisite: ["NeedPawMittens", "UseArms", "UseTongue"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemHands"],
@@ -61,7 +61,7 @@ const activities = [
         },
         dialogSelf: {
             CN: "SourceCharacter舔自己的爪子.",
-            EN: "SourceCharacter licks PronounPossessive own paw like a pet.",
+            EN: "SourceCharacter licks PronounPossessive paw like a pet.",
             RU: "SourceCharacter вылизывает свою лапку как кошечка.",
             UA: "SourceCharacter вилизує свою лапу.",
         },
@@ -69,7 +69,7 @@ const activities = [
     {
         activity: {
             Name: "猫爪戳脸",
-            Prerequisite: ["NeedPawMittens"],
+            Prerequisite: ["NeedPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -83,27 +83,15 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子戳了戳TargetCharacter的脸.",
-            EN: "SourceCharacter's pokes DestinationCharacter face with PronounPossessive mitten claws like a pet.",
+            EN: "SourceCharacter pokes DestinationCharacter face with PronounPossessive mitten claws like a pet.",
             RU: "SourceCharacter тыкает в лицо TargetCharacter своим коготками.",
             UA: "SourceCharacter тицяє TargetCharacter в лице своїми кігтями.",
-        },
-        labelSelf: {
-            CN: "猫爪戳脸",
-            EN: "Pokes Claws in Face",
-            RU: "Тыкнуть Коготками в Лицо",
-            UA: "Тицяти кігтями в лице",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用爪子戳了戳自己的脸.",
-            EN: "SourceCharacter pokes PronounPossessive own face with mitten claws.",
-            RU: "SourceCharacter тыкает коготками в свое лицо.",
-            UA: "SourceCharacter тицяє собі в лице своїми кігтями.",
         },
     },
     {
         activity: {
             Name: "猫爪戳鼻子",
-            Prerequisite: ["NeedPawMittens"],
+            Prerequisite: ["NeedPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemNose"],
             TargetSelf: true,
@@ -117,27 +105,15 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子戳了戳TargetCharacter的鼻子.",
-            EN: "SourceCharacter's pokes DestinationCharacter nose with mitten claws.",
+            EN: "SourceCharacter pokes DestinationCharacter nose with mitten claws.",
             RU: "SourceCharacter тыкает своими коготками в нос TargetCharacter.",
             UA: "SourceCharacter тицяє TargetCharacter в ніс своїми кігтями.",
-        },
-        labelSelf: {
-            CN: "猫爪戳鼻子",
-            EN: "Poke Claws in Nose ",
-            RU: "Тыкнуть Коготками в Нос",
-            UA: "Тицяти кігтями в ніс",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用爪子戳了戳自己的鼻子.",
-            EN: "SourceCharacter's pet pokes PronounPossessive own nose with mitten claws.",
-            RU: "SourceCharacter тыкает коготками в свой нос.",
-            UA: "SourceCharacter тицяє собі в ніс своїми кігтями.",
         },
     },
     {
         activity: {
             Name: "猫爪揉脸",
-            Prerequisite: ["NeedPawMittens"],
+            Prerequisite: ["NeedPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -155,23 +131,11 @@ const activities = [
             RU: "SourceCharacter царапает лицо TargetCharacter своими коготками.",
             UA: "SourceCharacter царапає своїми кігтями лице TargetCharacter.",
         },
-        labelSelf: {
-            CN: "猫爪揉脸",
-            EN: "Rub Claws in Face",
-            RU: "Поцарапать Лицо",
-            UA: "Царапати лице",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用爪子揉了揉自己的脸.",
-            EN: "SourceCharacter uses PronounPossessive claws to rub PronounPossessive own face.",
-            RU: "SourceCharacter царапает своё лицо коготочками.",
-            UA: "SourceCharacter царапає своїми кігтями своє лице.",
-        },
     },
     {
         activity: {
             Name: "猫爪揉鼻子",
-            Prerequisite: ["NeedPawMittens"],
+            Prerequisite: ["NeedPawMittens", "UseArms"],
             MaxProgress: 50,
             Target: ["ItemNose"],
             TargetSelf: true,
@@ -188,18 +152,6 @@ const activities = [
             EN: "SourceCharacter uses PronounPossessive claws to rub DestinationCharacter nose.",
             RU: "SourceCharacter царапает нос TargetCharacter своими коготками",
             UA: "SourceCharacter царапає ніс TargetCharacter кігтями.",
-        },
-        labelSelf: {
-            CN: "猫爪揉鼻子",
-            EN: "Rub Claws in Nose",
-            RU: "Поцарапать Нос",
-            UA: "Царапати ніс",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用爪子揉了揉自己的鼻子.",
-            EN: "SourceCharacter uses PronounPossessive claws to rub PronounPossessive own nose.",
-            RU: "SourceCharacter царапает свой нос коготками.",
-            UA: "SourceCharacter царапає собі ніс своїми кігтями.",
         },
     },
 ];

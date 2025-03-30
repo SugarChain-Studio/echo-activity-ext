@@ -1,5 +1,5 @@
-import { ActivityManager } from "../activityForward";
-import { Prereqs } from "../Prereqs";
+import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /**
  *

@@ -1,15 +1,24 @@
-import { ActivityManager } from "../activityForward";
+import { Prereqs } from "src/Prereqs";
+import { ActivityManager } from "../../activityForward";
 
 /** @type { CustomActivity []} */
 const activities = [
     {
         activity: {
             Name: "跪下",
-            Prerequisite: ["UseArms"],
+            Prerequisite: [
+                Prereqs.ActingCheck(
+                    (acting) =>
+                        acting.IsStanding() &&
+                        Math.max(...PoseAllKneeling.map((p) => PoseCanChangeUnaidedStatus(Player, p))) >= 2
+                ),
+            ],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
+        mode: "SelfOnSelf",
+        run: () => ChatRoomToggleKneel(),
         useImage: "Wiggle",
         labelSelf: {
             CN: "跪下",
@@ -25,11 +34,19 @@ const activities = [
     {
         activity: {
             Name: "站起来",
-            Prerequisite: ["UseArms"],
+            Prerequisite: [
+                Prereqs.ActingCheck(
+                    (acting) =>
+                        acting.IsKneeling() &&
+                        Math.max(...PoseAllStanding.map((p) => PoseCanChangeUnaidedStatus(Player, p))) >= 2
+                ),
+            ],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
+        mode: "SelfOnSelf",
+        run: () => ChatRoomToggleKneel(),
         useImage: "Wiggle",
         labelSelf: {
             CN: "站起来",
@@ -45,11 +62,18 @@ const activities = [
     {
         activity: {
             Name: "跪着张开腿",
-            Prerequisite: ["UseArms"],
+            Prerequisite: [
+                Prereqs.ActingCheck(
+                    (acting) =>
+                        acting.PoseMapping.BodyLower === "Kneel" && PoseAvailable(acting, "BodyLower", "KneelingSpread")
+                ),
+            ],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
+        mode: "SelfOnSelf",
+        run: (player) => PoseSetActive(player, "KneelingSpread"),
         useImage: "Wiggle",
         labelSelf: {
             CN: "跪着张开腿",
@@ -57,7 +81,7 @@ const activities = [
             UA: "Сісти розширені коліна",
         },
         dialogSelf: {
-            CN: "SourceCharacter张开了PronounPossessive的腿.",
+            CN: "SourceCharacter跪下，并张开了自己的腿.",
             EN: "SourceCharacter kneels with legs spread.",
             UA: "SourceCharacter сідає на розширені коліна.",
         },
@@ -65,11 +89,18 @@ const activities = [
     {
         activity: {
             Name: "跪着并拢腿",
-            Prerequisite: ["UseArms"],
+            Prerequisite: [
+                Prereqs.ActingCheck(
+                    (acting) =>
+                        acting.PoseMapping.BodyLower === "KneelingSpread" && PoseAvailable(acting, "BodyLower", "Kneel")
+                ),
+            ],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
+        mode: "SelfOnSelf",
+        run: (player) => PoseSetActive(player, "Kneel"),
         useImage: "Wiggle",
         labelSelf: {
             CN: "跪着并拢腿",
@@ -77,29 +108,9 @@ const activities = [
             UA: "Сісти на закриті коліна",
         },
         dialogSelf: {
-            CN: "SourceCharacter并拢了PronounPossessive的腿.",
+            CN: "SourceCharacter跪下，并并拢了自己的腿.",
             EN: "SourceCharacter kneels with legs closed.",
             UA: "SourceCharacter сідає на закриті коліна.",
-        },
-    },
-    {
-        activity: {
-            Name: "趴下",
-            Prerequisite: ["UseArms"],
-            MaxProgress: 50,
-            Target: [],
-            TargetSelf: ["ItemBoots"],
-        },
-        useImage: "Wiggle",
-        labelSelf: {
-            CN: "趴下",
-            EN: "Lie Down",
-            UA: "Лягти",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter手放身后趴在地上.",
-            EN: "SourceCharacter lies down with hands behind back.",
-            UA: "SourceCharacter лягає на землю ставивши руки за спиною.",
         },
     },
     {
@@ -118,7 +129,7 @@ const activities = [
         },
         dialogSelf: {
             CN: "SourceCharacter四肢着地趴在地上.",
-            EN: "SourceCharacter's pet lies down on all fours.",
+            EN: "SourceCharacter lies down on all fours.",
             UA: "SourceCharacter падає на землю стаючи на всі чотири.",
         },
     },
@@ -140,6 +151,29 @@ const activities = [
             CN: "SourceCharacter起身跪下.",
             EN: "SourceCharacter get up and kneels down.",
             UA: "SourceCharacter встає і сідає на коліна.",
+        },
+    },
+    {
+        activity: {
+            Name: "夹紧双腿",
+            Prerequisite: ["TargetHasItemVulva"],
+            MaxProgress: 50,
+            MaxProgressSelf: 500,
+            Target: [],
+            TargetSelf: ["ItemLegs"],
+        },
+        useImage: "Wiggle",
+        labelSelf: {
+            CN: "夹紧双腿",
+            EN: "Squeeze thighs",
+            RU: "Сжать Ляжки",
+            UA: "Стиснути стегна",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter夹紧了自己的腿.",
+            EN: "SourceCharacter squeezes their thighs.",
+            RU: "SourceCharacter сжимает свои ляжки.",
+            UA: "SourceCharacter стискає свої стегна.",
         },
     },
 ];
