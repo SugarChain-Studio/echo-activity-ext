@@ -5,7 +5,7 @@ const activities = [
     {
         activity: {
             Name: "钩住阴蒂环",
-            Prerequisite: ["UseHands", "Luzi_Luzi_TargetHasItemVulvaPiercings"],
+            Prerequisite: ["UseHands", "Luzi_TargetHasItemVulvaPiercings"],
             MaxProgress: 50,
             Target: ["ItemVulvaPiercings"],
             TargetSelf: true,
@@ -27,7 +27,7 @@ const activities = [
     {
         activity: {
             Name: "拉扯阴蒂环",
-            Prerequisite: ["UseHands", "Luzi_Luzi_TargetHasItemVulvaPiercings"],
+            Prerequisite: ["UseHands", "Luzi_TargetHasItemVulvaPiercings"],
             MaxProgress: 50,
             Target: ["ItemVulvaPiercings"],
             TargetSelf: true,

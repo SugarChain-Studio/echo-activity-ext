@@ -41,8 +41,7 @@ const prereqStorage = {
     Luzi_HasPetSuit: (_prereq, acting, _acted, _group) =>
         InventoryIsItemInList(acting, "ItemArms", ["ShinyPetSuit", "BitchSuit", "StrictLeatherPetCrawler"]),
     Luzi_HasKennel: (_prereq, _acting, acted, _group) => InventoryIsItemInList(acted, "ItemDevices", ["Kennel"]),
-    Luzi_Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) =>
-        !!InventoryGet(acted, "ItemVulvaPiercings"),
+    Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulvaPiercings"),
     Luzi_TargetHasItemVulva: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulva"),
     Luzi_HasSword: (_prereq, acting, _acted, _group) => InventoryIsItemInList(acting, "ItemHandheld", ["Sword"]),
     Luzi_Has鱼鱼尾: Prereqs.Acting.GroupIs("ItemLegs", ["鱼鱼尾_Luzi"]),

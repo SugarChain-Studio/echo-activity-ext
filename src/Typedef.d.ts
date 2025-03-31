@@ -21,7 +21,7 @@ type CustomActivityPrerequisite =
     | 'Luzi_HasPawMittens'
     | 'Luzi_HasPetSuit'
     | 'Luzi_HasKennel'
-    | 'Luzi_Luzi_TargetHasItemVulvaPiercings'
+    | 'Luzi_TargetHasItemVulvaPiercings'
     | 'Luzi_TargetHasItemVulva'
     | 'Luzi_HasSword'
     | 'Luzi_Has鱼鱼尾'
