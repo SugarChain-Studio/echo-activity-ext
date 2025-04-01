@@ -18,6 +18,7 @@ export class Path {
         item.href = Path.resolve(path);
         item.rel = "preload";
         item.as = "image";
+        item.crossOrigin = "anonymous";
         document.head.appendChild(item);
         item.onload = () => {
             document.head.removeChild(item);
