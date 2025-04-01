@@ -4,7 +4,7 @@
         "type-check": "tsc --noEmit --allowJs --checkJs -p jsconfig.json",
         "lint": "eslint --ext .js src utils",
         "build": "rollup -c rollup.config.js",
-        "dev": "pnpm type-check && pnpm resources:dev && pnpm build --configDebug --configBaseURL \"http://localhost:8081/\"",
+        "dev": "pnpm lint && pnpm type-check && pnpm resources:dev && pnpm build --configDebug --configBaseURL \"http://localhost:8081/\"",
         "dev:beta": "pnpm type-check && pnpm resources:dev --type beta && pnpm build --configDebug --configBeta --configBaseURL \"http://localhost:8081/\"",
         "changelog": "conventional-changelog -p angular -o CHANGELOG.md -r 0",
         "changelog:stdout": "conventional-changelog -p angular",
