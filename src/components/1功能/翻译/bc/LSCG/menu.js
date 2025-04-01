@@ -1,340 +1,5 @@
-/** @type {Record<string,string>} */
-const activities = {
-    "Bap": "拍打",
-    "SourceCharacter baps TargetCharacter.": "SourceCharacter 拍了 TargetCharacter 一下.",
-    "Headbutt": "头槌",
-    "SourceCharacter headbutts TargetCharacter.": "SourceCharacter 用头撞了 TargetCharacter.",
-    "Nuzzle": "用鼻子轻蹭",
-    "SourceCharacter nuzzles against the side of TargetCharacter's head.":
-        "SourceCharacter 用鼻子轻蹭 TargetCharacter 头部的一侧.",
-    "SourceCharacter nuzzles into TargetCharacter's neck.": "SourceCharacter 把鼻子轻蹭进 TargetCharacter 的脖颈.",
-    "SourceCharacter nuzzles into TargetCharacter's arms.": "SourceCharacter 把鼻子轻蹭进 TargetCharacter 的胳膊.",
-    "SourceCharacter nuzzles underneath TargetCharacter's hand.": "SourceCharacter 在 TargetCharacter 的手下轻蹭.",
-    "SourceCharacter nuzzles into TargetCharacter's breasts.": "SourceCharacter 把鼻子轻蹭到 TargetCharacter 的胸部.",
-    "SourceCharacter nuzzles snugly into TargetCharacter.": "SourceCharacter 舒适地用鼻子贴着 TargetCharacter.",
-    "SourceCharacter nuzzles against TargetCharacter's thigh.": "SourceCharacter 用鼻子轻蹭 TargetCharacter 的大腿.",
-    "SourceCharacter nuzzles along TargetCharacter's leg.": "SourceCharacter 沿着 TargetCharacter 的腿轻蹭.",
-    "SourceCharacter nuzzles under TargetCharacter's feet.": "SourceCharacter 在 TargetCharacter 的脚下轻蹭.",
-    "Hug": "拥抱",
-    "SourceCharacter wraps PronounPossessive arms around TargetCharacter in a big warm hug.":
-        "SourceCharacter张开双臂,给了TargetCharacter一个大大的温暖拥抱,将PronounPossessive的手臂也环绕其中.",
-    "Tackle": "扑倒",
-    "SourceCharacter full body tackles TargetCharacter!": "SourceCharacter 整个身体扑倒了 TargetCharacter!",
-    "Flop": "瘫倒",
-    "SourceCharacter flops on top of TargetCharacter.": "SourceCharacter 瘫倒在 TargetCharacter 身上.",
-    "Kiss Eyes": "亲吻眼睛",
-    "SourceCharacter gently kisses over TargetCharacter's eyes.": "SourceCharacter 轻柔地亲吻 TargetCharacter 的眼睛.",
-    "Rub Pussy": "摩擦私处",
-    "SourceCharacter grinds PronounPossessive pussy against TargetCharacter's penis.":
-        "SourceCharacter用PronounPossessive的私处摩擦着TargetCharacter的阴茎.",
-    "Slap Face": "扇脸",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's face.":
-        "SourceCharacter 用PronounPossessive的ActivityAsset 抽打在 TargetCharacter 的脸上.",
-    "Slap Mouth": "扇嘴巴",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's mouth.":
-        "SourceCharacter 用PronounPossessive的ActivityAsset 抽打在 TargetCharacter 的嘴巴上.",
-    "Slap against Pussy": "扇打私处",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's pussy.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的私处上.",
-    "Slap Breast": "扇打乳房",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's breast.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的乳房上.",
-    "Slap Thigh": "扇打大腿",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's thigh.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的大腿上.",
-    "Slap Calf": "扇打小腿",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's calf.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的小腿上.",
-    "Slap Feet": "扇打脚",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's feet.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的脚上.",
-    "Slap Butt": "扇打屁股",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's butt.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的屁股上.",
-    "Slap Neck": "扇打脖子",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's neck.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的脖子上.",
-    "Slap Arms": "扇打手臂",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's arm.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的手臂上.",
-    "Slap Hand": "扇打手",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's hand.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的手上.",
-    "Slap Penis": "扇打阴茎",
-    "SourceCharacter slaps PronounPossessive ActivityAsset against TargetCharacter's penis.":
-        "SourceCharacter 用PronounPossessive的 ActivityAsset 抽打在 TargetCharacter 的阴茎上.",
-    "Nibble Tail": "轻咬尾巴",
-    "SourceCharacter nibbles on TargetCharacter's tail.": "SourceCharacter 轻咬 TargetCharacter 的尾巴.",
-    "SourceCharacter nibbles on PronounPossessive own tail.": "SourceCharacter 轻咬自己的尾巴.",
-    "Nibble Halo": "咬光环",
-    "SourceCharacter nibbles on TargetCharacter's halo.": "SourceCharacter 咬 TargetCharacter 的光环.",
-    "Nibble Wing": "轻咬翅膀",
-    "SourceCharacter nibbles on TargetCharacter's wing.": "SourceCharacter 轻咬 TargetCharacter 的翅膀.",
-    "SourceCharacter nibbles on PronounPossessive own wing.": "SourceCharacter 轻咬自己的翅膀.",
-    "Grind with Pussy": "用阴部磨擦",
-    "SourceCharacter grinds PronounPossessive pussy against TargetCharacter's.":
-        "SourceCharacter 用阴部磨擦着 TargetCharacter 的阴部.",
-    "Ride with Pussy": "用阴部骑乘",
-    "SourceCharacter fucks TargetCharacter's penis with PronounPossessive pussy, grinding up and down.":
-        "SourceCharacter 用阴部骑乘在 TargetCharacter 的阴茎, 上下磨擦.",
-    "Sit on Face": "坐在脸上",
-    "SourceCharacter grinds PronounPossessive pussy against TargetCharacter's face.":
-        "SourceCharacter 用阴部磨擦着 TargetCharacter 的脸.",
-    "Grind with Ass": "用臀部磨擦",
-    "SourceCharacter grinds PronounPossessive ass against TargetCharacter's vulva.":
-        "SourceCharacter 用臀部磨擦着 TargetCharacter 的阴道.",
-    "Ride with Ass": "用臀部骑乘",
-    "SourceCharacter fucks TargetCharacter's penis with PronounPossessive ass.":
-        "SourceCharacter 用臀部骑乘在 TargetCharacter 的阴茎.",
-    "Suck": "吮吸",
-    "SourceCharacter wraps PronounPossessive lips around TargetCharacter's ActivityAsset and sucks.":
-        "SourceCharacter 用嘴唇包裹住 TargetCharacter 的 ActivityAsset 并吮吸.",
-    "Deepthroat": "深喉",
-    "SourceCharacter takes TargetCharacter's ActivityAsset deep down PronounPossessive throat.":
-        "SourceCharacter 将 TargetCharacter 的 ActivityAsset 深深地吞入 PronounPossessive 的喉咙.",
-    "SourceCharacter wraps PronounPossessive lips around PronounPossessive own ActivityAsset and sucks.":
-        "SourceCharacter 用嘴唇包裹住自己的 ActivityAsset 并吮吸.",
-    "SourceCharacter takes PronounPossessive own ActivityAsset deep down PronounPossessive throat.":
-        "SourceCharacter 将自己的ActivityAsset 深深地吞入PronounPossessive的喉咙.",
-    "Eat": "咬一口",
-    "SourceCharacter takes a big bite out of TargetCharacter's ActivityAsset.":
-        "SourceCharacter 咬了 TargetCharacter 的 ActivityAsset 一大口.",
-    "SourceCharacter takes a big bite out of PronounPossessive own ActivityAsset.":
-        "SourceCharacter 咬了自己的 ActivityAsset 一大口.",
-    "Grab Tongue": "抓舌头",
-    "SourceCharacter reaches in and grabs hold of TargetCharacter's tongue with PronounPossessive fingers.":
-        "SourceCharacter 伸手抓住 TargetCharacter 的舌头.",
-    "Release Tongue": "松开舌头",
-    "SourceCharacter lets go of TargetCharacter's tongue.": "SourceCharacter 松开了 TargetCharacter 的舌头.",
-    "Hold Hands": "牵手",
-    "SourceCharacter takes TargetCharacter's hand.": "SourceCharacter 牵住 TargetCharacter 的手.",
-    "Release Hand": "放开手",
-    "SourceCharacter lets go of TargetCharacter's hand.": "SourceCharacter 松开了 TargetCharacter 的手.",
-    "Pinch Butt": "捏屁股",
-    "SourceCharacter pinches TargetCharacter's butt.": "SourceCharacter捏住TargetCharacter的屁股.",
-    "SourceCharacter pinches PronounPossessive own butt.": "SourceCharacter 捏住自己的屁股.",
-    "Pinch Cheek": "捏脸颊",
-    "SourceCharacter pinches TargetCharacter's cheek.": "SourceCharacter捏住TargetCharacter的脸颊.",
-    "SourceCharacter pinches PronounPossessive own cheek.": "SourceCharacter 捏住了自己的脸颊.",
-    "Release Ear": "松开耳朵",
-    "SourceCharacter releases TargetCharacter's ear.": "SourceCharacter 松开了 TargetCharacter 的耳朵.",
-    "Grab Horn": "抓住角",
-    "SourceCharacter grabs TargetCharacter's horn.": "SourceCharacter抓住TargetCharacter的角.",
-    "Release Arm": "松开手臂",
-    "SourceCharacter releases TargetCharacter's arm.": "SourceCharacter 松开了 TargetCharacter 的手臂.",
-    "Release Horn": "松开角",
-    "SourceCharacter releases TargetCharacter's horn.": "SourceCharacter 松开了 TargetCharacter的角.",
-    "Release Neck": "松开脖子",
-    "SourceCharacter releases TargetCharacter's neck.": "SourceCharacter 松开了 TargetCharacter 的脖子.",
-    "Release Mouth": "松开嘴巴",
-    "SourceCharacter releases TargetCharacter's mouth.": "SourceCharacter 松开了 TargetCharacter 的嘴巴.",
-    "Stuff with Foot": "用脚进行填塞",
-    "SourceCharacter shoves PronounPossessive foot into TargetCharacter's mouth, grabbing their tongue with PronounPossessive toes.":
-        "SourceCharacter 把自己的脚塞进 TargetCharacter 的嘴里, 并用脚趾夹住 TargetCharacter 的舌头.",
-    "Remove Foot": "移开脚",
-    "SourceCharacter removes PronounPossessive foot from TargetCharacter's mouth.":
-        "SourceCharacter 从 TargetCharacter 的嘴里抽出自己的脚.",
-    "Tug": "拽",
-    "SourceCharacter tugs on TargetCharacter's crotch rope.": "SourceCharacter 拉扯着 TargetCharacter 胯下的绳子.",
-    "SourceCharacter tugs lewdly on PronounPossessive own crotch rope.":
-        "SourceCharacter 淫荡地拉扯着自己的胯下的绳子.",
-    "Flick Ear": "轻弹耳朵",
-    "SourceCharacter flicks TargetCharacter's ear.": "SourceCharacter 轻轻弹了 TargetCharacter 的耳朵.",
-    "SourceCharacter flicks PronounPossessive own ear.": "SourceCharacter 轻轻弹了自己的耳朵.",
-    "Flick Nose": "轻弹鼻子",
-    "SourceCharacter flicks TargetCharacter's nose.": "SourceCharacter 轻轻弹了 TargetCharacter 的鼻子.",
-    "SourceCharacter flicks PronounPossessive own nose.": "SourceCharacter 轻轻弹了自己的鼻子.",
-    "Flick Nipple": "轻弹乳头",
-    "SourceCharacter flicks TargetCharacter's nipple.": "SourceCharacter 轻轻弹了 TargetCharacter 的乳头.",
-    "SourceCharacter flicks PronounPossessive own nipple.": "SourceCharacter 轻轻弹了自己的乳头.",
-    "Flick Butt": "轻弹屁股",
-    "SourceCharacter flicks TargetCharacter's butt.": "SourceCharacter 轻轻弹了 TargetCharacter的屁股.",
-    "SourceCharacter flicks PronounPossessive own butt.": "SourceCharacter 轻轻弹了自己的屁股.",
-    "Flick Foot": "轻弹脚底",
-    "SourceCharacter flicks the bottom of TargetCharacter's feet.": "SourceCharacter 轻轻弹了 TargetCharacter的脚底.",
-    "SourceCharacter flicks the bottom of PronounPossessive feet.": "SourceCharacter 轻轻弹了自己的脚底.",
-    "Flick Forehead": "轻弹额头",
-    "SourceCharacter flicks TargetCharacter's forehead.": "SourceCharacter 轻轻弹了 TargetCharacter的额头.",
-    "SourceCharacter flicks PronounPossessive own forehead.": "SourceCharacter 轻轻弹了自己的额头.",
-    "Flick Neck": "轻弹脖子",
-    "SourceCharacter flicks TargetCharacter's neck.": "SourceCharacter 轻轻弹了 TargetCharacter的脖子.",
-    "SourceCharacter flicks PronounPossessive own neck.": "SourceCharacter 轻轻弹了自己的脖子.",
-    "Flick Thigh": "轻弹大腿",
-    "SourceCharacter flicks TargetCharacter's thigh.": "SourceCharacter 轻轻弹了 TargetCharacter的大腿.",
-    "SourceCharacter flicks PronounPossessive own thigh.": "SourceCharacter 轻轻弹了自己的大腿.",
-    "Flick Leg": "轻弹腿",
-    "SourceCharacter flicks TargetCharacter's leg.": "SourceCharacter 轻轻弹了 TargetCharacter的腿.",
-    "SourceCharacter flicks PronounPossessive own leg.": "SourceCharacter 轻轻弹了自己的腿.",
-    "Flick Clitoris": "轻弹阴蒂",
-    "SourceCharacter flicks TargetCharacter's clitoris.": "SourceCharacter 轻轻弹了 TargetCharacter的阴蒂.",
-    "SourceCharacter flicks PronounPossessive own clitoris.": "SourceCharacter 轻轻弹了自己的阴蒂.",
-    "Flick Balls": "轻弹睾丸",
-    "SourceCharacter flicks TargetCharacter's balls.": "SourceCharacter 轻轻弹了 TargetCharacter的睾丸.",
-    "SourceCharacter flicks PronounPossessive own balls.": "SourceCharacter 轻轻弹了自己的睾丸.",
-    "Flick Pussy": "轻弹阴部",
-    "SourceCharacter flicks TargetCharacter's pussy.": "SourceCharacter 轻轻弹了 TargetCharacter的阴部.",
-    "SourceCharacter flicks PronounPossessive own pussy.": "SourceCharacter 轻轻弹了自己的阴部.",
-    "Flick Penis": "轻弹阴茎",
-    "SourceCharacter flicks TargetCharacter's penis.": "SourceCharacter 轻轻弹了 TargetCharacter的阴茎.",
-    "SourceCharacter flicks PronounPossessive own penis.": "SourceCharacter 轻轻弹了自己的阴茎.",
-    "Chomp on Arm": "咬住手臂",
-    "SourceCharacter chomps down on TargetCharacter's arm and doesn't let go.":
-        "SourceCharacter 用力咬住 TargetCharacter 的手臂且不松口.",
-    "Chomp on Leg": "咬住腿",
-    "SourceCharacter chomps down on TargetCharacter's leg and doesn't let go.":
-        "SourceCharacter 用力咬住 TargetCharacter 的腿且不松口.",
-    "Chomp on Butt": "咬住屁股",
-    "SourceCharacter chomps down on TargetCharacter's butt and doesn't let go.":
-        "SourceCharacter 用力咬住 TargetCharacter 的屁股且不松口.",
-    "Chomp on Neck": "咬住脖子",
-    "SourceCharacter chomps down on TargetCharacter's neck and doesn't let go.":
-        "SourceCharacter 用力咬住 TargetCharacter 的脖子且不松口.",
-    "Release Chomp": "松开咬住",
-    "SourceCharacter releases PronounPossessive chomp on TargetCharacter.":
-        "SourceCharacter 松开对 TargetCharacter 的咬.",
-    "Quaff": "畅饮",
-    "SourceCharacter presses PronounPossessive ActivityAsset up against TargetCharacter's lips.":
-        "SourceCharacter 将自己的 ActivityAsset 紧压在 TargetCharacter 的嘴唇上.",
-    "SourceCharacter quaffs the ActivityAsset in one gulp.": "SourceCharacter 一口气将 ActivityAsset 一饮而尽.",
-    "Tighten Collar": "收紧项圈",
-    "Loosen Collar": "放松项圈",
-    "Collar Stats": "项圈状态",
-    "Shoot Netgun": "射击网枪",
-    "SourceCharacter takes aim at TargetCharacter with PronounPossessive net gun.":
-        "SourceCharacter 用自己的网枪瞄准 TargetCharacter.",
-    "SourceCharacter turns PronounPossessive net gun on PronounSelf.": "SourceCharacter 将自己的网枪对准自己.",
-    "Pour into Funnel": "倒入漏斗",
-    "SourceCharacter pours PronounPossessive ActivityAsset into TargetCharacter's funnel.":
-        "SourceCharacter 将自己的 ActivityAsset 倒入 TargetCharacter 的漏斗中.",
-    "SourceCharacter pours PronounPossessive ActivityAsset into PronounPossessive own funnel.":
-        "SourceCharacter 将自己的 ActivityAsset 倒入自己的漏斗中.",
-    "Gag Mouth": "堵住嘴巴",
-    "SourceCharacter gags TargetCharacter with PronounPossessive ActivityAsset.":
-        "SourceCharacter 用自己的 ActivityAsset 堵住了 TargetCharacter 的嘴.",
-    "SourceCharacter gags PronounSelf with PronounPossessive own ActivityAsset.":
-        "SourceCharacter 用自己的 ActivityAsset 堵住了自己的嘴.",
-    "Place around Neck": "放在脖子上",
-    "SourceCharacter places PronounPossessive ActivityAsset around TargetCharacter's neck.":
-        "SourceCharacter 把自己的 ActivityAsset 放在 TargetCharacter 的脖子周围.",
-    "SourceCharacter places PronounPossessive ActivityAsset around PronounPossessive own neck.":
-        "SourceCharacter 把自己的 ActivityAsset 放在自己的脖子周围.",
-    "Take Gag": "取下口球",
-    "SourceCharacter removes TargetCharacter's ActivityAsset.":
-        "SourceCharacter 移除了 TargetCharacter 的 ActivityAsset.",
-    "SourceCharacter pulls the ActivityAsset from PronounPossessive mouth.":
-        "SourceCharacter从PronounPossessive的嘴里取下了ActivityAsset.",
-    "SourceCharacter takes TargetCharacter's ActivityAsset from around TargetPronounPossessive neck.":
-        "SourceCharacter从TargetPronounPossessive的脖子上取下了TargetCharacter的ActivityAsset.",
-    "SourceCharacter takes PronounPossessive own ActivityAsset from around PronounPossessive neck.":
-        "SourceCharacter从PronounPossessive的脖子上取下了PronounPossessive自己的ActivityAsset.",
-    "Move to Mouth": "移至嘴边",
-    "SourceCharacter moves TargetCharacter's ActivityAsset up to PronounPossessive mouth.":
-        "SourceCharacter将TargetCharacter的ActivityAsset移到了PronounPossessive的嘴边.",
-    "SourceCharacter moves PronounPossessive own ActivityAsset up to PronounPossessive mouth.":
-        "SourceCharacter将PronounPossessive自己的ActivityAsset移到了PronounPossessive的嘴边.",
-    "Wear around Neck": "挂在脖子上",
-    "SourceCharacter removes TargetCharacter's ActivityAsset, letting it hang around their neck.":
-        "SourceCharacter取下了TargetCharacter的ActivityAsset,让它挂在了他们的脖子上.",
-    "SourceCharacter removes the ActivityAsset from Pro…h and lets it hang around PronounPossessive neck.":
-        "SourceCharacter取下了PronounPossessive的ActivityAsset,并让它挂在了PronounPossessive的脖子上.",
-    "Tie Up": "捆绑",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's feet, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的脚缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive feet tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的脚缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's legs, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的腿缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive legs tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的腿缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's pelvis, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的骨盆缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive pelvis tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的骨盆缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's arms, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的胳膊缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive arms tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的胳膊缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's eyes, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的眼睛缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive eyes tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的眼睛缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's neck, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的脖子缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive neck tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的脖子缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's breasts, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的胸部缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive breasts tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的胸部缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's waist, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的腰部缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive waist tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的腰部缠绕起来.",
-    "SourceCharacter swiftly wraps PronounPossessive rope around TargetCharacter's toes, binding TargetPronounPossessive tightly.":
-        "SourceCharacter 迅速地用自己的绳子把 TargetCharacter 的脚趾缠绕起来, 紧紧地绑住了 TargetPronounPossessive.",
-    "SourceCharacter wraps PronounPossessive rope around PronounPossessive toes tightly.":
-        "SourceCharacter 紧紧地用自己的绳子把自己的脚趾缠绕起来.",
-    "Steal": "抢夺",
-    "SourceCharacter grabs at TargetCharacters hands, trying to steal TargetPronounPossessive item.":
-        "SourceCharacter 抓住了 TargetCharacters 的手, 试图抢夺TargetPronounPossessive的物品.",
-    "Give Item": "交出物品",
-    "SourceCharacter grabs at TargetCharacters hands, trying to steal TargetPronounPossessive item!":
-        "SourceCharacter 一把抓住 TargetCharacters 的手, 企图抢夺TargetPronounPossessive的物品!",
-    "Shark Bite": "鲨鱼咬",
-    "SourceCharacter's ActivityAsset bites TargetCharacter's arm.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的手臂.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter's foot.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的脚.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter's breast.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的乳房.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter's butt.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的臀部.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter's ear.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的耳朵.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter's leg.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的腿.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter on the hand.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的手.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter in the thigh.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的大腿.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter on the neck.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的脖子.",
-    "SourceCharacter's ActivityAsset bites TargetCharacter's nipple.":
-        "SourceCharacter 的 ActivityAsset 咬住了 TargetCharacter 的乳头.",
-    "SourceCharacter's ActivityAsset chomps on TargetCharacter.":
-        "SourceCharacter 的 ActivityAsset 狠狠地咬住了 TargetCharacter.",
-    "Boop": "轻戳",
-    "SourceCharacter boops TargetCharacter's nose with PronounPossessive ActivityAsset.":
-        "SourceCharacter 用自己的 ActivityAsset 轻戳了 TargetCharacter 的鼻子.",
-    "Squeeze": "紧紧地拥抱",
-    "SourceCharacter hugs PronounPossessive ActivityAsset tightly.":
-        "SourceCharacter 紧紧地拥抱着自己的 ActivityAsset.",
-    "Take Photo": "拍照",
-    "SourceCharacter snaps a photo of TargetCharacter.": "SourceCharacter 给 TargetCharacter 拍了张照片.",
-    "SourceCharacter takes a selfie.": "SourceCharacter 自拍了一张.",
-    "Wag Tail": "摇晃尾巴",
-    "SourceCharacter wags PronounPossessive tail.": "SourceCharacter 摇晃着自己的尾巴.",
-    "SourceCharacter wraps TargetCharacter in a therapeutic self-hug.":
-        "SourceCharacter 用一个具有治疗作用的自我拥抱裹住了 TargetCharacter .",
-    "SourceCharacter releases PronounPossessive own neck.": "SourceCharacter 松开了自己的脖子.",
-    "Clamp Hand over Eyes": "用手捂住眼睛.",
-    "SourceCharacter clamps her hand over TargetCharacter's eyes.":
-        "SourceCharacter 把她的手捂在 TargetCharacter 的眼睛上.",
-    "SourceCharacter clamps her hand over PronounPossessive own eyes.": "SourceCharacter 把她的手捂在自己的眼睛上.",
-    "SourceCharacter releases PronounPossessive own mouth.": "SourceCharacter 放开了自己的嘴.",
-    "Release Eyes": "放开眼睛",
-    "SourceCharacter removes their hand from TargetCharacter's eyes.":
-        "SourceCharacter 将手从 TargetCharacter 的眼睛上移开.",
-    "SourceCharacter pulls their hand away from PronounPossessive eyes.": "SourceCharacter 将手从自己的眼睛旁抽走.",
-    "SourceCharacter shoves PronounPossessive foot into…rabbing their tongue with PronounPossessive toes.":
-        "SourceCharacter 将脚塞入……用脚趾抓挠自己的舌头.",
-    "Grab Tail": "抓住尾巴",
-    "SourceCharacter grabs TargetCharacter's tail.": "SourceCharacter 抓住了 TargetCharacter 的尾巴.",
-    "Release Tail": "放开尾巴",
-    "SourceCharacter releases TargetCharacter's tail.": "SourceCharacter 放开了 TargetCharacter 的尾巴.",
-};
+import { LSCGenabled } from "./enable";
 
-/** @type { Record<string,string> } */
 const translation = {
     // LSCG
     "- LSCG General -": "- LSCG 通用 -",
@@ -792,4 +457,42 @@ const translation = {
     "Disarm the target": "移除目标的手持物品",
 };
 
-export { activities, translation };
+const regexTranslations = [
+    { regex: /(.+) has too much willpower to let you in\.\.\./, replacement: "$1 拥有太多意志力不让你进入……" },
+    {
+        regex: /You must be the owner to purchase this module for (.+)\.\.\./,
+        replacement: "你得是 $1 的主人才能买这个模块……",
+    },
+    {
+        regex: /(.+) is resisting any hypnotic suggestions\.\.\./,
+        replacement: "$1 正在抵制任何催眠暗示……",
+    },
+    {
+        regex: /Installed by(.+)/,
+        replacement: "制作人$1",
+    },
+    {
+        regex: /Trigger Phrase(.+)/,
+        replacement: "触发短语:$1",
+    },
+    {
+        regex: /You must be the owner to purchase this module for (.+).../,
+        replacement: "您必须是主人才能为 $1 购买此模块……",
+    },
+];
+
+/**
+ * 翻译菜单文本
+ * @param {string} key
+ * @returns {string | undefined} 如果翻译成功则返回翻译后的文本，否则返回undefined
+ */
+export function translateMenuText(key) {
+    if (!LSCGenabled()) return undefined;
+    if (translation[key]) return translation[key];
+    for (const { regex, replacement } of regexTranslations) {
+        if (regex.test(key)) {
+            return key.replace(regex, replacement);
+        }
+    }
+    return undefined;
+}

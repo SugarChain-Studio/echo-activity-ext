@@ -1,27 +1,52 @@
 import { HookManager } from "@sugarch/bc-mod-hook-manager";
 import { MPA } from "./MPA";
+import { DOGS } from "./DOGS";
+import { BCAR } from "./BCAR";
+import { EBCH } from "./EBCH";
+import { BCX } from "./BCX";
+import { LSCG } from "./LSCG";
+import { BCTweaks } from "./BCTweaks";
+import { FetishShare } from "./FetishShare";
+
+/** @type {TranslationUnit[]} */
+const translationUnits = [BCX, LSCG, MPA, BCAR, BCTweaks, DOGS, EBCH, FetishShare];
 
 function shouldTranslate() {
     return ["CN", "TW"].includes(TranslationLanguage);
 }
 
-function translateMenuText(key) {
-    for (const { translateMenuText } of [MPA]) {
+/**
+ * @template T
+ * @param {string} key
+ * @param {(arg:string)=>T} callback
+ */
+function translateMenuText(key, callback) {
+    for (const { translateMenuText } of translationUnits) {
         const translated = translateMenuText?.(key);
-        if (translated) return translated;
+        if (translated) return callback(translated);
     }
-    return key;
 }
 
 /**
- *
  * @template T
  * @param {string} key
  * @param {(arg:string)=>T} callback
  */
 function translateActivityText(key, callback) {
-    for (const { translateActivityText } of [MPA]) {
+    for (const { translateActivityText } of translationUnits) {
         const translated = translateActivityText?.(key);
+        if (translated) return callback(translated);
+    }
+}
+
+/**
+ * @template T
+ * @param {string} key
+ * @param {(arg:string)=>T} callback
+ */
+function translateLocalMessage(key, callback) {
+    for (const { translateLocalMessage } of translationUnits) {
+        const translated = translateLocalMessage?.(key);
         if (translated) return callback(translated);
     }
 }
@@ -33,27 +58,28 @@ export function setup() {
 
     ["DrawText", "DrawTextFit", "DrawTextWrap", "DynamicDrawText"].forEach((name) => {
         HookManager.hookFunction(name, 10, (args, next) => {
-            if (!inside() && shouldTranslate() && args[0])
-                // @ts-ignore
-                args[0] = translateMenuText(args[0]);
+            const _args = /** @type {[string, ...n:any[]]} */ (args);
+            if (!inside() && shouldTranslate() && args[0]) translateMenuText(_args[0], (text) => (_args[0] = text));
             return next(args);
         });
     });
 
     HookManager.hookFunction("ActivityDictionaryText", 1, (args, next) => {
         let ret = next(args);
-        if (shouldTranslate()) {
-            translateActivityText(ret, (text) => {
-                ret = text;
-            });
-        }
+        if (shouldTranslate()) translateActivityText(ret, (text) => (ret = text));
         return ret;
     });
 
-    HookManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
+    HookManager.hookFunction("ChatRoomSendLocal", 0, (args, next) => {
         if (shouldTranslate()) {
-            const { Content, Type, Dictionary } = args[0];
+            translateLocalMessage(args[0], (text) => (args[0] = text));
+        }
+        return next(args);
+    });
 
+    HookManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
+        const { Content, Type, Dictionary } = args[0];
+        if (shouldTranslate() && ["Action", "Activity"].includes(Type) && Content && Dictionary) {
             const targetTag = (() => {
                 if (Type === "Action") {
                     if (Content === "Beep") return "msg";
@@ -65,18 +91,14 @@ export function setup() {
             })();
 
             const target = /** @type {TextDictionaryEntry | undefined}*/ (
-                Dictionary.find((item) => {
-                    return /** @type {any} */ (item)?.Tag === targetTag;
-                })
+                Dictionary.find((item) => /** @type {any} */ (item)?.Tag === targetTag)
             );
 
             if (target) {
-                translateActivityText(target.Text, (translated) => {
-                    target.Text = translated;
-                });
+                translateActivityText(target.Text, (translated) => (target.Text = translated));
 
                 if (Content === "Beep") {
-                    // BCAR+ deliberately remove this tag to prevent CN support
+                    // NOTE: BCAR+ deliberately remove this tag to prevent CN support
                     if (!Dictionary.find((item) => /** @type {any} */ (item)?.Tag === "(发送私聊)")) {
                         Dictionary.push({
                             Tag: "(发送私聊)",

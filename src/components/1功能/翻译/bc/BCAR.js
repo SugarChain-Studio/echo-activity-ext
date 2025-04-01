@@ -206,4 +206,19 @@ const translation = {
     "Flap Wing:": "扇动翅膀:",
 };
 
-export { translation };
+/**
+ * 翻译BCAR的菜单文本
+ * @param {string} key
+ * @returns {string | undefined} 如果翻译成功则返回翻译后的文本，否则返回undefined
+ */
+export function translateMenuText(key) {
+    if (PreferenceExtensionsCurrent?.Identifier !== "BCAR") return undefined;
+    if (CurrentScreen !== "Preference") return undefined;
+    if (translation[key]) return translation[key];
+    return undefined;
+}
+
+/** @type {TranslationUnit} */
+export const BCAR = {
+    translateMenuText,
+};

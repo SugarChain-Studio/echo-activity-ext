@@ -52,4 +52,17 @@ const translation = {
     "BF Timer Lock Permission": "最好的朋友(BF) 计时锁权限",
 };
 
-export { translation };
+/**
+ * 翻译菜单文本
+ * @param {string} key
+ * @returns {string | undefined} 如果翻译成功则返回翻译后的文本，否则返回undefined
+ */
+export function translateMenuText(key) {
+    if (translation[key]) return translation[key];
+    return undefined;
+}
+
+/** @type {TranslationUnit} */
+export const BCTweaks = {
+    translateMenuText,
+};

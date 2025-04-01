@@ -11,6 +11,17 @@ type TranslationFunction = (src: string) => string | undefined;
  * @param translateMenuText 翻译菜单文本的函数
  */
 type TranslationUnit = {
+    /** 翻译输聊天中的活动文本 */
     translateActivityText?: TranslationFunction;
+    /** 翻译插件菜单 */
     translateMenuText?: TranslationFunction;
+    /** 翻译本地消息，例如 BCX 的 .help */
+    translateLocalMessage?: TranslationFunction;
+    /** 叠加到其他资料页面上的内容翻译，例如 FetishShared */
+    translatePreferenceOverlay?: TranslationFunction;
+};
+
+type DOMObserverModifier = {
+    filter: (node: Node) => boolean;
+    action: (node: Node) => void;
 };

@@ -190,7 +190,7 @@ const regexTranslations = [
  * @returns {string | undefined} 如果翻译成功则返回翻译后的文本，否则返回undefined
  */
 export function translateMenuText(key) {
-    if (CurrentScreen !== "Preference") return undefined;
+    if (PreferenceExtensionsCurrent?.Identifier !== "MPA") return undefined;
     if (!MPAenabled()) return undefined;
     if (translation[key]) return translation[key];
     for (const { regex, replacement } of regexTranslations) {

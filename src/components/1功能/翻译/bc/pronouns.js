@@ -5,7 +5,7 @@ const pronouns = {
     her: "她",
 };
 
-const translatePronouns = (text) => {
+export const translatePronouns = (text) => {
     if (text in pronouns) {
         return pronouns[text];
     }
