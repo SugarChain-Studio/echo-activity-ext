@@ -44,32 +44,27 @@ function replaceTranslate(key) {
 }
 
 export function setup() {
-    let insideCharacterDraw = false;
-
-    HookManager.hookFunction("CommonDrawAppearanceBuild", 10, (args, next) => {
-        insideCharacterDraw = true;
-        const ret = next(args);
-        insideCharacterDraw = false;
-        return ret;
-    });
+    const insideDrawCharaApp = HookManager.insideFlag("CommonDrawAppearanceBuild");
+    const insideDrawCharacter = HookManager.insideFlag("DrawCharacter");
+    const inside = () => insideDrawCharaApp.inside || insideDrawCharacter.inside;
 
     HookManager.hookFunction("DrawText", 10, (args, next) => {
-        if (!insideCharacterDraw) args[0] = replaceTranslate(args[0]);
+        if (!inside()) args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
     HookManager.hookFunction("DrawTextFit", 10, (args, next) => {
-        if (!insideCharacterDraw) args[0] = replaceTranslate(args[0]);
+        if (!inside()) args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
     HookManager.hookFunction("DrawTextWrap", 10, (args, next) => {
-        if (!insideCharacterDraw) args[0] = replaceTranslate(args[0]);
+        if (!inside()) args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
     HookManager.hookFunction("DynamicDrawText", 10, (args, next) => {
-        if (!insideCharacterDraw) args[0] = replaceTranslate(args[0]);
+        if (!inside()) args[0] = replaceTranslate(args[0]);
         next(args);
     });
 
