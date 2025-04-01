@@ -80,7 +80,7 @@ const translation = {
     "by Mute": "由 Mute 制作",
     "Autohack, local time, some keyboard goodies etc.": "自动黑客, 本地时间, 一些键盘上的东西等等",
 
-    "Maid's Bondage Scripts (MBS)": "女仆的束缚脚本 (MBS)",
+    "Maid's Bondage Scripts (MBS)": "Maid的束缚脚本 (MBS)",
     "by Rama": "由 Rama 制作",
     "Additional crafting slots, additional options in wheel of fortune, and custom outfits in wheel of fortune":
         "额外的制作槽, 命运之轮中的额外选项, 以及命运之轮中的定制服装",

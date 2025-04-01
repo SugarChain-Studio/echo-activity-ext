@@ -35,13 +35,13 @@ const translations2 = {
     "Wearer's owner": "佩戴者的主人",
 };
 
-const partial = {
+const prefixTranslation = {
     "Current access permission: ": "当前访问权限：",
     "Owner of the padlock: ": "锁的拥有者：",
 };
 
-function partialTranslate(text) {
-    for (const [key, value] of Object.entries(partial)) {
+function prefix(text) {
+    for (const [key, value] of Object.entries(prefixTranslation)) {
         if (text.startsWith(key)) {
             return text.replace(key, value);
         }
@@ -49,7 +49,7 @@ function partialTranslate(text) {
     return undefined;
 }
 
-const fullScreenTranslate = (text) => partialTranslate(text) || translations2[text];
+const fullScreenTranslate = (text) => prefix(text) || translations2[text];
 
 function setupTranslationObserver(node) {
     node.querySelectorAll("*").forEach((child) => translateNode(child, fullScreenTranslate));
