@@ -1,3 +1,5 @@
+import { MPAenabled } from "./enable";
+
 const translation = {
     // MPA Settings
     "MPA Settings": "MPA 设置",
@@ -97,4 +99,104 @@ const translation = {
     "Allow BCX 听我的声音 rule to trigger the clicker; Requires BCX": '允许BCX"听我的声音"规则触发训练器；需要BCX',
 };
 
-export { translation };
+const regexTranslations = [
+    {
+        regex: /^Maya\'s Petplay Additions - (.+)\'s Authority$/,
+        replacement: "Maya的宠物玩法扩展 - $1 的权限",
+    },
+    {
+        regex: /^Notify when others are accessing (.+)\'s settings$/,
+        replacement: "当他人访问 $1 的设置时通知",
+    },
+    {
+        regex: /^Allow (.+) changing her own settings while bound$/,
+        replacement: "允许 $1 在被束缚时更改自己的设置",
+    },
+    {
+        regex: /^Allow (.+) changing the settings of others while bound$/,
+        replacement: "允许 $1 在被束缚时更改他人的设置",
+    },
+    {
+        regex: /^Allow (.+) to change her Authority settings$/,
+        replacement: "允许 $1 更改她的权限设置",
+    },
+    {
+        regex: /^Allow others to change (.+)\'s Authority settings$/,
+        replacement: "允许他人更改 $1 的权限设置",
+    },
+    {
+        regex: /^Allow (.+) to change her Profile settings$/,
+        replacement: "允许 $1 更改她的个人资料设置",
+    },
+    {
+        regex: /^Allow others to change (.+)\'s Profile settings$/,
+        replacement: "允许他人更改 $1 的个人资料设置",
+    },
+    {
+        regex: /^Allow (.+) to change her Clicker settings$/,
+        replacement: "允许 $1 更改她的训练器设置",
+    },
+    {
+        regex: /^Allow others to change (.+)\'s Clicker settings$/,
+        replacement: "允许他人更改 $1 的训练器设置",
+    },
+    {
+        regex: /^Allow (.+) to change her Virtual Pet settings$/,
+        replacement: "允许 $1 更改她的虚拟宠物设置",
+    },
+    {
+        regex: /^Allow others to change (.+)\'s Virtual Pet settings$/,
+        replacement: "允许他人更改 $1 的虚拟宠物设置",
+    },
+    {
+        regex: /^Allow (.+) to change her Virtual Pet Conditions settings$/,
+        replacement: "允许 $1 更改她的虚拟宠物状态效果设置",
+    },
+    {
+        regex: /^Allow others to change (.+)\'s Virtual Pet Conditions settings$/,
+        replacement: "允许他人更改 $1 的虚拟宠物状态效果设置",
+    },
+
+    // Profile 相关
+    {
+        regex: /^Maya\'s Petplay Additions - (.+)\'s Profile$/,
+        replacement: "Maya的宠物玩法扩展 - $1 的个人资料",
+    },
+
+    // Clicker 相关
+    {
+        regex: /^Maya\'s Petplay Additions - (.+)\'s Clicker$/,
+        replacement: "Maya的宠物玩法扩展 - $1 的训练器",
+    },
+
+    // Virtual Pet 相关
+    {
+        regex: /^Maya\'s Petplay Additions - (.+)\'s Virtual Pet$/,
+        replacement: "Maya的宠物玩法扩展 - $1 的虚拟宠物",
+    },
+    {
+        regex: /^Maya\'s Petplay Additions - (.+)\'s Virtual Pet Hud$/,
+        replacement: "Maya的宠物玩法扩展 - $1 的虚拟宠物状态显示",
+    },
+    {
+        regex: /^Maya\'s Petplay Additions - (.+)\'s Virtual Pet Conditions$/,
+        replacement: "Maya的宠物玩法扩展 - $1 的虚拟宠物状态效果",
+    },
+];
+
+/**
+ * 翻译MPA的菜单文本
+ * @param {string} key
+ * @returns {string | undefined} 如果翻译成功则返回翻译后的文本，否则返回undefined
+ */
+export function translateMenuText(key) {
+    if (CurrentScreen !== "Preference") return undefined;
+    if (!MPAenabled()) return undefined;
+    if (translation[key]) return translation[key];
+    for (const { regex, replacement } of regexTranslations) {
+        if (regex.test(key)) {
+            return key.replace(regex, replacement);
+        }
+    }
+    return undefined;
+}
