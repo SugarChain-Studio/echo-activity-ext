@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { DynImageProviders } from "../../dynamicImage";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -9,7 +10,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemHands"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪轻挠手心",
             EN: "Gentle Paw Scratch",
@@ -30,7 +31,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemArms"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪轻挠手臂",
             EN: "Gentle Arm Scratch",
@@ -52,7 +53,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemHands"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         labelSelf: {
             CN: "舔舐猫爪",
             EN: "Lick Paw Gently",
@@ -74,7 +75,7 @@ const activities = [
             Target: ["ItemMouth"],
             TargetSelf: true,
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪轻戳脸颊",
             EN: "Soft Paw Poke",
@@ -96,7 +97,7 @@ const activities = [
             Target: ["ItemNose"],
             TargetSelf: true,
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪轻点鼻尖",
             EN: "Boop the Nose",
@@ -118,7 +119,7 @@ const activities = [
             Target: ["ItemMouth"],
             TargetSelf: true,
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪轻揉脸蛋",
             EN: "Gentle Face Knead",
@@ -140,7 +141,7 @@ const activities = [
             Target: ["ItemNose"],
             TargetSelf: true,
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪轻揉鼻头",
             EN: "Nose Kneading",
@@ -161,7 +162,7 @@ const activities = [
             MaxProgress: 30,
             Target: ["ItemHands"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪击掌",
             EN: "Paw High-five",
@@ -182,7 +183,7 @@ const activities = [
             MaxProgress: 60,
             Target: ["ItemHead"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪顺毛",
             EN: "Paw Grooming",
@@ -203,7 +204,7 @@ const activities = [
             MaxProgress: 20,
             Target: ["ItemHead"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "爪爪遮眼睛",
             EN: "Paw Peek-a-boo",
@@ -224,7 +225,7 @@ const activities = [
             MaxProgress: 40,
             Target: ["ItemHands"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪握手手",
             EN: "Paw Handshake",
@@ -245,7 +246,7 @@ const activities = [
             MaxProgress: 30,
             Target: ["ItemHead"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪拍头",
             EN: "Paw Head Pat",
@@ -266,7 +267,7 @@ const activities = [
             MaxProgress: 40,
             Target: ["ItemHands"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪按手",
             EN: "Paw Press Hand",
@@ -287,7 +288,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemMouth"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪摸脸",
             EN: "Paw Face Touch",
@@ -308,7 +309,7 @@ const activities = [
             MaxProgress: 30,
             Target: ["ItemArms"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪拍肩",
             EN: "Paw Shoulder Tap",
@@ -329,7 +330,7 @@ const activities = [
             MaxProgress: 20,
             Target: ["ItemNose"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪碰鼻",
             EN: "Paw Nose Bump",
@@ -350,7 +351,7 @@ const activities = [
             MaxProgress: 30,
             Target: ["ItemPelvis"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪拍肚",
             EN: "Paw Belly Pat",
@@ -371,7 +372,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemPelvis"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪揉肚",
             EN: "Paw Belly Rub",
@@ -392,7 +393,7 @@ const activities = [
             MaxProgress: 60,
             Target: ["ItemPelvis"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪暖腹",
             EN: "Paw Belly Warm",
@@ -413,7 +414,7 @@ const activities = [
             MaxProgress: 40,
             Target: ["ItemPelvis"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪画圈圈",
             EN: "Paw Circle Drawing",
@@ -434,7 +435,7 @@ const activities = [
             MaxProgress: 30,
             Target: ["ItemPelvis"],
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         label: {
             CN: "猫爪轻按",
             EN: "Paw Gentle Press",
@@ -456,7 +457,7 @@ const activities = [
             Target: ["ItemVulva"],
             TargetSelf: true,
         },
-        useImage: ["ItemHands", "PawMittens"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
         labelSelf: {
             CN: "猫爪防护",
             EN: "Paw Protective Cover",

@@ -18,8 +18,8 @@ const activities = [
             UA: "Вилизати Щупальця",
         },
         dialogSelf: {
-            CN: "SourceCharacter轻轻舔舐着触手。",
-            EN: "SourceCharacter gently licks the tentacles.",
+            CN: "SourceCharacter轻轻舔舐着TargetCharacter的触手。",
+            EN: "SourceCharacter gently licks DestinationCharacter tentacles.",
             RU: "SourceCharacter нежно облизывает щупальца.",
             UA: "SourceCharacter ніжно облизує щупальця.",
         },
@@ -184,12 +184,6 @@ const activities = [
             EN: "SourceCharacter lifts DestinationCharacter skirt with PronounPossessive tentacles.",
             RU: "SourceCharacter приподнимает юбку TargetCharacter с помощью своих тентаклей.",
             UA: "SourceCharacter піднямає спідницю TargetCharacter своїми щупальцями.",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用触手掀开PronounPossessive的裙子.",
-            EN: "SourceCharacter lifts PronounPossessive skirt with PronounPossessive tentacles.",
-            RU: "SourceCharacter приподнимает свою юбку с помощью тентаклей.",
-            UA: "SourceCharacter піднямає собі спідницю щупальцями.",
         },
     },
     {

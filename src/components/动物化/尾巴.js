@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { DynImageProviders } from "../../dynamicImage";
 
 /**
  * 道具切换
@@ -50,7 +51,7 @@ const activities = [
                 shakeTail(player, "TailStraps", "DragonTailStrap2Left", "DragonTailStrap2Right");
             }
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         label: {
             CN: "摇晃尾巴",
             EN: "Wag Tail",
@@ -101,7 +102,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemButt"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         labelSelf: {
             CN: "竖起尾巴",
             EN: "Raise Tail",
@@ -123,7 +124,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemButt"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         labelSelf: {
             CN: "炸毛",
             EN: "Fur Puffed",
@@ -145,7 +146,7 @@ const activities = [
             Target: ["ItemButt"],
             TargetSelf: true,
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActedGroup("TailStraps"),
         label: {
             CN: "舔尾巴",
             EN: "Lick Tail",
@@ -173,7 +174,7 @@ const activities = [
             Target: ["ItemButt"],
             TargetSelf: true,
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActedGroup("TailStraps"),
         label: {
             CN: "爱抚尾巴",
             EN: "Tail Caress",
@@ -201,7 +202,7 @@ const activities = [
             Target: ["ItemButt"],
             TargetSelf: true,
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActedGroup("TailStraps"),
         label: {
             CN: "衔尾",
             EN: "Tail Holding",
@@ -228,7 +229,7 @@ const activities = [
             MaxProgress: 0,
             Target: ["ItemArms"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         label: {
             CN: "尾巴缠绕",
             EN: "Tail Wrap",
@@ -250,7 +251,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemButt"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         labelSelf: {
             CN: "尾巴拍打地面",
             EN: "Tail Thumping",
@@ -267,12 +268,12 @@ const activities = [
     {
         activity: {
             Name: "尾巴炸毛",
-            Prerequisite: ["Luzi_TargetHasCatTail"],
+            Prerequisite: ["Luzi_HasCatTail"],
             MaxProgress: 20,
             Target: [],
             TargetSelf: ["ItemButt"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         labelSelf: {
             CN: "尾巴炸毛",
             EN: "Tail Fluff Up",
@@ -294,7 +295,7 @@ const activities = [
             Target: ["ItemMouth"],
             TargetSelf: true,
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         label: {
             CN: "尾巴戳脸",
             EN: "Tail Poke Face",
@@ -316,7 +317,7 @@ const activities = [
             Target: ["ItemBreast"],
             TargetSelf: true,
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
         label: {
             CN: "尾巴戳胸",
             EN: "Tail Poke Breast",

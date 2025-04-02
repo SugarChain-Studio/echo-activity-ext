@@ -1,16 +1,17 @@
 import { ActivityManager } from "../../activityForward";
+import { DynImageProviders } from "../../dynamicImage";
 
 /** @type { CustomActivity []} */
 const activities = [
     {
         activity: {
             Name: "扇动翅膀",
-            Prerequisite: ["Luzi_TargetHasWings"],
+            Prerequisite: ["Luzi_HasWings"],
             MaxProgress: 20,
             Target: [],
             TargetSelf: ["ItemArms"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("Wings"),
         labelSelf: {
             CN: "振翅",
             EN: "Wing Flutter",
@@ -27,11 +28,11 @@ const activities = [
     {
         activity: {
             Name: "翅膀轻拍",
-            Prerequisite: ["Luzi_TargetHasWings"],
+            Prerequisite: ["Luzi_HasWings"],
             MaxProgress: 30,
             Target: ["ItemArms"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("Wings"),
         label: {
             CN: "翅膀轻拍",
             EN: "Wing Pat",
@@ -48,11 +49,11 @@ const activities = [
     {
         activity: {
             Name: "翅膀环绕",
-            Prerequisite: ["Luzi_TargetHasWings"],
+            Prerequisite: ["Luzi_HasWings"],
             MaxProgress: 60,
             Target: ["ItemArms"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("Wings"),
         label: {
             CN: "翅膀环绕",
             EN: "Wing Embrace",
@@ -69,11 +70,11 @@ const activities = [
     {
         activity: {
             Name: "翅膀扇风",
-            Prerequisite: ["Luzi_TargetHasWings"],
+            Prerequisite: ["Luzi_HasWings"],
             MaxProgress: 45,
             Target: ["ItemHead"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("Wings"),
         label: {
             CN: "翅膀扇风",
             EN: "Wing Fan",
@@ -90,12 +91,12 @@ const activities = [
     {
         activity: {
             Name: "收拢翅膀",
-            Prerequisite: ["Luzi_TargetHasWings"],
+            Prerequisite: ["Luzi_HasWings"],
             MaxProgress: 20,
             Target: [],
             TargetSelf: ["ItemArms"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("Wings"),
         labelSelf: {
             CN: "收拢翅膀",
             EN: "Fold Wings",

@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { DynImageProviders } from "../../dynamicImage";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -9,7 +10,7 @@ const activities = [
             MaxProgress: 10,
             Target: ["ItemBoots"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("ItemArms"),
         label: {
             CN: "爬向脚边",
             EN: "Crawl to Feet",
@@ -30,7 +31,7 @@ const activities = [
             MaxProgress: 30,
             Target: ["ItemFeet"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("ItemArms"),
         label: {
             CN: "宠物服蹭小腿",
             EN: "Rub Legs Like a Pet",
@@ -51,7 +52,7 @@ const activities = [
             MaxProgress: 30,
             Target: ["ItemLegs"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("ItemArms"),
         label: {
             CN: "宠物服蹭大腿",
             EN: "Rub Legs Like a pet",
@@ -73,7 +74,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("ItemArms"),
         mode: "SelfOnSelf",
         run: (player) => {
             PoseSetActive(player, "AllFours", true);
@@ -99,7 +100,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("ItemArms"),
         mode: "SelfOnSelf",
         run: (player) => {
             PoseSetActive(player, "Kneel", true);
@@ -124,7 +125,7 @@ const activities = [
             MaxProgress: 60,
             Target: ["ItemArms"],
         },
-        useImage: "Wiggle",
+        useImage: DynImageProviders.itemOnActingGroup("ItemArms"),
         label: {
             CN: "宠物服扑",
             EN: "Pounces Like a Pet",
