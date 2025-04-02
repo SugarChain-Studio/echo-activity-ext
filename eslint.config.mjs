@@ -69,6 +69,14 @@ export default [
                     selector: "TemplateElement[value.raw=/TargetCharacter's/]",
                     message: "请使用 'DestinationCharacter' 代替 'TargetCharacter's'，保持正确所有格形式。",
                 },
+                {
+                    selector: "Literal[value=/DestinationCharacter's/]",
+                    message: "'DestinationCharacter' 已经是所有格了，不用加 's'。",
+                },
+                {
+                    selector: "TemplateElement[value.raw=/DestinationCharacter's/]",
+                    message: "'DestinationCharacter' 已经是所有格了，不用加 's'。",
+                },
             ],
         },
     },
