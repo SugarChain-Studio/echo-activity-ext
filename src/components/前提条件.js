@@ -38,8 +38,15 @@ const prereqStorage = {
     ),
     Luzi_HasPawMittens: (_prereq, acting, _acted, _group) =>
         InventoryIsItemInList(acting, "ItemHands", ["PawMittens", "ElbowLengthMittens"]),
-    Luzi_HasPetSuit: (_prereq, acting, _acted, _group) =>
-        InventoryIsItemInList(acting, "ItemArms", ["ShinyPetSuit", "BitchSuit", "StrictLeatherPetCrawler"]),
+    Luzi_HasPetSuit: Prereqs.or(
+        Prereqs.Acting.GroupIs("ItemArms", [
+            "ShinyPetSuit",
+            "BitchSuit",
+            "StrictLeatherPetCrawler",
+            "乳胶宠物拘束服_Luzi",
+        ]),
+        Prereqs.and(Prereqs.Acting.GroupIs("ItemArms", ["宠物服上"]), Prereqs.Acting.GroupIs("ItemArms", ["宠物服下"]))
+    ),
     Luzi_HasKennel: (_prereq, _acting, acted, _group) => InventoryIsItemInList(acted, "ItemDevices", ["Kennel"]),
     Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulvaPiercings"),
     Luzi_TargetHasItemVulva: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulva"),
@@ -67,7 +74,11 @@ const prereqStorage = {
 
         return true;
     },
+    Luzi_Female: (_prereq, acting, _acted, _group) => !acting.HasPenis(),
+    Luzi_CanWalk: (_prereq, acting, _acted, _group) => acting.CanWalk(),
     Luzi_IsStanding: Prereqs.Acting.PoseIsStanding(),
+    Luzi_IsKneeling: Prereqs.Acting.PoseIsKneeling(),
+    Luzi_IsAllFours: Prereqs.Acting.PoseIs("BodyFull", "AllFours"),
     Luzi_KneelOrAllFours: Prereqs.Acting.PoseIsKneelingOrAllFours(),
     Luzi_TargetKneelOrAllFours: Prereqs.Acted.PoseIsKneelingOrAllFours(),
 };

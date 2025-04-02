@@ -10,7 +10,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemArms"],
         },
-        useImage: ["ItemDevices", "PawMittens"],
+        useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
             CN: "撞击笼子",
             EN: "Ramming the Cage",
@@ -32,7 +32,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
-        useImage: ["ItemDevices", "PawMittens"],
+        useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
             CN: "啃咬笼栏",
             EN: "Gnawing the Bars",
@@ -54,7 +54,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemArms"],
         },
-        useImage: ["ItemDevices", "PawMittens"],
+        useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
             CN: "摇晃笼子",
             EN: "Rattling the Cage",
@@ -76,7 +76,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemArms"],
         },
-        useImage: ["ItemDevices", "PawMittens"],
+        useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
             CN: "抓挠笼子",
             EN: "Scratch at Cage",
@@ -98,7 +98,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemArms"],
         },
-        useImage: ["ItemDevices", "PawMittens"],
+        useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
             CN: "推挤笼门",
             EN: "Shove the Door",
@@ -120,7 +120,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
-        useImage: ["ItemDevices", "PawMittens"],
+        useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
             CN: "啃咬笼锁",
             EN: "Gnaw at the Lock",
@@ -142,7 +142,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemArms"],
         },
-        useImage: ["ItemDevices", "PawMittens"],
+        useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
             CN: "蜷缩角落",
             EN: "Curl Up in Corner",
@@ -154,6 +154,28 @@ const activities = [
             EN: "SourceCharacter curls up in the corner of the cage, refusing to engage with anything outside.",
             RU: "SourceCharacter сжимается в углу клетки, игнорируя всё происходящее снаружи.",
             UA: "SourceCharacter згортається в кутку клітки, ігноруючи все навколо.",
+        },
+    },
+    {
+        activity: {
+            Name: "摩擦笼子",
+            Prerequisite: ["Luzi_HasKennel"],
+            MaxProgress: 80,
+            Target: [],
+            TargetSelf: ["ItemVulva"],
+        },
+        useImage: ["ItemDevices", "Kennel"],
+        labelSelf: {
+            CN: "摩擦笼子",
+            EN: "Rubbing the Cage",
+            RU: "Тереть клетку",
+            UA: "Терти клітку",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter笨拙地扭动腰身，用阴部摩擦笼子的金属栏杆",
+            EN: "SourceCharacter awkwardly writhes, rubbing PronounPossessive vulva against the metal bars of the cage.",
+            RU: "SourceCharacter неуклюже извивается, теряя вульвой металлические прутья клетки.",
+            UA: "SourceCharacter незграбно звивається, теребля вульвою металеві прути клітки.",
         },
     },
 ];

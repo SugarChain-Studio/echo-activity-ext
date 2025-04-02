@@ -28,7 +28,7 @@ const activities = [
         activity: {
             Name: "触手摸头",
             Prerequisite: ["Luzi_HasTentacles"],
-            MaxProgress: 50,
+            MaxProgress: 20,
             Target: ["ItemHead"],
             TargetSelf: true,
         },
@@ -41,7 +41,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手轻轻抚摸TargetCharacter的头部。",
-            EN: "SourceCharacter gently pats DestinationCharacter's head with tentacles.",
+            EN: "SourceCharacter gently pats DestinationCharacter head with tentacles.",
             RU: "SourceCharacter нежно гладит голову TargetCharacter щупальцами.",
             UA: "SourceCharacter ніжно гладить голову TargetCharacter щупальцями.",
         },
@@ -74,10 +74,10 @@ const activities = [
             UA: "SourceCharacter тицяє ніс TargetCharacter своїми щупальцями.",
         },
         dialogSelf: {
-            "CN": "SourceCharacter用触手戳了戳自己的鼻子。",
-            "EN": "SourceCharacter pokes own nose with tentacles.",
-            "RU": "SourceCharacter тыкает щупальцами в свой нос.",
-            "UA": "SourceCharacter тицяє щупальцями у свій ніс.",
+            CN: "SourceCharacter用触手戳了戳自己的鼻子。",
+            EN: "SourceCharacter pokes own nose with tentacles.",
+            RU: "SourceCharacter тыкает щупальцами в свой нос.",
+            UA: "SourceCharacter тицяє щупальцями у свій ніс.",
         },
     },
     {
@@ -97,7 +97,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手轻轻触碰TargetCharacter的鼻尖。",
-            EN: "SourceCharacter gently touches DestinationCharacter's nose with tentacles.",
+            EN: "SourceCharacter gently touches DestinationCharacter nose with tentacles.",
             RU: "SourceCharacter нежно касается носа TargetCharacter щупальцами.",
             UA: "SourceCharacter ніжно торкається носа TargetCharacter щупальцями.",
         },
@@ -125,7 +125,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手尖端轻轻触碰TargetCharacter的脸颊。",
-            EN: "SourceCharacter gently touches DestinationCharacter's cheek with the tip of a tentacle.",
+            EN: "SourceCharacter gently touches DestinationCharacter cheek with the tip of a tentacle.",
             RU: "SourceCharacter нежно касается щеки TargetCharacter кончиком щупальца.",
             UA: "SourceCharacter ніжно торкається щоки TargetCharacter кінчиком щупальця.",
         },
@@ -236,7 +236,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用触手轻轻缠绕住TargetCharacter的手腕。",
-            EN: "SourceCharacter gently wraps tentacles around DestinationCharacter's wrist.",
+            EN: "SourceCharacter gently wraps tentacles around DestinationCharacter wrist.",
             RU: "SourceCharacter нежно обвивает щупальцами запястье TargetCharacter.",
             UA: "SourceCharacter ніжно обвиває щупальцями зап'ястя TargetCharacter.",
         },

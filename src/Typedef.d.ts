@@ -26,7 +26,11 @@ type CustomActivityPrerequisite =
     | 'Luzi_HasSword'
     | 'Luzi_Has鱼鱼尾'
     | 'Luzi_CharacterViewWithinReach'
+    | 'Luzi_Female'
+    | 'Luzi_CanWalk'
     | 'Luzi_IsStanding'
+    | 'Luzi_IsKneeling'
+    | 'Luzi_IsAllFours'
     | 'Luzi_KneelOrAllFours'
     | 'Luzi_TargetKneelOrAllFours';
 

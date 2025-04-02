@@ -18,7 +18,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用毛茸茸的爪子轻轻挠了挠TargetCharacter的手心。",
-            EN: "SourceCharacter gently scratches DestinationCharacter's palm with PronounPossessive fluffy paw.",
+            EN: "SourceCharacter gently scratches DestinationCharacter palm with PronounPossessive fluffy paw.",
             RU: "SourceCharacter нежно царапает ладонь TargetCharacter своей пушистой лапкой.",
             UA: "SourceCharacter ніжно дряпає долоню TargetCharacter своєю пухнастою лапкою.",
         },
@@ -39,7 +39,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻在TargetCharacter的手臂上挠了几下。",
-            EN: "SourceCharacter gives DestinationCharacter's arm a few gentle scratches with PronounPossessive paw.",
+            EN: "SourceCharacter gives DestinationCharacter arm a few gentle scratches with PronounPossessive paw.",
             RU: "SourceCharacter нежно проводит коготками по руке TargetCharacter.",
             UA: "SourceCharacter ніжно проводить кігтями по руці TargetCharacter.",
         },
@@ -83,7 +83,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用肉垫轻轻戳了戳TargetCharacter的脸颊。",
-            EN: "SourceCharacter softly pokes DestinationCharacter's cheek with PronounPossessive paw pad.",
+            EN: "SourceCharacter softly pokes DestinationCharacter cheek with PronounPossessive paw pad.",
             RU: "SourceCharacter нежно тыкает своей мягкой лапкой в щёку TargetCharacter.",
             UA: "SourceCharacter ніжно тикає своєю м'якою лапкою в щоку TargetCharacter.",
         },
@@ -105,7 +105,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻点了点TargetCharacter的鼻尖。",
-            EN: "SourceCharacter playfully boops DestinationCharacter's nose with PronounPossessive paw.",
+            EN: "SourceCharacter playfully boops DestinationCharacter nose with PronounPossessive paw.",
             RU: "SourceCharacter игриво тыкает лапкой в носик TargetCharacter.",
             UA: "SourceCharacter грайливо тикає лапкою в носик TargetCharacter.",
         },
@@ -127,7 +127,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用毛茸茸的爪子轻轻揉着TargetCharacter的脸蛋。",
-            EN: "SourceCharacter gently kneads DestinationCharacter's cheeks with PronounPossessive fluffy paws.",
+            EN: "SourceCharacter gently kneads DestinationCharacter cheeks with PronounPossessive fluffy paws.",
             RU: "SourceCharacter нежно мнёт щёчки TargetCharacter своими пушистыми лапками.",
             UA: "SourceCharacter ніжно м'яти щічки TargetCharacter своїми пухнастими лапками.",
         },
@@ -149,7 +149,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子温柔地揉着TargetCharacter的鼻头。",
-            EN: "SourceCharacter affectionately kneads DestinationCharacter's nose with PronounPossessive paws.",
+            EN: "SourceCharacter affectionately kneads DestinationCharacter nose with PronounPossessive paws.",
             RU: "SourceCharacter нежно мнёт носик TargetCharacter своими лапками.",
             UA: "SourceCharacter ніжно м'яти носик TargetCharacter своїми лапками.",
         },
@@ -191,7 +191,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻梳理着TargetCharacter的头发。",
-            EN: "SourceCharacter gently combs DestinationCharacter's hair with PronounPossessive paws.",
+            EN: "SourceCharacter gently combs DestinationCharacter hair with PronounPossessive paws.",
             RU: "SourceCharacter нежно расчёсывает волосы TargetCharacter своей лапкой.",
             UA: "SourceCharacter ніжно розчісує волосся TargetCharacter своєю лапкою.",
         },
@@ -212,7 +212,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter调皮地用爪子盖住了TargetCharacter的眼睛。",
-            EN: "SourceCharacter playfully covers DestinationCharacter's eyes with PronounPossessive paws in a kittenish game.",
+            EN: "SourceCharacter playfully covers DestinationCharacter eyes with PronounPossessive paws in a kittenish game.",
             RU: "SourceCharacter озорно закрывает лапками глаза TargetCharacter, играя в кошачьи прятки.",
             UA: "SourceCharacter жартівливо закриває лапками очі TargetCharacter, граючи у котячі хованки.",
         },
@@ -233,7 +233,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter把毛茸茸的小爪子搭在TargetCharacter的手心里。",
-            EN: "SourceCharacter places PronounPossessive fluffy little paw into DestinationCharacter's open palm.",
+            EN: "SourceCharacter places PronounPossessive fluffy little paw into DestinationCharacter open palm.",
             RU: "SourceCharacter кладёт свою пушистую лапку на раскрытую ладонь TargetCharacter.",
             UA: "SourceCharacter кладе свою пухнасту лапку на відкриту долоню TargetCharacter.",
         },
@@ -254,7 +254,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻拍了拍TargetCharacter的头。",
-            EN: "SourceCharacter gently pats DestinationCharacter's head with PronounPossessive paw.",
+            EN: "SourceCharacter gently pats DestinationCharacter head with PronounPossessive paw.",
             RU: "SourceCharacter нежно гладит голову TargetCharacter своей лапкой.",
             UA: "SourceCharacter ніжно гладить голову TargetCharacter своєю лапкою.",
         },
@@ -275,7 +275,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子按在TargetCharacter的手上。",
-            EN: "SourceCharacter presses PronounPossessive paw against DestinationCharacter's hand.",
+            EN: "SourceCharacter presses PronounPossessive paw against DestinationCharacter hand.",
             RU: "SourceCharacter нажимает своей лапкой на руку TargetCharacter.",
             UA: "SourceCharacter натискає своєю лапкою на руку TargetCharacter.",
         },
@@ -296,7 +296,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻摸了摸TargetCharacter的脸。",
-            EN: "SourceCharacter gently touches DestinationCharacter's face with PronounPossessive paw.",
+            EN: "SourceCharacter gently touches DestinationCharacter face with PronounPossessive paw.",
             RU: "SourceCharacter нежно трогает лицо TargetCharacter своей лапкой.",
             UA: "SourceCharacter ніжно торкається лице TargetCharacter своєю лапкою.",
         },
@@ -317,7 +317,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻拍了拍TargetCharacter的肩膀。",
-            EN: "SourceCharacter gently taps DestinationCharacter's shoulder with PronounPossessive paw.",
+            EN: "SourceCharacter gently taps DestinationCharacter shoulder with PronounPossessive paw.",
             RU: "SourceCharacter нежно хлопает лапкой по плечу TargetCharacter.",
             UA: "SourceCharacter ніжно ляскає лапкою по плечу TargetCharacter.",
         },
@@ -338,7 +338,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻碰了碰TargetCharacter的鼻子。",
-            EN: "SourceCharacter gently bumps DestinationCharacter's nose with PronounPossessive paw.",
+            EN: "SourceCharacter gently bumps DestinationCharacter nose with PronounPossessive paw.",
             RU: "SourceCharacter нежно касается носа TargetCharacter своей лапкой.",
             UA: "SourceCharacter ніжно торкається носа TargetCharacter своєю лапкою.",
         },
@@ -359,7 +359,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻拍了拍TargetCharacter的肚子。",
-            EN: "SourceCharacter gently pats DestinationCharacter's belly with PronounPossessive paw.",
+            EN: "SourceCharacter gently pats DestinationCharacter belly with PronounPossessive paw.",
             RU: "SourceCharacter нежно хлопает лапкой по животу TargetCharacter.",
             UA: "SourceCharacter ніжно плеще лапкою по животу TargetCharacter.",
         },
@@ -380,7 +380,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻揉着TargetCharacter的肚子。",
-            EN: "SourceCharacter gently rubs DestinationCharacter's belly with PronounPossessive paws.",
+            EN: "SourceCharacter gently rubs DestinationCharacter belly with PronounPossessive paws.",
             RU: "SourceCharacter нежно массирует живот TargetCharacter своей лапкой.",
             UA: "SourceCharacter ніжно масажує живіт TargetCharacter своєю лапкою.",
         },
@@ -401,7 +401,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter把温暖的爪子贴在TargetCharacter的肚子上。",
-            EN: "SourceCharacter places PronounPossessive warm paws on DestinationCharacter's belly.",
+            EN: "SourceCharacter places PronounPossessive warm paws on DestinationCharacter belly.",
             RU: "SourceCharacter прикладывает тёплую лапку к животу TargetCharacter.",
             UA: "SourceCharacter прикладає теплу лапку до живота TargetCharacter.",
         },
@@ -422,7 +422,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子在TargetCharacter肚子上画着小圆圈。",
-            EN: "SourceCharacter draws little circles on DestinationCharacter's belly with PronounPossessive paw.",
+            EN: "SourceCharacter draws little circles on DestinationCharacter belly with PronounPossessive paw.",
             RU: "SourceCharacter рисует маленькие кружки на животе TargetCharacter своей лапкой.",
             UA: "SourceCharacter малює маленькі кружечки на животі TargetCharacter своєю лапкою.",
         },
@@ -443,7 +443,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用爪子轻轻按着TargetCharacter的下腹部。",
-            EN: "SourceCharacter gently presses PronounPossessive paw against DestinationCharacter's lower belly.",
+            EN: "SourceCharacter gently presses PronounPossessive paw against DestinationCharacter lower belly.",
             RU: "SourceCharacter слегка нажимает лапкой на низ живота TargetCharacter.",
             UA: "SourceCharacter легко натискає лапкою на низ живота TargetCharacter.",
         },
@@ -465,7 +465,7 @@ const activities = [
         },
         dialogSelf: {
             CN: "SourceCharacter用爪子轻轻护住TargetCharacter的私密部位。",
-            EN: "SourceCharacter gently covers DestinationCharacter's private area with PronounPossessive paws.",
+            EN: "SourceCharacter gently covers DestinationCharacter private area with PronounPossessive paws.",
             RU: "SourceCharacter нежно прикрывает интимную зону TargetCharacter своей лапкой.",
             UA: "SourceCharacter ніжно прикриває інтимну зону TargetCharacter своєю лапкою.",
         },

@@ -6,7 +6,7 @@ const activities = [
         activity: {
             Name: "宠物服爬到脚边",
             Prerequisite: ["Luzi_HasPetSuit"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: ["ItemBoots"],
         },
         useImage: "Wiggle",
@@ -18,7 +18,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter四肢并用，缓缓爬到TargetCharacter脚边。",
-            EN: "SourceCharacter crawls on all fours to DestinationCharacter's feet.",
+            EN: "SourceCharacter crawls on all fours to DestinationCharacter feet.",
             RU: "SourceCharacter подползает на четвереньках к ногам TargetCharacter.",
             UA: "SourceCharacter повзе на чотирьох до ніг TargetCharacter.",
         },
@@ -26,8 +26,8 @@ const activities = [
     {
         activity: {
             Name: "宠物服蹭小腿",
-            Prerequisite: ["Luzi_HasPetSuit"],
-            MaxProgress: 50,
+            Prerequisite: ["Luzi_HasPetSuit", "MoveHead"],
+            MaxProgress: 30,
             Target: ["ItemFeet"],
         },
         useImage: "Wiggle",
@@ -39,7 +39,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用脑袋轻轻蹭着TargetCharacter的小腿。",
-            EN: "SourceCharacter gently rubs against DestinationCharacter's calf with PronounPossessive head.",
+            EN: "SourceCharacter gently rubs against DestinationCharacter calf with PronounPossessive head.",
             RU: "SourceCharacter нежно трётся головой о голень TargetCharacter.",
             UA: "SourceCharacter ніжно треться головою об литку TargetCharacter.",
         },
@@ -48,7 +48,7 @@ const activities = [
         activity: {
             Name: "宠物服蹭大腿",
             Prerequisite: ["Luzi_HasPetSuit"],
-            MaxProgress: 50,
+            MaxProgress: 30,
             Target: ["ItemLegs"],
         },
         useImage: "Wiggle",
@@ -60,7 +60,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用脑袋轻轻蹭着TargetCharacter的大腿。",
-            EN: "SourceCharacter gently rubs against DestinationCharacter's thigh with PronounPossessive head.",
+            EN: "SourceCharacter gently rubs against DestinationCharacter thigh with PronounPossessive head.",
             RU: "SourceCharacter нежно трётся головой о бедро TargetCharacter.",
             UA: "SourceCharacter ніжно треться головою об стегно TargetCharacter.",
         },
@@ -68,12 +68,16 @@ const activities = [
     {
         activity: {
             Name: "宠物服趴下",
-            Prerequisite: ["Luzi_HasPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit", "Luzi_IsKneeling"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
         useImage: "Wiggle",
+        mode: "SelfOnSelf",
+        run: (player) => {
+            PoseSetActive(player, "AllFours", true);
+        },
         labelSelf: {
             CN: "宠物服趴下",
             EN: "Lie Down Like a Pet",
@@ -90,12 +94,16 @@ const activities = [
     {
         activity: {
             Name: "宠物服跪立",
-            Prerequisite: ["Luzi_HasPetSuit"],
+            Prerequisite: ["Luzi_HasPetSuit", "Luzi_IsAllFours"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemLegs"],
         },
         useImage: "Wiggle",
+        mode: "SelfOnSelf",
+        run: (player) => {
+            PoseSetActive(player, "Kneel", true);
+        },
         labelSelf: {
             CN: "宠物服跪立",
             EN: "Kneel Like a Pet",
@@ -112,8 +120,8 @@ const activities = [
     {
         activity: {
             Name: "宠物服扑",
-            Prerequisite: ["Luzi_HasPetSuit"],
-            MaxProgress: 50,
+            Prerequisite: ["Luzi_HasPetSuit", "Luzi_CharacterViewWithinReach"],
+            MaxProgress: 60,
             Target: ["ItemArms"],
         },
         useImage: "Wiggle",
@@ -125,7 +133,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter欢快地扑进TargetCharacter怀里。",
-            EN: "SourceCharacter joyfully leaps into DestinationCharacter's arms.",
+            EN: "SourceCharacter joyfully leaps into DestinationCharacter arms.",
             RU: "SourceCharacter радостно прыгает в объятия TargetCharacter.",
             UA: "SourceCharacter радісно стрибає в обійми TargetCharacter.",
         },

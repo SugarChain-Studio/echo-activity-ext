@@ -40,7 +40,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用翅膀轻轻拍了拍TargetCharacter的手臂。",
-            EN: "SourceCharacter gently pats DestinationCharacter's arm with a wing.",
+            EN: "SourceCharacter gently pats DestinationCharacter arm with a wing.",
             RU: "SourceCharacter нежно шлёпает крылом по руке TargetCharacter.",
             UA: "SourceCharacter ніжно ляскає крилом по руці TargetCharacter.",
         },
@@ -103,10 +103,10 @@ const activities = [
             UA: "Скласти крила",
         },
         dialogSelf: {
-            "CN": "SourceCharacter收拢起自己的翅膀。",
-            "EN": "SourceCharacter folds PronounPossessive wings.",
-            "RU": "SourceCharacter складывает свои крылья。",
-            "UA": "SourceCharacter складає свої крила。",
+            CN: "SourceCharacter收拢起自己的翅膀。",
+            EN: "SourceCharacter folds PronounPossessive wings.",
+            RU: "SourceCharacter складывает свои крылья。",
+            UA: "SourceCharacter складає свої крила。",
         },
     },
 ];

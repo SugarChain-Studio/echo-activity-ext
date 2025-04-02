@@ -33,6 +33,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemButt"],
         },
+        mode: "SelfOnSelf",
         run: (player, sender, info) => {
             if (info.SourceCharacter === player.MemberNumber) {
                 const asset = AssetGet("Female3DCG", "TailStraps", "穿戴式猫尾镜像_Luzi");
@@ -66,10 +67,11 @@ const activities = [
         activity: {
             Name: "摇晃耳朵",
             Prerequisite: [(_prereq, _acting, acted, _group) => !!InventoryGet(acted, "HairAccessory2")],
-            MaxProgress: 50,
+            MaxProgress: 30,
             Target: [],
             TargetSelf: ["ItemEars"],
         },
+        mode: "SelfOnSelf",
         run: (player, sender, info) => {
             if (info.SourceCharacter === player.MemberNumber) {
                 const asset = AssetGet("Female3DCG", "HairAccessory2", "黑猫耳镜像_Luzi");
@@ -95,7 +97,7 @@ const activities = [
         activity: {
             Name: "竖起尾巴",
             Prerequisite: ["Luzi_TargetHasCatTail"],
-            MaxProgress: 50,
+            MaxProgress: 30,
             Target: [],
             TargetSelf: ["ItemButt"],
         },
@@ -117,7 +119,7 @@ const activities = [
         activity: {
             Name: "炸毛",
             Prerequisite: ["Luzi_TargetHasCatTail"],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemButt"],
         },
@@ -139,7 +141,7 @@ const activities = [
         activity: {
             Name: "舔尾巴",
             Prerequisite: ["Luzi_TargetHasCatTail"],
-            MaxProgress: 50,
+            MaxProgress: 60,
             Target: ["ItemButt"],
             TargetSelf: true,
         },
@@ -152,7 +154,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter温柔地舔舐着TargetCharacter的尾巴，细心地梳理每一根毛发。",
-            EN: "SourceCharacter gently licks DestinationCharacter's tail, carefully grooming each strand of fur.",
+            EN: "SourceCharacter gently licks DestinationCharacter tail, carefully grooming each strand of fur.",
             RU: "SourceCharacter нежно вылизывает хвост TargetCharacter, тщательно причёсывая каждый волосок.",
             UA: "SourceCharacter ніжно вилизує хвіст TargetCharacter, ретельно причісуючи кожну шерстинку.",
         },
@@ -167,7 +169,7 @@ const activities = [
         activity: {
             Name: "轻抚尾巴",
             Prerequisite: ["Luzi_TargetHasTail"],
-            MaxProgress: 50,
+            MaxProgress: 60,
             Target: ["ItemButt"],
             TargetSelf: true,
         },
@@ -180,7 +182,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter的手指轻柔地顺着TargetCharacter的尾巴滑下，动作充满爱意。",
-            EN: "SourceCharacter's fingers glide tenderly along DestinationCharacter's tail in a loving motion.",
+            EN: "SourceCharacter's fingers glide tenderly along DestinationCharacter tail in a loving motion.",
             RU: "Пальцы SourceCharacter нежно скользят по хвосту TargetCharacter, полные нежности.",
             UA: "Пальці SourceCharacter ніжно ковзають по хвосту TargetCharacter, сповнені ніжності.",
         },
@@ -195,7 +197,7 @@ const activities = [
         activity: {
             Name: "衔尾",
             Prerequisite: ["Luzi_TargetHasCatTail"],
-            MaxProgress: 50,
+            MaxProgress: 30,
             Target: ["ItemButt"],
             TargetSelf: true,
         },
@@ -208,7 +210,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter轻轻咬住TargetCharacter的尾巴尖，顽皮地拉扯着。",
-            EN: "SourceCharacter playfully nips the tip of DestinationCharacter's tail, giving it a gentle tug.",
+            EN: "SourceCharacter playfully nips the tip of DestinationCharacter tail, giving it a gentle tug.",
             RU: "SourceCharacter игриво прикусывает кончик хвоста TargetCharacter, слегка потягивая.",
             UA: "SourceCharacter жартівливо прикушує кінчик хвоста TargetCharacter, злегка потягуючи.",
         },
@@ -223,7 +225,7 @@ const activities = [
         activity: {
             Name: "尾巴缠绕",
             Prerequisite: ["Luzi_TargetHasCatTail"],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: ["ItemArms"],
         },
         useImage: "Wiggle",
@@ -235,7 +237,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter的尾巴悄悄缠上TargetCharacter的手腕，像一条柔软的绳索。",
-            EN: "SourceCharacter's tail coils around DestinationCharacter's wrist like a soft, living rope.",
+            EN: "SourceCharacter's tail coils around DestinationCharacter wrist like a soft, living rope.",
             RU: "Хвост SourceCharacter нежно обвивает запястье TargetCharacter, словно мягкая верёвка.",
             UA: "Хвіст SourceCharacter ніжно обвиває зап'ястя TargetCharacter, наче м'яка жива мотузка.",
         },
@@ -282,6 +284,50 @@ const activities = [
             EN: "SourceCharacter's tail suddenly puffs up, becoming twice its size like a tiny broom.",
             RU: "Хвост SourceCharacter внезапно распушается, становясь вдвое больше, словно маленькая метёлка.",
             UA: "Хвіст SourceCharacter раптом стає дибки, збільшуючись вдвічі, наче маленька мітла.",
+        },
+    },
+    {
+        activity: {
+            Name: "尾巴戳脸",
+            Prerequisite: ["Luzi_TargetHasCatTail"],
+            MaxProgress: 10,
+            Target: ["ItemMouth"],
+            TargetSelf: true,
+        },
+        useImage: "Wiggle",
+        label: {
+            CN: "尾巴戳脸",
+            EN: "Tail Poke Face",
+            RU: "Хвостом в Лицо",
+            UA: "Хвостом у Обличчя",
+        },
+        dialog: {
+            CN: "SourceCharacter用尾巴轻轻戳了戳TargetCharacter的脸颊。",
+            EN: "SourceCharacter pokes DestinationCharacter cheek with PronounPossessive tail.",
+            RU: "SourceCharacter тыкает щекой TargetCharacter своим хвостом.",
+            UA: "SourceCharacter тицяє щокою TargetCharacter своїм хвостом.",
+        },
+    },
+    {
+        activity: {
+            Name: "尾巴戳胸",
+            Prerequisite: ["Luzi_TargetHasCatTail"],
+            MaxProgress: 30,
+            Target: ["ItemBreast"],
+            TargetSelf: true,
+        },
+        useImage: "Wiggle",
+        label: {
+            CN: "尾巴戳胸",
+            EN: "Tail Poke Breast",
+            RU: "Хвостом в Грудь",
+            UA: "Хвостом у Грудь",
+        },
+        dialog: {
+            CN: "SourceCharacter用尾巴轻轻戳了戳TargetCharacter的胸部。",
+            EN: "SourceCharacter pokes DestinationCharacter breast with PronounPossessive tail.",
+            RU: "SourceCharacter тыкает грудь TargetCharacter своим хвостом.",
+            UA: "SourceCharacter тицяє груддю TargetCharacter своїм хвостом.",
         },
     },
 ];
