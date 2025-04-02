@@ -126,7 +126,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用指尖戳了戳TargetCharacter的脸.",
-            EN: "SourceCharacter pokes DestinationCharacter face with a finger.",
+            EN: "SourceCharacter pokes DestinationCharacter face with the tip of PronounPossessive finger.",
             RU: "SourceCharacter тыкает в лицо TargetCharacter.",
             UA: "SourceCharacter тицяє TargetCharacter в обличчя.",
         },
@@ -148,9 +148,9 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter戳了戳TargetCharacter的手臂.",
-            EN: "SourceCharacter pokes DestinationCharacter arm.",
-            RU: "SourceCharacter тыкает TargetCharacter в руку.",
-            UA: "SourceCharacter тицяє руку TargetCharacter.",
+            EN: "SourceCharacter pokes DestinationCharacter arm with the tip of PronounPossessive finger.",
+            RU: "SourceCharacter тыкает в руку TargetCharacter.",
+            UA: "SourceCharacter тицяє TargetCharacter в руку.",
         },
     },
     {
@@ -170,7 +170,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用指尖戳了戳TargetCharacter的胸部.",
-            EN: "SourceCharacter pokes DestinationCharacter breast with a finger.",
+            EN: "SourceCharacter pokes DestinationCharacter breast with the tip of PronounPossessive finger.",
             RU: "SourceCharacter тыкает в грудь TargetCharacter.",
             UA: "SourceCharacter тицяє TargetCharacter в груди.",
         },
@@ -180,7 +180,7 @@ const activities = [
             Name: "戳阴部",
             Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale"],
             MaxProgress: 60,
-            Target: ["ItemBreast"],
+            Target: ["ItemVulva"],
             TargetSelf: true,
         },
         useImage: Path.resolve("activities/poke.png"),
@@ -192,9 +192,31 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用指尖戳了戳TargetCharacter的阴部.",
-            EN: "SourceCharacter pokes DestinationCharacter groin with a finger.",
+            EN: "SourceCharacter pokes DestinationCharacter groin with the tip of PronounPossessive finger.",
             RU: "SourceCharacter тыкает в промежность TargetCharacter.",
             UA: "SourceCharacter тицяє TargetCharacter в пах.",
+        },
+    },
+    {
+        activity: {
+            Name: "戳阴蒂",
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale"],
+            MaxProgress: 80,
+            Target: ["ItemVulvaPiercings"],
+            TargetSelf: true,
+        },
+        useImage: Path.resolve("activities/poke.png"),
+        label: {
+            CN: "戳阴蒂",
+            EN: "Poke Clitoris",
+            RU: "Тыкнуть в Клиторальное Кольцо",
+            UA: "Тицяти в клітор",
+        },
+        dialog: {
+            CN: "SourceCharacter用指尖戳了戳TargetCharacter的阴蒂.",
+            EN: "SourceCharacter pokes DestinationCharacter clitoris with the tip of PronounPossessive finger.",
+            RU: "SourceCharacter тыкает пальцем в клитор TargetCharacter.",
+            UA: "SourceCharacter тицяє клітор TargetCharacter кінчиком пальця.",
         },
     },
     {
