@@ -159,7 +159,7 @@ const activities = [
     {
         activity: {
             Name: "摩擦笼子",
-            Prerequisite: ["Luzi_HasKennel"],
+            Prerequisite: ["Luzi_HasKennel", "Luzi_Female", "TargetZoneNaked"],
             MaxProgress: 80,
             Target: [],
             TargetSelf: ["ItemVulva"],

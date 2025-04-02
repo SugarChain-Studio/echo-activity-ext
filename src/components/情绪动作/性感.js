@@ -48,7 +48,7 @@ const activities = [
     {
         activity: {
             Name: "弹阴蒂",
-            Prerequisite: ["UseHands", "UseArms"],
+            Prerequisite: ["UseHands", "UseArms", "TargetZoneNaked"],
             MaxProgress: 50,
             Target: ["ItemVulvaPiercings"],
         },
@@ -69,7 +69,7 @@ const activities = [
     {
         activity: {
             Name: "揉搓乳头",
-            Prerequisite: ["UseHands", "UseArms", "ZoneNaked"],
+            Prerequisite: ["UseHands", "UseArms", "TargetZoneNaked"],
             MaxProgress: 90,
             Target: ["ItemNipples"],
             TargetSelf: true,
