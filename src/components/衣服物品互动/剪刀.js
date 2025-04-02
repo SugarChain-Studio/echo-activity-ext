@@ -3,8 +3,8 @@ import { Prereqs } from "../../Prereqs";
 
 /**@type {Partial<Record<AssetGroupItemName, CustomGroupName[]>>} */
 const groupMap = {
-    ItemTorso: ["Cloth", "Cloth_笨笨蛋Luzi", "Cloth_笨笨笨蛋Luzi2"],
-    ItemLegs: ["ClothLower", "ClothLower_笨笨蛋Luzi", "ClothLower_笨笨笨蛋Luzi2"],
+    ItemTorso: ["Cloth", "Cloth_笨笨蛋Luzi", "Cloth_笨笨笨蛋Luzi2", "Suit", "Suit_笨笨蛋Luzi"],
+    ItemLegs: ["ClothLower", "ClothLower_笨笨蛋Luzi", "ClothLower_笨笨笨蛋Luzi2", "SuitLower", "SuitLower_笨笨蛋Luzi"],
     ItemBreast: ["Bra", "ClothAccessory", "Corset"],
     ItemVulvaPiercings: ["Panties"],
     ItemFeet: ["Socks", "SocksLeft", "SocksRight"],

@@ -47,6 +47,8 @@ const prereqStorage = {
         ]),
         Prereqs.and(Prereqs.Acting.GroupIs("ItemArms", ["宠物服上"]), Prereqs.Acting.GroupIs("ItemArms", ["宠物服下"]))
     ),
+    Luzi_HasBreast: Prereqs.Acting.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
+    Luzi_TargetHasBreast: Prereqs.Acted.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
     Luzi_HasKennel: (_prereq, _acting, acted, _group) => InventoryIsItemInList(acted, "ItemDevices", ["Kennel"]),
     Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulvaPiercings"),
     Luzi_TargetHasItemVulva: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulva"),

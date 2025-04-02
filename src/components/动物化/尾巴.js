@@ -311,7 +311,7 @@ const activities = [
     {
         activity: {
             Name: "尾巴戳胸",
-            Prerequisite: ["Luzi_TargetHasCatTail"],
+            Prerequisite: ["Luzi_TargetHasCatTail", "Luzi_TargetHasBreast"],
             MaxProgress: 30,
             Target: ["ItemBreast"],
             TargetSelf: true,

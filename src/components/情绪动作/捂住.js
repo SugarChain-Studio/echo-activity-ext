@@ -49,7 +49,7 @@ const activities = [
     {
         activity: {
             Name: "捂住胸",
-            Prerequisite: ["UseHands", "UseArms"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_HasBreast"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemBreast"],
