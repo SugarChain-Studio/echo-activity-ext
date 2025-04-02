@@ -178,7 +178,7 @@ const activities = [
     {
         activity: {
             Name: "戳阴部",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "TargetZoneNaked"],
             MaxProgress: 60,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -200,7 +200,7 @@ const activities = [
     {
         activity: {
             Name: "戳阴蒂",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "TargetZoneNaked"],
             MaxProgress: 80,
             Target: ["ItemVulvaPiercings"],
             TargetSelf: true,
