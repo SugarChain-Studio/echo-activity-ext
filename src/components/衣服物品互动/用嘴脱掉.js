@@ -1,6 +1,6 @@
 import { ActivityManager } from "../../activityForward";
-import { Tools } from "@mod-utils/Tools";
 import { Prereqs } from "../../Prereqs";
+import { i18nAction } from "../../messager";
 
 /** @type {CustomGroupName[]} */
 const gloves = ["Gloves", "Gloves_笨笨蛋Luzi", "Gloves_笨笨笨蛋Luzi2"];
@@ -48,14 +48,22 @@ function calcuTimeAndPosi(acting) {
     return { time, posi };
 }
 
-function removingCheck(pool, { SourceCharacter, TargetCharacter }, { time, posi }) {
+function removingCheck(pool, { source, destination }, { time, posi }) {
     if (pool.length === 0) {
-        Tools.sendCustomDialog(
+        i18nAction(
             {
                 CN: "SourceCharacter没有找到可以脱掉的物品.",
                 EN: "SourceCharacter did not find any items that can be taken off.",
             },
-            { TargetCharacter, SourceCharacter }
+            { source, destination }
+        );
+
+        i18nAction(
+            {
+                CN: "SourceCharacter没有找到可以脱掉的物品.",
+                EN: "SourceCharacter did not find any items that can be taken off.",
+            },
+            { source, destination }
         );
         return;
     }
@@ -63,22 +71,22 @@ function removingCheck(pool, { SourceCharacter, TargetCharacter }, { time, posi 
     setTimeout(() => {
         const rdItem = pool[Math.floor(Math.random() * pool.length)];
         if (Math.random() < posi) {
-            Tools.sendCustomDialog(
+            i18nAction(
                 {
                     CN: "SourceCharacter成功用嘴脱掉了DestinationCharacterNameAssetName.",
                     EN: "SourceCharacter successfully took off DestinationCharacterName AssetName with mouth.",
                 },
-                { TargetCharacter, SourceCharacter, Asset: rdItem.Asset }
+                { source, destination, asset: rdItem.Asset }
             );
             InventoryRemove(Player, rdItem.Asset.Group.Name);
-            ChatRoomCharacterItemUpdate(TargetCharacter, rdItem.Asset.Group.Name);
+            ChatRoomCharacterItemUpdate(destination, rdItem.Asset.Group.Name);
         } else {
-            Tools.sendCustomDialog(
+            i18nAction(
                 {
                     CN: "SourceCharacter尝试用嘴脱掉DestinationCharacterNameAssetName，但失败了.",
                     EN: "SourceCharacter tries to take off DestinationCharacterName AssetName with mouth, but failed.",
                 },
-                { TargetCharacter, SourceCharacter, Asset: rdItem.Asset }
+                { source, destination, asset: rdItem.Asset }
             );
         }
     }, time);
@@ -89,7 +97,7 @@ function removeCallback(groups) {
         if (player.MemberNumber !== info.TargetCharacter) return;
         removingCheck(
             player.Appearance.filter((item) => groups.includes(item.Asset.Group.Name)),
-            { SourceCharacter: sender, TargetCharacter: player },
+            { source: sender, destination: player },
             calcuTimeAndPosi(sender)
         );
     };
