@@ -3,7 +3,7 @@ import { baseURL } from "@mod-utils/rollupHelper";
 export class Path {
     /**
      * @param {string} path
-     * @returns {string}
+     * @returns {`${'http://' | 'https://'}${string}`}
      */
     static resolve(path) {
         const seperator = path.startsWith("/") ? "" : "/";

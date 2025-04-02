@@ -27,6 +27,7 @@ type CustomActivityPrerequisite =
     | 'Luzi_Has鱼鱼尾'
     | 'Luzi_CharacterViewWithinReach'
     | 'Luzi_Female'
+    | 'Luzi_TargetFemale'
     | 'Luzi_HasBreast'
     | 'Luzi_TargetHasBreast'
     | 'Luzi_CanWalk'

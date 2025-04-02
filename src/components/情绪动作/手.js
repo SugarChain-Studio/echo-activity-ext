@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { Path } from "../../resouce";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -116,7 +117,7 @@ const activities = [
             Target: ["ItemMouth"],
             TargetSelf: true,
         },
-        useImage: "Caress",
+        useImage: Path.resolve("activities/poke.png"),
         label: {
             CN: "戳脸",
             EN: "Poke Face",
@@ -138,7 +139,7 @@ const activities = [
             Target: ["ItemArms"],
             TargetSelf: true,
         },
-        useImage: "Caress",
+        useImage: Path.resolve("activities/poke.png"),
         label: {
             CN: "戳手臂",
             EN: "Poke Arm",
@@ -154,9 +155,75 @@ const activities = [
     },
     {
         activity: {
+            Name: "戳胸部",
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetHasBreast"],
+            MaxProgress: 30,
+            Target: ["ItemBreast"],
+            TargetSelf: true,
+        },
+        useImage: Path.resolve("activities/poke.png"),
+        label: {
+            CN: "戳胸部",
+            EN: "Poke Breast",
+            RU: "Тыкнуть в Грудь",
+            UA: "Тицяти груди",
+        },
+        dialog: {
+            CN: "SourceCharacter用指尖戳了戳TargetCharacter的胸部.",
+            EN: "SourceCharacter pokes DestinationCharacter breast with a finger.",
+            RU: "SourceCharacter тыкает в грудь TargetCharacter.",
+            UA: "SourceCharacter тицяє TargetCharacter в груди.",
+        },
+    },
+    {
+        activity: {
+            Name: "戳阴部",
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale"],
+            MaxProgress: 60,
+            Target: ["ItemBreast"],
+            TargetSelf: true,
+        },
+        useImage: Path.resolve("activities/poke.png"),
+        label: {
+            CN: "戳阴部",
+            EN: "Poke Groin",
+            RU: "Тыкнуть в Промежность",
+            UA: "Тицяти в пах",
+        },
+        dialog: {
+            CN: "SourceCharacter用指尖戳了戳TargetCharacter的阴部.",
+            EN: "SourceCharacter pokes DestinationCharacter groin with a finger.",
+            RU: "SourceCharacter тыкает в промежность TargetCharacter.",
+            UA: "SourceCharacter тицяє TargetCharacter в пах.",
+        },
+    },
+    {
+        activity: {
+            Name: "戳臀部",
+            Prerequisite: ["UseHands", "UseArms"],
+            MaxProgress: 40,
+            Target: ["ItemButt"],
+            TargetSelf: true,
+        },
+        useImage: Path.resolve("activities/poke.png"),
+        label: {
+            CN: "戳臀部",
+            EN: "Poke Butt",
+            RU: "Тыкнуть в Попу",
+            UA: "Тицяти в дупу",
+        },
+        dialog: {
+            CN: "SourceCharacter用指尖戳了戳TargetCharacter的臀部.",
+            EN: "SourceCharacter pokes DestinationCharacter butt with a finger.",
+            RU: "SourceCharacter тыкает в попу TargetCharacter.",
+            UA: "SourceCharacter тицяє TargetCharacter в дупу.",
+        },
+    },
+    {
+        activity: {
             Name: "摇晃手臂",
             Prerequisite: ["UseHands"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: ["ItemArms"],
             TargetSelf: true,
         },
@@ -178,7 +245,7 @@ const activities = [
         activity: {
             Name: "轻推",
             Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: ["ItemTorso"],
         },
         useImage: "Slap",
@@ -199,7 +266,7 @@ const activities = [
         activity: {
             Name: "扭动手腕",
             Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: [],
             TargetSelf: ["ItemHands"],
         },
@@ -221,7 +288,7 @@ const activities = [
         activity: {
             Name: "掀开裙子",
             Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
+            MaxProgress: 30,
             Target: ["ItemButt"],
             TargetSelf: true,
         },
@@ -243,7 +310,7 @@ const activities = [
         activity: {
             Name: "拉扯衣角",
             Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: ["ItemPelvis"],
         },
         useImage: "Pull",
@@ -264,7 +331,7 @@ const activities = [
         activity: {
             Name: "撩头发",
             Prerequisite: ["UseArms", "UseHands"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: [],
             TargetSelf: ["ItemHood"],
         },
@@ -286,7 +353,7 @@ const activities = [
         activity: {
             Name: "盖住耳朵",
             Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: ["ItemEars"],
             TargetSelf: true,
         },
@@ -308,7 +375,7 @@ const activities = [
         activity: {
             Name: "遮住眼睛",
             Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: ["ItemHead"],
             TargetSelf: true,
         },
@@ -330,7 +397,7 @@ const activities = [
         activity: {
             Name: "拽链子",
             Prerequisite: ["UseHands", "UseArms", "Luzi_TargetHasLeash"],
-            MaxProgress: 50,
+            MaxProgress: 30,
             Target: ["ItemNeck"],
         },
         useImage: "MasturbateHand",

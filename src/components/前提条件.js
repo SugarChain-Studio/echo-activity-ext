@@ -76,7 +76,8 @@ const prereqStorage = {
 
         return true;
     },
-    Luzi_Female: (_prereq, acting, _acted, _group) => !acting.HasPenis(),
+    Luzi_Female: Prereqs.ActingCheck((acting) => !acting.HasPenis()),
+    Luzi_TargetFemale: Prereqs.ActedCheck((acted) => !acted.HasPenis()),
     Luzi_CanWalk: (_prereq, acting, _acted, _group) => acting.CanWalk(),
     Luzi_IsStanding: Prereqs.Acting.PoseIsStanding(),
     Luzi_IsKneeling: Prereqs.Acting.PoseIsKneeling(),
