@@ -33,6 +33,7 @@ const tailItems = [
 /** @type { Record<Exclude<CustomActivityPrerequisite,ActivityPrerequisite>, PrerequisiteCheckFunction> }  */
 const prereqStorage = {
     Luzi_TargetHasTail: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "TailStraps"),
+    Luzi_HasWings: (_prereq, acting, _acted, _group) => !!InventoryGet(acting, "Wings"),
     Luzi_TargetHasWings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "Wings"),
     Luzi_TargetHasLeash: (_prereq, _acting, acted, _group) => ChatRoomCanBeLeashed(acted),
     Luzi_HasCatTail: Prereqs.Acting.GroupIs("TailStraps", tailItems),

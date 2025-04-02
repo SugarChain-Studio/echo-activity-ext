@@ -13,6 +13,7 @@ interface Rect {
 type CustomActivityPrerequisite =
     | ActivityPrerequisite
     | 'Luzi_TargetHasTail'
+    | 'Luzi_HasWings'
     | 'Luzi_TargetHasWings'
     | 'Luzi_TargetHasLeash'
     | 'Luzi_HasCatTail'
@@ -45,3 +46,5 @@ type PrerequisiteCheckFunction =
 
 type CustomActivityPrerequisiteItem =
     import('@sugarch/bc-activity-manager').CustomActivityPrerequisiteItem<CustomActivityPrerequisite>;
+
+type DynamicImageProvier = import('@sugarch/bc-activity-manager').DynamicActivityImageProvider;
