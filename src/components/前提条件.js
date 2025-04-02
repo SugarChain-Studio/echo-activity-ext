@@ -22,12 +22,21 @@ const chainLength = {
     },
 };
 
+const tailItems = [
+    "TailStrap",
+    "KittenTailStrap2",
+    "KittenTailStrap1",
+    "穿戴式浅色猫尾镜像_Luzi",
+    "小型穿戴式软猫尾镜像_Luzi",
+];
+
 /** @type { Record<Exclude<CustomActivityPrerequisite,ActivityPrerequisite>, PrerequisiteCheckFunction> }  */
 const prereqStorage = {
     Luzi_TargetHasTail: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "TailStraps"),
     Luzi_TargetHasWings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "Wings"),
     Luzi_TargetHasLeash: (_prereq, _acting, acted, _group) => ChatRoomCanBeLeashed(acted),
-    Luzi_TargetHasCatTail: Prereqs.Acted.GroupIs("TailStraps", ["TailStrap", "KittenTailStrap2", "KittenTailStrap1"]),
+    Luzi_HasCatTail: Prereqs.Acting.GroupIs("TailStraps", tailItems),
+    Luzi_TargetHasCatTail: Prereqs.Acted.GroupIs("TailStraps", tailItems),
     Luzi_TargetHasTentacles: Prereqs.any(
         Prereqs.Acted.GroupIs("TailStraps", ["Tentacles"]),
         Prereqs.Acted.GroupIs("ItemButt", ["Tentacles"])
