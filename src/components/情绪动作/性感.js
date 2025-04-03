@@ -7,7 +7,7 @@ const activities = [
         activity: {
             Name: "阴部轻蹭手",
             Prerequisite: [],
-            MaxProgress: 50,
+            MaxProgress: 99,
             Target: ["ItemHands"],
         },
         useImage: "Wiggle",
@@ -28,7 +28,7 @@ const activities = [
         activity: {
             Name: "阴部轻蹭小腿",
             Prerequisite: [],
-            MaxProgress: 50,
+            MaxProgress: 99,
             Target: ["ItemFeet"],
         },
         useImage: "Wiggle",
@@ -70,7 +70,7 @@ const activities = [
         activity: {
             Name: "揉搓乳头",
             Prerequisite: ["UseHands", "UseArms", "TargetZoneNaked"],
-            MaxProgress: 90,
+            MaxProgress: 99,
             Target: ["ItemNipples"],
             TargetSelf: true,
         },

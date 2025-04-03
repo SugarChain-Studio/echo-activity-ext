@@ -23,12 +23,6 @@ const activities = [
             RU: "SourceCharacter нюхает руку TargetCharacter.",
             UA: "SourceCharacter винюхує руку TargetCharacter.",
         },
-        labelSelf: {
-            CN: "嗅手",
-            EN: "Sniff",
-            RU: "Понюхать Руку",
-            UA: "Нюхати руку",
-        },
         dialogSelf: {
             CN: "SourceCharacter 用鼻子嗅了嗅自己的手.",
             EN: "SourceCharacter sniffs own hand.",
