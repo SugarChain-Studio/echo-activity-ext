@@ -1,5 +1,4 @@
 import { HookManager } from "@sugarch/bc-mod-hook-manager";
-import { MPA } from "./MPA";
 import { DOGS } from "./DOGS";
 import { BCAR } from "./BCAR";
 import { EBCH } from "./EBCH";
@@ -9,7 +8,7 @@ import { BCTweaks } from "./BCTweaks";
 import { FetishShare } from "./FetishShare";
 
 /** @type {TranslationUnit[]} */
-const translationUnits = [BCX, LSCG, MPA, BCAR, BCTweaks, DOGS, EBCH, FetishShare];
+const translationUnits = [BCX, LSCG, BCAR, BCTweaks, DOGS, EBCH, FetishShare];
 
 function shouldTranslate() {
     return ["CN", "TW"].includes(TranslationLanguage);
