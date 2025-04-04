@@ -20,7 +20,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter缓缓爬到TargetCharacter的脚边。",
-            EN: "SourceCharacter slowly crawls to DestinationCharacter's feet.",
+            EN: "SourceCharacter slowly crawls to DestinationCharacter feet.",
             RU: "SourceCharacter медленно подползает к ногам TargetCharacter.",
             UA: "SourceCharacter повільно повзе до ніг TargetCharacter.",
         },
@@ -41,7 +41,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter亲昵地用头部蹭着TargetCharacter的大腿。",
-            EN: "SourceCharacter affectionately nuzzles against DestinationCharacter's thigh.",
+            EN: "SourceCharacter affectionately nuzzles against DestinationCharacter thigh.",
             RU: "SourceCharacter ласково трется головой о бедро TargetCharacter.",
             UA: "SourceCharacter ніжно треться головою об стегно TargetCharacter.",
         },
@@ -62,7 +62,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter温顺地蹭着TargetCharacter的小腿。",
-            EN: "SourceCharacter docilely nuzzles against DestinationCharacter's shin.",
+            EN: "SourceCharacter docilely nuzzles against DestinationCharacter shin.",
             RU: "SourceCharacter послушно трется о голень TargetCharacter.",
             UA: "SourceCharacter покірно треться об гомілку TargetCharacter.",
         },
@@ -83,7 +83,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter紧紧抱住TargetCharacter的双腿，显得十分依恋。",
-            EN: "SourceCharacter clingingly embraces DestinationCharacter's legs.",
+            EN: "SourceCharacter clingingly embraces DestinationCharacter legs.",
             RU: "SourceCharacter крепко обхватывает ноги TargetCharacter, выражая привязанность.",
             UA: "SourceCharacter міцно охоплює ноги TargetCharacter, виражаючи прихильність.",
         },
@@ -104,7 +104,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter小心翼翼地托起TargetCharacter的脚。",
-            EN: "SourceCharacter carefully cradles DestinationCharacter's foot.",
+            EN: "SourceCharacter carefully cradles DestinationCharacter foot.",
             RU: "SourceCharacter бережно приподнимает ступню TargetCharacter.",
             UA: "SourceCharacter обережно підтримує стопу TargetCharacter.",
         },

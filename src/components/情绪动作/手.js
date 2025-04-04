@@ -62,7 +62,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用指尖轻轻托起TargetCharacter的下巴。",
-            EN: "SourceCharacter gently lifts DestinationCharacter's chin with fingertips.",
+            EN: "SourceCharacter gently lifts DestinationCharacter chin with fingertips.",
             RU: "SourceCharacter нежно приподнимает подбородок TargetCharacter кончиками пальцев.",
             UA: "SourceCharacter ніжно піднімає підборіддя TargetCharacter кінчиками пальців.",
         },
@@ -83,7 +83,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter轻弹了一下TargetCharacter的额头。",
-            EN: "SourceCharacter gives DestinationCharacter's forehead a light flick.",
+            EN: "SourceCharacter gives DestinationCharacter forehead a light flick.",
             RU: "SourceCharacter делает лёгкий щелбан по лбу TargetCharacter.",
             UA: "SourceCharacter робить легкий клац по лобу TargetCharacter.",
         },
@@ -96,17 +96,17 @@ const activities = [
             Target: ["ItemHead"],
         },
         useImage: "Slap",
-        "label": {
-            "CN": "轻拍脑袋",
-            "EN": "Head Pat",
-            "RU": "Похлопывание по голове",
-            "UA": "Поплескування по голові",
+        label: {
+            CN: "轻拍脑袋",
+            EN: "Head Pat",
+            RU: "Похлопывание по голове",
+            UA: "Поплескування по голові",
         },
-        "dialog": {
-            "CN": "SourceCharacter轻拍TargetCharacter的脑袋。",
-            "EN": "SourceCharacter gives DestinationCharacter's head a gentle pat.",
-            "RU": "SourceCharacter слегка похлопывает TargetCharacter по голове.",
-            "UA": "SourceCharacter легко поплескує TargetCharacter по голові.",
+        dialog: {
+            CN: "SourceCharacter轻拍TargetCharacter的脑袋。",
+            EN: "SourceCharacter gives DestinationCharacter head a gentle pat.",
+            RU: "SourceCharacter слегка похлопывает TargetCharacter по голове.",
+            UA: "SourceCharacter легко поплескує TargetCharacter по голові.",
         },
     },
     {
@@ -258,7 +258,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter轻轻摇晃着TargetCharacter的手臂。",
-            EN: "SourceCharacter gently shakes DestinationCharacter's arms.",
+            EN: "SourceCharacter gently shakes DestinationCharacter arms.",
             RU: "SourceCharacter аккуратно трясёт TargetCharacter за руки.",
             UA: "SourceCharacter обережно трусить руками TargetCharacter.",
         },
@@ -344,7 +344,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter用手指轻轻拽了拽TargetCharacter的衣角。",
-            EN: "SourceCharacter gently tugs at the hem of DestinationCharacter's clothes.",
+            EN: "SourceCharacter gently tugs at the hem of DestinationCharacter clothes.",
             RU: "SourceCharacter осторожно тянет TargetCharacter за край одежды.",
             UA: "SourceCharacter ніжно потягує TargetCharacter за край одягу.",
         },
@@ -388,7 +388,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter双手轻掩，盖住了TargetCharacter的耳朵。",
-            EN: "SourceCharacter softly covers DestinationCharacter's ears with both hands.",
+            EN: "SourceCharacter softly covers DestinationCharacter ears with both hands.",
             RU: "SourceCharacter нежно прикрывает уши TargetCharacter ладонями.",
             UA: "SourceCharacter ніжно затуляє вуха TargetCharacter долонями.",
         },
@@ -410,7 +410,7 @@ const activities = [
         },
         dialog: {
             CN: "SourceCharacter掌心轻覆，遮住了TargetCharacter的双眼。",
-            EN: "SourceCharacter places palms over DestinationCharacter's eyes gently.",
+            EN: "SourceCharacter places palms over DestinationCharacter eyes gently.",
             RU: "SourceCharacter ласково прикрывает глазки TargetCharacter ладонями.",
             UA: "SourceCharacter ніжно закриває очі TargetCharacter долонями.",
         },

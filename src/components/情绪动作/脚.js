@@ -59,7 +59,7 @@ const activities = [
             CN: "伸出腿脚",
             EN: "Leg Outstretch",
             RU: "Вытянуть ногу",
-            UA: "Виставити ногу"
+            UA: "Виставити ногу",
         },
         dialogSelf: {
             CN: "SourceCharacter向前伸出腿脚。",

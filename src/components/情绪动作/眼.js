@@ -77,11 +77,7 @@ const activities = [
         },
         useImage: "Wiggle",
         mode: "SelfOnSelf",
-        run: (player, sender) => {
-            if (sender.MemberNumber === player.MemberNumber) {
-                CharacterSetFacialExpression(player, "Eyes", "Closed");
-            }
-        },
+        run: (player) => CharacterSetFacialExpression(player, "Eyes", "Closed"),
         labelSelf: {
             CN: "闭上眼睛",
             EN: "Close Eyes",
