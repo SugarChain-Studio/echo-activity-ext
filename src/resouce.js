@@ -1,4 +1,4 @@
-import { baseURL } from "@mod-utils/rollupHelper";
+import { resourceBaseURL } from "@mod-utils/rollupHelper";
 
 export class Path {
     /**
@@ -7,7 +7,7 @@ export class Path {
      */
     static resolve(path) {
         const seperator = path.startsWith("/") ? "" : "/";
-        return `${baseURL}${seperator}${path}`;
+        return `${resourceBaseURL}${seperator}${path}`;
     }
 
     /**
