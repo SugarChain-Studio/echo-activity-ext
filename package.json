@@ -23,6 +23,14 @@
         "input": "src/main.js",
         "componentDir": "src/components",
         "loaderName": "bc-activity.user.js",
+        "assets": {
+            "location": "resources",
+            "assets": [
+                "activities",
+                "audio",
+                "image"
+            ]
+        },
         "beta": {
             "output": "bc-activity-beta.js",
             "loaderName": "bc-activity-beta.user.js"
