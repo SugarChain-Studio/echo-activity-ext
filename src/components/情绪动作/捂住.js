@@ -40,6 +40,12 @@ const activities = [
             UA: "Прикрити пах",
         },
         dialog: {
+            CN: "SourceCharacter用手掌紧紧捂住TargetCharacter的下体，让手心的温度可以被感受到。",
+            EN: "SourceCharacter tightly covers DestinationCharacter groin with hands, letting the warmth of PronounPossessive palm be felt.",
+            RU: "SourceCharacter крепко прикрывает промежность TargetCharacter ладонью.",
+            UA: "SourceCharacter міцно прикриває пах TargetCharacter долонею.",
+        },
+        dialogSelf: {
             CN: "SourceCharacter捂住TargetCharacter的下体，试图遮掩自己的身体。",
             EN: "SourceCharacter covers DestinationCharacter groin with hands, trying to hide PronounPossessive body.",
             RU: "SourceCharacter прикрывает промежность TargetCharacter своими руками.",
