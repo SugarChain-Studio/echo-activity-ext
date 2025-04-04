@@ -19,6 +19,7 @@ type CustomActivityPrerequisite =
     | 'Luzi_HasCatTail'
     | 'Luzi_TargetHasCatTail'
     | 'Luzi_TargetHasTentacles'
+    | 'Luzi_ActedZoneNaked'
     | 'Luzi_HasTentacles'
     | 'Luzi_HasPawMittens'
     | 'Luzi_HasPetSuit'

@@ -1,3 +1,4 @@
+import { Logger } from "@mod-utils/log";
 import { ActivityManager } from "../activityForward";
 import { Prereqs } from "../Prereqs";
 
@@ -42,6 +43,21 @@ const prereqStorage = {
         Prereqs.Acted.GroupIs("TailStraps", ["Tentacles"]),
         Prereqs.Acted.GroupIs("ItemButt", ["Tentacles"])
     ),
+    Luzi_ActedZoneNaked: (_prereq, _acting, acted, _group) => {
+        switch (_group.Name) {
+            case "ItemBreast":
+            case "ItemNipples":
+                return !InventoryPrerequisiteMessage(acted, "AccessBreast") && !acted.IsBreastChaste();
+            case "ItemButt":
+                return !InventoryPrerequisiteMessage(acted, "AccessButt") && !acted.IsButtChaste();
+            case "ItemVulva":
+                return !InventoryPrerequisiteMessage(acted, "AccessVulva") && !acted.IsVulvaChaste();
+            case "ItemVulvaPiercings":
+                return !InventoryPrerequisiteMessage(acted, "AccessVulva") && !acted.IsVulvaChaste();
+        }
+        Logger.warn(`Luzi_ActedZoneNaked cannot be used with group: {_group.Name}`);
+        return true;
+    },
     Luzi_HasTentacles: Prereqs.any(
         Prereqs.Acting.GroupIs("TailStraps", ["Tentacles"]),
         Prereqs.Acting.GroupIs("ItemButt", ["Tentacles"])

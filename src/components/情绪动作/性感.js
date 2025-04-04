@@ -48,7 +48,7 @@ const activities = [
     {
         activity: {
             Name: "弹阴蒂",
-            Prerequisite: ["UseHands", "UseArms", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_ActedZoneNaked"],
             MaxProgress: 50,
             Target: ["ItemVulvaPiercings"],
         },
@@ -69,7 +69,7 @@ const activities = [
     {
         activity: {
             Name: "揉搓乳头",
-            Prerequisite: ["UseHands", "UseArms", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_ActedZoneNaked"],
             MaxProgress: 99,
             Target: ["ItemNipples"],
             TargetSelf: true,
@@ -135,7 +135,7 @@ const activities = [
     {
         activity: {
             Name: "手指插进阴道",
-            Prerequisite: ["UseHands", "ZoneNaked", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "ZoneNaked", "Luzi_ActedZoneNaked"],
             MaxProgress: 90,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -157,7 +157,7 @@ const activities = [
     {
         activity: {
             Name: "拔出自己的手指",
-            Prerequisite: ["UseHands", "ZoneNaked", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "ZoneNaked", "Luzi_ActedZoneNaked"],
             MaxProgress: 90,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -179,7 +179,7 @@ const activities = [
     {
         activity: {
             Name: "蠕动手指",
-            Prerequisite: ["UseHands", "ZoneNaked", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "ZoneNaked", "Luzi_ActedZoneNaked"],
             MaxProgress: 90,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -201,7 +201,7 @@ const activities = [
     {
         activity: {
             Name: "快速抽插",
-            Prerequisite: ["UseHands", "ZoneNaked", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "ZoneNaked"],
             MaxProgress: 100,
             Target: ["ItemVulva"],
             TargetSelf: true,

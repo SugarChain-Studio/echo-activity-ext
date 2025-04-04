@@ -177,8 +177,30 @@ const activities = [
     },
     {
         activity: {
+            Name: "戳乳头",
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetHasBreast", "Luzi_ActedZoneNaked"],
+            MaxProgress: 60,
+            Target: ["ItemNipples"],
+            TargetSelf: true,
+        },
+        useImage: Path.resolve("activities/poke.png"),
+        label: {
+            CN: "戳乳头",
+            EN: "Poke Nipple",
+            RU: "Тыкнуть в Сосок",
+            UA: "Тицяти сосок",
+        },
+        dialog: {
+            CN: "SourceCharacter用指尖戳了戳TargetCharacter的乳头.",
+            EN: "SourceCharacter pokes DestinationCharacter nipple with the tip of PronounPossessive finger.",
+            RU: "SourceCharacter тыкает в сосок TargetCharacter.",
+            UA: "SourceCharacter тицяє TargetCharacter в сосок.",
+        },
+    },
+    {
+        activity: {
             Name: "戳阴部",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "Luzi_ActedZoneNaked"],
             MaxProgress: 60,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -200,7 +222,7 @@ const activities = [
     {
         activity: {
             Name: "戳阴蒂",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "TargetZoneNaked"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "Luzi_ActedZoneNaked"],
             MaxProgress: 80,
             Target: ["ItemVulvaPiercings"],
             TargetSelf: true,
