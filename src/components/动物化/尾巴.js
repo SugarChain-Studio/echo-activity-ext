@@ -169,17 +169,16 @@ const activities = [
     {
         activity: {
             Name: "轻抚尾巴",
-            Prerequisite: ["Luzi_TargetHasTail", "UseArms", "UseHands"],
+            Prerequisite: ["Luzi_TargetHasTail", "UseArms", "UseHands", "Luzi_LoverOrOwner"],
             MaxProgress: 60,
             Target: ["ItemButt"],
-            TargetSelf: true,
         },
         useImage: DynImageProviders.itemOnActedGroup("TailStraps"),
         label: {
-            CN: "爱抚尾巴",
-            EN: "Tail Caress",
-            RU: "Ласка Хвоста",
-            UA: "Пестощі Хвоста",
+            CN: "抚摸尾巴（充满爱意）",
+            EN: "Tail Caress (Lovingly)",
+            RU: "Ласкать хвост (с любовью)",
+            UA: "Ласкати хвіст (з любов'ю)",
         },
         dialog: {
             CN: "SourceCharacter的手指轻柔地顺着TargetCharacter的尾巴滑下，动作充满爱意。",
@@ -187,11 +186,27 @@ const activities = [
             RU: "Пальцы SourceCharacter нежно скользят по хвосту TargetCharacter, полные нежности.",
             UA: "Пальці SourceCharacter ніжно ковзають по хвосту TargetCharacter, сповнені ніжності.",
         },
-        dialogSelf: {
-            CN: "SourceCharacter惬意地抚摸着自己的尾巴，享受着柔软的触感。",
-            EN: "SourceCharacter contentedly strokes PronounPossessive own tail, enjoying its soft texture.",
-            RU: "SourceCharacter с удовольствием поглаживает собственный хвост, наслаждаясь его мягкостью.",
-            UA: "SourceCharacter із задоволенням пестить свій власний хвіст, насолоджуючись його м'якістю.",
+    },
+    {
+        activity: {
+            Name: "轻抚尾巴",
+            Prerequisite: ["Luzi_TargetHasTail", "UseArms", "UseHands", "Luzi_NotLoverOrOwner"],
+            MaxProgress: 60,
+            Target: ["ItemButt"],
+            TargetSelf: true,
+        },
+        useImage: DynImageProviders.itemOnActedGroup("TailStraps"),
+        label: {
+            CN: "抚摸尾巴",
+            EN: "Tail Caress",
+            RU: "Ласкать хвост",
+            UA: "Ласкати хвіст",
+        },
+        dialog: {
+            CN: "SourceCharacter轻轻抚过TargetCharacter的尾巴，享受着柔软的触感。",
+            EN: "SourceCharacter gently strokes DestinationCharacter tail, enjoying its soft texture.",
+            RU: "SourceCharacter нежно гладит хвост TargetCharacter, наслаждаясь его мягкостью.",
+            UA: "SourceCharacter ніжно гладить хвіст TargetCharacter, насолоджуючись його м'якістю.",
         },
     },
     {

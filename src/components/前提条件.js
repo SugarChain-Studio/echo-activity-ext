@@ -43,6 +43,16 @@ const prereqStorage = {
         Prereqs.Acted.GroupIs("TailStraps", ["Tentacles"]),
         Prereqs.Acted.GroupIs("ItemButt", ["Tentacles"])
     ),
+    Luzi_LoverOrOwner: (_prereq, acting, acted, _group) => {
+        if (acted.IsOwnedByCharacter(acting)) return true;
+        if (acted.IsLoverOfCharacter(acting)) return true;
+        return false;
+    },
+    Luzi_NotLoverOrOwner: (_prereq, acting, acted, _group) => {
+        if (acted.IsOwnedByCharacter(acting)) return false;
+        if (acted.IsLoverOfCharacter(acting)) return false;
+        return true;
+    },
     Luzi_ActedZoneNaked: (_prereq, _acting, acted, _group) => {
         switch (_group.Name) {
             case "ItemBreast":
