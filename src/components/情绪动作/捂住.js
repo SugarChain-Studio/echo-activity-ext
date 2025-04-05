@@ -27,7 +27,7 @@ const activities = [
     {
         activity: {
             Name: "捂住下体",
-            Prerequisite: ["UseHands", "UseArms"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_ActedZoneNaked"],
             MaxProgress: 50,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -55,7 +55,7 @@ const activities = [
     {
         activity: {
             Name: "捂住胸",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_HasBreast"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_HasBreast", "Luzi_ActedZoneNaked"],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemBreast"],
