@@ -49,7 +49,7 @@ const activities = [
     {
         activity: {
             Name: "摇晃笼子",
-            Prerequisite: ["Luzi_HasKennel"],
+            Prerequisite: ["Luzi_HasKennel", "UseArms"],
             MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemArms"],
@@ -74,7 +74,7 @@ const activities = [
             Prerequisite: ["Luzi_HasKennel", "UseArms", "UseHands"],
             MaxProgress: 0,
             Target: [],
-            TargetSelf: ["ItemArms"],
+            TargetSelf: ["ItemHands"],
         },
         useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
@@ -140,7 +140,7 @@ const activities = [
             Prerequisite: ["Luzi_HasKennel"],
             MaxProgress: 0,
             Target: [],
-            TargetSelf: ["ItemArms"],
+            TargetSelf: ["ItemTorso"],
         },
         useImage: ["ItemDevices", "Kennel"],
         labelSelf: {
