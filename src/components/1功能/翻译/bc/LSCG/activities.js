@@ -1218,7 +1218,6 @@ const regexTranslations = [
  * @type {TranslationFunction}
  */
 export function translateActivityText(key) {
-    if (PreferenceExtensionsCurrent?.Identifier !== "LSCG") return undefined;
     if (!LSCGenabled()) return undefined;
     if (translation[key]) return translation[key];
     for (const { regex, replacement } of regexTranslations) {
