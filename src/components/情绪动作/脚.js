@@ -73,7 +73,7 @@ const activities = [
             Name: "脚托起下巴",
             Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
             MaxProgress: 80,
-            Target: ["ItemMouth"],
+            Target: ["ItemNeck", "ItemMouth"],
         },
         useImage: "Wiggle",
         label: {

@@ -51,7 +51,7 @@ const activities = [
             Name: "轻抬下巴",
             Prerequisite: ["UseHands", "UseArms"],
             MaxProgress: 60,
-            Target: ["ItemNeck"],
+            Target: ["ItemNeck", "ItemMouth"],
         },
         useImage: "Caress",
         label: {
