@@ -1,6 +1,6 @@
 import { ModInfo } from "@mod-utils/rollupHelper";
 import { HookManager } from "@sugarch/bc-mod-hook-manager";
-import { hanburgerIcon } from "../汉堡标志";
+import { hanburgerIcon } from "./动作菜单标志";
 import { i18n } from "../../i18n";
 
 /** @type {Partial<Record<CustomGroupName,Set<string> | "any">>} */
