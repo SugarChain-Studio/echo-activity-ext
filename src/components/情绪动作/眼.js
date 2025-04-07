@@ -8,16 +8,15 @@ const activities = [
             Prerequisite: [],
             MaxProgress: 50,
             Target: ["ItemHead"],
-            TargetSelf: [],
         },
         useImage: "Wiggle",
-        labelSelf: {
+        label: {
             CN: "撇眼",
             EN: "Roll Eyes",
             RU: "Закатить Глаза.",
             UA: "Катачи очима",
         },
-        dialogSelf: {
+        dialog: {
             CN: "SourceCharacter撇了TargetCharacter一眼.",
             EN: "SourceCharacter rolls eyes at TargetCharacter.",
             RU: "SourceCharacter закатывает глаза смотря на TargetCharacter.",
