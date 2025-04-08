@@ -18,7 +18,7 @@ const activities = [
             TargetSelf: ["ItemLegs"],
         },
         mode: "SelfOnSelf",
-        run: () => ChatRoomToggleKneel(),
+        override: () => ChatRoomToggleKneel(),
         useImage: "Wiggle",
         labelSelf: {
             CN: "跪下",
@@ -46,7 +46,7 @@ const activities = [
             TargetSelf: ["ItemLegs"],
         },
         mode: "SelfOnSelf",
-        run: () => ChatRoomToggleKneel(),
+        override: () => ChatRoomToggleKneel(),
         useImage: "Wiggle",
         labelSelf: {
             CN: "站起来",
