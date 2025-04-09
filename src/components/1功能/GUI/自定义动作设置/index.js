@@ -3,7 +3,7 @@ import { BaseSubscreen } from "../gui";
 import { Logger } from "@mod-utils/log";
 import { 动作数据管理 } from "../../../保存数据/保存动作";
 import { 移除清空输入框 } from "../utils";
-import { Path } from "../../../../resouce";
+import { Preloader } from "../../../../resouce";
 import { RDrawImageResize, RMouseIn } from "../RDraw";
 import { 自定义动作设置_动作 } from "./动作";
 import { 自定义动作设置_删除 } from "./删除";
@@ -26,9 +26,9 @@ export class 自定义动作设置 extends BaseSubscreen {
     }
 
     run() {
-        DrawImageResize(Path.resolve("image/选择界面.png"), 0, 0, 2000, 1000);
-        DrawImageResize(Path.resolve("image/条线.png"), 0, 0, 2000, 1000);
-        RDrawImageResize(this.exitButtonRect, Path.resolve("image/返回白.png"));
+        Preloader.tryResolve("image/选择界面.png", (img) => RDrawImageResize({ X: 0, Y: 0, W: 2000, H: 1000 }, img));
+        Preloader.tryResolve("image/条线.png", (img) => RDrawImageResize({ X: 0, Y: 0, W: 2000, H: 1000 }, img));
+        Preloader.tryResolve("image/返回白.png", (img) => RDrawImageResize(this.exitButtonRect, img));
         DrawText(`- ${i18n("Setting::Main::CustomActTile")} -`, 1000, 125, "Black");
 
         const DisplayBase = { X: 370, Y: 50 };
@@ -49,7 +49,7 @@ export class 自定义动作设置 extends BaseSubscreen {
         }
 
         if (MouseIn(80, 210, 160, 100)) {
-            DrawImageResize(Path.resolve("image/白箭头右.png"), 270, 232, 90, 50);
+            Preloader.tryResolve("image/白箭头右.png", (img) => DrawImageResize(img, 270, 232, 90, 50));
             DrawText(i18n("Setting::Act::Act"), 220, 260, "White");
         } else {
             if (this.当前页面 !== `动作`) {
@@ -58,7 +58,7 @@ export class 自定义动作设置 extends BaseSubscreen {
         }
 
         if (MouseIn(80, 710, 160, 100)) {
-            DrawImageResize(Path.resolve("image/白箭头右.png"), 270, 730, 90, 50);
+            Preloader.tryResolve("image/白箭头右.png", (img) => DrawImageResize(img, 270, 730, 90, 50));
             DrawText(i18n("General::Delete"), 220, 760, "White");
         } else {
             if (this.当前页面 !== `删除`) {

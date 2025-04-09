@@ -1,4 +1,4 @@
-import { Path } from "../../../resouce";
+import { Preloader } from "../../../resouce";
 import { BaseSubscreen, setCurrentScreen, setDefaultScreen } from "./gui";
 import { 高潮计数保留设置 } from "./高潮计数保留设置";
 import { 自定义动作设置 } from "./自定义动作设置";
@@ -7,12 +7,13 @@ import { discord } from "./icon";
 import { ModInfo } from "@mod-utils/rollupHelper";
 import { i18n } from "./i18n";
 
-Path.preload("image/选择界面.png");
-Path.preload("image/返回白.png");
-Path.preload("image/界面选择.png");
-Path.preload("image/界面缠绕.png");
-Path.preload("image/条线.png");
-Path.preload("image/白箭头右.png");
+Preloader.preload("image/选择界面.png");
+Preloader.preload("image/选择界面.png");
+Preloader.preload("image/返回白.png");
+Preloader.preload("image/界面选择.png");
+Preloader.preload("image/界面缠绕.png");
+Preloader.preload("image/条线.png");
+Preloader.preload("image/白箭头右.png");
 
 class 动作拓展设置 extends BaseSubscreen {
     constructor(prev) {
@@ -26,13 +27,13 @@ class 动作拓展设置 extends BaseSubscreen {
         this.miscButtonRect = { X: 1450, Y: 220, W: 360, H: 600 };
     }
     run() {
-        DrawImageResize(Path.resolve("image/选择界面.png"), 0, 0, 2000, 1000);
-        RDrawImageResize(this.exitButtonRect, Path.resolve("image/返回白.png"));
+        Preloader.tryResolve("image/选择界面.png", (img) => DrawImageResize(img, 0, 0, 2000, 1000));
+        Preloader.tryResolve("image/返回白.png", (img) => RDrawImageResize(this.exitButtonRect, img));
 
         DrawText(`- ${ModInfo.name}${i18n("General::Setting")} -`, 1000, 125, "Black");
 
-        DrawImageResize(Path.resolve("image/界面选择.png"), 0, 0, 2000, 1000);
-        DrawImageResize(Path.resolve("image/界面缠绕.png"), 0, 0, 2000, 1000);
+        Preloader.tryResolve("image/界面选择.png", (img) => DrawImageResize(img, 0, 0, 2000, 1000));
+        Preloader.tryResolve("image/界面缠绕.png", (img) => DrawImageResize(img, 0, 0, 2000, 1000));
 
         const gColor = (flag) => (flag ? "#FFFFFF" : "#888888");
         DrawText(i18n("Setting::Main::CustomActTile"), 500, 356, gColor(RMouseIn(this.customActButtonRect)));

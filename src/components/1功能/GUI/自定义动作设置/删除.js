@@ -1,4 +1,4 @@
-import { Path } from "../../../../resouce";
+import { Preloader } from "../../../../resouce";
 import { 动作数据管理 } from "../../../保存数据/保存动作";
 import { BaseSubscreen } from "../gui";
 import { RDrawBackNextButton, RDrawButton, RMouseIn } from "../RDraw";
@@ -20,7 +20,7 @@ export class 自定义动作设置_删除 extends BaseSubscreen {
         this.actIndex = Math.max(acts.length - 1, 0);
     }
     run() {
-        DrawImageResize(Path.resolve("image/白箭头右.png"), 270, 730, 90, 50);
+        Preloader.tryResolve("image/白箭头右.png", (img) => DrawImageResize(img, 270, 730, 90, 50));
         DrawText(i18n("General::Delete"), 220, 760, "White");
 
         DrawText(i18n("Setting::Act::DeleteExisting"), 1000, 260, "White");

@@ -6,22 +6,72 @@ export class Path {
      * @returns {`${'http://' | 'https://'}${string}`}
      */
     static resolve(path) {
-        const seperator = path.startsWith("/") ? "" : "/";
+        const seperator = path.startsWith("/") || resourceBaseURL.endsWith("/") ? "" : "/";
         return `${resourceBaseURL}${seperator}${path}`;
+    }
+}
+
+class PreloadItem {
+    /**
+     * @param {string} url
+     * @param {(img:HTMLImageElement)=>void} [onload]
+     */
+    constructor(url, onload) {
+        this.img = new Image();
+        this.img.crossOrigin = "anonymous";
+        this.loaded = false;
+        this.onloads = [];
+        if (onload) this.onloads.push(onload);
+        this.img.onload = () => {
+            this.loaded = true;
+            for (const fn of this.onloads) {
+                fn(this.img);
+            }
+            this.onloads = [];
+        };
+        this.img.src = url;
+    }
+}
+
+class _Preloader {
+    constructor() {
+        /** @type {Map<string, PreloadItem>} */
+        this.preloadStash = new Map();
     }
 
     /**
      * @param {string} path
+     * @returns {Promise<HTMLImageElement>}
      */
-    static preload(path) {
-        const item = document.createElement("link");
-        item.href = Path.resolve(path);
-        item.rel = "preload";
-        item.as = "image";
-        item.crossOrigin = "anonymous";
-        document.head.appendChild(item);
-        item.onload = () => {
-            document.head.removeChild(item);
-        };
+    async preload(path) {
+        const url = Path.resolve(path);
+        const item = this.preloadStash.get(path);
+        if (!item || !item.loaded) {
+            return new Promise((resolve) => {
+                const item = new PreloadItem(url, (img) => resolve(img));
+                this.preloadStash.set(path, item);
+            });
+        } else if (item.loaded) {
+            return Promise.resolve(this.preloadStash.get(path).img);
+        } else {
+            return new Promise((resolve) => {
+                item.onloads.push((img) => resolve(img));
+            });
+        }
+    }
+
+    /**
+     * @param {string} path
+     * @param {(arg:HTMLImageElement)=>void} then
+     */
+    tryResolve(path, then) {
+        const item = this.preloadStash.get(path);
+        if (!item) {
+            this.preload(path);
+        } else if (item.loaded) {
+            then(item.img);
+        }
     }
 }
+
+export const Preloader = new _Preloader();

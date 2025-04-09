@@ -1,4 +1,4 @@
-import { Path } from "../../../resouce";
+import { Preloader } from "../../../resouce";
 import { BaseSubscreen } from "./gui";
 import { 设置高潮数据, 高潮数据开关 } from "../../保存数据/保存高潮";
 import { RDrawCheckbox, RDrawIconButton, RDrawImageResize, RDrawText, RMouseIn } from "./RDraw";
@@ -17,8 +17,8 @@ export class 高潮计数保留设置 extends BaseSubscreen {
         this.loadCraftingButtonRect = { X: 1450, Y: 290, W: 390, H: 90 };
     }
     run() {
-        DrawImageResize(Path.resolve("image/选择界面.png"), 0, 0, 2000, 1000);
-        RDrawImageResize(this.exitButtonRect, Path.resolve("image/返回白.png"));
+        Preloader.tryResolve("image/选择界面.png", (img) => RDrawImageResize({ X: 0, Y: 0, W: 2000, H: 1000 }, img));
+        Preloader.tryResolve("image/返回白.png", (img) => RDrawImageResize(this.exitButtonRect, img));
 
         DrawText(`- ${i18n("Setting::Main::MiscTitle")} -`, 1000, 125, "Black");
 

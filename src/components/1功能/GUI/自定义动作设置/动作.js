@@ -1,4 +1,4 @@
-import { Path } from "../../../../resouce";
+import { Preloader } from "../../../../resouce";
 import { 动作数据管理 } from "../../../保存数据/保存动作";
 import { BaseSubscreen } from "../gui";
 import {
@@ -54,7 +54,7 @@ export class 自定义动作设置_动作 extends BaseSubscreen {
     }
 
     run() {
-        DrawImageResize(Path.resolve("image/白箭头右.png"), 270, 232, 90, 50);
+        Preloader.tryResolve("image/白箭头右.png", (img) => DrawImageResize(img, 270, 232, 90, 50));
         DrawText(i18n("Setting::Act::Act"), 220, 260, "White");
 
         RDrawText({ X: 900, Y: 80 }, i18n("Setting::Act::Name"), "White");
