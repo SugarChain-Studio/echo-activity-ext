@@ -11,7 +11,7 @@ const activity = {
                     InventoryIsItemInList(acting, "ItemHandheld", ["拉紧的牵绳_Luzi", "拉紧的链子_Luzi"])) &&
                 InventoryIsItemInList(acted, "ItemNeckRestraints", ["CollarLeash", "ChainLeash"]),
         ],
-        MaxProgress: 50,
+        MaxProgress: 0,
         Target: ["ItemTorso", "ItemNeckRestraints", "ItemNeck"],
     },
     run: (player, sender, info) => {
@@ -59,7 +59,7 @@ const activity = {
     useImage: "Wiggle",
     label: {
         CN: "拉到身边",
-        EN: "Pull to one's side",
+        EN: "Pull to One's Side",
         RU: "Притащить к себе",
         UA: "Притягнути до себе",
     },
