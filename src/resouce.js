@@ -1,14 +1,17 @@
 import { Logger } from "@mod-utils/log";
 import { resourceBaseURL } from "@mod-utils/rollupHelper";
 
+const fixSeparator = resourceBaseURL.endsWith("/")
+    ? (path) => (path.startsWith("/") ? path.substring(1) : path)
+    : (path) => (path.startsWith("/") ? path : `/${path}`);
+
 export class Path {
     /**
      * @param {string} path
      * @returns {`${'http://' | 'https://'}${string}`}
      */
     static resolve(path) {
-        const seperator = path.startsWith("/") || resourceBaseURL.endsWith("/") ? "" : "/";
-        return `${resourceBaseURL}${seperator}${path}`;
+        return `${resourceBaseURL}${fixSeparator(path)}`;
     }
 }
 
