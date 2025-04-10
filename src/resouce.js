@@ -1,3 +1,4 @@
+import { Logger } from "@mod-utils/log";
 import { resourceBaseURL } from "@mod-utils/rollupHelper";
 
 export class Path {
@@ -21,6 +22,10 @@ class PreloadItem {
         this.img.crossOrigin = "anonymous";
         this.loaded = false;
         this.onloads = [];
+        this.retries = 0;
+        this.maxRetries = 3;
+        this.retryDelay = 1000; // 1 second
+
         if (onload) this.onloads.push(onload);
         this.img.onload = () => {
             this.loaded = true;
@@ -28,6 +33,16 @@ class PreloadItem {
                 fn(this.img);
             }
             this.onloads = [];
+        };
+        this.img.onerror = () => {
+            this.retries++;
+            if (this.retries < this.maxRetries) {
+                setTimeout(() => {
+                    this.img.src = url;
+                }, this.retryDelay);
+            } else {
+                Logger.error(`Failed to load image: ${url}`);
+            }
         };
         this.img.src = url;
     }
