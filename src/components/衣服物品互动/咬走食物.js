@@ -21,21 +21,24 @@ function activityBuilder(assetName, label, dialog) {
             Target: ["ItemMouth"],
         },
         useImage: ["ItemMouth", assetName],
-        run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
+        run: (player, _, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
             if (SourceCharacter === player.MemberNumber) {
                 const asset = AssetGet("Female3DCG", "ItemMouth", assetName);
                 if (!asset) return;
 
-                // 获取 TargetCharacter 玩家信息
                 const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === TargetCharacter);
                 if (!target) return;
 
-                InventoryRemove(target, ActivityGroup.Name);
-                InventoryWear(player, assetName, "ItemMouth");
-                InventoryRemove(player, "ItemHandheld");
+                const targetItem = InventoryGet(target, ActivityGroup.Name);
+                if (!targetItem) return;
 
-                ChatRoomCharacterItemUpdate(target, "ItemMouth");
-                ChatRoomCharacterItemUpdate(player, "ItemHandheld");
+                const nItem = InventoryWear(player, assetName, "ItemMouth");
+                if (!nItem) return;
+                InventoryRemove(target, ActivityGroup.Name);
+                Object.assign(nItem, targetItem);
+
+                ChatRoomCharacterUpdate(target);
+                ChatRoomCharacterUpdate(player);
                 CharacterRefresh(player, true);
             }
         },
