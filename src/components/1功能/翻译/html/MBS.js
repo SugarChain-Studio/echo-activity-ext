@@ -14,6 +14,7 @@ import { nodeIsHTML, translateNode } from "./utils";
  */
 
 const translation = {
+    "MBS Settings": "MBS 设置",
     "Wheel of fortune settings": "幸运转盘设置",
     "Configure the wheel of fortune": "配置幸运转盘",
     "Allow wheel rolling while restrained": "束缚时允许转动转盘",
