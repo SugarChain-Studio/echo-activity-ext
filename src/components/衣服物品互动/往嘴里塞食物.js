@@ -1,89 +1,52 @@
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../Prereqs";
+import { DynImageProviders } from "../../dynamicImage";
 
-/**
- *
- * @param {string} assetName
- * @param {Translation.Entry} label
- * @param {Translation.Entry} dialog
- * @returns {CustomActivity}
- */
-function activityBuilder(assetName, label, dialog) {
-    return {
-        activity: {
-            Name: `塞食物_${assetName}`,
-            Prerequisite: [
-                Prereqs.Acted.GroupEmpty(["ItemMouth"]),
-                Prereqs.Acting.GroupIs("ItemHandheld", [assetName]),
-            ],
-            MaxProgress: 50,
-            Target: ["ItemMouth"],
-            TargetSelf: true,
-        },
-        useImage: ["ItemMouth", assetName],
-        run: (player, sender, info) => {
-            if (info.SourceCharacter === player.MemberNumber) {
-                const asset = AssetGet("Female3DCG", "ItemMouth", assetName);
-                if (!asset) return;
+/** @type {CustomActivity} */
+const activity = {
+    activity: {
+        Name: `塞食物_Luzi`,
+        Prerequisite: [
+            Prereqs.Acted.GroupEmpty(["ItemMouth"]),
+            Prereqs.Acting.GroupIs("ItemHandheld", ["棒棒糖_Luzi", "烤鱼_Luzi", "鸡腿_Luzi"]),
+        ],
+        MaxProgress: 50,
+        Target: ["ItemMouth"],
+        TargetSelf: true,
+    },
+    useImage: DynImageProviders.itemOnActingGroup("ItemHandheld"),
+    run: (player, sender, info) => {
+        if (info.SourceCharacter === player.MemberNumber) {
+            const heldItem = InventoryGet(player, "ItemHandheld");
+            if (!heldItem) return;
 
-                // 获取 TargetCharacter 玩家信息
-                const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === info.TargetCharacter);
-                if (!target) return;
+            const asset = AssetGet("Female3DCG", "ItemMouth", heldItem.Asset.Name);
+            if (!asset) return;
 
-                // 给棒棒糖
-                InventoryWear(target, assetName, info.ActivityGroup.Name);
-                InventoryRemove(player, "ItemHandheld");
+            // 获取 TargetCharacter 玩家信息
+            const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === info.TargetCharacter);
+            if (!target) return;
 
-                // 更新外观
-                ChatRoomCharacterItemUpdate(target, info.ActivityGroup.Name);
-                ChatRoomCharacterItemUpdate(player, "ItemHandheld");
-                CharacterRefresh(player, true);
-            }
-        },
-        label,
-        dialog,
-    };
-}
+            // 给棒棒糖
+            InventoryWear(target, heldItem.Asset.Name, info.ActivityGroup.Name);
+            InventoryRemove(player, "ItemHandheld");
 
-/** @type { CustomActivity []} */
-const activities = [
-    activityBuilder(
-        "棒棒糖_Luzi",
-        {
-            CN: "塞棒棒糖",
-            EN: "Stuff with Lollipop",
-            UA: "Наповнити рот льодяником",
-        },
-        {
-            CN: "SourceCharacter将手里的棒棒糖塞进TargetCharacter的嘴里.",
-            EN: "SourceCharacter stuffs DestinationCharacter mouth with lollipop.",
-            UA: "SourceCharacter наповнює рот TargetCharacter льодяником.",
+            // 更新外观
+            ChatRoomCharacterItemUpdate(target, info.ActivityGroup.Name);
+            ChatRoomCharacterItemUpdate(player, "ItemHandheld");
+            CharacterRefresh(player, true);
         }
-    ),
-    activityBuilder(
-        "烤鱼_Luzi",
-        {
-            CN: "塞烤鱼",
-            EN: "Stuff with Grilled Fish",
-        },
-        {
-            CN: "SourceCharacter将手里的烤鱼塞进TargetCharacter的嘴里.",
-            EN: "SourceCharacter stuffs DestinationCharacter mouth with Grilled Fish.",
-        }
-    ),
-    activityBuilder(
-        "鸡腿_Luzi",
-        {
-            CN: "塞鸡腿",
-            EN: "Stuff with Roasted Chicken Leg",
-        },
-        {
-            CN: "SourceCharacter将手里的鸡腿塞进TargetCharacter的嘴里.",
-            EN: "SourceCharacter stuffs DestinationCharacter mouth with Roasted Chicken Leg.",
-        }
-    ),
-];
+    },
+    label: {
+        CN: "塞食物",
+        EN: "Stuff with Food",
+    },
+    dialog: {
+        CN: "SourceCharacter将手里的AssetName塞进TargetCharacter的嘴里.",
+        EN: "SourceCharacter stuffs DestinationCharacter mouth with AssetName.",
+    },
+};
 
 export default function () {
-    ActivityManager.addCustomActivities(activities);
+    ActivityManager.addCustomActivity(activity);
 }
