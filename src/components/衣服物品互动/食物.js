@@ -45,7 +45,11 @@ const activity = [
     {
         activity: {
             Name: `咬走食物_Luzi`,
-            Prerequisite: ["UseMouth", Prereqs.Acting.GroupEmpty(["ItemMouth"])],
+            Prerequisite: [
+                "UseMouth",
+                Prereqs.Acting.GroupEmpty(["ItemMouth"]),
+                Prereqs.Acted.GroupIs("ItemMouth", Object.keys(stomachValueSetting)),
+            ],
             MaxProgress: 50,
             Target: ["ItemMouth"],
         },
