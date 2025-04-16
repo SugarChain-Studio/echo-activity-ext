@@ -9,7 +9,7 @@ function tryLoadTranslationModule() {
         once(`Echo-Translation@${ModInfo.version}`, async () => {
             const moduleURL = `${Path.resolve("translation.js")}?v=${debugFlag ? Date.now() : ModInfo.version}`;
             try {
-                Logger.info(`Loading translation module... ${moduleURL}`);
+                Logger.info(`Loading translation module...`);
                 const { setupInvasiveTranslation } = await import(moduleURL);
                 if (typeof setupInvasiveTranslation === "function") setupInvasiveTranslation();
                 else throw new Error("setupInvasiveTranslation is not a function");
