@@ -1,5 +1,5 @@
 const path = require("path");
-const { createModRollupConfig } = require("./utils/rollupUtils.cjs");
+const { createModRollupConfig, parseEnv } = require("./utils/rollupUtils.cjs");
 const commonjs = require("@rollup/plugin-commonjs");
 const resolve = require("@rollup/plugin-node-resolve");
 const terser = require("@rollup/plugin-terser");
@@ -7,6 +7,9 @@ const { defineConfig } = require("rollup");
 
 const packageJSON = require(path.join(process.cwd(), "package.json"));
 
+/**
+ * @param {ReturnType<parseEnv>} param0
+ */
 function createTranslationConfig({ destDir, beta = false, debug = false }) {
     return defineConfig({
         input: `${__dirname}/translation/index.js`,
@@ -21,18 +24,6 @@ function createTranslationConfig({ destDir, beta = false, debug = false }) {
 }
 
 module.exports = async (cliArgs) => {
-    const debug = !!cliArgs.configDebug;
-    const baseURL = cliArgs.configBaseURL;
-    const beta = !!cliArgs.configBeta;
-    const utilDir = cliArgs.configUtilsDir ? cliArgs.configUtilsDir : "utils";
-    const curDir = __dirname;
-
-    const destDir = `${curDir}/public/`;
-
-    if (!baseURL || typeof baseURL !== "string") throw new Error("No deploy site specified");
-
-    return [
-        await createModRollupConfig({ packageJSON, curDir, utilDir, destDir, baseURL, beta, debug }),
-        createTranslationConfig({ destDir, beta, debug }),
-    ];
+    const env = parseEnv(__dirname, cliArgs);
+    return [await createModRollupConfig({ env, packageJSON }), createTranslationConfig(env)];
 };
