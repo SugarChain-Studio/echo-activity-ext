@@ -27,17 +27,17 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
       '@sugarch/bc-activity-manager':
-        specifier: ^0.4.3
-        version: 0.4.3(@sugarch/bc-event-handler@0.6.0(@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+        specifier: ^0.4.4
+        version: 0.4.4(@sugarch/bc-event-handler@0.6.1(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-event-handler':
-        specifier: ^0.6.0
-        version: 0.6.0(@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+        specifier: ^0.6.1
+        version: 0.6.1(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-mod-hook-manager':
-        specifier: ^0.2.13
-        version: 0.2.13(bondage-club-mod-sdk@1.2.0)
+        specifier: ^0.2.14
+        version: 0.2.14(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-mod-types':
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^0.6.1
+        version: 0.6.1
       '@sugarch/bc-mod-utility':
         specifier: ^0.2.11
         version: 0.2.11
@@ -109,8 +109,8 @@ packages:
       conventional-commits-parser:
         optional: true
 
-  '@eslint-community/eslint-utils@4.6.0':
-    resolution: {integrity: sha512-WhCn7Z7TauhBtmzhvKpoQs0Wwb/kBcy4CwpuI0/eEIr2Lx2auxmulAzLr91wVZJaz47iUZdkXOK7WlAfxGKCnA==}
+  '@eslint-community/eslint-utils@4.6.1':
+    resolution: {integrity: sha512-KTsJMmobmbrFLe3LDh0PC2FXpcSYJt/MLjlkh/9LEnmKYLSYmT/0EW9JWANjeoemiuZrmogti0tW5Ch+qNUYDw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
@@ -365,26 +365,26 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@sugarch/bc-activity-manager@0.4.3':
-    resolution: {integrity: sha512-7jBxk+Ufv2reRd5rAKpY3BOSpbLd2pyJtYrSyiDkNGSGT8HHI7/4VTefsKIZ0BiCpLRBmG8nSEbP3omEYPQUEg==}
+  '@sugarch/bc-activity-manager@0.4.4':
+    resolution: {integrity: sha512-02K9DOfD0oiAZppQ+0qaN0QFktYk/vMp9MF98o2Qm0pBVNnMRu/4uy1Pt7NnFiYFlgIlb8NQiuY0pMFMk2hhnA==}
     peerDependencies:
-      '@sugarch/bc-event-handler': 0.6.0
-      '@sugarch/bc-mod-hook-manager': 0.2.13
+      '@sugarch/bc-event-handler': 0.6.1
+      '@sugarch/bc-mod-hook-manager': 0.2.14
       bondage-club-mod-sdk: ^1.2.0
 
-  '@sugarch/bc-event-handler@0.6.0':
-    resolution: {integrity: sha512-AqgtbIiYBTWVnKo4xzmWujXU9Dn046vsdbaYXoMqvJ7M5jNW40YkGSFc4e0/Zp4JT/0rUa4rL8bD9CLyK8yVqQ==}
+  '@sugarch/bc-event-handler@0.6.1':
+    resolution: {integrity: sha512-VhE8XZDoN+4xAG63K5LKKxMkh+CIOsPVqb7ew6a5lnuHqxHKuMnsuPhixQdGye/TnTuEBV5F0kBlRO8xn0Vabg==}
     peerDependencies:
-      '@sugarch/bc-mod-hook-manager': 0.2.13
+      '@sugarch/bc-mod-hook-manager': 0.2.14
       bondage-club-mod-sdk: ^1.2.0
 
-  '@sugarch/bc-mod-hook-manager@0.2.13':
-    resolution: {integrity: sha512-tXB3w+AV3zHRf6dyc/n4N0hSF4/8N2vf3B9QkDygTVdIJLJSZo+jBN0cGgXff0Z3X/UqF0LTTuFALxJSXKrLVw==}
+  '@sugarch/bc-mod-hook-manager@0.2.14':
+    resolution: {integrity: sha512-hE0fU56o4AyuYidd9rVMhV1UmXZ3KFcEQCZ54pZnimLigoahp/oVbwgtwUVc/TVsx42ge5wh3f+b+/ICE5LaPQ==}
     peerDependencies:
       bondage-club-mod-sdk: ^1.2.0
 
-  '@sugarch/bc-mod-types@0.6.0':
-    resolution: {integrity: sha512-hloq2ls4dS3/pX5CVhEgINzTVKloWItRHZqphEzT9PPlAd0Ye5X2aRpAyOOU4xhuBboDBqMUSBC8sCF/jygzFg==}
+  '@sugarch/bc-mod-types@0.6.1':
+    resolution: {integrity: sha512-BD5DzuRM45DxjcNZUWVL9mFnRfl9ll8B60yfjw35zCzwZkL4ggrQ9ynfct9E/wmuBSW1iCLmZUoTgKseqKZ5Jg==}
 
   '@sugarch/bc-mod-utility@0.2.11':
     resolution: {integrity: sha512-Zbr4lJp6IkM4rBUTcnb2HzW5rY9tplcrADF9wWpiFfRPOdRy0iE4u7usGIZy9HS6TCBW5uwcYfgWgU73oz7rnw==}
@@ -1343,8 +1343,8 @@ packages:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
-  type-fest@4.39.1:
-    resolution: {integrity: sha512-uW9qzd66uyHYxwyVBYiwS4Oi0qZyUqwjU+Oevr6ZogYiXt99EOYtwvzMSLw1c3lYo2HzJsep/NB23iEVEgjG/w==}
+  type-fest@4.40.0:
+    resolution: {integrity: sha512-ABHZ2/tS2JkvH1PEjxFDTUWC8dB5OsIGZP4IFLhR293GqT5Y5qB1WwL2kMPYhQW9DVgVD8Hd7I8gjwPIf5GFkw==}
     engines: {node: '>=16'}
 
   typescript@5.8.3:
@@ -1465,7 +1465,7 @@ snapshots:
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.1.0
 
-  '@eslint-community/eslint-utils@4.6.0(eslint@9.24.0)':
+  '@eslint-community/eslint-utils@4.6.1(eslint@9.24.0)':
     dependencies:
       eslint: 9.24.0
       eslint-visitor-keys: 3.4.3
@@ -1673,26 +1673,26 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@sugarch/bc-activity-manager@0.4.3(@sugarch/bc-event-handler@0.6.0(@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-activity-manager@0.4.4(@sugarch/bc-event-handler@0.6.1(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
     dependencies:
-      '@sugarch/bc-event-handler': 0.6.0(@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
-      '@sugarch/bc-mod-hook-manager': 0.2.13(bondage-club-mod-sdk@1.2.0)
-      '@sugarch/bc-mod-types': 0.6.0
+      '@sugarch/bc-event-handler': 0.6.1(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+      '@sugarch/bc-mod-hook-manager': 0.2.14(bondage-club-mod-sdk@1.2.0)
+      '@sugarch/bc-mod-types': 0.6.1
       '@sugarch/bc-mod-utility': 0.2.11
       bondage-club-mod-sdk: 1.2.0
 
-  '@sugarch/bc-event-handler@0.6.0(@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-event-handler@0.6.1(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
     dependencies:
-      '@sugarch/bc-mod-hook-manager': 0.2.13(bondage-club-mod-sdk@1.2.0)
-      '@sugarch/bc-mod-types': 0.6.0
+      '@sugarch/bc-mod-hook-manager': 0.2.14(bondage-club-mod-sdk@1.2.0)
+      '@sugarch/bc-mod-types': 0.6.1
       bondage-club-mod-sdk: 1.2.0
 
-  '@sugarch/bc-mod-hook-manager@0.2.13(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0)':
     dependencies:
-      '@sugarch/bc-mod-types': 0.6.0
+      '@sugarch/bc-mod-types': 0.6.1
       bondage-club-mod-sdk: 1.2.0
 
-  '@sugarch/bc-mod-types@0.6.0': {}
+  '@sugarch/bc-mod-types@0.6.1': {}
 
   '@sugarch/bc-mod-utility@0.2.11':
     dependencies:
@@ -1986,7 +1986,7 @@ snapshots:
 
   eslint@9.24.0:
     dependencies:
-      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0)
+      '@eslint-community/eslint-utils': 4.6.1(eslint@9.24.0)
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.20.0
       '@eslint/config-helpers': 0.2.1
@@ -2409,7 +2409,7 @@ snapshots:
     dependencies:
       '@babel/code-frame': 7.26.2
       index-to-position: 1.1.0
-      type-fest: 4.39.1
+      type-fest: 4.40.0
 
   path-exists@4.0.0: {}
 
@@ -2456,14 +2456,14 @@ snapshots:
     dependencies:
       find-up-simple: 1.0.1
       read-pkg: 9.0.1
-      type-fest: 4.39.1
+      type-fest: 4.40.0
 
   read-pkg@9.0.1:
     dependencies:
       '@types/normalize-package-data': 2.4.4
       normalize-package-data: 6.0.2
       parse-json: 8.3.0
-      type-fest: 4.39.1
+      type-fest: 4.40.0
       unicorn-magic: 0.1.0
 
   readable-stream@1.0.34:
@@ -2695,7 +2695,7 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
 
-  type-fest@4.39.1: {}
+  type-fest@4.40.0: {}
 
   typescript@5.8.3: {}
 
