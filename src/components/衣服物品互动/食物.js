@@ -89,6 +89,7 @@ const activity = [
             Prerequisite: [
                 "UseMouth",
                 () => playerStomach.canEat(),
+                Prereqs.not(Prereqs.Acting.GroupIs("动物身体_Luzi", ["幽灵人形_Luzi"])), // 不允许幽灵人形吃东西
                 Prereqs.Acting.GroupIs("ItemMouth", [
                     "棒棒糖_Luzi",
                     "烤鱼_Luzi",
@@ -139,6 +140,7 @@ const activity = [
             TargetSelf: ["ItemMouth"],
         },
         useImage: DynImageProviders.itemOnActedGroup("ItemMouth"),
+        item: (player) => InventoryGet(player, "ItemMouth"),
         label: {
             CN: "吃掉食物",
             EN: "Eat Food",
