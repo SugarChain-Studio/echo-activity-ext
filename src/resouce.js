@@ -1,19 +1,11 @@
 import { Logger } from "@mod-utils/log";
 import { resourceBaseURL } from "@mod-utils/rollupHelper";
+import { fetchAssetOverrides } from "@mod-utils/fetchAssetOverrides";
+import { resolveAssetOverrides } from "@sugarch/bc-activity-manager";
 
 const fixSeparator = resourceBaseURL.endsWith("/")
     ? (path) => (path.startsWith("/") ? path.substring(1) : path)
     : (path) => (path.startsWith("/") ? path : `/${path}`);
-
-export class Path {
-    /**
-     * @param {string} path
-     * @returns {`${'http://' | 'https://'}${string}`}
-     */
-    static resolve(path) {
-        return `${resourceBaseURL}${fixSeparator(path)}`;
-    }
-}
 
 class PreloadItem {
     /**
@@ -61,21 +53,21 @@ class _Preloader {
      * @param {string} path
      * @returns {Promise<HTMLImageElement>}
      */
-    async preload(path) {
-        const url = Path.resolve(path);
-        const item = this.preloadStash.get(path);
-        if (!item || !item.loaded) {
-            return new Promise((resolve) => {
-                const item = new PreloadItem(url, (img) => resolve(img));
-                this.preloadStash.set(path, item);
+    preload(path) {
+        return new Promise((resolve) => {
+            Path.afterLoad(() => {
+                const url = Path.resolve(path);
+                const item = this.preloadStash.get(path);
+                if (!item || !item.loaded) {
+                    const item = new PreloadItem(url, (img) => resolve(img));
+                    this.preloadStash.set(path, item);
+                } else if (item.loaded) {
+                    resolve(this.preloadStash.get(path).img);
+                } else {
+                    item.onloads.push((img) => resolve(img));
+                }
             });
-        } else if (item.loaded) {
-            return Promise.resolve(this.preloadStash.get(path).img);
-        } else {
-            return new Promise((resolve) => {
-                item.onloads.push((img) => resolve(img));
-            });
-        }
+        });
     }
 
     /**
@@ -93,3 +85,51 @@ class _Preloader {
 }
 
 export const Preloader = new _Preloader();
+
+class _Path {
+    constructor() {
+        /** @type {Record<string, string>} */
+        this.overrides = {};
+        this.loaded = false;
+
+        /** @type {(() => void)[]} */
+        this.afterLoadEvents = [];
+
+        (async () => {
+            try {
+                const container = await fetchAssetOverrides();
+                this.overrides = await resolveAssetOverrides(resourceBaseURL, container);
+                this.loaded = true;
+                for (const fn of this.afterLoadEvents) fn();
+                this.afterLoadEvents = [];
+            } catch (error) {
+                Logger.error(`Failed to fetch asset overrides: ${error}`);
+            }
+        })();
+    }
+
+    /**
+     * @param {()=>void} cb
+     */
+    afterLoad(cb) {
+        if (this.loaded) {
+            cb();
+        } else {
+            this.afterLoadEvents.push(cb);
+        }
+    }
+
+    /**
+     * @param {string} path
+     * @returns {`${'http://' | 'https://'}${string}`}
+     */
+    resolve(path) {
+        if (path in this.overrides) {
+            return /** @type {`${'http://' | 'https://'}${string}`}*/ (this.overrides[path]);
+        } else {
+            return `${resourceBaseURL}${fixSeparator(path)}`;
+        }
+    }
+}
+
+export const Path = new _Path();
