@@ -1,4 +1,3 @@
-import { HookManager } from "@sugarch/bc-mod-hook-manager";
 import { DOGS } from "./DOGS";
 import { BCAR } from "./BCAR";
 import { EBCH } from "./EBCH";
@@ -50,33 +49,36 @@ function translateLocalMessage(key, callback) {
     }
 }
 
-export function setup() {
-    const insideDrawCharaApp = HookManager.insideFlag("CommonDrawAppearanceBuild");
-    const insideDrawCharacter = HookManager.insideFlag("DrawCharacter");
+/**
+ * @param {HookManagerType} hook
+ */
+export function setup(hook) {
+    const insideDrawCharaApp = hook.insideFlag("CommonDrawAppearanceBuild");
+    const insideDrawCharacter = hook.insideFlag("DrawCharacter");
     const inside = () => insideDrawCharaApp.inside || insideDrawCharacter.inside;
 
     ["DrawText", "DrawTextFit", "DrawTextWrap", "DynamicDrawText"].forEach((name) => {
-        HookManager.hookFunction(name, 10, (args, next) => {
+        hook.hookFunction(name, 10, (args, next) => {
             const _args = /** @type {[string, ...n:any[]]} */ (args);
             if (!inside() && shouldTranslate() && args[0]) translateMenuText(_args[0], (text) => (_args[0] = text));
             return next(args);
         });
     });
 
-    HookManager.hookFunction("ActivityDictionaryText", 1, (args, next) => {
+    hook.hookFunction("ActivityDictionaryText", 1, (args, next) => {
         let ret = next(args);
         if (shouldTranslate()) translateActivityText(ret, (text) => (ret = text));
         return ret;
     });
 
-    HookManager.hookFunction("ChatRoomSendLocal", 0, (args, next) => {
+    hook.hookFunction("ChatRoomSendLocal", 0, (args, next) => {
         if (shouldTranslate()) {
             translateLocalMessage(args[0], (text) => (args[0] = text));
         }
         return next(args);
     });
 
-    HookManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
+    hook.hookFunction("ChatRoomMessage", 0, (args, next) => {
         const { Content, Type, Dictionary } = args[0];
         if (shouldTranslate() && ["Action", "Activity"].includes(Type) && Content && Dictionary) {
             const targetTag = (() => {

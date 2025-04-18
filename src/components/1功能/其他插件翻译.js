@@ -11,7 +11,7 @@ function tryLoadTranslationModule() {
             try {
                 Logger.info(`Loading translation module...`);
                 const { setupInvasiveTranslation } = await import(moduleURL);
-                if (typeof setupInvasiveTranslation === "function") setupInvasiveTranslation();
+                if (typeof setupInvasiveTranslation === "function") setupInvasiveTranslation(HookManager);
                 else throw new Error("setupInvasiveTranslation is not a function");
             } catch (error) {
                 Logger.error(`Failed to load translation module: ${error.message}`);

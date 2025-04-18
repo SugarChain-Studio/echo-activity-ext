@@ -25,3 +25,5 @@ type DOMObserverModifier = {
     filter: (node: Node) => boolean;
     action: (node: Node) => void;
 };
+
+type HookManagerType = typeof import('@sugarch/bc-mod-hook-manager')['HookManager'];
