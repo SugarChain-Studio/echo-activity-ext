@@ -1,5 +1,6 @@
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
+import { Path } from "../../resouce";
 
 /** @type { CustomActivity} */
 const activity = {
@@ -56,7 +57,7 @@ const activity = {
             if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
         }
     },
-    useImage: "Wiggle",
+    useImage: Path.resolve("activities/pull_to_side.png"),
     label: {
         CN: "拉到身边",
         EN: "Pull to One's Side",
