@@ -1,4 +1,5 @@
-import { HookManager } from "@sugarch/bc-mod-hook-manager";
+import { ChatRoomEvents } from "@sugarch/bc-event-handler";
+import { messager } from "../../messager";
 
 /**
  * @typedef { "nm" | "bili" | "ytb" | "phb" } ShareType
@@ -98,7 +99,7 @@ const i18n = {
 </div>
 `,
         shareUnsupport: "不支持你分享的链接，目前支持的有：%s。使用'/分享'获取帮助! ",
-        shareInfo: "一个 %s 嵌入分享 ╰(*°▽°*)╯",
+        shareInfo: "SourceCharacter 发送了一个 SourceType 嵌入分享 ╰(*°▽°*)╯",
     },
     EN: {
         shareHelp: `
@@ -139,7 +140,7 @@ const i18n = {
 `,
         shareUnsupport:
             "The link you shared is not supported, currently supported are: %s. Use '/sharelink' to get help! ",
-        shareInfo: "A %s embedded share ╰(*°▽°*)╯",
+        shareInfo: "SourceCharacter sends a SourceType embedded share ╰(*°▽°*)╯",
     },
 };
 
@@ -216,22 +217,29 @@ function shareHandle(parsed, lang = "CN") {
         Dictionary: [sendv],
         Sender: Player.MemberNumber,
     });
-    // 发送*号消息
-    ChatRoomSendLocal(text(lang).shareInfo.replace("%s", valuify(frame[sendv.linkType].displayName)));
+    // 发送消息
+    messager.action(text(lang).shareInfo, {
+        source: Player,
+        text: { tag: "SourceType", text: valuify(frame[sendv.linkType].displayName) },
+    });
     // 清理输入框内容
     ElementValue("InputChat", "");
 }
 
 export default function () {
-    HookManager.hookFunction("ChatRoomMessage", 0, (args, next) => {
-        const { Content, Dictionary } = args[0];
+    ChatRoomEvents.on("Hidden", (message) => {
+        const { Content, Dictionary, Sender } = message;
         if (Content === "Share_Link") {
             const { linkType, info } = /** @type { any } */ (Dictionary[0]);
             const result = frame[linkType]?.get(atob(info));
-            if (result) ChatRoomSendLocal(result);
-            return;
+            if (result) {
+                ChatRoomMessage({
+                    Type: "LocalMessage",
+                    Sender,
+                    Content: result,
+                });
+            }
         }
-        next(args);
     });
 
     CommandCombine({
