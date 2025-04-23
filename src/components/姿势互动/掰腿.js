@@ -19,7 +19,10 @@ const activities = [
             Target: ["ItemLegs"],
         },
         mode: "OthersOnSelf",
-        run: (player) => {
+        run: (player, sender) => {
+            // 遵守物品权限
+            if (!ServerChatRoomGetAllowItem(sender, player)) return;
+
             if (player.IsKneeling()) PoseSetActive(player, "KneelingSpread");
             else PoseSetActive(player, "BaseLower");
         },

@@ -16,6 +16,9 @@ const activity = {
     },
     run: (player, sender, info) => {
         if (info.TargetCharacter === player.MemberNumber) {
+            // 遵守物品权限
+            if (!ServerChatRoomGetAllowItem(sender, player)) return;
+
             const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.SourceCharacter);
             if (!SrcChara) return;
             ChatRoomOrder.setDrawOrder({

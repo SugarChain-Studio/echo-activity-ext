@@ -23,6 +23,9 @@ const activity = {
     useImage: ["ItemHandheld", "Scissors"],
     mode: "AnyOnSelf",
     run: (player, sender, info) => {
+        // 遵守物品权限
+        if (!ServerChatRoomGetAllowItem(sender, player)) return;
+
         // 使用动作拓展才会被剪衣服，可以只处理收到消息的情况
         const groups = groupMap[info.ActivityGroup.Name];
         if (groups) {

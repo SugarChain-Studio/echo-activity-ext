@@ -13,8 +13,11 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemTorso"],
         },
-        run: (player, _, info) => {
+        run: (player, sender, info) => {
             if (info.TargetCharacter === player.MemberNumber) {
+                // 遵守物品权限
+                if (!ServerChatRoomGetAllowItem(sender, player)) return;
+
                 const asset = AssetGet("Female3DCG", "ItemDevices", "床左边_Luzi");
                 if (!asset) return;
                 InventoryWear(player, "床左边_Luzi", "ItemDevices");
