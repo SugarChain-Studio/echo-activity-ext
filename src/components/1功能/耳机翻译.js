@@ -74,9 +74,9 @@ const getMessage = (key, ...args) => i18n(messages, key, ...args);
  * @returns {string | undefined} language code if valid, undefined if not
  */
 function fetchLangCode(item) {
-    const m = item.Craft?.Description?.match(/\[(([a-z]{2})(?:-[A-Za-z]{1,4})?)\]/);
-    if (m && iso639_1_codes.has(m[2])) {
-        return m[1];
+    const m = item.Craft?.Description?.match(/\[([a-z]{2})(-[a-z]{1,4})?\]/i);
+    if (m && iso639_1_codes.has(m[1].toLowerCase())) {
+        return m[1].toLowerCase() + (m[2] ?? "");
     }
     return undefined;
 }
