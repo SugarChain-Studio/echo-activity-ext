@@ -27,17 +27,17 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.0)
       '@sugarch/bc-activity-manager':
-        specifier: ^0.4.6
-        version: 0.4.6(@sugarch/bc-event-handler@0.6.2(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+        specifier: ^0.4.7
+        version: 0.4.7(@sugarch/bc-event-handler@0.6.3(@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-event-handler':
-        specifier: ^0.6.2
-        version: 0.6.2(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+        specifier: ^0.6.3
+        version: 0.6.3(@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-mod-hook-manager':
-        specifier: ^0.2.14
-        version: 0.2.14(bondage-club-mod-sdk@1.2.0)
+        specifier: ^0.2.15
+        version: 0.2.15(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-mod-types':
-        specifier: ^0.6.1
-        version: 0.6.1
+        specifier: ^0.6.2
+        version: 0.6.2
       '@sugarch/bc-mod-utility':
         specifier: ^0.2.11
         version: 0.2.11
@@ -361,26 +361,26 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@sugarch/bc-activity-manager@0.4.6':
-    resolution: {integrity: sha512-tKZ25Ej3yjCVFMM6oHwrmxKnOwxHR1dck6GtWN5HWlzlCkS9GjPubtWzofTFz+G0qV8zCwBszcLZN+yvhiyA2A==}
+  '@sugarch/bc-activity-manager@0.4.7':
+    resolution: {integrity: sha512-IK2W9rPQuvAfDZ9jTyKCRrjoSYtMPTFTuFYPkgiJsfIgLmOp3JthoMqtymD9Ei/ebt26wxwpbBU9j6shxEpTSQ==}
     peerDependencies:
-      '@sugarch/bc-event-handler': 0.6.2
-      '@sugarch/bc-mod-hook-manager': 0.2.14
+      '@sugarch/bc-event-handler': 0.6.3
+      '@sugarch/bc-mod-hook-manager': 0.2.15
       bondage-club-mod-sdk: ^1.2.0
 
-  '@sugarch/bc-event-handler@0.6.2':
-    resolution: {integrity: sha512-XtaKYq+4v48rlQ7vDglaLpvXXrC0YZ2p5h71BPad126eSwqIzjUX8CalcD8KfssjQs028dffJ4h7jJHr6jh14w==}
+  '@sugarch/bc-event-handler@0.6.3':
+    resolution: {integrity: sha512-1fIpojv16da1f7O5trmmh/Guy6nZxmwMESU9hlrq0wrbtBqxg4MqKdJOFZa3bsZymRzHb/g2YoiqVm6HXoM9vQ==}
     peerDependencies:
-      '@sugarch/bc-mod-hook-manager': 0.2.14
+      '@sugarch/bc-mod-hook-manager': 0.2.15
       bondage-club-mod-sdk: ^1.2.0
 
-  '@sugarch/bc-mod-hook-manager@0.2.14':
-    resolution: {integrity: sha512-hE0fU56o4AyuYidd9rVMhV1UmXZ3KFcEQCZ54pZnimLigoahp/oVbwgtwUVc/TVsx42ge5wh3f+b+/ICE5LaPQ==}
+  '@sugarch/bc-mod-hook-manager@0.2.15':
+    resolution: {integrity: sha512-TGwkSl7AiDaCLNPdkfsqpeqW+8Y9X8WKg/T9xBYoxYnIlv2G8jTL8D5NmCknM1akJotN+Svh4wdLEa1K+2QT0A==}
     peerDependencies:
       bondage-club-mod-sdk: ^1.2.0
 
-  '@sugarch/bc-mod-types@0.6.1':
-    resolution: {integrity: sha512-BD5DzuRM45DxjcNZUWVL9mFnRfl9ll8B60yfjw35zCzwZkL4ggrQ9ynfct9E/wmuBSW1iCLmZUoTgKseqKZ5Jg==}
+  '@sugarch/bc-mod-types@0.6.2':
+    resolution: {integrity: sha512-uc61FS70hQztRTo26YJajPJd20JtMkqlQ6GEGo0hMekW2yvKhwPPs0CPyjuW4oKIkw44F25R2DkBSxApCKVFlQ==}
 
   '@sugarch/bc-mod-utility@0.2.11':
     resolution: {integrity: sha512-Zbr4lJp6IkM4rBUTcnb2HzW5rY9tplcrADF9wWpiFfRPOdRy0iE4u7usGIZy9HS6TCBW5uwcYfgWgU73oz7rnw==}
@@ -1665,26 +1665,26 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@sugarch/bc-activity-manager@0.4.6(@sugarch/bc-event-handler@0.6.2(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-activity-manager@0.4.7(@sugarch/bc-event-handler@0.6.3(@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
     dependencies:
-      '@sugarch/bc-event-handler': 0.6.2(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
-      '@sugarch/bc-mod-hook-manager': 0.2.14(bondage-club-mod-sdk@1.2.0)
-      '@sugarch/bc-mod-types': 0.6.1
+      '@sugarch/bc-event-handler': 0.6.3(@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+      '@sugarch/bc-mod-hook-manager': 0.2.15(bondage-club-mod-sdk@1.2.0)
+      '@sugarch/bc-mod-types': 0.6.2
       '@sugarch/bc-mod-utility': 0.2.11
       bondage-club-mod-sdk: 1.2.0
 
-  '@sugarch/bc-event-handler@0.6.2(@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-event-handler@0.6.3(@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
     dependencies:
-      '@sugarch/bc-mod-hook-manager': 0.2.14(bondage-club-mod-sdk@1.2.0)
-      '@sugarch/bc-mod-types': 0.6.1
+      '@sugarch/bc-mod-hook-manager': 0.2.15(bondage-club-mod-sdk@1.2.0)
+      '@sugarch/bc-mod-types': 0.6.2
       bondage-club-mod-sdk: 1.2.0
 
-  '@sugarch/bc-mod-hook-manager@0.2.14(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-mod-hook-manager@0.2.15(bondage-club-mod-sdk@1.2.0)':
     dependencies:
-      '@sugarch/bc-mod-types': 0.6.1
+      '@sugarch/bc-mod-types': 0.6.2
       bondage-club-mod-sdk: 1.2.0
 
-  '@sugarch/bc-mod-types@0.6.1': {}
+  '@sugarch/bc-mod-types@0.6.2': {}
 
   '@sugarch/bc-mod-utility@0.2.11':
     dependencies:

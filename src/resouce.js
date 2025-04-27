@@ -132,4 +132,17 @@ class _Path {
     }
 }
 
+/**
+ * 播放声音
+ * @param {string} src 声音文件路径
+ * @param {boolean} [playerInvolved] 是否涉及玩家（玩家触发或者被触发）
+ */
+export function playItemAudio(src, playerInvolved = false) {
+    if (Player.AudioSettings?.PlayItem) {
+        if (!Player.AudioSettings?.PlayItemPlayerOnly || playerInvolved) {
+            AudioPlayInstantSound(src);
+        }
+    }
+}
+
 export const Path = new _Path();

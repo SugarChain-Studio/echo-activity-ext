@@ -1,4 +1,4 @@
-import { Path } from "../../resouce";
+import { Path, playItemAudio } from "../../resouce";
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../Prereqs";
 
@@ -27,10 +27,12 @@ const activity = {
         ],
         TargetSelf: true,
     },
-    run: (_player, _sender, _info) => {
-        // 不论是谁都要播放一下音效
-        AudioPlayInstantSound(Path.resolve("audio/阿巴阿巴.mp3"));
-    },
+    mode: "AnyInvolved",
+    run: (player, _, { SourceCharacter, TargetCharacter }) =>
+        playItemAudio(
+            Path.resolve("audio/阿巴阿巴.mp3"),
+            SourceCharacter === player.MemberNumber || TargetCharacter === player.MemberNumber
+        ),
     useImage: ["ItemHandheld", "阿巴阿巴_Luzi"],
     label: {
         CN: {
