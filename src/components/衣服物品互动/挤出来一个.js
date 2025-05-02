@@ -44,37 +44,44 @@ const activity = {
 
         setTimeout(() => {
             const chance = Math.random();
+
+            const post = (content) =>
+                i18nAction(content, {
+                    source: player,
+                    destination: player,
+                    asset: item.Asset,
+                    activity: { name: "MasturbateItem", group: "ItemButt" },
+                });
+
             if (chance < basePossiblity) {
-                if (item.Property.InsertedBeads > 1) {
-                    item.Property.InsertedBeads--;
-                    item.Property.TypeRecord = { typed: item.Property.InsertedBeads - 1 };
-                } else {
+                const removing = item.Property.InsertedBeads <= 1;
+                if (removing) {
                     const itemGroup = item.Asset.Group.Name;
                     InventoryRemove(player, itemGroup);
+                } else {
+                    item.Property.InsertedBeads--;
+                    item.Property.TypeRecord = { typed: item.Property.InsertedBeads - 1 };
                 }
-                CharacterRefresh(player);
-                ChatRoomCharacterItemUpdate(player);
 
-                i18nAction(
-                    {
+                CharacterRefresh(player, true);
+                ChatRoomCharacterUpdate(player);
+
+                if (removing) {
+                    post({
+                        CN: "SourceCharacter将屁股里的AssetName完全挤出来。",
+                        EN: "SourceCharacter fully squeezes out AssetName from the butt.",
+                    });
+                } else {
+                    post({
                         CN: "SourceCharacter成功将屁股里的AssetName挤出来其中一个球.",
                         EN: "SourceCharacter successfully squeezes out one ball of AssetName from the butt.",
-                    },
-                    {
-                        source: player,
-                        destination: player,
-                        asset: item.Asset,
-                        activity: { name: "MasturbateItem", group: "ItemButt" },
-                    }
-                );
+                    });
+                }
             } else {
-                i18nAction(
-                    {
-                        CN: "SourceCharacter尝试将塞在屁股里的AssetName挤出来，但失败了.",
-                        EN: "SourceCharacter tries to squeeze out AssetName stuck in the butt, but failed.",
-                    },
-                    { source: player, destination: player, asset: item.Asset }
-                );
+                post({
+                    CN: "SourceCharacter尝试将塞在屁股里的AssetName挤出来，但失败了.",
+                    EN: "SourceCharacter tries to squeeze out AssetName stuck in the butt, but failed.",
+                });
             }
             cooldown = true;
         }, 5000);
