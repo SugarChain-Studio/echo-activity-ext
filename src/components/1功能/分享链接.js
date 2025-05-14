@@ -16,20 +16,21 @@ const frame = {
         displayName: "Bilibili",
         get: (info) => {
             const IDs = JSON.parse(info);
-            return `<iframe width="100%" height="315" src="//player.bilibili.com/player.html?aid=${IDs[0]}&bvid=${IDs[1]}&cid=${IDs[2]}&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
+            return `<iframe width="100%" height="100%" src="//player.bilibili.com/player.html?aid=${IDs[0]}&bvid=${IDs[1]}&cid=${IDs[2]}&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
         },
     },
     ytb: {
         displayName: "Youtube",
         get: (info) => {
             const IDs = JSON.parse(info);
-            return `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${IDs[0]}?si=${IDs[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+            const fakeSI = Math.random().toString(36).substring(2);
+            return `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${IDs[0]}?si=${fakeSI}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
         },
     },
     phb: {
         displayName: "Pornhub",
         get: (Id) =>
-            `<iframe width="100%" height="315" src="https://www.pornhub.com/embed/${Id}" frameborder="0"  scrolling="no" allowfullscreen></iframe>`,
+            `<iframe width="100%" height="100%" src="https://www.pornhub.com/embed/${Id}" frameborder="0"  scrolling="no" allowfullscreen></iframe>`,
     },
 };
 
@@ -125,9 +126,9 @@ const i18n = {
     )}
     ${buildExampe(
         "YouTube",
-        ["Click the share button → Copy the link"],
+        ["Click the share button → Copy the link or copy the URL in the browser address bar"],
         "Example：",
-        "/sharelink https://youtu.be/******?si=******"
+        "/sharelink https://youtu.be/******"
     )}
     ${buildExampe(
         "PornHub",
@@ -196,8 +197,11 @@ function shareHandle(parsed, lang = "CN") {
                     info: btoa(JSON.stringify([match[1], match[2], match[3]])),
                 };
         } else if (shareContent.startsWith("https://youtu.be/")) {
-            const match = shareContent.match(/youtu\.be\/([A-Za-z0-9_-]+)[?&].*[?&]?si=([A-Za-z0-9_-]+)&?/);
+            const match = shareContent.match(/youtu\.be\/(\w+)/);
             if (match) return { linkType: "ytb", info: btoa(JSON.stringify([match[1], match[2]])) };
+        } else if (shareContent.startsWith("https://www.youtube.com/watch")) {
+            const match = shareContent.match(/[?&]v=(\w+)&/);
+            if (match) return { linkType: "ytb", info: btoa(JSON.stringify([match[1]])) };
         } else if (shareContent.includes("pornhub.com/view_video.php")) {
             const match = shareContent.match(/viewkey=([A-Za-z0-9]+)/);
             if (match) return { linkType: "phb", info: btoa(match[1]) };
@@ -208,22 +212,22 @@ function shareHandle(parsed, lang = "CN") {
 
     if (!sendv) {
         shareErrReport(lang);
+    } else {
+        // 发送
+        ServerSend("ChatRoomChat", {
+            Type: "Hidden",
+            Content: "Share_Link",
+            Dictionary: [sendv],
+            Sender: Player.MemberNumber,
+        });
+        // 发送消息
+        messager.action(text(lang).shareInfo, {
+            source: Player,
+            text: { tag: "SourceType", text: valuify(frame[sendv.linkType].displayName) },
+        });
+        // 清理输入框内容
+        ElementValue("InputChat", "");
     }
-
-    // 发送
-    ServerSend("ChatRoomChat", {
-        Type: "Hidden",
-        Content: "Share_Link",
-        Dictionary: [sendv],
-        Sender: Player.MemberNumber,
-    });
-    // 发送消息
-    messager.action(text(lang).shareInfo, {
-        source: Player,
-        text: { tag: "SourceType", text: valuify(frame[sendv.linkType].displayName) },
-    });
-    // 清理输入框内容
-    ElementValue("InputChat", "");
 }
 
 export default function () {
@@ -236,7 +240,7 @@ export default function () {
                 ChatRoomMessage({
                     Type: "LocalMessage",
                     Sender,
-                    Content: result,
+                    Content: `<div style="width: 100%; aspect-ratio: 4 / 3;">${result}</div>`,
                 });
             }
         }
