@@ -1,14 +1,17 @@
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity } */
 const activity = {
     activity: {
         Name: "骑上去",
         Prerequisite: [
-            (_prereq, acting, acted, _group) =>
-                InventoryIsItemInList(acting, "ItemTorso", ["缰绳_Luzi"]) &&
-                InventoryIsItemInList(acted, "ItemTorso", ["鞍_Luzi"]),
+            Prereqs.or(
+                Prereqs.Acting.GroupIs("ItemTorso", ["缰绳_Luzi"]),
+                Prereqs.Acting.GroupIs("ItemTorso2", ["缰绳_Luzi"])
+            ),
+            Prereqs.Acted.TargetGroupIs(["鞍_Luzi"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso"],

@@ -14,14 +14,10 @@ const activities = [
         label: {
             CN: "捂住头",
             EN: "Cover Head",
-            RU: "Прикрыть Голову",
-            UA: "Прикрити голову",
         },
         dialog: {
-            CN: "SourceCharacter捂住TargetCharacter的头，试图遮掩自己的脸。",
-            EN: "SourceCharacter covers DestinationCharacter head with hands, trying to hide PronounPossessive face.",
-            RU: "SourceCharacter закрывает голову TargetCharacter руками.",
-            UA: "SourceCharacter прикриває голову TargetCharacter своїми руками.",
+            CN: "SourceCharacter捂住TargetCharacter的头，试图遮掩DestinationCharacter脸。",
+            EN: "SourceCharacter covers DestinationCharacter head with hands, trying to hide DestinationCharacter face.",
         },
     },
     {
