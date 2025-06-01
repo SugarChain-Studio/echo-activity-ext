@@ -7,12 +7,23 @@ import { Logger } from "@mod-utils/log";
  * @typedef { {Name:string, Target?:string, TargetSelf?: string, Dialog?:string, DialogSelf?:string} } ActivityData
  */
 
+function stringToHash(src) {
+    let hash = 0;
+    if (src.length === 0) return hash;
+    for (let i = 0; i < src.length; i++) {
+        const char = src.charCodeAt(i);
+        hash = (hash << 5) - hash + char;
+        hash = hash & hash;
+    }
+    return Math.abs(hash).toString(36);
+}
+
 /**
  * @param {string} actName
  * @returns {ActivityName}
  */
 export function activityName(actName) {
-    return /** @type {ActivityName} */ (`笨蛋笨Luzi_${actName}`);
+    return /** @type {ActivityName} */ (`笨蛋笨Luzi_${stringToHash(`${Player.MemberNumber}/${actName}`)}`);
 }
 
 /**
