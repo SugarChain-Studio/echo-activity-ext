@@ -16,7 +16,7 @@ const frame = {
         displayName: "Bilibili",
         get: (info) => {
             const IDs = JSON.parse(info);
-            return `<iframe width="100%" height="100%" src="//player.bilibili.com/player.html?aid=${IDs[0]}&bvid=${IDs[1]}&cid=${IDs[2]}&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
+            return `<iframe width="100%" height="100%" src="//player.bilibili.com/player.html?autoplay=0&isOutside=true&aid=${IDs[0]}&bvid=${IDs[1]}&cid=${IDs[2]}&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
         },
     },
     ytb: {
@@ -24,7 +24,7 @@ const frame = {
         get: (info) => {
             const IDs = JSON.parse(info);
             const fakeSI = Math.random().toString(36).substring(2);
-            return `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${IDs[0]}?si=${fakeSI}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+            return `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${IDs[0]}?si=${fakeSI}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
         },
     },
     phb: {
