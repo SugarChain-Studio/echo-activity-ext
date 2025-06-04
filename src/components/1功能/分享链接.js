@@ -16,7 +16,7 @@ const frame = {
         displayName: "Bilibili",
         get: (info) => {
             const IDs = JSON.parse(info);
-            return `<iframe width="100%" height="100%" src="//player.bilibili.com/player.html?autoplay=0&isOutside=true&aid=${IDs[0]}&bvid=${IDs[1]}&cid=${IDs[2]}&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
+            return `<iframe width="100%" height="100%" src="//player.bilibili.com/player.html?autoplay=0&isOutside=true&aid=${IDs[0]}&bvid=${IDs[1]}&cid=${IDs[2]}&p=${IDs[3]}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
         },
     },
     ytb: {
@@ -172,6 +172,22 @@ function shareErrReport(lang) {
  */
 
 /**
+ * 从字符串中提取参数
+ * @param { string } src
+ * @param { string } arg
+ * @param { number } [start=0]
+ */
+function pickArgs(src, arg, start = 0) {
+    const idx = src.indexOf(arg, start);
+    if (idx === -1) return undefined;
+    const v_start = idx + arg.length;
+    const nextAmp = src.indexOf("&", v_start);
+    const v_end = nextAmp === -1 ? src.length : nextAmp;
+    const value = src.substring(v_start, v_end);
+    return { value, next: v_end + 1 };
+}
+
+/**
  * 处理发送分享媒体
  * @param {string} parsed 传入命令的参数
  * @param {"CN" | "EN"} lang
@@ -190,12 +206,19 @@ function shareHandle(parsed, lang = "CN") {
                     info: btoa(match[1]),
                 };
         } else if (shareContent.startsWith('<iframe src="//player.bilibili.com/player.html')) {
-            const match = shareContent.match(/aid=(\d+)&bvid=([A-Za-z0-9]+)&cid=([A-Za-z0-9]+)/);
-            if (match)
+            const src = shareContent.match(/src="([^"]+)"/)?.[1];
+            if (!src) return undefined;
+            try {
+                const shareUrl = new URL(window.location.protocol + src);
+                const args = ["aid", "bvid", "cid", "p"].map((key) => shareUrl.searchParams.get(key));
+                if (args.some((v) => !v)) return undefined;
                 return {
                     linkType: "bili",
-                    info: btoa(JSON.stringify([match[1], match[2], match[3]])),
+                    info: btoa(JSON.stringify(args)),
                 };
+            } catch (e) {
+                return undefined;
+            }
         } else if (shareContent.startsWith("https://youtu.be/")) {
             const match = shareContent.match(/youtu\.be\/(\w+)/);
             if (match) return { linkType: "ytb", info: btoa(JSON.stringify([match[1], match[2]])) };
