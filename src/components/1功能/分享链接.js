@@ -172,22 +172,6 @@ function shareErrReport(lang) {
  */
 
 /**
- * 从字符串中提取参数
- * @param { string } src
- * @param { string } arg
- * @param { number } [start=0]
- */
-function pickArgs(src, arg, start = 0) {
-    const idx = src.indexOf(arg, start);
-    if (idx === -1) return undefined;
-    const v_start = idx + arg.length;
-    const nextAmp = src.indexOf("&", v_start);
-    const v_end = nextAmp === -1 ? src.length : nextAmp;
-    const value = src.substring(v_start, v_end);
-    return { value, next: v_end + 1 };
-}
-
-/**
  * 处理发送分享媒体
  * @param {string} parsed 传入命令的参数
  * @param {"CN" | "EN"} lang
@@ -216,7 +200,7 @@ function shareHandle(parsed, lang = "CN") {
                     linkType: "bili",
                     info: btoa(JSON.stringify(args)),
                 };
-            } catch (e) {
+            } catch (_) {
                 return undefined;
             }
         } else if (shareContent.startsWith("https://youtu.be/")) {
