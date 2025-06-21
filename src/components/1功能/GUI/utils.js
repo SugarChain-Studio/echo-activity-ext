@@ -28,7 +28,7 @@ export function ReqTextAreaElementById(id) {
 export function ElementInputShowOrCreate(id, type, value, maxLength) {
     const ele = getInputElementById(id);
     if (ele) {
-        // delete ele.style.display;
+        delete ele.style.display;
         ele.hidden = false;
     } else {
         ElementCreateInput(id, type, value, maxLength);
@@ -38,7 +38,7 @@ export function ElementInputShowOrCreate(id, type, value, maxLength) {
 export function ElementTextAreaShowOrCreate(id, maxLength) {
     const ele = getInputElementById(id);
     if (ele) {
-        // delete ele.style.display;
+        delete ele.style.display;
         ele.hidden = false;
         ele.maxLength = maxLength;
     } else {
@@ -49,7 +49,7 @@ export function ElementTextAreaShowOrCreate(id, maxLength) {
 export function 移除清空输入框(name) {
     const ele = getInputElementById(name);
     if (ele) {
-        // ele.style.display = "none"; // 移除输入框
+        ele.style.display = "none";
         ele.hidden = true;
         ele.value = ""; // 清空输入框
     }
@@ -58,7 +58,7 @@ export function 移除清空输入框(name) {
 export function 移除清空输入框不清空(name) {
     const ele = getInputElementById(name);
     if (ele) {
-        // ele.style.display = "none"; // 移除输入框
+        ele.style.display = "none";
         ele.hidden = true;
     }
 }
