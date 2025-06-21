@@ -28,7 +28,7 @@ export function ReqTextAreaElementById(id) {
 export function ElementInputShowOrCreate(id, type, value, maxLength) {
     const ele = getInputElementById(id);
     if (ele) {
-        delete ele.style.display;
+        ele.style.removeProperty("display");
         ele.hidden = false;
     } else {
         ElementCreateInput(id, type, value, maxLength);
@@ -38,7 +38,7 @@ export function ElementInputShowOrCreate(id, type, value, maxLength) {
 export function ElementTextAreaShowOrCreate(id, maxLength) {
     const ele = getInputElementById(id);
     if (ele) {
-        delete ele.style.display;
+        ele.style.removeProperty("display");
         ele.hidden = false;
         ele.maxLength = maxLength;
     } else {
