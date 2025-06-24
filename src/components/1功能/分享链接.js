@@ -50,13 +50,12 @@ function buildExampe(title, steps, example_prefix, example, em) {
     return `
     <div style="${def_margin} ${flex}">
     <h3 style="${def_margin} line-height: 1; ${h3}">${title}</h3>
-    ${
-        example.length
+    ${example.length
             ? `<ul style="padding-top: 0; ${def_margin} line-height: 1; ${flex}">
     ${steps.map((step) => `<li style="line-height: 1; ${hx}">${step}</li>`).join("")}
     </ul>`
             : ""
-    }
+        }
     <p style="${def_margin} ${flex} ${hx}">
     <span style="">${example_prefix}</span>
     <code style="${def_margin} margin-inline-start: 2em; ${hx}">${example}</code></p>
@@ -74,28 +73,28 @@ const i18n = {
   <div style="${flex}">
     ${buildExampe("基本格式", [], "示例：", "/分享 [链接]")}
     ${buildExampe(
-        "网易云音乐",
-        [
-            "网页版：打开歌曲详情页 → 播放器下方蓝色「生成外链播放器」→ 点击「复制代码」",
-            "客户端：点击歌曲分享 → 复制链接",
-        ],
-        "示例：",
-        "/分享 https://music.163.com/song?id=******",
-        "在发送前会过滤掉其他URL参数，不会发送用户ID信息"
-    )}
+            "网易云音乐",
+            [
+                "网页版：打开歌曲详情页 → 播放器下方蓝色「生成外链播放器」→ 点击「复制代码」",
+                "客户端：点击歌曲分享 → 复制链接",
+            ],
+            "示例：",
+            "/分享 https://music.163.com/song?id=******",
+            "在发送前会过滤掉其他URL参数，不会发送用户ID信息"
+        )}
     ${buildExampe(
-        "哔哩哔哩",
-        ["点击视频下方分享按钮 → 选择「嵌入代码」"],
-        "示例：",
-        "/分享 &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
-    )}
+            "哔哩哔哩",
+            ["点击视频下方分享按钮 → 选择「嵌入代码」"],
+            "示例：",
+            "/分享 &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
+        )}
     ${buildExampe("YouTube", ["点击分享按钮 → 复制链接"], "示例：", "/分享 https://youtu.be/******?si=******")}
     ${buildExampe(
-        "PornHub",
-        ["复制浏览器地址栏的网址"],
-        "示例：",
-        "/分享 https://cn.pornhub.com/view_video.php?viewkey=**********"
-    )}
+            "PornHub",
+            ["复制浏览器地址栏的网址"],
+            "示例：",
+            "/分享 https://cn.pornhub.com/view_video.php?viewkey=**********"
+        )}
   </div>
 </div>
 `,
@@ -109,33 +108,33 @@ const i18n = {
   <div style="${flex}">
     ${buildExampe("Basic Format", [], "Example：", "/sharelink [link]")}
     ${buildExampe(
-        "Netease Cloud Music",
-        [
-            "Web: Open the song details page → Blue 'Generate external link player' below the player → Click 'Copy Code'",
-            "Client: Click the song share → Copy link",
-        ],
-        "Example：",
-        "/sharelink https://music.163.com/song?id=******",
-        "Other URL parameters will be filtered out before sending, and user ID information will not be sent"
-    )}
+            "Netease Cloud Music",
+            [
+                "Web: Open the song details page → Blue 'Generate external link player' below the player → Click 'Copy Code'",
+                "Client: Click the song share → Copy link",
+            ],
+            "Example：",
+            "/sharelink https://music.163.com/song?id=******",
+            "Other URL parameters will be filtered out before sending, and user ID information will not be sent"
+        )}
     ${buildExampe(
-        "Bilibili",
-        ["Click the share button below the video → Select 'Embed Code'"],
-        "Example：",
-        "/share &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
-    )}
+            "Bilibili",
+            ["Click the share button below the video → Select 'Embed Code'"],
+            "Example：",
+            "/sharelink &lt;iframe src=&quot;//...aid=******&amp;bvid=******&amp;cid=******...&gt;&lt;/iframe&gt;"
+        )}
     ${buildExampe(
-        "YouTube",
-        ["Click the share button → Copy the link or copy the URL in the browser address bar"],
-        "Example：",
-        "/sharelink https://youtu.be/******"
-    )}
+            "YouTube",
+            ["Click the share button → Copy the link or copy the URL in the browser address bar"],
+            "Example：",
+            "/sharelink https://youtu.be/******"
+        )}
     ${buildExampe(
-        "PornHub",
-        ["Copy the URL in the browser address bar"],
-        "Example：",
-        "/sharelink https://www.pornhub.com/view_video.php?viewkey=**********"
-    )}
+            "PornHub",
+            ["Copy the URL in the browser address bar"],
+            "Example：",
+            "/sharelink https://www.pornhub.com/view_video.php?viewkey=**********"
+        )}
   </div>
 </div>
 `,
