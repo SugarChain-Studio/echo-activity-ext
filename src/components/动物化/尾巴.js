@@ -1,35 +1,70 @@
+import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { DynImageProviders } from "../../dynamicImage";
+
+/** @type { boolean }*/
+let runningShakeTail = false;
 
 /**
  * 道具切换
  * @param {string} item1 - 道具名称 1
  * @param {string} item2 - 道具名称 2
  */ // @ts-ignore
-function shakeTail(player, itemgroup, item1, item2) {
-    for (let i = 0; i < 2; i++) {
-        setTimeout(() => {
-            if (InventoryGet(player, itemgroup).Asset.Name === item1) {
-                const propColor = InventoryGet(player, itemgroup).Color;
+async function shakeTail(player, itemgroup, item1, item2) {
+    if (runningShakeTail) return;
+    runningShakeTail = true;
+    const propColor = InventoryGet(player, itemgroup).Color;
 
-                InventoryWear(player, item2, itemgroup, propColor);
-                ChatRoomCharacterUpdate(player); // Update appearance
-            } else if (InventoryGet(player, itemgroup).Asset.Name === item2) {
-                const propColor = InventoryGet(player, itemgroup).Color;
+    const wearAndUpdate = (itemName) => {
+        InventoryWear(player, itemName, itemgroup, propColor, undefined, undefined, undefined, false);
+        ChatRoomCharacterUpdate(player);
+    };
 
-                InventoryWear(player, item1, itemgroup, propColor);
-                ChatRoomCharacterUpdate(player); // Update appearance
-            }
-        }, 200 * i);
+    try {
+        for (let i = 0; i < 2; i++) {
+            await sleepFor(200);
+            wearAndUpdate(item2);
+            await sleepFor(200);
+            wearAndUpdate(item1);
+        }
+    } finally {
+        if (runningShakeTail) {
+            runningShakeTail = false;
+            return;
+        }
     }
 }
+
+const tailRecord = [
+    ["TailStrap", "穿戴式猫尾镜像_Luzi"],
+    ["PuppyTailStrap", "穿戴式狗尾镜像_Luzi"],
+    ["PuppyTailStrap1", "穿戴式软小狗尾镜像_Luzi"],
+    ["KittenTailStrap1", "穿戴式浅色猫尾镜像_Luzi"],
+    ["KittenTailStrap2", "小型穿戴式软猫尾镜像_Luzi"],
+    ["FoxTailStrap1", "FoxTailStrap2"],
+    ["WolfTailStrap1", "大型穿戴式狼尾镜像_Luzi"],
+    ["WolfTailStrap2", "小型穿戴式狼尾镜像_Luzi"],
+    ["WolfTailStrap3", "白色穿戴式狼尾镜像_Luzi"],
+    ["DragonTailStrap2Left", "DragonTailStrap2Right"],
+].reduce((acc, [item1, item2]) => {
+    acc[item1] = item2;
+    acc[item2] = item1;
+    return acc;
+}, /** @type {Record<string,string>}*/ ({}));
 
 /** @type { CustomActivity []} */
 const activities = [
     {
         activity: {
             Name: "摇晃尾巴",
-            Prerequisite: ["Luzi_HasCatTail"],
+            Prerequisite: [
+                (_prereq, _acting, acted, _group) => {
+                    if (runningShakeTail) return false;
+
+                    const item = InventoryGet(acted, "TailStraps");
+                    return item && item.Asset && item.Asset.Name && !!tailRecord[item.Asset.Name];
+                },
+            ],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemButt"],
@@ -37,18 +72,17 @@ const activities = [
         mode: "SelfOnSelf",
         run: (player, sender, info) => {
             if (info.SourceCharacter === player.MemberNumber) {
-                const asset = AssetGet("Female3DCG", "TailStraps", "穿戴式猫尾镜像_Luzi");
-                if (!asset) return;
-                shakeTail(player, "TailStraps", "TailStrap", "穿戴式猫尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "PuppyTailStrap", "穿戴式狗尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "PuppyTailStrap1", "穿戴式软小狗尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "KittenTailStrap1", "穿戴式浅色猫尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "KittenTailStrap2", "小型穿戴式软猫尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "FoxTailStrap1", "FoxTailStrap2");
-                shakeTail(player, "TailStraps", "WolfTailStrap1", "大型穿戴式狼尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "WolfTailStrap2", "小型穿戴式狼尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "WolfTailStrap3", "白色穿戴式狼尾镜像_Luzi");
-                shakeTail(player, "TailStraps", "DragonTailStrap2Left", "DragonTailStrap2Right");
+                const asset = InventoryGet(player, "TailStraps");
+                if (!asset || !asset.Asset || !asset.Asset.Name) return;
+                const asset2Name = tailRecord[asset.Asset.Name];
+                if (!asset2Name) return;
+                const asset2 = AssetGet("Female3DCG", "TailStraps", asset2Name);
+                if (!asset2) return;
+
+                const asset1 = AssetGet("Female3DCG", "TailStraps", asset.Asset.Name);
+                if (!asset1) return;
+
+                shakeTail(player, "TailStraps", asset1.Name, asset2.Name);
             }
         },
         useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
