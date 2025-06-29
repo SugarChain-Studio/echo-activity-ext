@@ -319,7 +319,7 @@ const activities = [
             Name: "耳朵呵气",
             Prerequisite: ["UseMouth"],
             MaxProgress: 50,
-            Target: ["ItemEars"]
+            Target: ["ItemEars"],
         },
         useImage: "MasturbateTongue",
         label: {
@@ -340,7 +340,7 @@ const activities = [
             Name: "乳头呵气",
             Prerequisite: ["UseMouth"],
             MaxProgress: 50,
-            Target: ["ItemNipples"]
+            Target: ["ItemNipples"],
         },
         useImage: "MasturbateTongue",
         label: {
@@ -361,7 +361,7 @@ const activities = [
             Name: "舔牵绳手",
             Prerequisite: ["UseTongue", "Luzi_LeashedBy"],
             MaxProgress: 50,
-            Target: ["ItemHands"]
+            Target: ["ItemHands"],
         },
         useImage: "MasturbateTongue",
         label: {
@@ -375,14 +375,14 @@ const activities = [
             EN: "SourceCharacter licks DestinationCharacter hand that's holding the leash.",
             RU: "SourceCharacter облизывает руку TargetCharacter, держащую поводок.",
             UA: "SourceCharacter облизує руку TargetCharacter, яка тримає повідець.",
-        }
+        },
     },
     {
         activity: {
             Name: "口塞亲吻嘴唇",
             Prerequisite: ["IsGagged"],
             MaxProgress: 50,
-            Target: ["ItemHands"]
+            Target: ["ItemHands"],
         },
         useImage: "MasturbateTongue",
         label: {
@@ -396,14 +396,12 @@ const activities = [
             EN: "SourceCharacter kisses DestinationCharacter lips while wearing a gag.",
             RU: "SourceCharacter целует TargetCharacter в губы с кляпом во рту.",
             UA: "SourceCharacter цілує TargetCharacter у губи з кляпом у роті.",
-        }
+        },
     },
     {
         activity: {
             Name: "叼牵绳",
-            Prerequisite: [
-                Prereqs.Acting.GroupIs('ItemNeckRestraints', ['ChainLeash', 'CollarLeash'])
-            ],
+            Prerequisite: ["UseMouth", Prereqs.Acting.GroupIs("ItemNeckRestraints", ["ChainLeash", "CollarLeash"])],
             MaxProgress: 50,
             Target: ["ItemMouth"],
             TargetSelf: true,
@@ -426,7 +424,7 @@ const activities = [
             EN: "SourceCharacter picks up their own leash with their mouth.",
             RU: "SourceCharacter бере свой собственный поводок в рот.",
             UA: "SourceCharacter бере свій власний повідець у рот.",
-        }
+        },
     },
     {
         activity: {
