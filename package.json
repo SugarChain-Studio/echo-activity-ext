@@ -14,7 +14,8 @@
         "resources:dev": "node ./scripts/.resource.js --dev",
         "serve": "http-server -p 8081 --cors public",
         "git:release": "pnpm push-release",
-        "push-release": "pnpm lint && git checkout release && git merge origin/main && git push && git checkout main"
+        "push-release": "pnpm lint && git checkout -q release && git merge --quiet --ff-only origin/beta && git push && git checkout main",
+        "push-beta": "pnpm lint && git checkout -q beta && git merge --quiet --ff-only origin/main && git push && git checkout main"
     },
     "repository": {
         "type": "git",
