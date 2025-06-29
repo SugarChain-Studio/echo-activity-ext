@@ -36,7 +36,11 @@ const prereqStorage = {
     Luzi_TargetHasTail: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "TailStraps"),
     Luzi_HasWings: (_prereq, acting, _acted, _group) => !!InventoryGet(acting, "Wings"),
     Luzi_TargetHasWings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "Wings"),
-    Luzi_TargetHasLeash: (_prereq, _acting, acted, _group) => ChatRoomCanBeLeashed(acted),
+    Luzi_TargetCanBeLeashed: (_prereq, _acting, acted, _group) => ChatRoomCanBeLeashed(acted),
+    Luzi_IsLeashingTarget: (_prereq, acting, acted, _group) => {
+        if (!acting.IsPlayer()) return false;
+        return ChatRoomLeashList.includes(acted.MemberNumber);
+    },
     Luzi_HasCatTail: Prereqs.Acting.GroupIs("TailStraps", tailItems),
     Luzi_TargetHasCatTail: Prereqs.Acted.GroupIs("TailStraps", tailItems),
     Luzi_TargetHasTentacles: Prereqs.any(

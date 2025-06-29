@@ -440,7 +440,7 @@ const activities = [
     {
         activity: {
             Name: "拽链子",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetHasLeash"],
+            Prerequisite: ["UseHands", "UseArms", "Luzi_IsLeashingTarget"],
             MaxProgress: 30,
             Target: ["ItemNeck"],
         },
