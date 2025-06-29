@@ -209,6 +209,132 @@ const activities = [
             UA: "SourceCharacter глядить стегна TargetCharacter своїм риб'ячим хвостом.",
         },
     },
+    {
+        activity: {
+            Name: "鱼尾挠肋",
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
+            MaxProgress: 50,
+            Target: ["ItemTorso"]
+        },
+        useImage: ["ItemLegs", "MermaidTail"],
+        label: {
+            CN: "鱼尾挠肋",
+            EN: "Tail Tickle Ribs",
+            RU: "Щекотать рёбра хвостом",
+            UA: "Лоскотати ребра хвостом",
+        },
+        dialog: {
+            CN: "SourceCharacter用鱼尾挠了挠TargetCharacter的肋部。",
+            EN: "SourceCharacter tickles DestinationCharacter ribs with their fish tail.",
+            RU: "SourceCharacter щекочет рёбра TargetCharacter своим рыбьим хвостом.",
+            UA: "SourceCharacter лоскоче ребра TargetCharacter своєю риб'ячим хвостом.",
+        },
+    },
+    {
+        activity: {
+            Name: "尾鳍骚挠鼻子",
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
+            MaxProgress: 50,
+            Target: ["ItemNose"]
+        },
+        useImage: ["ItemLegs", "MermaidTail"],
+        label: {
+            CN: "尾鳍骚挠鼻子",
+            EN: "Caress Nose with Fin",
+            RU: "Ласкать нос плавником",
+            UA: "Погладжувати ніс плавцем",
+        },
+        dialog: {
+            CN: "SourceCharacter用鱼尾鳍轻轻骚挠TargetCharacter的鼻尖。",
+            EN: "SourceCharacter gently caresses DestinationCharacter nose tip with their tail fin.",
+            RU: "SourceCharacter нежно ласкает кончик носа TargetCharacter своим хвостовым плавником.",
+            UA: "SourceCharacter ніжно пестить кінчик носа TargetCharacter своїм хвостовим плавцем.",
+        },
+    },
+    {
+        activity: {
+            Name: "鱼尾抓手",
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
+            MaxProgress: 50,
+            Target: ["ItemHands"]
+        },
+        useImage: ["ItemLegs", "MermaidTail"],
+        label: {
+            CN: "鱼尾抓手",
+            EN: "Grasp Hand with Tail",
+            RU: "Обхватить руку хвостом",
+            UA: "Обхопити руку хвостом",
+        },
+        dialog: {
+            CN: "SourceCharacter的鱼尾绕上了TargetCharacter的手。",
+            EN: "SourceCharacter's fish tail wraps around DestinationCharacter hand.",
+            RU: "Рыбий хвост SourceCharacter обвивает руку TargetCharacter.",
+            UA: "Риб'ячий хвіст SourceCharacter обвиває руку TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "鱼尾松手",
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
+            MaxProgress: 50,
+            Target: ["ItemHands"]
+        },
+        useImage: ["ItemLegs", "MermaidTail"],
+        label: {
+            CN: "鱼尾松手",
+            EN: "Release Hand from Tail",
+            RU: "Освободить руку из хвоста",
+            UA: "Відпустити руку з хвоста",
+        },
+        dialog: {
+            CN: "SourceCharacter的鱼尾松开了TargetCharacter的手。",
+            EN: "SourceCharacter's fish tail releases DestinationCharacter hand.",
+            RU: "Рыбий хвост SourceCharacter отпускает руку TargetCharacter.",
+            UA: "Риб'ячий хвіст SourceCharacter відпускає руку TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "鱼尾缠绕",
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
+            MaxProgress: 50,
+            Target: ["ItemArms"]
+        },
+        useImage: ["ItemLegs", "MermaidTail"],
+        label: {
+            CN: "鱼尾缠绕",
+            EN: "Tail Coiling",
+            RU: "Овивание хвостом",
+            UA: "Овивання хвостом",
+        },
+        dialog: {
+            CN: "SourceCharacter的鱼尾紧紧地缠绕住TargetCharacter的手臂。",
+            EN: "SourceCharacter's fish tail tightly coils around DestinationCharacter arm.",
+            RU: "Рыбий хвост SourceCharacter плотно обвивает руку TargetCharacter.",
+            UA: "Риб'ячий хвіст SourceCharacter щільно обвиває руку TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "鱼尾松绑",
+            Prerequisite: ["Luzi_Has鱼鱼尾"],
+            MaxProgress: 50,
+            Target: ["ItemArms"]
+        },
+        useImage: ["ItemLegs", "MermaidTail"],
+        label: {
+            CN: "鱼尾松绑",
+            EN: "Tail Uncoiling",
+            RU: "Освобождение из хвоста",
+            UA: "Звільнення з хвоста",
+        },
+        dialog: {
+            CN: "SourceCharacter的鱼尾松开TargetCharacter的手臂。",
+            EN: "SourceCharacter's fish tail uncoils from DestinationCharacter arm.",
+            RU: "Рыбий хвост SourceCharacter освобождает руку TargetCharacter.",
+            UA: "Риб'ячий хвіст SourceCharacter звільняє руку TargetCharacter.",
+        },
+    },
 ];
 
 export default function () {

@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -311,6 +312,141 @@ const activities = [
             EN: "SourceCharacter licks PronounPossessive own feet.",
             RU: "SourceCharacter вылизывает свои ноги.",
             UA: "SourceCharacter облизує свої ноги.",
+        },
+    },
+    {
+        activity: {
+            Name: "耳朵呵气",
+            Prerequisite: ["UseMouth"],
+            MaxProgress: 50,
+            Target: ["ItemEars"]
+        },
+        useImage: "MasturbateTongue",
+        label: {
+            CN: "耳朵呵气",
+            EN: "Ear Blowing",
+            RU: "Дуть в ухо",
+            UA: "Дмухати у вухо",
+        },
+        dialog: {
+            CN: "SourceCharacter在TargetCharacter的耳边轻轻呵气.",
+            EN: "SourceCharacter blows gently on DestinationCharacter ear.",
+            RU: "SourceCharacter нежно дует на ухо TargetCharacter.",
+            UA: "SourceCharacter ніжно дме у вухо TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "乳头呵气",
+            Prerequisite: ["UseMouth"],
+            MaxProgress: 50,
+            Target: ["ItemNipples"]
+        },
+        useImage: "MasturbateTongue",
+        label: {
+            CN: "乳头呵气",
+            EN: "Nipple Blowing",
+            RU: "Дуть на сосок",
+            UA: "Дмухати на сосок",
+        },
+        dialog: {
+            CN: "SourceCharacter在TargetCharacter的乳头轻轻呵气.",
+            EN: "SourceCharacter blows gently on DestinationCharacter nipple.",
+            RU: "SourceCharacter нежно дует на сосок TargetCharacter.",
+            UA: "SourceCharacter ніжно дме на сосок TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "舔牵绳手",
+            Prerequisite: ["UseTongue", "Luzi_LeashedBy"],
+            MaxProgress: 50,
+            Target: ["ItemHands"]
+        },
+        useImage: "MasturbateTongue",
+        label: {
+            CN: "舔牵绳手",
+            EN: "Lick Leash Hand",
+            RU: "Лизать руку с поводком",
+            UA: "Лизати руку з повідцем",
+        },
+        dialog: {
+            CN: "SourceCharacter舔了舔TargetCharacter握着牵绳的手.",
+            EN: "SourceCharacter licks DestinationCharacter hand that's holding the leash.",
+            RU: "SourceCharacter облизывает руку TargetCharacter, держащую поводок.",
+            UA: "SourceCharacter облизує руку TargetCharacter, яка тримає повідець.",
+        }
+    },
+    {
+        activity: {
+            Name: "口塞亲吻嘴唇",
+            Prerequisite: ["IsGagged"],
+            MaxProgress: 50,
+            Target: ["ItemHands"]
+        },
+        useImage: "MasturbateTongue",
+        label: {
+            CN: "口塞亲吻嘴唇",
+            EN: "Gagged Lip Kiss",
+            RU: "Поцелуй с кляпом",
+            UA: "Поцілунок з кляпом",
+        },
+        dialog: {
+            CN: "SourceCharacter带着口塞亲吻TargetCharacter的嘴唇.",
+            EN: "SourceCharacter kisses DestinationCharacter lips while wearing a gag.",
+            RU: "SourceCharacter целует TargetCharacter в губы с кляпом во рту.",
+            UA: "SourceCharacter цілує TargetCharacter у губи з кляпом у роті.",
+        }
+    },
+    {
+        activity: {
+            Name: "叼牵绳",
+            Prerequisite: [
+                Prereqs.Acting.GroupIs('ItemNeckRestraints', ['ChainLeash', 'CollarLeash'])
+            ],
+            MaxProgress: 50,
+            Target: ["ItemMouth"],
+            TargetSelf: true,
+        },
+        useImage: "MasturbateTongue",
+        label: {
+            CN: "叼牵绳",
+            EN: "Hold Leash in Mouth",
+            RU: "Держать поводок во рту",
+            UA: "Тримати повідець у роті",
+        },
+        dialog: {
+            CN: "SourceCharacter叼起牵绳向TargetCharacter的手边晃了晃.",
+            EN: "SourceCharacter picks up the leash with their mouth and waves it toward DestinationCharacter hand.",
+            RU: "SourceCharacter бере поводок в рот и направляет его к руке TargetCharacter.",
+            UA: "SourceCharacter бере повідець у рот і направляє його до руки TargetCharacter.",
+        },
+        dialogSelf: {
+            CN: "SourceCharacter叼起自己的牵绳.",
+            EN: "SourceCharacter picks up their own leash with their mouth.",
+            RU: "SourceCharacter бере свой собственный поводок в рот.",
+            UA: "SourceCharacter бере свій власний повідець у рот.",
+        }
+    },
+    {
+        activity: {
+            Name: "挣脱牵绳",
+            Prerequisite: ["Luzi_LeashedBy"],
+            MaxProgress: 50,
+            Target: ["ItemHands"],
+        },
+        useImage: "MasturbateTongue",
+        label: {
+            CN: "挣脱牵绳",
+            EN: "Break Free from Leash",
+            RU: "Сорваться с поводка",
+            UA: "Звільнитися від повідка",
+        },
+        dialog: {
+            CN: "SourceCharacter奋力将牵绳从TargetCharacter手中挣脱.",
+            EN: "SourceCharacter struggles to break free from DestinationCharacter leash.",
+            RU: "SourceCharacter изо всех сил пытается вырваться из поводка TargetCharacter.",
+            UA: "SourceCharacter намагається визволитися з повідка TargetCharacter.",
         },
     },
 ];
