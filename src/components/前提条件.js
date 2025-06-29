@@ -120,6 +120,10 @@ const prereqStorage = {
     Luzi_IsAllFours: Prereqs.Acting.PoseIs("BodyFull", "AllFours"),
     Luzi_KneelOrAllFours: Prereqs.Acting.PoseIsKneelingOrAllFours(),
     Luzi_TargetKneelOrAllFours: Prereqs.Acted.PoseIsKneelingOrAllFours(),
+    Luzi_LeashedBy: (_prereq, acting, acted, _group) => {
+        if (!acting.IsPlayer()) return false;
+        return ChatRoomLeashPlayer && ChatRoomLeashPlayer === acted.MemberNumber;
+    },
 };
 
 export default function () {
