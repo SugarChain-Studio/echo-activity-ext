@@ -214,7 +214,7 @@ const activities = [
             Name: "鱼尾挠肋",
             Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
-            Target: ["ItemTorso"]
+            Target: ["ItemTorso"],
         },
         useImage: ["ItemLegs", "MermaidTail"],
         label: {
@@ -235,7 +235,7 @@ const activities = [
             Name: "尾鳍骚挠鼻子",
             Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
-            Target: ["ItemNose"]
+            Target: ["ItemNose"],
         },
         useImage: ["ItemLegs", "MermaidTail"],
         label: {
@@ -256,7 +256,7 @@ const activities = [
             Name: "鱼尾抓手",
             Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
-            Target: ["ItemHands"]
+            Target: ["ItemHands"],
         },
         useImage: ["ItemLegs", "MermaidTail"],
         label: {
@@ -277,7 +277,7 @@ const activities = [
             Name: "鱼尾松手",
             Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
-            Target: ["ItemHands"]
+            Target: ["ItemHands"],
         },
         useImage: ["ItemLegs", "MermaidTail"],
         label: {
@@ -298,7 +298,7 @@ const activities = [
             Name: "鱼尾缠绕",
             Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
-            Target: ["ItemArms"]
+            Target: ["ItemArms"],
         },
         useImage: ["ItemLegs", "MermaidTail"],
         label: {
@@ -319,7 +319,7 @@ const activities = [
             Name: "鱼尾松绑",
             Prerequisite: ["Luzi_Has鱼鱼尾"],
             MaxProgress: 50,
-            Target: ["ItemArms"]
+            Target: ["ItemArms"],
         },
         useImage: ["ItemLegs", "MermaidTail"],
         label: {

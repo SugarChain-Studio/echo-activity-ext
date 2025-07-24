@@ -1,6 +1,7 @@
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../Prereqs";
 import { DynImageProviders } from "../../dynamicImage";
+import { sleepFor } from "@sugarch/bc-mod-utility";
 
 const stomachValueSetting = {
     棒棒糖_Luzi: 0.1,
@@ -54,8 +55,9 @@ const activity = [
             Target: ["ItemMouth"],
         },
         useImage: DynImageProviders.itemOnActedGroup("ItemMouth"),
-        run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
+        run: async (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
             if (SourceCharacter === player.MemberNumber) {
+                await sleepFor(100);
                 const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === TargetCharacter);
                 if (!target) return;
 
@@ -104,7 +106,8 @@ const activity = [
         },
         useImage: DynImageProviders.itemOnActedGroup("ItemMouth"),
         mode: "SelfOnSelf",
-        run: (player) => {
+        run: async (player) => {
+            await sleepFor(100);
             const item = InventoryGet(player, "ItemMouth");
             if (!item) return;
             playerStomach.eat(item.Asset.Name);

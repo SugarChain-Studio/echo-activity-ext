@@ -1,3 +1,4 @@
+import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 
@@ -14,8 +15,9 @@ const activity = {
         MaxProgress: 50,
         Target: ["ItemTorso"],
     },
-    run: (player, sender, info) => {
+    run: async (player, sender, info) => {
         if (info.TargetCharacter === player.MemberNumber) {
+            await sleepFor(100);
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
@@ -30,6 +32,7 @@ const activity = {
             });
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
+            await sleepFor(100);
             const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
             if (!TgtChara) return;
             InventoryWear(player, "马车_Luzi", "ItemDevices");

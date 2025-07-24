@@ -1,6 +1,7 @@
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
+import { sleepFor } from "@sugarch/bc-mod-utility";
 
 /** @type { CustomActivity} */
 const activity = {
@@ -15,8 +16,9 @@ const activity = {
         MaxProgress: 0,
         Target: ["ItemTorso", "ItemNeckRestraints", "ItemNeck"],
     },
-    run: (player, sender, info) => {
+    run: async (player, sender, info) => {
         if (info.TargetCharacter === player.MemberNumber) {
+            await sleepFor(100);
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
@@ -39,6 +41,7 @@ const activity = {
             }
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
+            await sleepFor(100);
             const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
             if (!TgtChara) return;
             const item = InventoryGet(TgtChara, "ItemNeckRestraints");
@@ -50,6 +53,8 @@ const activity = {
             if (!dItemName) return;
 
             InventoryWear(player, dItemName, "ItemHandheld");
+            ChatRoomCharacterItemUpdate(player, "ItemHandheld");
+
             ChatRoomOrder.setDrawOrder({
                 prevCharacter: TgtChara.MemberNumber,
                 associatedAsset: {

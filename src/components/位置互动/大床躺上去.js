@@ -1,5 +1,6 @@
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
+import { sleepFor } from "@sugarch/bc-mod-utility";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -13,8 +14,9 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemTorso"],
         },
-        run: (player, sender, info) => {
+        run: async (player, sender, info) => {
             if (info.TargetCharacter === player.MemberNumber) {
+                await sleepFor(100);
                 // 遵守物品权限
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
@@ -33,6 +35,7 @@ const activities = [
 
                 ChatRoomCharacterUpdate(player);
             } else if (info.SourceCharacter === player.MemberNumber) {
+                await sleepFor(100);
                 const asset = AssetGet("Female3DCG", "ItemDevices", "床右边_Luzi");
                 if (!asset) return;
                 InventoryWear(player, "床右边_Luzi", "ItemDevices");
