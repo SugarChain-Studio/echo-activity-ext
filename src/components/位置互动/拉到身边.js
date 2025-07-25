@@ -88,12 +88,10 @@ export default function () {
         const sharedC = ChatRoomOrder.requireSharedCenter(C);
         if (!sharedC) return arg;
 
-        const prevState = ChatRoomOrder.requireAssetState(sharedC.prev);
-        const nextState = ChatRoomOrder.requireAssetState(sharedC.next);
-
-        if (!prevState || !nextState) return arg;
-        const prevAssetName = prevState.associatedAsset.asset;
-        const nextAssetName = nextState.associatedAsset.asset;
+        const state = ChatRoomOrder.requirePairAssetState(sharedC);
+        if (!state) return arg;
+        const prevAssetName = state.prev.associatedAsset.asset;
+        const nextAssetName = state.next.associatedAsset.asset;
         if (
             !(prevAssetName === "CollarLeash" && nextAssetName === "拉紧的牵绳_Luzi") &&
             !(prevAssetName === "ChainLeash" && nextAssetName === "拉紧的链子_Luzi")

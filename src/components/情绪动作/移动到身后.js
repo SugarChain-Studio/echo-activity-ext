@@ -71,10 +71,9 @@ export default function () {
         const sharedC = ChatRoomOrder.requireSharedCenter(C);
         if (!sharedC) return arg;
 
-        const prevTimer = ChatRoomOrder.requireTimerState(sharedC.prev);
-        const nextTimer = ChatRoomOrder.requireTimerState(sharedC.next);
-        if (!prevTimer || !nextTimer) return arg;
-        if (prevTimer.reason !== "移动到身后" || nextTimer.reason !== "移动到身后") return arg;
+        const state = ChatRoomOrder.requirePairTimerState(sharedC);
+        if (!state) return arg;
+        if (state.prev.reason !== "移动到身后" || state.next.reason !== "移动到身后") return arg;
 
         if (sharedC.prev.MemberNumber === C.MemberNumber) {
             return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
