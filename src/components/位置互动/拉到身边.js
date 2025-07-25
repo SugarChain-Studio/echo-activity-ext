@@ -1,5 +1,5 @@
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
 import { sleepFor } from "@sugarch/bc-mod-utility";
 
@@ -82,4 +82,30 @@ const activity = {
 
 export default function () {
     ActivityManager.addCustomActivity(activity);
+
+    DrawCharacterModifier.addModifier((C, arg) => {
+        const { Zoom } = arg;
+        const sharedC = ChatRoomOrder.requireSharedCenter(C);
+        if (!sharedC) return arg;
+
+        const prevState = ChatRoomOrder.requireAssetState(sharedC.prev);
+        const nextState = ChatRoomOrder.requireAssetState(sharedC.next);
+
+        if (!prevState || !nextState) return arg;
+        const prevAssetName = prevState.associatedAsset.asset;
+        const nextAssetName = nextState.associatedAsset.asset;
+        if (
+            !(prevAssetName === "CollarLeash" && nextAssetName === "拉紧的牵绳_Luzi") &&
+            !(prevAssetName === "ChainLeash" && nextAssetName === "拉紧的链子_Luzi")
+        )
+            return arg;
+
+        if (sharedC.prev.MemberNumber === C.MemberNumber) {
+            return { X: sharedC.center.X - 150 * Zoom, Y: sharedC.center.Y, Zoom };
+        }
+
+        if (sharedC.next.MemberNumber === C.MemberNumber) {
+            return { X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+        }
+    });
 }

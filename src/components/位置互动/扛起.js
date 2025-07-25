@@ -1,6 +1,6 @@
 import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
 
 /** @type { CustomActivity} */
 const activity = {
@@ -57,4 +57,29 @@ const activity = {
 
 export default function () {
     ActivityManager.addCustomActivity(activity);
+
+    DrawCharacterModifier.addModifier((C, arg) => {
+        const { Zoom } = arg;
+        const sharedC = ChatRoomOrder.requireSharedCenter(C);
+        if (!sharedC) return arg;
+
+        const prevState = ChatRoomOrder.requireAssetState(sharedC.prev);
+        const nextState = ChatRoomOrder.requireAssetState(sharedC.next);
+        if (!prevState || !nextState) return arg;
+        const prevAssetName = prevState.associatedAsset.asset;
+        const nextAssetName = nextState.associatedAsset.asset;
+        if (prevAssetName !== "BurlapSack" || nextAssetName !== "扛起来的麻袋_Luzi") return arg;
+
+        if (sharedC.prev.MemberNumber === C.MemberNumber) {
+            if (sharedC.next.ActivePose[0] === "Kneel" || sharedC.next.ActivePose[0] === "KneelingSpread") {
+                return { X: sharedC.center.X, Y: sharedC.center.Y - 120 * Zoom, Zoom };
+            } else {
+                return { X: sharedC.center.X, Y: sharedC.center.Y - 340 * Zoom, Zoom };
+            }
+        }
+
+        if (sharedC.next.MemberNumber === C.MemberNumber) {
+            return { X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+        }
+    });
 }
