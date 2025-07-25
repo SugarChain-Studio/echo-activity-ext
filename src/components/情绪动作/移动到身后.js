@@ -1,4 +1,23 @@
+import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
+
+/** @type {CustomActivity["run"]} */
+const moveBehindRun = (player, sender, { TargetCharacter, SourceCharacter }) => {
+    if (TargetCharacter === player.MemberNumber) {
+        if (!ServerChatRoomGetAllowItem(sender, player)) return;
+        ChatRoomOrder.setDrawOrder({
+            nextCharacter: SourceCharacter,
+            timer: Date.now() + 5000,
+            reason: "移动到身后",
+        });
+    } else if (SourceCharacter === player.MemberNumber) {
+        ChatRoomOrder.setDrawOrder({
+            prevCharacter: TargetCharacter,
+            timer: Date.now() + 5000,
+            reason: "移动到身后",
+        });
+    }
+};
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -10,6 +29,7 @@ const activities = [
             Target: ["ItemTorso"],
         },
         useImage: "SistersHug",
+        run: moveBehindRun,
         label: {
             CN: "躲到身后",
             EN: "Hide Behind",
@@ -29,6 +49,7 @@ const activities = [
             Target: ["ItemTorso"],
         },
         useImage: "SistersHug",
+        run: moveBehindRun,
         label: {
             CN: "移动到身后",
             EN: "Move Behind",
@@ -44,4 +65,23 @@ const activities = [
 
 export default function () {
     ActivityManager.addCustomActivities(activities);
+
+    DrawCharacterModifier.addModifier((C, arg) => {
+        const { Zoom } = arg;
+        const sharedC = ChatRoomOrder.requireSharedCenter(C);
+        if (!sharedC) return arg;
+
+        const prevTimer = ChatRoomOrder.requireTimerState(sharedC.prev);
+        const nextTimer = ChatRoomOrder.requireTimerState(sharedC.next);
+        if (!prevTimer || !nextTimer) return arg;
+        if (prevTimer.reason !== "移动到身后" || nextTimer.reason !== "移动到身后") return arg;
+
+        if (sharedC.prev.MemberNumber === C.MemberNumber) {
+            return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+        }
+
+        if (sharedC.next.MemberNumber === C.MemberNumber) {
+            return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+        }
+    });
 }
