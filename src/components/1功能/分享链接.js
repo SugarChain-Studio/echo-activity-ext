@@ -200,7 +200,8 @@ function shareHandle(parsed, lang = "CN") {
                     linkType: "bili",
                     info: btoa(JSON.stringify(args)),
                 };
-            } catch (_) {
+            } catch (e) {
+                console.error("Error parsing Bilibili iframe:", e);
                 return undefined;
             }
         } else if (shareContent.startsWith("https://youtu.be/")) {
