@@ -6,13 +6,13 @@ const moveBehindRun = (player, sender, { TargetCharacter, SourceCharacter }) => 
     if (TargetCharacter === player.MemberNumber) {
         if (!ServerChatRoomGetAllowItem(sender, player)) return;
         ChatRoomOrder.setDrawOrder({
-            nextCharacter: SourceCharacter,
+            prevCharacter: SourceCharacter,
             timer: Date.now() + 5000,
             reason: "移动到身后",
         });
     } else if (SourceCharacter === player.MemberNumber) {
         ChatRoomOrder.setDrawOrder({
-            prevCharacter: TargetCharacter,
+            nextCharacter: TargetCharacter,
             timer: Date.now() + 5000,
             reason: "移动到身后",
         });
