@@ -42,6 +42,7 @@ type CustomActivityPrerequisite =
     | 'Luzi_IsAllFours'
     | 'Luzi_KneelOrAllFours'
     | 'Luzi_TargetKneelOrAllFours'
+    | 'Luzi_TargetAllFours'
     | 'Luzi_LeashedBy';
 
 type CustomActivity = import('@sugarch/bc-activity-manager').CustomActivity<string, CustomActivityPrerequisite>;
