@@ -3,10 +3,11 @@ import { i18nAction } from "../../messager";
 
 import { DynImageProviders } from "../../dynamicImage";
 import { Prereqs } from "../../Prereqs";
+import { sleepFor } from "@sugarch/bc-mod-utility";
 
 const beedsDef = {
-    AnalBeads2: 0.5,
-    大号拉珠: 0.3,
+    AnalBeads2: 0.8,
+    大号拉珠: 0.6,
 };
 
 let cooldown = true;
@@ -25,24 +26,31 @@ const activity = {
         TargetSelf: ["ItemButt"],
     },
     mode: "SelfOnSelf",
-    run: (player, _, { ActivityGroup }) => {
+    run: async (player, _, { ActivityGroup }) => {
         const item = InventoryGet(player, ActivityGroup.Name);
         if (!item?.Property?.InsertedBeads) return;
-        let basePossiblity = beedsDef[item.Asset.Name];
+        const basePossiblity = beedsDef[item.Asset.Name];
         if (!basePossiblity) return;
 
-        const arousal = PreferenceGetArousalZone(player, ActivityGroup.Name);
-        if (arousal) {
-            // 开发越多越容易
-            basePossiblity *= 0.1 + arousal.Factor * 0.9;
-            if (arousal.Orgasm) {
-                basePossiblity *= 1.5;
-            }
-        }
+        const possibility = (() => {
+            const arousalValue = Player.ArousalSettings?.Progress ?? 0;
+            const arousalFactor = PreferenceGetArousalZone(player, ActivityGroup.Name)?.Factor ?? 0;
+
+            // 1. P(X) = 1 - 1 / (1 + A X)
+            // 2. basePossiblity = P(0.5)
+
+            // P(0.5) = 1 - 1 / (1 + A * 0.5) = basePossiblity
+            // A = 2 / (1 - basePossiblity) - 2
+
+            const A = 2 / (1 - basePossiblity) - 2;
+            const weightedFactor = (0.3 * arousalValue) / 100 + (0.7 * arousalFactor) / 4;
+            return 1 - 1 / (1 + A * weightedFactor);
+        })();
 
         cooldown = false;
 
-        setTimeout(() => {
+        await sleepFor(5000);
+        (() => {
             const chance = Math.random();
 
             const post = (content) =>
@@ -53,7 +61,7 @@ const activity = {
                     activity: { name: "MasturbateItem", group: "ItemButt" },
                 });
 
-            if (chance < basePossiblity) {
+            if (chance < possibility) {
                 const removing = item.Property.InsertedBeads <= 1;
                 if (removing) {
                     const itemGroup = item.Asset.Group.Name;
@@ -84,7 +92,7 @@ const activity = {
                 });
             }
             cooldown = true;
-        }, 5000);
+        })();
     },
     useImage: DynImageProviders.itemOnActedGroup("ItemButt"),
     item: (player) => InventoryGet(player, "ItemButt"),
