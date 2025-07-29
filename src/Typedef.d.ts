@@ -54,3 +54,5 @@ type CustomActivityPrerequisiteItem =
     import('@sugarch/bc-activity-manager').CustomActivityPrerequisiteItem<CustomActivityPrerequisite>;
 
 type DynamicImageProvier = import('@sugarch/bc-activity-manager').DynamicActivityImageProvider;
+
+type ActivityGroupName = import('@sugarch/bc-mod-types').Translation.ActivityGroupName;

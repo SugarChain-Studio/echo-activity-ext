@@ -1,3 +1,4 @@
+import { ActivityExt } from "../../activityext";
 import { ActivityManager } from "../../activityForward";
 
 /** @type { CustomActivity []} */
@@ -155,150 +156,110 @@ const activities = [
             UA: "SourceCharacter сердито тупотить ногами.",
         },
     },
-    {
-        activity: {
-            Name: "脚按摩",
-            Prerequisite: ["UseFeet", "Luzi_TargetKneelOrAllFours"],
-            MaxProgress: 10,
-            Target: ["ItemPelvis", "ItemLegs", "ItemBreast"],
+    ActivityExt.fromTemplateActivity(
+        {
+            activity: {
+                Name: "脚按摩",
+                Prerequisite: ["UseFeet", "Luzi_TargetKneelOrAllFours"],
+                MaxProgress: 10,
+                Target: ["ItemPelvis", "ItemLegs", "ItemBreast"],
+            },
+            useImage: "Step",
         },
-        useImage: "Step",
-        label: {
+        {
             CN: {
-                ItemPelvis: "脚按摩小腹",
-                ItemLegs: "脚按摩大腿",
-                ItemBreast: "脚按摩胸部",
+                ItemPelvis: "小腹",
+                ItemLegs: "大腿",
+                ItemBreast: "胸部",
             },
             EN: {
-                ItemPelvis: "Foot Massage Lower Abdomen",
-                ItemLegs: "Foot Massage Thighs",
-                ItemBreast: "Foot Massage Breasts",
+                ItemPelvis: "Abdomen",
+                ItemLegs: "Thighs",
+                ItemBreast: "Breasts",
             },
         },
-        dialog: {
+        {
+            label: {
+                CN: "脚按摩$group",
+                EN: "Foot Massage $group",
+            },
+            dialog: {
+                CN: "SourceCharacter用脚轻柔地按摩着DestinationCharacter的$group。",
+                EN: "SourceCharacter gently massages DestinationCharacter's $group with feet.",
+            },
+        }
+    ),
+    ...ActivityExt.fromTemplateActivity(
+        [
+            {
+                activity: {
+                    Name: "脚高处戳",
+                    Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetAllFours"],
+                    MaxProgress: 10,
+                    Target: ["ItemMouth", "ItemHead", "ItemNose", "ItemNeck", "ItemEars"],
+                },
+                useImage: "Step",
+            },
+            {
+                activity: {
+                    Name: "脚戳",
+                    Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
+                    MaxProgress: 10,
+                    Target: ["ItemBreast", "ItemTorso", "ItemLegs"],
+                },
+                useImage: "Step",
+            },
+            {
+                activity: {
+                    Name: "脚戳刺激",
+                    Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
+                    MaxProgress: 60,
+                    Target: ["ItemNipples", "ItemVulva", "ItemVulvaPiercings", "ItemButt"],
+                },
+                useImage: "Step",
+            },
+        ],
+        {
             CN: {
-                ItemPelvis: "SourceCharacter用脚轻柔地按摩着DestinationCharacter小腹。",
-                ItemLegs: "SourceCharacter用脚轻柔地按摩着DestinationCharacter大腿。",
-                ItemBreast: "SourceCharacter用脚轻柔地按摩着DestinationCharacter胸部。",
+                ItemMouth: "嘴巴",
+                ItemHead: "额头",
+                ItemNose: "鼻子",
+                ItemNeck: "脖子",
+                ItemEars: "耳朵",
+                ItemBreast: "胸部",
+                ItemTorso: "腹部",
+                ItemLegs: "大腿",
+                ItemNipples: "乳头",
+                ItemVulva: "阴部",
+                ItemVulvaPiercings: "阴蒂",
+                ItemButt: "屁股",
             },
             EN: {
-                ItemPelvis: "SourceCharacter gently massages DestinationCharacter lower abdomen with feet.",
-                ItemLegs: "SourceCharacter gently massages DestinationCharacter thighs with feet.",
-                ItemBreast: "SourceCharacter gently massages DestinationCharacter breasts with feet.",
+                ItemMouth: "Mouth",
+                ItemHead: "Head",
+                ItemNose: "Nose",
+                ItemNeck: "Neck",
+                ItemEars: "Ears",
+                ItemBreast: "Breasts",
+                ItemTorso: "Torso",
+                ItemLegs: "Thighs",
+                ItemNipples: "Nipples",
+                ItemVulva: "Vulva",
+                ItemVulvaPiercings: "Clitoris",
+                ItemButt: "Butt",
             },
         },
-    },
-    {
-        activity: {
-            Name: "脚戳",
-            Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
-            MaxProgress: 10,
-            Target: ["ItemBreast", "ItemTorso", "ItemLegs"],
-        },
-        useImage: "Step",
-        label: {
-            CN: {
-                ItemBreast: "脚戳胸部",
-                ItemTorso: "脚戳腹部",
-                ItemLegs: "脚戳大腿",
+        {
+            label: {
+                CN: "脚戳$group",
+                EN: "Toe Poke $group",
             },
-            EN: {
-                ItemBreast: "Toe Poke Breasts",
-                ItemTorso: "Toe Poke Torso",
-                ItemLegs: "Toe Poke Thighs",
+            dialog: {
+                CN: "SourceCharacter用脚戳了戳DestinationCharacter的$group。",
+                EN: "SourceCharacter pokes DestinationCharacter $group with toe.",
             },
-        },
-        dialog: {
-            CN: {
-                ItemBreast: "SourceCharacter用脚戳了戳DestinationCharacter的胸部。",
-                ItemTorso: "SourceCharacter用脚戳了戳DestinationCharacter的腹部。",
-                ItemLegs: "SourceCharacter用脚戳了戳DestinationCharacter的大腿。",
-            },
-            EN: {
-                ItemBreast: "SourceCharacter pokes DestinationCharacter breasts with toe.",
-                ItemTorso: "SourceCharacter pokes DestinationCharacter torso with toe.",
-                ItemLegs: "SourceCharacter pokes DestinationCharacter thighs with toe.",
-            },
-        },
-    },
-    {
-        activity: {
-            Name: "脚高处戳",
-            Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetAllFours"],
-            MaxProgress: 10,
-            Target: ["ItemMouth", "ItemHead", "ItemNose", "ItemNeck", "ItemEars"],
-        },
-        useImage: "Step",
-        label: {
-            CN: {
-                ItemMouth: "脚戳嘴巴",
-                ItemHead: "脚戳额头",
-                ItemNose: "脚戳鼻子",
-                ItemNeck: "脚戳脖子",
-                ItemEars: "脚戳耳朵",
-            },
-            EN: {
-                ItemMouth: "Toe Poke Mouth",
-                ItemHead: "Toe Poke Head",
-                ItemNose: "Toe Poke Nose",
-                ItemNeck: "Toe Poke Neck",
-                ItemEars: "Toe Poke Ears",
-            },
-        },
-        dialog: {
-            CN: {
-                ItemMouth: "SourceCharacter用脚戳了戳DestinationCharacter的嘴巴。",
-                ItemHead: "SourceCharacter用脚戳了戳DestinationCharacter的额头。",
-                ItemNose: "SourceCharacter用脚戳了戳DestinationCharacter的鼻子。",
-                ItemNeck: "SourceCharacter用脚戳了戳DestinationCharacter的脖子。",
-                ItemEars: "SourceCharacter用脚戳了戳DestinationCharacter的耳朵。",
-            },
-            EN: {
-                ItemMouth: "SourceCharacter pokes DestinationCharacter mouth with toe.",
-                ItemHead: "SourceCharacter pokes DestinationCharacter head with toe.",
-                ItemNose: "SourceCharacter pokes DestinationCharacter nose with toe.",
-                ItemNeck: "SourceCharacter pokes DestinationCharacter neck with toe.",
-                ItemEars: "SourceCharacter pokes DestinationCharacter ear with toe.",
-            },
-        },
-    },
-    {
-        activity: {
-            Name: "脚戳刺激",
-            Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
-            MaxProgress: 60,
-            Target: ["ItemNipples", "ItemVulva", "ItemVulvaPiercings", "ItemButt"],
-        },
-        useImage: "Step",
-        label: {
-            CN: {
-                ItemNipples: "脚戳乳头",
-                ItemVulva: "脚戳阴部",
-                ItemVulvaPiercings: "脚戳阴蒂",
-                ItemButt: "脚戳屁股",
-            },
-            EN: {
-                ItemNipples: "Toe Poke Nipples",
-                ItemVulva: "Toe Poke Vulva",
-                ItemVulvaPiercings: "Toe Poke Clitoris",
-                ItemButt: "Toe Poke Butt",
-            },
-        },
-        dialog: {
-            CN: {
-                ItemNipples: "SourceCharacter用脚戳了戳DestinationCharacter的乳头。",
-                ItemVulva: "SourceCharacter用脚戳了戳DestinationCharacter的阴部。",
-                ItemVulvaPiercings: "SourceCharacter用脚戳了戳DestinationCharacter的阴蒂。",
-                ItemButt: "SourceCharacter用脚戳了戳DestinationCharacter的屁股。",
-            },
-            EN: {
-                ItemNipples: "SourceCharacter pokes DestinationCharacter nipples with toe.",
-                ItemVulva: "SourceCharacter pokes DestinationCharacter vulva with toe.",
-                ItemVulvaPiercings: "SourceCharacter pokes DestinationCharacter clitoris with toe.",
-                ItemButt: "SourceCharacter pokes DestinationCharacter butt with toe.",
-            },
-        },
-    },
+        }
+    ),
 ];
 
 export default function () {
