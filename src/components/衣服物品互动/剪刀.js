@@ -1,3 +1,4 @@
+import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../Prereqs";
 
@@ -22,9 +23,10 @@ const activity = {
     },
     useImage: ["ItemHandheld", "Scissors"],
     mode: "AnyOnSelf",
-    run: (player, sender, info) => {
+    run: async (player, sender, info) => {
         // 遵守物品权限
         if (!ServerChatRoomGetAllowItem(sender, player)) return;
+        await sleepFor(100);
 
         // 使用动作拓展才会被剪衣服，可以只处理收到消息的情况
         const groups = groupMap[info.ActivityGroup.Name];
@@ -61,12 +63,12 @@ const activity = {
     },
     dialog: {
         CN: {
-            ItemTorso: "SourceCharacter用剪刀剪掉了TargetCharacter的上衣.",
-            ItemLegs: "SourceCharacter用剪刀剪掉了TargetCharacter的下衣.",
-            ItemBreast: "SourceCharacter用剪刀剪掉了TargetCharacter的胸罩.",
-            ItemVulvaPiercings: "SourceCharacter用剪刀剪掉了TargetCharacter的内裤.",
-            ItemFeet: "SourceCharacter用剪刀剪掉了TargetCharacter的袜子.",
-            ItemBoots: "SourceCharacter用剪刀剪掉了TargetCharacter的鞋子.",
+            ItemTorso: "SourceCharacter用剪刀剪掉了DestinationCharacter上衣.",
+            ItemLegs: "SourceCharacter用剪刀剪掉了DestinationCharacter下衣.",
+            ItemBreast: "SourceCharacter用剪刀剪掉了DestinationCharacter胸罩.",
+            ItemVulvaPiercings: "SourceCharacter用剪刀剪掉了DestinationCharacter内裤.",
+            ItemFeet: "SourceCharacter用剪刀剪掉了DestinationCharacter袜子.",
+            ItemBoots: "SourceCharacter用剪刀剪掉了DestinationCharacter鞋子.",
         },
         EN: {
             ItemTorso: "SourceCharacter Cuts Off DestinationCharacter Top with Scissors.",
@@ -83,58 +85,6 @@ const activity = {
             ItemVulvaPiercings: "SourceCharacter ріже трусики TargetCharacter ножицями.",
             ItemFeet: "SourceCharacter ріже шкарпетки TargetCharacter ножицями.",
             ItemBoots: "SourceCharacter ріже взуття TargetCharacter ножицями.",
-        },
-    },
-    labelSelf: {
-        CN: {
-            ItemTorso: "剪刀剪掉上衣",
-            ItemLegs: "剪刀剪掉下衣",
-            ItemBreast: "剪刀剪掉胸罩",
-            ItemVulvaPiercings: "剪刀剪掉内裤",
-            ItemFeet: "剪刀剪掉袜子",
-            ItemBoots: "剪刀剪掉鞋子",
-        },
-        EN: {
-            ItemTorso: "Scissors Cut Off the Top",
-            ItemLegs: "Scissors Cut Off the Bottom",
-            ItemBreast: "Scissors Cut Off the Bra",
-            ItemVulvaPiercings: "Scissors Cut Off the Underwear",
-            ItemFeet: "Scissors Cut Off the Socks",
-            ItemBoots: "Scissors Cut Off the Shoes",
-        },
-        UA: {
-            ItemTorso: "Відрізати верхній одяг ножицями",
-            ItemLegs: "Відрізати нижній одяг ножицями",
-            ItemBreast: "Відрізати лівчик ножицями",
-            ItemVulvaPiercings: "Відрізати трусики ножицями",
-            ItemFeet: "Відрізати шкарпетки ножицями",
-            ItemBoots: "Відрізати взуття ножицями",
-        },
-    },
-    dialogSelf: {
-        CN: {
-            ItemTorso: "SourceCharacter用剪刀剪掉了自己的上衣.",
-            ItemLegs: "SourceCharacter用剪刀剪掉了自己的下衣.",
-            ItemBreast: "SourceCharacter用剪刀剪掉了自己的胸罩.",
-            ItemVulvaPiercings: "SourceCharacter用剪刀剪掉了自己的内裤.",
-            ItemFeet: "SourceCharacter用剪刀剪掉了自己的袜子.",
-            ItemBoots: "SourceCharacter用剪刀剪掉了自己的鞋子.",
-        },
-        EN: {
-            ItemTorso: "SourceCharacter Cuts Off own Top with Scissors.",
-            ItemLegs: "SourceCharacter Cuts Off own Bottom with Scissors.",
-            ItemBreast: "SourceCharacter Cuts Off own Bra with Scissors.",
-            ItemVulvaPiercings: "SourceCharacter Cuts Off own Underwear with Scissors.",
-            ItemFeet: "SourceCharacter Cuts Off own Socks with Scissors.",
-            ItemBoots: "SourceCharacter Cuts Off own Shoes with Scissors.",
-        },
-        UA: {
-            ItemTorso: "SourceCharacter ріже свій верхній одяг ножицями.",
-            ItemLegs: "SourceCharacter ріже свій нижній одяг ножицями.",
-            ItemBreast: "SourceCharacter ріже свій лівчик ножицями.",
-            ItemVulvaPiercings: "SourceCharacter ріже свої трусики ножицями.",
-            ItemFeet: "SourceCharacter ріже свої шкарпетки ножицями.",
-            ItemBoots: "SourceCharacter ріже свої взуття ножицями.",
         },
     },
 };

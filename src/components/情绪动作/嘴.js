@@ -338,7 +338,7 @@ const activities = [
     {
         activity: {
             Name: "乳头呵气",
-            Prerequisite: ["UseMouth"],
+            Prerequisite: ["UseMouth", "Luzi_ActedZoneNaked"],
             MaxProgress: 50,
             Target: ["ItemNipples"],
         },
