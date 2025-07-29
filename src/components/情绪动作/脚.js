@@ -185,7 +185,7 @@ const activities = [
             },
             dialog: {
                 CN: "SourceCharacter用脚轻柔地按摩着DestinationCharacter的$group。",
-                EN: "SourceCharacter gently massages DestinationCharacter's $group with feet.",
+                EN: "SourceCharacter gently massages DestinationCharacter $group with feet.",
             },
         }
     ),
