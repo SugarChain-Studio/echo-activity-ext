@@ -1,6 +1,6 @@
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../Prereqs";
-import { i18nAction } from "../../messager";
+import { makeI18nMessage } from "../../messager";
 
 /** @type {CustomGroupName[]} */
 const gloves = ["Gloves", "Gloves_笨笨蛋Luzi", "Gloves_笨笨笨蛋Luzi2"];
@@ -20,6 +20,21 @@ const socks = [
     "SocksLeft_笨笨笨蛋Luzi2",
     "SocksRight_笨笨笨蛋Luzi2",
 ];
+
+const messages = makeI18nMessage({
+    NotFound: {
+        CN: "SourceCharacter没有找到可以脱掉的物品.",
+        EN: "SourceCharacter did not find any items that can be taken off.",
+    },
+    Success: {
+        CN: "SourceCharacter成功用嘴脱掉了DestinationCharacterNameAssetName.",
+        EN: "SourceCharacter successfully took off DestinationCharacterName AssetName with mouth.",
+    },
+    Failed: {
+        CN: "SourceCharacter尝试用嘴脱掉DestinationCharacterNameAssetName，但失败了.",
+        EN: "SourceCharacter tries to take off DestinationCharacterName AssetName with mouth, but failed.",
+    },
+});
 
 /**
  * @param {Character} acting
@@ -50,44 +65,18 @@ function calcuTimeAndPosi(acting) {
 
 function removingCheck(pool, { source, destination }, { time, posi }) {
     if (pool.length === 0) {
-        i18nAction(
-            {
-                CN: "SourceCharacter没有找到可以脱掉的物品.",
-                EN: "SourceCharacter did not find any items that can be taken off.",
-            },
-            { source, destination }
-        );
-
-        i18nAction(
-            {
-                CN: "SourceCharacter没有找到可以脱掉的物品.",
-                EN: "SourceCharacter did not find any items that can be taken off.",
-            },
-            { source, destination }
-        );
+        messages.action("NotFound", { source, destination });
         return;
     }
 
     setTimeout(() => {
         const rdItem = pool[Math.floor(Math.random() * pool.length)];
         if (Math.random() < posi) {
-            i18nAction(
-                {
-                    CN: "SourceCharacter成功用嘴脱掉了DestinationCharacterNameAssetName.",
-                    EN: "SourceCharacter successfully took off DestinationCharacterName AssetName with mouth.",
-                },
-                { source, destination, asset: rdItem.Asset }
-            );
+            messages.action("Success", { source, destination, asset: rdItem.Asset });
             InventoryRemove(Player, rdItem.Asset.Group.Name);
             ChatRoomCharacterItemUpdate(destination, rdItem.Asset.Group.Name);
         } else {
-            i18nAction(
-                {
-                    CN: "SourceCharacter尝试用嘴脱掉DestinationCharacterNameAssetName，但失败了.",
-                    EN: "SourceCharacter tries to take off DestinationCharacterName AssetName with mouth, but failed.",
-                },
-                { source, destination, asset: rdItem.Asset }
-            );
+            messages.action("Failed", { source, destination, asset: rdItem.Asset });
         }
     }, time);
 }

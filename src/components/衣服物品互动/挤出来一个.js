@@ -1,5 +1,5 @@
 import { ActivityManager } from "../../activityForward";
-import { i18nAction } from "../../messager";
+import { makeI18nMessage } from "../../messager";
 
 import { DynImageProviders } from "../../dynamicImage";
 import { Prereqs } from "../../Prereqs";
@@ -11,6 +11,21 @@ const beedsDef = {
 };
 
 let cooldown = true;
+
+const messages = makeI18nMessage({
+    FullOut: {
+        CN: "SourceCharacter将屁股里的AssetName完全挤出来。",
+        EN: "SourceCharacter fully squeezes out AssetName from the butt.",
+    },
+    Success: {
+        CN: "SourceCharacter成功将屁股里的AssetName挤出来其中一个球.",
+        EN: "SourceCharacter successfully squeezes out one ball of AssetName from the butt.",
+    },
+    Failed: {
+        CN: "SourceCharacter尝试将塞在屁股里的AssetName挤出来，但失败了.",
+        EN: "SourceCharacter tries to squeeze out AssetName stuck in the butt, but failed.",
+    },
+});
 
 /** @type {CustomActivity} */
 const activity = {
@@ -53,8 +68,11 @@ const activity = {
         (() => {
             const chance = Math.random();
 
+            /**
+             * @param {Parameters<typeof messages.action>[0]} content
+             */
             const post = (content) =>
-                i18nAction(content, {
+                messages.action(content, {
                     source: player,
                     destination: player,
                     asset: item.Asset,
@@ -75,21 +93,12 @@ const activity = {
                 ChatRoomCharacterUpdate(player);
 
                 if (removing) {
-                    post({
-                        CN: "SourceCharacter将屁股里的AssetName完全挤出来。",
-                        EN: "SourceCharacter fully squeezes out AssetName from the butt.",
-                    });
+                    post("FullOut");
                 } else {
-                    post({
-                        CN: "SourceCharacter成功将屁股里的AssetName挤出来其中一个球.",
-                        EN: "SourceCharacter successfully squeezes out one ball of AssetName from the butt.",
-                    });
+                    post("Success");
                 }
             } else {
-                post({
-                    CN: "SourceCharacter尝试将塞在屁股里的AssetName挤出来，但失败了.",
-                    EN: "SourceCharacter tries to squeeze out AssetName stuck in the butt, but failed.",
-                });
+                post("Failed");
             }
             cooldown = true;
         })();

@@ -3,30 +3,31 @@ import { Messager } from "@sugarch/bc-mod-utility";
 export const messager = new Messager();
 
 /**
- * 根据当前游戏语言获取消息
- * @param {string} key - 消息键值
- * @param {...string} args - 格式化参数
- * @returns {string} - 本地化后的消息
+ * @template {string} K
  */
-export function i18n(messages, key, ...args) {
-    const lang = TranslationLanguage === "TW" ? "CN" : TranslationLanguage || "EN";
-    let msg = messages[key][lang] || messages[key].EN;
+class I18nMessage {
+    /**
+     * @param {Record<K, Translation.Entry>} messages
+     */
+    constructor(messages) {
+        this.messages = messages;
+    }
 
-    // 替换格式化参数
-    args.forEach((arg, index) => {
-        msg = msg.replace(`{${index}}`, arg);
-    });
-
-    return msg;
+    /**
+     * @param {K} key
+     * @param  {SliceParameters<1, Messager["action"]>} args
+     */
+    action(key, ...args) {
+        const lang = TranslationLanguage === "TW" ? "CN" : TranslationLanguage || "EN";
+        const msg = this.messages[key][lang] || this.messages[key].EN;
+        messager.action(msg, ...args);
+    }
 }
 
 /**
- *
- * @param {Translation.Entry} message
- * @param  {SliceParameters<1, Messager["action"]>} args
+ * @template {string} K
+ * @param {Record<K, Translation.Entry>} messages
  */
-export function i18nAction(message, ...args) {
-    const lang = TranslationLanguage === "TW" ? "CN" : TranslationLanguage || "EN";
-    const msg = message[lang] || message.EN;
-    messager.action(msg, ...args);
+export function makeI18nMessage(messages) {
+    return new I18nMessage(messages);
 }
