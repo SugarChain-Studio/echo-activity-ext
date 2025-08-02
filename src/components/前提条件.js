@@ -33,10 +33,16 @@ const tailItems = [
 
 /** @type { Record<Exclude<CustomActivityPrerequisite,ActivityPrerequisite>, PrerequisiteCheckFunction> }  */
 const prereqStorage = {
-    Luzi_TargetHasTail: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "TailStraps"),
-    Luzi_HasWings: (_prereq, acting, _acted, _group) => !!InventoryGet(acting, "Wings"),
-    Luzi_TargetHasWings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "Wings"),
-    Luzi_TargetCanBeLeashed: (_prereq, _acting, acted, _group) => ChatRoomCanBeLeashed(acted),
+    Luzi_HasTail: (_prereq, acting, _acted, _group) =>
+        !!InventoryGet(acting, "TailStraps"),
+    Luzi_TargetHasTail: (_prereq, _acting, acted, _group) =>
+        !!InventoryGet(acted, "TailStraps"),
+    Luzi_HasWings: (_prereq, acting, _acted, _group) =>
+        !!InventoryGet(acting, "Wings"),
+    Luzi_TargetHasWings: (_prereq, _acting, acted, _group) =>
+        !!InventoryGet(acted, "Wings"),
+    Luzi_TargetCanBeLeashed: (_prereq, _acting, acted, _group) =>
+        ChatRoomCanBeLeashed(acted),
     Luzi_IsLeashingTarget: (_prereq, acting, acted, _group) => {
         if (!acting.IsPlayer()) return false;
         return ChatRoomLeashList.includes(acted.MemberNumber);
@@ -61,15 +67,29 @@ const prereqStorage = {
         switch (_group.Name) {
             case "ItemBreast":
             case "ItemNipples":
-                return !InventoryPrerequisiteMessage(acted, "AccessBreast") && !acted.IsBreastChaste();
+                return (
+                    !InventoryPrerequisiteMessage(acted, "AccessBreast") &&
+                    !acted.IsBreastChaste()
+                );
             case "ItemButt":
-                return !InventoryPrerequisiteMessage(acted, "AccessButt") && !acted.IsButtChaste();
+                return (
+                    !InventoryPrerequisiteMessage(acted, "AccessButt") &&
+                    !acted.IsButtChaste()
+                );
             case "ItemVulva":
-                return !InventoryPrerequisiteMessage(acted, "AccessVulva") && !acted.IsVulvaChaste();
+                return (
+                    !InventoryPrerequisiteMessage(acted, "AccessVulva") &&
+                    !acted.IsVulvaChaste()
+                );
             case "ItemVulvaPiercings":
-                return !InventoryPrerequisiteMessage(acted, "AccessVulva") && !acted.IsVulvaChaste();
+                return (
+                    !InventoryPrerequisiteMessage(acted, "AccessVulva") &&
+                    !acted.IsVulvaChaste()
+                );
         }
-        Logger.warn(`Luzi_ActedZoneNaked cannot be used with group: {_group.Name}`);
+        Logger.warn(
+            `Luzi_ActedZoneNaked cannot be used with group: {_group.Name}`
+        );
         return true;
     },
     Luzi_HasTentacles: Prereqs.any(
@@ -77,7 +97,10 @@ const prereqStorage = {
         Prereqs.Acting.GroupIs("ItemButt", ["Tentacles"])
     ),
     Luzi_HasPawMittens: (_prereq, acting, _acted, _group) =>
-        InventoryIsItemInList(acting, "ItemHands", ["PawMittens", "ElbowLengthMittens"]),
+        InventoryIsItemInList(acting, "ItemHands", [
+            "PawMittens",
+            "ElbowLengthMittens",
+        ]),
     Luzi_HasPetSuit: Prereqs.or(
         Prereqs.Acting.GroupIs("ItemArms", [
             "ShinyPetSuit",
@@ -85,14 +108,31 @@ const prereqStorage = {
             "StrictLeatherPetCrawler",
             "乳胶宠物拘束服_Luzi",
         ]),
-        Prereqs.and(Prereqs.Acting.GroupIs("ItemArms", ["宠物服上"]), Prereqs.Acting.GroupIs("ItemArms", ["宠物服下"]))
+        Prereqs.and(
+            Prereqs.Acting.GroupIs("ItemArms", ["宠物服上"]),
+            Prereqs.Acting.GroupIs("ItemArms", ["宠物服下"])
+        )
     ),
-    Luzi_HasBreast: Prereqs.Acting.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
-    Luzi_TargetHasBreast: Prereqs.Acted.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
-    Luzi_HasKennel: (_prereq, _acting, acted, _group) => InventoryIsItemInList(acted, "ItemDevices", ["Kennel"]),
-    Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulvaPiercings"),
-    Luzi_TargetHasItemVulva: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulva"),
-    Luzi_HasSword: (_prereq, acting, _acted, _group) => InventoryIsItemInList(acting, "ItemHandheld", ["Sword"]),
+    Luzi_HasBreast: Prereqs.Acting.GroupIs("BodyUpper", [
+        "Small",
+        "Normal",
+        "Large",
+        "XLarge",
+    ]),
+    Luzi_TargetHasBreast: Prereqs.Acted.GroupIs("BodyUpper", [
+        "Small",
+        "Normal",
+        "Large",
+        "XLarge",
+    ]),
+    Luzi_HasKennel: (_prereq, _acting, acted, _group) =>
+        InventoryIsItemInList(acted, "ItemDevices", ["Kennel"]),
+    Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) =>
+        !!InventoryGet(acted, "ItemVulvaPiercings"),
+    Luzi_TargetHasItemVulva: (_prereq, _acting, acted, _group) =>
+        !!InventoryGet(acted, "ItemVulva"),
+    Luzi_HasSword: (_prereq, acting, _acted, _group) =>
+        InventoryIsItemInList(acting, "ItemHandheld", ["Sword"]),
     Luzi_Has鱼鱼尾: Prereqs.Acting.GroupIs("动物身体_Luzi", ["鱼鱼尾_Luzi"]),
     Luzi_CharacterViewWithinReach: (_prereq, acting, acted, _group) => {
         if (!ServerPlayerIsInChatRoom()) return false;
@@ -100,14 +140,19 @@ const prereqStorage = {
         if (acting.CanWalk()) return true;
         if (acting.IsMounted()) return false;
 
-        const actedIdx = ChatRoomCharacter.findIndex((C) => C.MemberNumber === acted.MemberNumber);
-        const actingIdx = ChatRoomCharacter.findIndex((C) => C.MemberNumber === acting.MemberNumber);
+        const actedIdx = ChatRoomCharacter.findIndex(
+            (C) => C.MemberNumber === acted.MemberNumber
+        );
+        const actingIdx = ChatRoomCharacter.findIndex(
+            (C) => C.MemberNumber === acting.MemberNumber
+        );
         if (actedIdx < 0 || actingIdx < 0) return false;
         const idxDiff = Math.abs(actedIdx - actingIdx);
 
         for (const item of acting.Appearance) {
             if (item.Asset.Group.Name in chainLength) {
-                const chain = chainLength[item.Asset.Group.Name][item.Asset.Name];
+                const chain =
+                    chainLength[item.Asset.Group.Name][item.Asset.Name];
                 if (chain !== undefined) {
                     if (idxDiff > chain) return false;
                 }
@@ -127,7 +172,9 @@ const prereqStorage = {
     Luzi_TargetKneelOrAllFours: Prereqs.Acted.PoseIsKneelingOrAllFours(),
     Luzi_LeashedBy: (_prereq, acting, acted, _group) => {
         if (!acting.IsPlayer()) return false;
-        return ChatRoomLeashPlayer && ChatRoomLeashPlayer === acted.MemberNumber;
+        return (
+            ChatRoomLeashPlayer && ChatRoomLeashPlayer === acted.MemberNumber
+        );
     },
 };
 
@@ -135,7 +182,10 @@ export default function () {
     /** @type {CustomActivityPrerequisiteItem[]} */
     const prereqs = [];
     for (const [k, test] of Object.entries(prereqStorage)) {
-        prereqs.push({ name: /** @type {CustomActivityPrerequisite}*/ (k), test });
+        prereqs.push({
+            name: /** @type {CustomActivityPrerequisite}*/ (k),
+            test,
+        });
     }
     ActivityManager.addPrerequisites(prereqs);
 }
