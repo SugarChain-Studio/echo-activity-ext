@@ -1,5 +1,6 @@
 import { ActivityExt } from "../../activityext";
 import { ActivityManager } from "../../activityForward";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -194,7 +195,11 @@ const activities = [
             {
                 activity: {
                     Name: "脚高处戳",
-                    Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetAllFours"],
+                    Prerequisite: [
+                        "UseFeet",
+                        "Luzi_IsStanding",
+                        Prereqs.any(Prereqs.Acted.PoseIsAllFours(), Prereqs.Acted.PoseIsHogtied()),
+                    ],
                     MaxProgress: 10,
                     Target: ["ItemMouth", "ItemHead", "ItemNose", "ItemNeck", "ItemEars"],
                 },
@@ -202,10 +207,27 @@ const activities = [
             },
             {
                 activity: {
-                    Name: "脚戳",
-                    Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
+                    Name: "脚戳中间",
+                    Prerequisite: [
+                        "UseFeet",
+                        "Luzi_IsStanding",
+                        Prereqs.any(
+                            Prereqs.Acted.PoseIsKneeling(),
+                            Prereqs.Acted.PoseIsAllFours(),
+                            Prereqs.Acted.PoseIsHogtied()
+                        ),
+                    ],
                     MaxProgress: 10,
-                    Target: ["ItemBreast", "ItemTorso", "ItemLegs"],
+                    Target: ["ItemBreast", "ItemTorso", "ItemLegs", "ItemArms"],
+                },
+                useImage: "Step",
+            },
+            {
+                activity: {
+                    Name: "脚戳低处",
+                    Prerequisite: ["UseFeet", "Luzi_IsStanding"],
+                    MaxProgress: 10,
+                    Target: ["ItemFeet", "ItemBoots"],
                 },
                 useImage: "Step",
             },
@@ -221,7 +243,7 @@ const activities = [
         ],
         {
             CN: {
-                ItemMouth: "嘴巴",
+                ItemMouth: "脸",
                 ItemHead: "额头",
                 ItemNose: "鼻子",
                 ItemNeck: "脖子",
@@ -233,9 +255,12 @@ const activities = [
                 ItemVulva: "阴部",
                 ItemVulvaPiercings: "阴蒂",
                 ItemButt: "屁股",
+                ItemFeet: "小腿",
+                ItemBoots: "脚",
+                ItemArms: "手臂",
             },
             EN: {
-                ItemMouth: "Mouth",
+                ItemMouth: "Face",
                 ItemHead: "Head",
                 ItemNose: "Nose",
                 ItemNeck: "Neck",
@@ -247,6 +272,9 @@ const activities = [
                 ItemVulva: "Vulva",
                 ItemVulvaPiercings: "Clitoris",
                 ItemButt: "Butt",
+                ItemFeet: "Calves",
+                ItemBoots: "Feet",
+                ItemArms: "Arms",
             },
         },
         {

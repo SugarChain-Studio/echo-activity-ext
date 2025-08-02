@@ -34,13 +34,12 @@ class Actor {
         return (_, acting, acted, _2) => this.which(acting, acted).IsKneeling();
     }
 
-    /**
-     * 所有跪姿或四脚着地的姿势状态
-     * @returns {PrerequisiteCheckFunction}
-     */
-    PoseIsKneelingOrAllFours() {
-        return (_, acting, acted, _2) =>
-            this.which(acting, acted).IsKneeling() || this.which(acting, acted).PoseMapping.BodyFull === "AllFours";
+    PoseIsAllFours() {
+        return (_, acting, acted, _2) => this.which(acting, acted).PoseMapping.BodyFull === "AllFours";
+    }
+
+    PoseIsHogtied() {
+        return (_, acting, acted, _2) => this.which(acting, acted).PoseMapping.BodyFull === "Hogtied";
     }
 
     /**

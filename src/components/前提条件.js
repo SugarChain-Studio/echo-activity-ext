@@ -114,8 +114,8 @@ const prereqStorage = {
     Luzi_IsKneeling: Prereqs.Acting.PoseIsKneeling(),
     Luzi_IsAllFours: Prereqs.Acting.PoseIs("BodyFull", "AllFours"),
     Luzi_TargetAllFours: Prereqs.Acted.PoseIs("BodyFull", "AllFours"),
-    Luzi_KneelOrAllFours: Prereqs.Acting.PoseIsKneelingOrAllFours(),
-    Luzi_TargetKneelOrAllFours: Prereqs.Acted.PoseIsKneelingOrAllFours(),
+    Luzi_KneelOrAllFours: Prereqs.or(Prereqs.Acting.PoseIsKneeling(), Prereqs.Acting.PoseIsAllFours()),
+    Luzi_TargetKneelOrAllFours: Prereqs.or(Prereqs.Acted.PoseIsKneeling(), Prereqs.Acted.PoseIsAllFours()),
     Luzi_LeashedBy: (_prereq, acting, acted, _group) => {
         if (!acting.IsPlayer()) return false;
         return ChatRoomLeashPlayer && ChatRoomLeashPlayer === acted.MemberNumber;
