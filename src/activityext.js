@@ -63,10 +63,11 @@ function fromTemplateActivity(activity, groupEntry, template, tag = "$group") {
                 const template = entryTemplate[lang];
                 if (template === undefined) continue;
                 const groupText = groupEntry[lang];
+                const fallback = groupEntry["EN"];
                 entry[lang] ??= {};
                 for (const group of groups) {
                     if (!groupText[group]) continue;
-                    entry[lang][group] = template.replace(tag, groupText[group]);
+                    entry[lang][group] = template.replace(tag, groupText[group] ?? fallback[group] ?? group);
                 }
             }
             ret[entryTag] = entry;
