@@ -2,6 +2,7 @@ import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../Prereqs";
 import { DynImageProviders } from "../../dynamicImage";
 import { sleepFor } from "@sugarch/bc-mod-utility";
+import { playerStomach } from "./foodValue";
 
 const stomachValueSetting = {
     棒棒糖_Luzi: 0.1,
@@ -11,35 +12,12 @@ const stomachValueSetting = {
     蛋糕卷_Luzi: 0.8,
 };
 
-class StomachValue {
-    constructor() {
-        this.value = 0;
-        this.latestUpdate = Date.now();
-        setInterval(() => {
-            const now = Date.now();
-            const delta = now - this.latestUpdate;
-            this.latestUpdate = now;
-
-            // 每分钟减少 0.1
-            this.value = Math.max(this.value - delta / 600000, 0);
-        }, 1000);
-    }
-
-    canEat() {
-        return this.value < 1;
-    }
-
-    eat(assetName) {
-        /** @type {number | undefined} */
-        const v = stomachValueSetting[assetName];
-        if (v) {
-            this.value = this.value + v; // 可以超过1
-        }
-        return v;
+function eat(assetName) {
+    const value = stomachValueSetting[assetName];
+    if (value) {
+        playerStomach.eat(value);
     }
 }
-
-const playerStomach = new StomachValue();
 
 /** @type {CustomActivity[]} */
 const activity = [
@@ -110,7 +88,7 @@ const activity = [
             await sleepFor(100);
             const item = InventoryGet(player, "ItemMouth");
             if (!item) return;
-            playerStomach.eat(item.Asset.Name);
+            eat(item.Asset.Name);
             InventoryRemove(player, "ItemMouth");
             ChatRoomCharacterItemUpdate(player, "ItemMouth");
         },
