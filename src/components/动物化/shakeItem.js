@@ -1,4 +1,4 @@
-const { sleepFor } = require("@sugarch/bc-mod-utility");
+import { sleepFor } from "@sugarch/bc-mod-utility";
 
 /** @type { boolean }*/
 let runningShakeItem = false;
@@ -14,16 +14,7 @@ export async function shakeItem(player, itemgroup, item1, item2) {
     const propColor = InventoryGet(player, itemgroup).Color;
 
     const wearAndUpdate = (itemName) => {
-        InventoryWear(
-            player,
-            itemName,
-            itemgroup,
-            propColor,
-            undefined,
-            undefined,
-            undefined,
-            false
-        );
+        InventoryWear(player, itemName, itemgroup, propColor, undefined, undefined, undefined, false);
         ChatRoomCharacterUpdate(player);
     };
 
