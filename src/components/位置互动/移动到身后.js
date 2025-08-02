@@ -3,22 +3,18 @@ import { ActivityManager } from "../../activityForward";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 
 /** @type {CustomActivity["run"]} */
-const moveBehindRun = (
-    player,
-    sender,
-    { TargetCharacter, SourceCharacter }
-) => {
+const moveBehindRun = (player, sender, { TargetCharacter, SourceCharacter }) => {
     if (TargetCharacter === player.MemberNumber) {
         if (!ServerChatRoomGetAllowItem(sender, player)) return;
         ChatRoomOrder.setDrawOrder({
             prevCharacter: SourceCharacter,
-            timer: Date.now() + 5000,
+            timer: Date.now() + 15000,
             reason: "移动到身后",
         });
     } else if (SourceCharacter === player.MemberNumber) {
         ChatRoomOrder.setDrawOrder({
             nextCharacter: TargetCharacter,
-            timer: Date.now() + 5000,
+            timer: Date.now() + 15000,
             reason: "移动到身后",
         });
     }
