@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { DynImageProviders } from "../../dynamicImage";
 import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity []} */
@@ -7,7 +8,7 @@ const activities = [
         activity: {
             Name: "张开嘴",
             Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
@@ -31,7 +32,7 @@ const activities = [
         activity: {
             Name: "闭上嘴",
             Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
@@ -51,7 +52,7 @@ const activities = [
         activity: {
             Name: "吞咽口水",
             Prerequisite: [],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemNeck"],
         },
@@ -73,7 +74,7 @@ const activities = [
         activity: {
             Name: "流口水",
             Prerequisite: [],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
@@ -95,7 +96,7 @@ const activities = [
         activity: {
             Name: "轻声喘息",
             Prerequisite: ["UseTongue"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
@@ -107,7 +108,7 @@ const activities = [
             UA: "Піддихати",
         },
         dialogSelf: {
-            CN: "SourceCharacter 发出轻声地喘息.",
+            CN: "SourceCharacter轻声地喘息.",
             EN: "SourceCharacter softly pants.",
             RU: "SourceCharacter тихо вздыхает.",
             UA: "SourceCharacter ніжно піддихає під ритм серця.",
@@ -117,7 +118,7 @@ const activities = [
         activity: {
             Name: "打哈欠",
             Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
@@ -129,7 +130,7 @@ const activities = [
             UA: "Позіхнути",
         },
         dialogSelf: {
-            CN: "SourceCharacter 张嘴打哈欠.",
+            CN: "SourceCharacter张嘴打哈欠.",
             EN: "SourceCharacter yawns.",
             RU: "SourceCharacter зевает.",
             UA: "SourceCharacter позіхає.",
@@ -139,7 +140,7 @@ const activities = [
         activity: {
             Name: "嘟囔",
             Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            MaxProgress: 0,
             Target: [],
             TargetSelf: ["ItemMouth"],
         },
@@ -151,7 +152,7 @@ const activities = [
             UA: "Бурмотіти",
         },
         dialogSelf: {
-            CN: "SourceCharacter 嘟囔着.",
+            CN: "SourceCharacter嘟囔着.",
             EN: "SourceCharacter muttered.",
             RU: "SourceCharacter недовольно бормочет себе под нос.",
             UA: "SourceCharacter бурмотить собі під носом.",
@@ -160,12 +161,12 @@ const activities = [
     {
         activity: {
             Name: "舔手",
-            Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            Prerequisite: ["UseMouth", "Luzi_ActedZoneNaked"],
+            MaxProgress: 10,
             Target: ["ItemHands"],
             TargetSelf: true,
         },
-        useImage: "MasturbateTongue",
+        useImage: "Lick",
         label: {
             CN: "舔手",
             EN: "Lick Hand",
@@ -173,33 +174,21 @@ const activities = [
             UA: "Облизати руку",
         },
         dialog: {
-            CN: "SourceCharacter舔TargetCharacter的手.",
+            CN: "SourceCharacter舔DestinationCharacter手.",
             EN: "SourceCharacter licks DestinationCharacter hand.",
             RU: "SourceCharacter облизывает руку TargetCharacter.",
             UA: "SourceCharacter облизує руку TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "舔手",
-            EN: "Lick Hand",
-            RU: "Облизать Руку",
-            UA: "Облизати руку",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter舔PronounPossessive自己的手.",
-            EN: "SourceCharacter licks PronounPossessive own hand.",
-            RU: "SourceCharacter вылизывает свою руку.",
-            UA: "SourceCharacter облизує собі руку",
         },
     },
     {
         activity: {
             Name: "舔手指",
-            Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            Prerequisite: ["UseMouth", "Luzi_ActedZoneNaked"],
+            MaxProgress: 20,
             Target: ["ItemHands"],
             TargetSelf: true,
         },
-        useImage: "MasturbateTongue",
+        useImage: "Lick",
         label: {
             CN: "舔手指",
             EN: "Lick Fingers",
@@ -207,29 +196,17 @@ const activities = [
             UA: "Облизати пальці",
         },
         dialog: {
-            CN: "SourceCharacter舔TargetCharacter的手指.",
+            CN: "SourceCharacter舔DestinationCharacter手指.",
             EN: "SourceCharacter licks DestinationCharacter fingers.",
             RU: "SourceCharacter облизывает пальцы TargetCharacter.",
             UA: "SourceCharacter облизує пальці TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "舔手指",
-            EN: "Lick Fingers",
-            RU: "Облизать Пальцы",
-            UA: "Облизати пальці",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter舔PronounPossessive自己的手指.",
-            EN: "SourceCharacter licks PronounPossessive own fingers.",
-            RU: "SourceCharacter облизывает свои пальцы.",
-            UA: "SourceCharacter облизує свої пальці.",
         },
     },
     {
         activity: {
             Name: "吮吸手指",
-            Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            Prerequisite: ["UseMouth", "Luzi_ActedZoneNaked"],
+            MaxProgress: 30,
             Target: ["ItemHands"],
             TargetSelf: true,
         },
@@ -241,32 +218,20 @@ const activities = [
             UA: "Смоктати пальці",
         },
         dialog: {
-            CN: "SourceCharacter吮吸TargetCharacter的手指.",
+            CN: "SourceCharacter吮吸DestinationCharacter的手指.",
             EN: "SourceCharacter sucks on DestinationCharacter fingers.",
             RU: "SourceCharacter посасывает пальцы TargetCharacter.",
             UA: "SourceCharacter смокче пальці TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "吮吸手指",
-            EN: "Suck on Fingers",
-            RU: "Пососать Пальцы",
-            UA: "Смоктати пальці",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter吮吸PronounPossessive的手指.",
-            EN: "SourceCharacter sucks on PronounPossessive own fingers.",
-            RU: "SourceCharacter сосет свои пальцы.",
-            UA: "SourceCharacter підсмокчує свої пальці.",
         },
     },
     {
         activity: {
             Name: "舔脸",
-            Prerequisite: ["UseMouth"],
-            MaxProgress: 50,
+            Prerequisite: ["UseTongue"],
+            MaxProgress: 10,
             Target: ["ItemMouth"],
         },
-        useImage: "MasturbateTongue",
+        useImage: "Lick",
         label: {
             CN: "舔脸",
             EN: "Lick Face",
@@ -274,7 +239,7 @@ const activities = [
             UA: "Облизати лице",
         },
         dialog: {
-            CN: "SourceCharacter舔TargetCharacter的脸.",
+            CN: "SourceCharacter舔了舔DestinationCharacter的脸.",
             EN: "SourceCharacter licks DestinationCharacter face.",
             RU: "SourceCharacter облизывает лицо TargetCharacter.",
             UA: "SourceCharacter облизує лице TargetCharacter",
@@ -284,11 +249,11 @@ const activities = [
         activity: {
             Name: "舔脚",
             Prerequisite: ["UseTongue"],
-            MaxProgress: 50,
+            MaxProgress: 10,
             Target: ["ItemBoots"],
             TargetSelf: true,
         },
-        useImage: "MasturbateTongue",
+        useImage: "Lick",
         label: {
             CN: "舔脚",
             EN: "Lick Feet",
@@ -296,22 +261,10 @@ const activities = [
             UA: "Лизати ноги",
         },
         dialog: {
-            CN: "SourceCharacter 舔 TargetCharacter 的脚.",
+            CN: "SourceCharacter舔了舔DestinationCharacter脚.",
             EN: "SourceCharacter licks DestinationCharacter feet.",
-            RU: "SourceCharacter облизывает ноги TargetCharacter.",
+            RU: "SourceCharacter вылизывает ноги TargetCharacter.",
             UA: "SourceCharacter облизує ноги TargetCharacter.",
-        },
-        labelSelf: {
-            CN: "舔脚",
-            EN: "Lick Feet",
-            RU: "Лизать Ноги",
-            UA: "Лизати ноги",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter 舔 PronounPossessive 自己的脚.",
-            EN: "SourceCharacter licks PronounPossessive own feet.",
-            RU: "SourceCharacter вылизывает свои ноги.",
-            UA: "SourceCharacter облизує свої ноги.",
         },
     },
     {
@@ -321,7 +274,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemEars"],
         },
-        useImage: "MasturbateTongue",
+        useImage: "Whisper",
         label: {
             CN: "耳朵呵气",
             EN: "Ear Blowing",
@@ -342,7 +295,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemNipples"],
         },
-        useImage: "MasturbateTongue",
+        useImage: "Whisper",
         label: {
             CN: "乳头呵气",
             EN: "Nipple Blowing",
@@ -363,7 +316,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemHands"],
         },
-        useImage: "MasturbateTongue",
+        useImage: "Lick",
         label: {
             CN: "舔牵绳手",
             EN: "Lick Leash Hand",
@@ -382,9 +335,9 @@ const activities = [
             Name: "口塞亲吻嘴唇",
             Prerequisite: ["IsGagged"],
             MaxProgress: 50,
-            Target: ["ItemHands"],
+            Target: ["ItemMouth"],
         },
-        useImage: "MasturbateTongue",
+        useImage: DynImageProviders.itemOnActedGroup("ItemMouth"),
         label: {
             CN: "口塞亲吻嘴唇",
             EN: "Gagged Lip Kiss",
@@ -403,10 +356,10 @@ const activities = [
             Name: "叼牵绳",
             Prerequisite: ["UseMouth", Prereqs.Acting.GroupIs("ItemNeckRestraints", ["ChainLeash", "CollarLeash"])],
             MaxProgress: 50,
-            Target: ["ItemMouth"],
-            TargetSelf: true,
+            Target: [],
+            TargetSelf: ["ItemMouth"],
         },
-        useImage: "MasturbateTongue",
+        useImage: DynImageProviders.itemOnActedGroup("ItemNeckRestraints"),
         label: {
             CN: "叼牵绳",
             EN: "Hold Leash in Mouth",
@@ -433,7 +386,7 @@ const activities = [
             MaxProgress: 50,
             Target: ["ItemHands"],
         },
-        useImage: "MasturbateTongue",
+        useImage: DynImageProviders.itemOnActedGroup("ItemNeckRestraints"),
         label: {
             CN: "挣脱牵绳",
             EN: "Break Free from Leash",
