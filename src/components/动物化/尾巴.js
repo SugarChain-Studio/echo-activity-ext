@@ -25,9 +25,7 @@ const activities = [
     {
         activity: {
             Name: "摇晃尾巴",
-            Prerequisite: [
-                Prereqs.Acting.GroupIs("TailStraps", Object.keys(tailRecord)),
-            ],
+            Prerequisite: [Prereqs.Acting.GroupIs("TailStraps", Object.keys(tailRecord))],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemButt"],
@@ -42,11 +40,7 @@ const activities = [
                 const asset2 = AssetGet("Female3DCG", "TailStraps", asset2Name);
                 if (!asset2) return;
 
-                const asset1 = AssetGet(
-                    "Female3DCG",
-                    "TailStraps",
-                    asset.Asset.Name
-                );
+                const asset1 = AssetGet("Female3DCG", "TailStraps", asset.Asset.Name);
                 if (!asset1) return;
 
                 shakeItem(player, "TailStraps", asset1.Name, asset2.Name);
@@ -144,7 +138,7 @@ const activities = [
                 "Luzi_TargetHasTail",
                 "UseArms",
                 "UseHands",
-                "Luzi_LoverOrOwner",
+                Prereqs.or(Prereqs.Relation.Lover(), Prereqs.Relation.ActingOwnActed()),
             ],
             MaxProgress: 60,
             Target: ["ItemButt"],
@@ -170,7 +164,7 @@ const activities = [
                 "Luzi_TargetHasTail",
                 "UseArms",
                 "UseHands",
-                "Luzi_NotLoverOrOwner",
+                Prereqs.nor(Prereqs.Relation.Lover(), Prereqs.Relation.ActingOwnActed()),
             ],
             MaxProgress: 60,
             Target: ["ItemButt"],

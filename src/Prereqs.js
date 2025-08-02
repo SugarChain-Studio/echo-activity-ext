@@ -143,6 +143,18 @@ class PrereqImpl {
     /** 动作目标 */
     Acted = new Actor((_, acted) => acted);
 
+    /** 关系 */
+    Relation = {
+        /** @type {()=> PrerequisiteCheckFunction} */
+        ActingOwnActed: () => (_, acting, acted, _2) => acted.IsOwnedByCharacter(acting),
+
+        /** @type {()=> PrerequisiteCheckFunction} */
+        Lover: () => (_, acting, acted, _2) => acted.IsLoverOfCharacter(acting) && acting.IsLoverOfCharacter(acted),
+
+        /** @type {()=> PrerequisiteCheckFunction} */
+        ActedOwnActing: () => (_, acting, acted, _2) => acting.IsOwnedByCharacter(acted),
+    };
+
     /**
      * 获得一个只检查动作发起者的函数
      * @param {(acting:Character)=>boolean} prereqFunc
@@ -175,6 +187,15 @@ class PrereqImpl {
     }
 
     /**
+     * @param {PrerequisiteCheckFunction} lhs
+     * @param {PrerequisiteCheckFunction} rhs
+     * @returns {PrerequisiteCheckFunction}
+     */
+    nand(lhs, rhs) {
+        return (...args) => !(lhs(...args) && rhs(...args));
+    }
+
+    /**
      * @param {PrerequisiteCheckFunction[]} prereqFuncs
      * @returns {PrerequisiteCheckFunction}
      */
@@ -197,6 +218,15 @@ class PrereqImpl {
      */
     or(lhs, rhs) {
         return (...args) => lhs(...args) || rhs(...args);
+    }
+
+    /**
+     * @param {PrerequisiteCheckFunction} lhs
+     * @param {PrerequisiteCheckFunction} rhs
+     * @returns {PrerequisiteCheckFunction}
+     */
+    nor(lhs, rhs) {
+        return (...args) => !(lhs(...args) || rhs(...args));
     }
 
     /**

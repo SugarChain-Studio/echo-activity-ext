@@ -3,17 +3,18 @@ import { DynImageProviders } from "../../dynamicImage";
 import { Prereqs } from "../../Prereqs";
 import { shakeItem } from "./shakeItem";
 
+const earRecord = [["KittenEars1", "黑猫耳镜像_Luzi"]].reduce((acc, [item1, item2]) => {
+    acc[item1] = item2;
+    acc[item2] = item1;
+    return acc;
+}, /** @type {Record<string,string>}*/ ({}));
+
 /** @type { CustomActivity []} */
 const activities = [
     {
         activity: {
             Name: "摇晃耳朵",
-            Prerequisite: [
-                Prereqs.Acting.GroupIs("HairAccessory2", [
-                    "KittenEars1",
-                    "黑猫耳镜像_Luzi",
-                ]),
-            ],
+            Prerequisite: [Prereqs.Acting.GroupIs("HairAccessory2", Object.keys(earRecord))],
             MaxProgress: 30,
             Target: [],
             TargetSelf: ["ItemEars"],
@@ -23,18 +24,10 @@ const activities = [
             if (info.SourceCharacter === player.MemberNumber) {
                 const asset = InventoryGet(player, "HairAccessory2");
                 if (!asset) return;
+                const otherName = earRecord[asset.Asset.Name];
+                if (!otherName) return;
 
-                const otherName =
-                    asset.Asset.Name === "KittenEars1"
-                        ? "黑猫耳镜像_Luzi"
-                        : "KittenEars1";
-
-                shakeItem(
-                    player,
-                    "HairAccessory2",
-                    asset.Asset.Name,
-                    otherName
-                );
+                shakeItem(player, "HairAccessory2", asset.Asset.Name, otherName);
             }
         },
         useImage: DynImageProviders.itemOnActingGroup("HairAccessory2"),
