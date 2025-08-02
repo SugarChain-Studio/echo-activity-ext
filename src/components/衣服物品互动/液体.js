@@ -48,8 +48,7 @@ const activity = ActivityExt.fromTemplateActivity(
             if (TargetCharacter === player.MemberNumber) {
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
                 await sleepFor(100);
-                monadic(ActivityGroup.Name)
-                    .then("rTypes", (group) => splatterLocation[group])
+                monadic("rTypes", splatterLocation[ActivityGroup.Name])
                     .then("item", () => locateSplatter(player, ActivityGroup.Name)[0])
                     .then((item) => item.Property?.TypeRecord)
                     .then((oldTR, { rTypes, item }) => {
@@ -95,7 +94,7 @@ const activity = ActivityExt.fromTemplateActivity(
         },
         dialog: {
             CN: "SourceCharacter舔掉了一些DestinationCharacter$group上的液体.",
-            EN: "SourceCharacter licked off some liquid on DestinationCharacter$group.",
+            EN: "SourceCharacter licked off some liquid on DestinationCharacter $group.",
         },
     }
 );
