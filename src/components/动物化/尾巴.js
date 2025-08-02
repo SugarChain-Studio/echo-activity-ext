@@ -1,39 +1,7 @@
-import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { DynImageProviders } from "../../dynamicImage";
-
-/** @type { boolean }*/
-let runningShakeTail = false;
-
-/**
- * 道具切换
- * @param {string} item1 - 道具名称 1
- * @param {string} item2 - 道具名称 2
- */ // @ts-ignore
-async function shakeTail(player, itemgroup, item1, item2) {
-    if (runningShakeTail) return;
-    runningShakeTail = true;
-    const propColor = InventoryGet(player, itemgroup).Color;
-
-    const wearAndUpdate = (itemName) => {
-        InventoryWear(player, itemName, itemgroup, propColor, undefined, undefined, undefined, false);
-        ChatRoomCharacterUpdate(player);
-    };
-
-    try {
-        for (let i = 0; i < 2; i++) {
-            await sleepFor(200);
-            wearAndUpdate(item2);
-            await sleepFor(200);
-            wearAndUpdate(item1);
-        }
-    } finally {
-        if (runningShakeTail) {
-            runningShakeTail = false;
-            return;
-        }
-    }
-}
+import { Prereqs } from "../../Prereqs";
+import { shakeItem } from "./shakeItem";
 
 const tailRecord = [
     ["TailStrap", "穿戴式猫尾镜像_Luzi"],
@@ -58,12 +26,7 @@ const activities = [
         activity: {
             Name: "摇晃尾巴",
             Prerequisite: [
-                (_prereq, _acting, acted, _group) => {
-                    if (runningShakeTail) return false;
-
-                    const item = InventoryGet(acted, "TailStraps");
-                    return item && item.Asset && item.Asset.Name && !!tailRecord[item.Asset.Name];
-                },
+                Prereqs.Acting.GroupIs("TailStraps", Object.keys(tailRecord)),
             ],
             MaxProgress: 50,
             Target: [],
@@ -79,10 +42,14 @@ const activities = [
                 const asset2 = AssetGet("Female3DCG", "TailStraps", asset2Name);
                 if (!asset2) return;
 
-                const asset1 = AssetGet("Female3DCG", "TailStraps", asset.Asset.Name);
+                const asset1 = AssetGet(
+                    "Female3DCG",
+                    "TailStraps",
+                    asset.Asset.Name
+                );
                 if (!asset1) return;
 
-                shakeTail(player, "TailStraps", asset1.Name, asset2.Name);
+                shakeItem(player, "TailStraps", asset1.Name, asset2.Name);
             }
         },
         useImage: DynImageProviders.itemOnActingGroup("TailStraps"),
@@ -96,36 +63,6 @@ const activities = [
             EN: "SourceCharacter gently wags PronounPossessive tail.",
             RU: "SourceCharacter нежно виляет хвостом.",
             UA: "SourceCharacter ніжно виляє хвостом.",
-        },
-    },
-    {
-        activity: {
-            Name: "摇晃耳朵",
-            Prerequisite: [(_prereq, _acting, acted, _group) => !!InventoryGet(acted, "HairAccessory2")],
-            MaxProgress: 30,
-            Target: [],
-            TargetSelf: ["ItemEars"],
-        },
-        mode: "SelfOnSelf",
-        run: (player, sender, info) => {
-            if (info.SourceCharacter === player.MemberNumber) {
-                const asset = AssetGet("Female3DCG", "HairAccessory2", "黑猫耳镜像_Luzi");
-                if (!asset) return;
-                shakeTail(player, "HairAccessory2", "KittenEars1", "黑猫耳镜像_Luzi");
-            }
-        },
-        useImage: "Wiggle",
-        label: {
-            CN: "摇晃耳朵",
-            EN: "Wag Ears",
-            RU: "Вилять ушами",
-            UA: "Махати вухами",
-        },
-        dialog: {
-            CN: "SourceCharacter轻轻摇晃着耳朵。",
-            EN: "SourceCharacter gently wiggles PronounPossessive ears.",
-            RU: "SourceCharacter слегка шевелит ушами.",
-            UA: "SourceCharacter ледько поводить вухами.",
         },
     },
     {
@@ -203,7 +140,12 @@ const activities = [
     {
         activity: {
             Name: "轻抚尾巴",
-            Prerequisite: ["Luzi_TargetHasTail", "UseArms", "UseHands", "Luzi_LoverOrOwner"],
+            Prerequisite: [
+                "Luzi_TargetHasTail",
+                "UseArms",
+                "UseHands",
+                "Luzi_LoverOrOwner",
+            ],
             MaxProgress: 60,
             Target: ["ItemButt"],
         },
@@ -224,7 +166,12 @@ const activities = [
     {
         activity: {
             Name: "轻抚尾巴",
-            Prerequisite: ["Luzi_TargetHasTail", "UseArms", "UseHands", "Luzi_NotLoverOrOwner"],
+            Prerequisite: [
+                "Luzi_TargetHasTail",
+                "UseArms",
+                "UseHands",
+                "Luzi_NotLoverOrOwner",
+            ],
             MaxProgress: 60,
             Target: ["ItemButt"],
             TargetSelf: true,
@@ -295,7 +242,7 @@ const activities = [
     {
         activity: {
             Name: "尾巴拍打地面",
-            Prerequisite: ["Luzi_HasCatTail"],
+            Prerequisite: ["Luzi_HasTail"],
             MaxProgress: 30,
             Target: [],
             TargetSelf: ["ItemButt"],
