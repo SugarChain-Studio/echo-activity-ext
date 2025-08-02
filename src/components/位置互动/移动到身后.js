@@ -1,8 +1,13 @@
-import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
+import { DrawMods, SharedCenterModifier } from "./drawMods";
 
 /** @type {CustomActivity["run"]} */
-const moveBehindRun = (player, sender, { TargetCharacter, SourceCharacter }) => {
+const moveBehindRun = (
+    player,
+    sender,
+    { TargetCharacter, SourceCharacter }
+) => {
     if (TargetCharacter === player.MemberNumber) {
         if (!ServerChatRoomGetAllowItem(sender, player)) return;
         ChatRoomOrder.setDrawOrder({
@@ -24,7 +29,7 @@ const activities = [
     {
         activity: {
             Name: "躲到身后",
-            Prerequisite: [],
+            Prerequisite: ["Luzi_CharacterViewWithinReach"],
             MaxProgress: 50,
             Target: ["ItemTorso"],
         },
@@ -44,7 +49,7 @@ const activities = [
     {
         activity: {
             Name: "移动到身后",
-            Prerequisite: [],
+            Prerequisite: ["Luzi_CharacterViewWithinReach"],
             MaxProgress: 50,
             Target: ["ItemTorso"],
         },
@@ -66,21 +71,14 @@ const activities = [
 export default function () {
     ActivityManager.addCustomActivities(activities);
 
-    DrawCharacterModifier.addModifier((C, arg) => {
-        const { Zoom } = arg;
-        const sharedC = ChatRoomOrder.requireSharedCenter(C);
-        if (!sharedC) return arg;
-
-        const state = ChatRoomOrder.requirePairTimerState(sharedC);
-        if (!state) return arg;
-        if (state.prev.reason !== "移动到身后" || state.next.reason !== "移动到身后") return arg;
-
-        if (sharedC.prev.MemberNumber === C.MemberNumber) {
-            return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
-        }
-
-        if (sharedC.next.MemberNumber === C.MemberNumber) {
-            return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
-        }
-    });
+    SharedCenterModifier.addModifier(
+        DrawMods.timer((_, { sharedC, initState, C }) => {
+            if (sharedC.prev.MemberNumber === C.MemberNumber) {
+                return { ...initState, X: sharedC.where.next.X };
+            }
+            if (sharedC.next.MemberNumber === C.MemberNumber) {
+                return initState;
+            }
+        })
+    );
 }

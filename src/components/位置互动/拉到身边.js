@@ -1,17 +1,34 @@
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
 import { sleepFor } from "@sugarch/bc-mod-utility";
+import { DrawMods, SharedCenterModifier } from "./drawMods";
+import { Prereqs } from "../../Prereqs";
+
+const items = [
+    { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },
+    { prev: "ChainLeash", next: "拉紧的链子_Luzi" },
+];
 
 /** @type { CustomActivity} */
 const activity = {
     activity: {
         Name: "拉到身边",
         Prerequisite: [
-            (_prereq, acting, acted, _group) =>
-                (!InventoryGet(acting, "ItemHandheld") ||
-                    InventoryIsItemInList(acting, "ItemHandheld", ["拉紧的牵绳_Luzi", "拉紧的链子_Luzi"])) &&
-                InventoryIsItemInList(acted, "ItemNeckRestraints", ["CollarLeash", "ChainLeash"]),
+            Prereqs.any(
+                ...items.map((i) =>
+                    Prereqs.and(
+                        Prereqs.Acting.GroupEmpty("ItemHandheld"),
+                        Prereqs.Acting.GroupIs("ItemNeckRestraints", i.prev)
+                    )
+                ),
+                ...items.map((i) =>
+                    Prereqs.and(
+                        Prereqs.Acting.GroupIs("ItemHandheld", i.next),
+                        Prereqs.Acting.GroupIs("ItemNeckRestraints", i.prev)
+                    )
+                )
+            ),
         ],
         MaxProgress: 0,
         Target: ["ItemTorso", "ItemNeckRestraints", "ItemNeck"],
@@ -22,7 +39,9 @@ const activity = {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.SourceCharacter);
+            const SrcChara = ChatRoomCharacter.find(
+                (C) => C.MemberNumber === info.SourceCharacter
+            );
             if (!SrcChara) return;
             const item = InventoryGet(player, "ItemNeckRestraints");
             if (!item) return;
@@ -42,7 +61,9 @@ const activity = {
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
             await sleepFor(100);
-            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
+            const TgtChara = ChatRoomCharacter.find(
+                (C) => C.MemberNumber === info.TargetCharacter
+            );
             if (!TgtChara) return;
             const item = InventoryGet(TgtChara, "ItemNeckRestraints");
             if (!item) return;
@@ -62,7 +83,8 @@ const activity = {
                     asset: dItemName,
                 },
             });
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
+            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0)
+                ChatRoomLeashList.push(TgtChara.MemberNumber);
         }
     },
     useImage: Path.resolve("activities/pull_to_side.png"),
@@ -83,27 +105,19 @@ const activity = {
 export default function () {
     ActivityManager.addCustomActivity(activity);
 
-    DrawCharacterModifier.addModifier((C, arg) => {
-        const { Zoom } = arg;
-        const sharedC = ChatRoomOrder.requireSharedCenter(C);
-        if (!sharedC) return arg;
-
-        const state = ChatRoomOrder.requirePairAssetState(sharedC);
-        if (!state) return arg;
-        const prevAssetName = state.prev.associatedAsset.asset;
-        const nextAssetName = state.next.associatedAsset.asset;
-        if (
-            !(prevAssetName === "CollarLeash" && nextAssetName === "拉紧的牵绳_Luzi") &&
-            !(prevAssetName === "ChainLeash" && nextAssetName === "拉紧的链子_Luzi")
-        )
-            return arg;
-
-        if (sharedC.prev.MemberNumber === C.MemberNumber) {
-            return { X: sharedC.center.X - 150 * Zoom, Y: sharedC.center.Y, Zoom };
-        }
-
-        if (sharedC.next.MemberNumber === C.MemberNumber) {
-            return { X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
-        }
-    });
+    SharedCenterModifier.addModifier(
+        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
+            const { Zoom } = initState;
+            if (sharedC.prev.MemberNumber === C.MemberNumber) {
+                return {
+                    X: sharedC.center.X - 150 * Zoom,
+                    Y: sharedC.center.Y,
+                    Zoom,
+                };
+            }
+            if (sharedC.next.MemberNumber === C.MemberNumber) {
+                return { X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+            }
+        })
+    );
 }

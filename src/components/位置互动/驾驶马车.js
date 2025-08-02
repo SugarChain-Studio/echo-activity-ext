@@ -1,6 +1,8 @@
 import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
+import { SharedCenterModifier, DrawMods } from "./drawMods";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -8,9 +10,8 @@ const activity = {
         Name: "驾驶马车",
         Prerequisite: [
             "UseFeet",
-            (_prereq, acting, acted, _group) =>
-                (!InventoryGet(acting, "ItemDevices") || InventoryIsItemInList(acting, "ItemDevices", ["马车_Luzi"])) &&
-                InventoryIsItemInList(acted, "ItemDevices", ["马车前_Luzi"]),
+            Prereqs.Acting.GroupIs("ItemDevices", ["马车_Luzi"]),
+            Prereqs.Acted.GroupIs("ItemDevices", ["马车前_Luzi"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso"],
@@ -21,7 +22,9 @@ const activity = {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.SourceCharacter);
+            const SrcChara = ChatRoomCharacter.find(
+                (C) => C.MemberNumber === info.SourceCharacter
+            );
             if (!SrcChara) return;
             ChatRoomOrder.setDrawOrder({
                 prevCharacter: SrcChara.MemberNumber,
@@ -33,7 +36,9 @@ const activity = {
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
             await sleepFor(100);
-            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
+            const TgtChara = ChatRoomCharacter.find(
+                (C) => C.MemberNumber === info.TargetCharacter
+            );
             if (!TgtChara) return;
             InventoryWear(player, "马车_Luzi", "ItemDevices");
             ChatRoomOrder.setDrawOrder({
@@ -44,7 +49,8 @@ const activity = {
                 },
             });
             ChatRoomCharacterUpdate(player);
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
+            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0)
+                ChatRoomLeashList.push(TgtChara.MemberNumber);
         }
     },
     useImage: "Wiggle",
@@ -56,26 +62,28 @@ const activity = {
     },
 };
 
+const items = [{ prev: "马车_Luzi", next: "马车前_Luzi" }];
+
 export default function () {
     ActivityManager.addCustomActivity(activity);
 
-    DrawCharacterModifier.addModifier((C, arg) => {
-        const { Zoom } = arg;
-        const sharedC = ChatRoomOrder.requireSharedCenter(C);
-        if (!sharedC) return arg;
-
-        const state = ChatRoomOrder.requirePairAssetState(sharedC);
-        if (!state) return arg;
-        const prevAssetName = state.prev.associatedAsset.asset;
-        const nextAssetName = state.next.associatedAsset.asset;
-        if (prevAssetName !== "马车_Luzi" || nextAssetName !== "马车前_Luzi") return arg;
-
-        if (sharedC.next.MemberNumber === C.MemberNumber) {
-            return { X: sharedC.center.X - 130 / Zoom, Y: sharedC.center.Y, Zoom };
-        }
-
-        if (sharedC.prev.MemberNumber === C.MemberNumber) {
-            return { X: sharedC.center.X + 80 / Zoom, Y: sharedC.center.Y, Zoom };
-        }
-    });
+    SharedCenterModifier.addModifier(
+        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
+            const { Zoom } = initState;
+            if (sharedC.next.MemberNumber === C.MemberNumber) {
+                return {
+                    X: sharedC.center.X - 130 / Zoom,
+                    Y: sharedC.center.Y,
+                    Zoom,
+                };
+            }
+            if (sharedC.prev.MemberNumber === C.MemberNumber) {
+                return {
+                    X: sharedC.center.X + 80 / Zoom,
+                    Y: sharedC.center.Y,
+                    Zoom,
+                };
+            }
+        })
+    );
 }

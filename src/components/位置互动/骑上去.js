@@ -1,6 +1,7 @@
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Prereqs } from "../../Prereqs";
+import { DrawMods, SharedCenterModifier } from "./drawMods";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -57,26 +58,20 @@ const activity = {
     },
 };
 
+const items = [{ prev: "缰绳_Luzi", next: "鞍_Luzi" }];
+
 export default function () {
     ActivityManager.addCustomActivity(activity);
 
-    DrawCharacterModifier.addModifier((C, arg) => {
-        const { Zoom } = arg;
-        const sharedC = ChatRoomOrder.requireSharedCenter(C);
-        if (!sharedC) return arg;
-
-        const state = ChatRoomOrder.requirePairAssetState(sharedC);
-        if (!state) return arg;
-        const prevAssetName = state.prev.associatedAsset.asset;
-        const nextAssetName = state.next.associatedAsset.asset;
-        if (prevAssetName !== "缰绳_Luzi" || nextAssetName !== "鞍_Luzi") return arg;
-
-        if (sharedC.prev.MemberNumber === C.MemberNumber) {
-            return { C, X: sharedC.center.X, Y: sharedC.center.Y - 50 * Zoom, Zoom };
-        }
-
-        if (sharedC.next.MemberNumber === C.MemberNumber) {
-            return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
-        }
-    });
+    SharedCenterModifier.addModifier(
+        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
+            const { Zoom } = initState;
+            if (sharedC.prev.MemberNumber === C.MemberNumber) {
+                return { C, X: sharedC.center.X, Y: sharedC.center.Y - 50 * Zoom, Zoom };
+            }
+            if (sharedC.next.MemberNumber === C.MemberNumber) {
+                return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+            }
+        })
+    );
 }

@@ -1,6 +1,8 @@
-import { ChatRoomOrder, DrawCharacterModifier } from "@mod-utils/ChatRoomOrder";
+import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
 import { sleepFor } from "@sugarch/bc-mod-utility";
+import { DrawMods, SharedCenterModifier } from "./drawMods";
+import { Prereqs } from "../../Prereqs";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -8,8 +10,7 @@ const activities = [
         activity: {
             Name: "躺上去",
             Prerequisite: [
-                (_prereq, _acting, acted, _group) =>
-                    InventoryIsItemInList(acted, "ItemDevices", ["Bed", "床左边_Luzi"]),
+                Prereqs.Acted.GroupIs("ItemDevices", ["Bed", "床左边_Luzi"]),
             ],
             MaxProgress: 50,
             Target: ["ItemTorso"],
@@ -20,7 +21,11 @@ const activities = [
                 // 遵守物品权限
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-                const asset = AssetGet("Female3DCG", "ItemDevices", "床左边_Luzi");
+                const asset = AssetGet(
+                    "Female3DCG",
+                    "ItemDevices",
+                    "床左边_Luzi"
+                );
                 if (!asset) return;
                 InventoryWear(player, "床左边_Luzi", "ItemDevices");
                 InventoryWear(player, "被子左边_Luzi", "ItemAddon");
@@ -36,7 +41,11 @@ const activities = [
                 ChatRoomCharacterUpdate(player);
             } else if (info.SourceCharacter === player.MemberNumber) {
                 await sleepFor(100);
-                const asset = AssetGet("Female3DCG", "ItemDevices", "床右边_Luzi");
+                const asset = AssetGet(
+                    "Female3DCG",
+                    "ItemDevices",
+                    "床右边_Luzi"
+                );
                 if (!asset) return;
                 InventoryWear(player, "床右边_Luzi", "ItemDevices");
                 InventoryWear(player, "被子右边_Luzi", "ItemAddon");
@@ -68,20 +77,28 @@ const activities = [
     },
 ];
 
+const items = [{ prev: "床左边_Luzi", next: "床右边_Luzi" }];
+
 export default function () {
     ActivityManager.addCustomActivities(activities);
 
-    DrawCharacterModifier.addModifier((C, arg) => {
-        const { Zoom } = arg;
-        const sharedC = ChatRoomOrder.requireSharedCenter(C);
-        if (!sharedC) return arg;
-
-        if (sharedC.prev.MemberNumber === C.MemberNumber && InventoryIsItemInList(C, "ItemDevices", ["床左边_Luzi"])) {
-            return { X: sharedC.center.X - 100 * Zoom, Y: sharedC.center.Y, Zoom };
-        }
-
-        if (sharedC.next.MemberNumber === C.MemberNumber && InventoryIsItemInList(C, "ItemDevices", ["床右边_Luzi"])) {
-            return { X: sharedC.center.X + 100 * Zoom, Y: sharedC.center.Y, Zoom };
-        }
-    });
+    SharedCenterModifier.addModifier(
+        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
+            const { Zoom } = initState;
+            if (sharedC.prev.MemberNumber === C.MemberNumber) {
+                return {
+                    X: sharedC.center.X - 100 * Zoom,
+                    Y: sharedC.center.Y,
+                    Zoom,
+                };
+            }
+            if (sharedC.next.MemberNumber === C.MemberNumber) {
+                return {
+                    X: sharedC.center.X + 100 * Zoom,
+                    Y: sharedC.center.Y,
+                    Zoom,
+                };
+            }
+        })
+    );
 }
