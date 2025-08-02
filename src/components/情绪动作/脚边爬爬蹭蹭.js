@@ -49,7 +49,7 @@ const activities = [
     {
         activity: {
             Name: "蹭小腿",
-            Prerequisite: ["Luzi_CharacterViewWithinReach", Prereqs.Acting.PoseIsKneelingOrAllFours()],
+            Prerequisite: ["Luzi_CharacterViewWithinReach", "Luzi_KneelOrAllFours"],
             MaxProgress: 80,
             Target: ["ItemFeet"],
         },
