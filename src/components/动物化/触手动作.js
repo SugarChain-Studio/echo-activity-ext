@@ -1,3 +1,4 @@
+import { ActivityExt } from "../../activityext";
 import { ActivityManager } from "../../activityForward";
 
 /** @type { CustomActivity []} */
@@ -52,34 +53,60 @@ const activities = [
             UA: "SourceCharacter ніжно гладить свою голову щупальцями.",
         },
     },
-    {
-        activity: {
-            Name: "触手戳鼻子",
-            Prerequisite: ["Luzi_HasTentacles"],
-            MaxProgress: 20,
-            Target: ["ItemNose"],
-            TargetSelf: true,
+    ...ActivityExt.fromTemplateActivity(
+        [
+            {
+                activity: {
+                    Name: "触手戳",
+                    Prerequisite: ["Luzi_HasTentacles"],
+                    MaxProgress: 20,
+                    Target: ["ItemNose", "ItemMouth", "ItemBreast", "ItemButt"],
+                    TargetSelf: true,
+                },
+                useImage: ["TailStraps", "Tentacles"],
+            },
+        ],
+        {
+            CN: {
+                ItemNose: "鼻子",
+                ItemMouth: "脸",
+                ItemBreast: "胸部",
+                ItemButt: "臀部",
+            },
+            EN: {
+                ItemNose: "Nose",
+                ItemMouth: "Face",
+                ItemBreast: "Breast",
+                ItemButt: "Butt",
+            },
+            RU: {
+                ItemNose: "Нос",
+                ItemMouth: "Лицо",
+                ItemBreast: "Грудь",
+                ItemButt: "Ягодицы",
+            },
+            UA: {
+                ItemNose: "Ніс",
+                ItemMouth: "Лице",
+                ItemBreast: "Грудь",
+                ItemButt: "Ягодиці",
+            },
         },
-        useImage: ["TailStraps", "Tentacles"],
-        label: {
-            CN: "触手戳鼻子",
-            EN: "Poke Nose with Tentacles",
-            RU: "Коснуться Носа Тентаклями",
-            UA: "Тицьнути ніс щупальцями",
-        },
-        dialog: {
-            CN: "SourceCharacter用触手戳了戳TargetCharacter的鼻子.",
-            EN: "SourceCharacter pokes DestinationCharacter nose with tentacles.",
-            RU: "SourceCharacter косается носа TargetCharacter своими тентаклями.",
-            UA: "SourceCharacter тицяє ніс TargetCharacter своїми щупальцями.",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用触手戳了戳自己的鼻子。",
-            EN: "SourceCharacter pokes own nose with tentacles.",
-            RU: "SourceCharacter тыкает щупальцами в свой нос.",
-            UA: "SourceCharacter тицяє щупальцями у свій ніс.",
-        },
-    },
+        {
+            label: {
+                CN: "触手戳$group",
+                EN: "Tentacles Poke $group",
+                RU: "Тентакли Касаются $group",
+                UA: "Щупальця Торкаються $group",
+            },
+            dialog: {
+                CN: "SourceCharacter用触手轻轻地戳了戳DestinationCharacter$group.",
+                EN: "SourceCharacter gently pokes DestinationCharacter $group with tentacles.",
+                RU: "SourceCharacter касается $group TargetCharacter своими тентаклями.",
+                UA: "SourceCharacter торкається $group TargetCharacter своїми щупальцями.",
+            },
+        }
+    ),
     {
         activity: {
             Name: "触手轻抚鼻尖",
@@ -106,34 +133,6 @@ const activities = [
             EN: "SourceCharacter gently touches own nose with tentacles.",
             RU: "SourceCharacter нежно касается своего носа щупальцами.",
             UA: "SourceCharacter ніжно торкається свого носа щупальцями.",
-        },
-    },
-    {
-        activity: {
-            Name: "触手戳脸",
-            Prerequisite: ["Luzi_HasTentacles"],
-            MaxProgress: 20,
-            Target: ["ItemMouth"],
-            TargetSelf: true,
-        },
-        useImage: ["TailStraps", "Tentacles"],
-        label: {
-            CN: "触手轻触脸颊",
-            EN: "Tentacle Caress",
-            RU: "Нежное касание щупальцем",
-            UA: "Ніжний дотик щупальцем",
-        },
-        dialog: {
-            CN: "SourceCharacter用触手尖端轻轻触碰TargetCharacter的脸颊。",
-            EN: "SourceCharacter gently touches DestinationCharacter cheek with the tip of a tentacle.",
-            RU: "SourceCharacter нежно касается щеки TargetCharacter кончиком щупальца.",
-            UA: "SourceCharacter ніжно торкається щоки TargetCharacter кінчиком щупальця.",
-        },
-        dialogSelf: {
-            CN: "SourceCharacter用触手轻轻碰触自己的脸颊。",
-            EN: "SourceCharacter lightly touches own cheek with a tentacle.",
-            RU: "SourceCharacter легко касается своей щеки щупальцем.",
-            UA: "SourceCharacter легко торкається власної щоки щупальцем.",
         },
     },
     {

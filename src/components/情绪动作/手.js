@@ -1,3 +1,4 @@
+import { ActivityExt } from "../../activityext";
 import { ActivityManager } from "../../activityForward";
 import { Path } from "../../resouce";
 
@@ -109,160 +110,151 @@ const activities = [
             UA: "SourceCharacter легко поплескує TargetCharacter по голові.",
         },
     },
-    {
-        activity: {
-            Name: "戳脸",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 0,
-            Target: ["ItemMouth"],
-            TargetSelf: true,
+    ...ActivityExt.fromTemplateActivity(
+        [
+            {
+                activity: {
+                    Name: "戳脸",
+                    Prerequisite: ["UseHands", "UseArms"],
+                    MaxProgress: 0,
+                    Target: ["ItemMouth"],
+                    TargetSelf: true,
+                },
+                useImage: Path.resolve("activities/poke.png"),
+            },
+            {
+                activity: {
+                    Name: "戳手臂",
+                    Prerequisite: ["UseHands", "UseArms"],
+                    MaxProgress: 0,
+                    Target: ["ItemArms"],
+                    TargetSelf: true,
+                },
+                useImage: Path.resolve("activities/poke.png"),
+            },
+            {
+                activity: {
+                    Name: "戳胸部",
+                    Prerequisite: [
+                        "UseHands",
+                        "UseArms",
+                        "Luzi_TargetHasBreast",
+                    ],
+                    MaxProgress: 30,
+                    Target: ["ItemBreast"],
+                    TargetSelf: true,
+                },
+                useImage: Path.resolve("activities/poke.png"),
+            },
+            {
+                activity: {
+                    Name: "戳臀部",
+                    Prerequisite: ["UseHands", "UseArms"],
+                    MaxProgress: 40,
+                    Target: ["ItemButt"],
+                    TargetSelf: true,
+                },
+                useImage: Path.resolve("activities/poke.png"),
+            },
+            {
+                activity: {
+                    Name: "戳乳头",
+                    Prerequisite: [
+                        "UseHands",
+                        "UseArms",
+                        "Luzi_TargetHasBreast",
+                        "Luzi_ActedZoneNaked",
+                    ],
+                    MaxProgress: 60,
+                    Target: ["ItemNipples"],
+                    TargetSelf: true,
+                },
+                useImage: Path.resolve("activities/poke.png"),
+            },
+            {
+                activity: {
+                    Name: "戳阴部",
+                    Prerequisite: [
+                        "UseHands",
+                        "UseArms",
+                        "Luzi_TargetFemale",
+                        "Luzi_ActedZoneNaked",
+                    ],
+                    MaxProgress: 80,
+                    Target: ["ItemVulva"],
+                    TargetSelf: true,
+                },
+                useImage: Path.resolve("activities/poke.png"),
+            },
+            {
+                activity: {
+                    Name: "戳阴蒂",
+                    Prerequisite: [
+                        "UseHands",
+                        "UseArms",
+                        "Luzi_TargetFemale",
+                        "Luzi_ActedZoneNaked",
+                    ],
+                    MaxProgress: 80,
+                    Target: ["ItemVulvaPiercings"],
+                    TargetSelf: true,
+                },
+                useImage: Path.resolve("activities/poke.png"),
+            },
+        ],
+        {
+            CN: {
+                ItemMouth: "脸",
+                ItemArms: "手臂",
+                ItemBreast: "胸部",
+                ItemButt: "臀部",
+                ItemNipples: "乳头",
+                ItemVulva: "阴部",
+                ItemVulvaPiercings: "阴蒂",
+            },
+            EN: {
+                ItemMouth: "Face",
+                ItemArms: "Arm",
+                ItemBreast: "Breast",
+                ItemButt: "Butt",
+                ItemNipples: "Nipples",
+                ItemVulva: "Vulva",
+                ItemVulvaPiercings: "Clitoris",
+            },
+            RU: {
+                ItemMouth: "Лицо",
+                ItemArms: "Руку",
+                ItemBreast: "Грудь",
+                ItemButt: "Попу",
+                ItemNipples: "Соски",
+                ItemVulva: "Интимную зону",
+                ItemVulvaPiercings: "Клитор",
+            },
+            UA: {
+                ItemMouth: "Обличчя",
+                ItemArms: "Руку",
+                ItemBreast: "Груди",
+                ItemButt: "Сідниці",
+                ItemNipples: "Соски",
+                ItemVulva: "Інтимну зону",
+                ItemVulvaPiercings: "Клітор",
+            },
         },
-        useImage: Path.resolve("activities/poke.png"),
-        label: {
-            CN: "戳脸",
-            EN: "Poke Face",
-            RU: "Тыкнуть в Лицо",
-            UA: "Тицяти обличчя.",
-        },
-        dialog: {
-            CN: "SourceCharacter用指尖戳了戳TargetCharacter的脸.",
-            EN: "SourceCharacter pokes DestinationCharacter face with the tip of PronounPossessive finger.",
-            RU: "SourceCharacter тыкает в лицо TargetCharacter.",
-            UA: "SourceCharacter тицяє TargetCharacter в обличчя.",
-        },
-    },
-    {
-        activity: {
-            Name: "戳手臂",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 0,
-            Target: ["ItemArms"],
-            TargetSelf: true,
-        },
-        useImage: Path.resolve("activities/poke.png"),
-        label: {
-            CN: "戳手臂",
-            EN: "Poke Arm",
-            RU: "Тыкнуть в Руку",
-            UA: "Тицяти руку",
-        },
-        dialog: {
-            CN: "SourceCharacter戳了戳TargetCharacter的手臂.",
-            EN: "SourceCharacter pokes DestinationCharacter arm with the tip of PronounPossessive finger.",
-            RU: "SourceCharacter тыкает в руку TargetCharacter.",
-            UA: "SourceCharacter тицяє TargetCharacter в руку.",
-        },
-    },
-    {
-        activity: {
-            Name: "戳胸部",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetHasBreast"],
-            MaxProgress: 30,
-            Target: ["ItemBreast"],
-            TargetSelf: true,
-        },
-        useImage: Path.resolve("activities/poke.png"),
-        label: {
-            CN: "戳胸部",
-            EN: "Poke Breast",
-            RU: "Тыкнуть в Грудь",
-            UA: "Тицяти груди",
-        },
-        dialog: {
-            CN: "SourceCharacter用指尖戳了戳TargetCharacter的胸部.",
-            EN: "SourceCharacter pokes DestinationCharacter breast with the tip of PronounPossessive finger.",
-            RU: "SourceCharacter тыкает в грудь TargetCharacter.",
-            UA: "SourceCharacter тицяє TargetCharacter в груди.",
-        },
-    },
-    {
-        activity: {
-            Name: "戳乳头",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetHasBreast", "Luzi_ActedZoneNaked"],
-            MaxProgress: 60,
-            Target: ["ItemNipples"],
-            TargetSelf: true,
-        },
-        useImage: Path.resolve("activities/poke.png"),
-        label: {
-            CN: "戳乳头",
-            EN: "Poke Nipple",
-            RU: "Тыкнуть в Сосок",
-            UA: "Тицяти сосок",
-        },
-        dialog: {
-            CN: "SourceCharacter用指尖戳了戳TargetCharacter的乳头.",
-            EN: "SourceCharacter pokes DestinationCharacter nipple with the tip of PronounPossessive finger.",
-            RU: "SourceCharacter тыкает в сосок TargetCharacter.",
-            UA: "SourceCharacter тицяє TargetCharacter в сосок.",
-        },
-    },
-    {
-        activity: {
-            Name: "戳阴部",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "Luzi_ActedZoneNaked"],
-            MaxProgress: 60,
-            Target: ["ItemVulva"],
-            TargetSelf: true,
-        },
-        useImage: Path.resolve("activities/poke.png"),
-        label: {
-            CN: "戳阴部",
-            EN: "Poke Groin",
-            RU: "Тыкнуть в Промежность",
-            UA: "Тицяти в пах",
-        },
-        dialog: {
-            CN: "SourceCharacter用指尖戳了戳TargetCharacter的阴部.",
-            EN: "SourceCharacter pokes DestinationCharacter groin with the tip of PronounPossessive finger.",
-            RU: "SourceCharacter тыкает в промежность TargetCharacter.",
-            UA: "SourceCharacter тицяє TargetCharacter в пах.",
-        },
-    },
-    {
-        activity: {
-            Name: "戳阴蒂",
-            Prerequisite: ["UseHands", "UseArms", "Luzi_TargetFemale", "Luzi_ActedZoneNaked"],
-            MaxProgress: 80,
-            Target: ["ItemVulvaPiercings"],
-            TargetSelf: true,
-        },
-        useImage: Path.resolve("activities/poke.png"),
-        label: {
-            CN: "戳阴蒂",
-            EN: "Poke Clitoris",
-            RU: "Тыкнуть в Клиторальное Кольцо",
-            UA: "Тицяти в клітор",
-        },
-        dialog: {
-            CN: "SourceCharacter用指尖戳了戳TargetCharacter的阴蒂.",
-            EN: "SourceCharacter pokes DestinationCharacter clitoris with the tip of PronounPossessive finger.",
-            RU: "SourceCharacter тыкает пальцем в клитор TargetCharacter.",
-            UA: "SourceCharacter тицяє клітор TargetCharacter кінчиком пальця.",
-        },
-    },
-    {
-        activity: {
-            Name: "戳臀部",
-            Prerequisite: ["UseHands", "UseArms"],
-            MaxProgress: 40,
-            Target: ["ItemButt"],
-            TargetSelf: true,
-        },
-        useImage: Path.resolve("activities/poke.png"),
-        label: {
-            CN: "戳臀部",
-            EN: "Poke Butt",
-            RU: "Тыкнуть в Попу",
-            UA: "Тицяти в дупу",
-        },
-        dialog: {
-            CN: "SourceCharacter用指尖戳了戳TargetCharacter的臀部.",
-            EN: "SourceCharacter pokes DestinationCharacter butt with a finger.",
-            RU: "SourceCharacter тыкает в попу TargetCharacter.",
-            UA: "SourceCharacter тицяє TargetCharacter в дупу.",
-        },
-    },
+        {
+            label: {
+                CN: "戳$group",
+                EN: "Poke $group",
+                RU: "Тыкнуть в $group",
+                UA: "Тицьнути в $group",
+            },
+            dialog: {
+                CN: "SourceCharacter用指尖戳了戳DestinationCharacter$group.",
+                EN: "SourceCharacter pokes DestinationCharacter $group with the tip of finger.",
+                RU: "SourceCharacter тыкает кончиком пальца в $group TargetCharacter.",
+                UA: "SourceCharacter тицяє кінчиком пальця в $group TargetCharacter.",
+            },
+        }
+    ),
     {
         activity: {
             Name: "摇晃手臂",

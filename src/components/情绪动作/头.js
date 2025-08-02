@@ -5,10 +5,10 @@ const activities = [
     {
         activity: {
             Name: "歪头",
-            Prerequisite: [],
+            Prerequisite: ["MoveHead"],
             MaxProgress: 50,
             Target: [],
-            TargetSelf: ["ItemNeck"],
+            TargetSelf: ["ItemNeck", "ItemHead"],
         },
         useImage: "Wiggle",
         labelSelf: {

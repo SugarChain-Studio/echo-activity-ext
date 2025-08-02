@@ -8,9 +8,13 @@ const activities = [
             Name: "跪下",
             Prerequisite: [
                 Prereqs.ActingCheck(
-                    (acting) =>
-                        acting.IsStanding() &&
-                        Math.max(...PoseAllKneeling.map((p) => PoseCanChangeUnaidedStatus(Player, p))) >= 2
+                    (C) =>
+                        C.IsStanding() &&
+                        Math.max(
+                            ...PoseAllKneeling.map((p) =>
+                                PoseCanChangeUnaidedStatus(Player, p)
+                            )
+                        ) >= 2
                 ),
             ],
             MaxProgress: 50,
@@ -36,9 +40,13 @@ const activities = [
             Name: "站起来",
             Prerequisite: [
                 Prereqs.ActingCheck(
-                    (acting) =>
-                        acting.IsKneeling() &&
-                        Math.max(...PoseAllStanding.map((p) => PoseCanChangeUnaidedStatus(Player, p))) >= 2
+                    (C) =>
+                        C.IsKneeling() &&
+                        Math.max(
+                            ...PoseAllStanding.map((p) =>
+                                PoseCanChangeUnaidedStatus(Player, p)
+                            )
+                        ) >= 2
                 ),
             ],
             MaxProgress: 50,
@@ -65,7 +73,10 @@ const activities = [
             Prerequisite: [
                 Prereqs.and(
                     Prereqs.Acting.PoseIs("BodyLower", "Kneel"),
-                    Prereqs.Acting.PoseAnyAvailable("BodyLower", "KneelingSpread")
+                    Prereqs.Acting.PoseAnyAvailable(
+                        "BodyLower",
+                        "KneelingSpread"
+                    )
                 ),
             ],
             MaxProgress: 50,
@@ -116,7 +127,9 @@ const activities = [
     {
         activity: {
             Name: "四肢着地",
-            Prerequisite: [Prereqs.Acting.PoseAnyAvailable("BodyFull", "AllFours")],
+            Prerequisite: [
+                Prereqs.Acting.PoseAnyAvailable("BodyFull", "AllFours"),
+            ],
             MaxProgress: 50,
             Target: [],
             TargetSelf: ["ItemBoots"],
