@@ -8,16 +8,14 @@ import { Prereqs } from "../../Prereqs";
 const activity = {
     activity: {
         Name: "扛起",
-        Prerequisite: [Prereqs.Acted.GroupIs("ItemDevices", "BurlapSack")],
+        Prerequisite: [Prereqs.Acting.GroupEmpty("ItemMisc"), Prereqs.Acted.GroupIs("ItemDevices", "BurlapSack")],
         MaxProgress: 50,
         Target: ["ItemTorso"],
     },
     run: async (player, sender, { SourceCharacter, TargetCharacter }) => {
         if (TargetCharacter === player.MemberNumber) {
             await sleepFor(100);
-            const SrcChara = ChatRoomCharacter.find(
-                (C) => C.MemberNumber === SourceCharacter
-            );
+            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter);
             if (!SrcChara) return;
             ChatRoomOrder.setDrawOrder({
                 nextCharacter: SrcChara.MemberNumber,
@@ -29,9 +27,7 @@ const activity = {
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (SourceCharacter === player.MemberNumber) {
             await sleepFor(100);
-            const TgtChara = ChatRoomCharacter.find(
-                (C) => C.MemberNumber === TargetCharacter
-            );
+            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter);
             if (!TgtChara) return;
             InventoryWear(player, "扛起来的麻袋_Luzi", "ItemMisc");
             ChatRoomOrder.setDrawOrder({
@@ -41,8 +37,7 @@ const activity = {
                     asset: "扛起来的麻袋_Luzi",
                 },
             });
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0)
-                ChatRoomLeashList.push(TgtChara.MemberNumber);
+            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
         }
     },
     useImage: ["ItemDevices", "BurlapSack"],
@@ -69,10 +64,7 @@ export default function () {
         DrawMods.asset(items, (_, { sharedC, initState, C }) => {
             const { Zoom } = initState;
             if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                if (
-                    sharedC.next.ActivePose[0] === "Kneel" ||
-                    sharedC.next.ActivePose[0] === "KneelingSpread"
-                ) {
+                if (sharedC.next.ActivePose[0] === "Kneel" || sharedC.next.ActivePose[0] === "KneelingSpread") {
                     return {
                         X: sharedC.center.X,
                         Y: sharedC.center.Y - 120 * Zoom,

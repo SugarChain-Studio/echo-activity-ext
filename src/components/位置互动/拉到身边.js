@@ -19,13 +19,13 @@ const activity = {
                 ...items.map((i) =>
                     Prereqs.and(
                         Prereqs.Acting.GroupEmpty("ItemHandheld"),
-                        Prereqs.Acting.GroupIs("ItemNeckRestraints", i.prev)
+                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev)
                     )
                 ),
                 ...items.map((i) =>
                     Prereqs.and(
                         Prereqs.Acting.GroupIs("ItemHandheld", i.next),
-                        Prereqs.Acting.GroupIs("ItemNeckRestraints", i.prev)
+                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev)
                     )
                 )
             ),
@@ -39,9 +39,7 @@ const activity = {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-            const SrcChara = ChatRoomCharacter.find(
-                (C) => C.MemberNumber === info.SourceCharacter
-            );
+            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.SourceCharacter);
             if (!SrcChara) return;
             const item = InventoryGet(player, "ItemNeckRestraints");
             if (!item) return;
@@ -61,9 +59,7 @@ const activity = {
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
             await sleepFor(100);
-            const TgtChara = ChatRoomCharacter.find(
-                (C) => C.MemberNumber === info.TargetCharacter
-            );
+            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
             if (!TgtChara) return;
             const item = InventoryGet(TgtChara, "ItemNeckRestraints");
             if (!item) return;
@@ -83,8 +79,7 @@ const activity = {
                     asset: dItemName,
                 },
             });
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0)
-                ChatRoomLeashList.push(TgtChara.MemberNumber);
+            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
         }
     },
     useImage: Path.resolve("activities/pull_to_side.png"),
@@ -110,13 +105,13 @@ export default function () {
             const { Zoom } = initState;
             if (sharedC.prev.MemberNumber === C.MemberNumber) {
                 return {
-                    X: sharedC.center.X - 150 * Zoom,
+                    X: sharedC.center.X - 75 * Zoom,
                     Y: sharedC.center.Y,
                     Zoom,
                 };
             }
             if (sharedC.next.MemberNumber === C.MemberNumber) {
-                return { X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+                return { X: sharedC.center.X + 75 * Zoom, Y: sharedC.center.Y, Zoom };
             }
         })
     );
