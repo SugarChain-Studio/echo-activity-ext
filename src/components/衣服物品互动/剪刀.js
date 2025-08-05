@@ -1,4 +1,3 @@
-import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { ActivityExt } from "../../activityext";
@@ -25,10 +24,9 @@ const activity = ActivityExt.fromTemplateActivity(
         },
         useImage: ["ItemHandheld", "Scissors"],
         mode: "AnyOnSelf",
-        run: async (player, sender, info) => {
+        run: (player, sender, info) => {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
-            await sleepFor(100);
 
             // 使用动作拓展才会被剪衣服，可以只处理收到消息的情况
             const groups = groupMap[info.ActivityGroup.Name];

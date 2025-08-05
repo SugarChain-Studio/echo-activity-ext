@@ -1,6 +1,5 @@
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
-import { sleepFor } from "@sugarch/bc-mod-utility";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { Prereqs } from "../../prereqs";
 import { findDrawOrderPair } from "@mod-utils/ChatRoomOrder/XCharacterDrawlist";
@@ -10,9 +9,8 @@ import { findDrawOrderPair } from "@mod-utils/ChatRoomOrder/XCharacterDrawlist";
  * @param {XCharacter} arg.next
  * @param {XCharacter} arg.prev
  */
-async function playerLiesInBed({ next, prev }) {
+function playerLiesInBed({ next, prev }) {
     if (prev.MemberNumber === Player.MemberNumber) {
-        await sleepFor(100);
         const asset = AssetGet("Female3DCG", "ItemDevices", "床左边_Luzi");
         if (!asset) return;
         InventoryWear(Player, "床左边_Luzi", "ItemDevices");
@@ -28,7 +26,6 @@ async function playerLiesInBed({ next, prev }) {
 
         ChatRoomCharacterUpdate(Player);
     } else if (next.MemberNumber === Player.MemberNumber) {
-        await sleepFor(100);
         const asset = AssetGet("Female3DCG", "ItemDevices", "床右边_Luzi");
         if (!asset) return;
         InventoryWear(Player, "床右边_Luzi", "ItemDevices");

@@ -2,7 +2,6 @@ import { monadic } from "@mod-utils/monadic";
 import { ActivityManager } from "../../activityForward";
 import { ActivityExt } from "../../activityext";
 import { playerStomach } from "./foodValue";
-import { sleepFor } from "@sugarch/bc-mod-utility";
 
 /** @type {Partial<Record<AssetGroupItemName, string[]>>} */
 const splatterLocation = {
@@ -44,10 +43,9 @@ const activity = ActivityExt.fromTemplateActivity(
             Target: /** @type {AssetGroupItemName[]}*/ (Object.keys(splatterLocation)),
         },
         useImage: "Lick",
-        run: async (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
+        run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
             if (TargetCharacter === player.MemberNumber) {
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
-                await sleepFor(100);
                 monadic("rTypes", splatterLocation[ActivityGroup.Name])
                     .then("item", () => locateSplatter(player, ActivityGroup.Name)[0])
                     .then((item) => item.Property?.TypeRecord)

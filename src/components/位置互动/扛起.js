@@ -1,4 +1,3 @@
-import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { SharedCenterModifier, DrawMods } from "./drawMods";
@@ -12,9 +11,8 @@ const activity = {
         MaxProgress: 50,
         Target: ["ItemTorso"],
     },
-    run: async (player, sender, { SourceCharacter, TargetCharacter }) => {
+    run: (player, sender, { SourceCharacter, TargetCharacter }) => {
         if (TargetCharacter === player.MemberNumber) {
-            await sleepFor(100);
             const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter);
             if (!SrcChara) return;
             ChatRoomOrder.setDrawOrder({
@@ -26,7 +24,6 @@ const activity = {
             });
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (SourceCharacter === player.MemberNumber) {
-            await sleepFor(100);
             const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter);
             if (!TgtChara) return;
             InventoryWear(player, "扛起来的麻袋_Luzi", "ItemMisc");

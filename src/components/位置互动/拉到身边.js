@@ -1,7 +1,6 @@
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
-import { sleepFor } from "@sugarch/bc-mod-utility";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { Prereqs } from "../../prereqs";
 
@@ -33,9 +32,8 @@ const activity = {
         MaxProgress: 0,
         Target: ["ItemTorso", "ItemNeckRestraints", "ItemNeck"],
     },
-    run: async (player, sender, info) => {
+    run: (player, sender, info) => {
         if (info.TargetCharacter === player.MemberNumber) {
-            await sleepFor(100);
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
@@ -58,7 +56,6 @@ const activity = {
             }
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
-            await sleepFor(100);
             const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
             if (!TgtChara) return;
             const item = InventoryGet(TgtChara, "ItemNeckRestraints");
