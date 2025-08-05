@@ -2,7 +2,7 @@ import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { SharedCenterModifier, DrawMods } from "./drawMods";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 
 /** @type { CustomActivity} */
 const activity = {

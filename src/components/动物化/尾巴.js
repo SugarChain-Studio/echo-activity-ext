@@ -1,6 +1,6 @@
 import { ActivityManager } from "../../activityForward";
 import { DynImageProviders } from "../../dynamicImage";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { shakeItem } from "./shakeItem";
 
 const tailRecord = [

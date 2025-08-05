@@ -3,7 +3,7 @@ import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
 import { sleepFor } from "@sugarch/bc-mod-utility";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 
 const items = [
     { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },

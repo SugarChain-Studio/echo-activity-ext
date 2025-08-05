@@ -1,6 +1,6 @@
 import { Logger } from "@mod-utils/log";
 import { ActivityManager } from "../activityForward";
-import { Prereqs } from "../Prereqs";
+import { Prereqs } from "../prereqs";
 
 /** @type {Partial<Record<AssetGroupItemName, Record<string,number>>>} */
 const chainLength = {

@@ -1,6 +1,6 @@
 import { ActivityManager } from "../../activityForward";
 import { DynImageProviders } from "../../dynamicImage";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { shakeItem } from "./shakeItem";
 
 const earRecord = [["KittenEars1", "黑猫耳镜像_Luzi"]].reduce((acc, [item1, item2]) => {

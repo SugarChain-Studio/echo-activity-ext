@@ -2,7 +2,7 @@ import { ActivityManager } from "../../activityForward";
 import { makeI18nMessage } from "../../messager";
 
 import { DynImageProviders } from "../../dynamicImage";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { sleepFor } from "@sugarch/bc-mod-utility";
 
 const beedsDef = {

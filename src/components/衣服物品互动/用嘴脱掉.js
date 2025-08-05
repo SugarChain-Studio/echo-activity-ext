@@ -1,5 +1,5 @@
 import { ActivityManager } from "../../activityForward";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { makeI18nMessage } from "../../messager";
 
 /** @type {CustomGroupName[]} */

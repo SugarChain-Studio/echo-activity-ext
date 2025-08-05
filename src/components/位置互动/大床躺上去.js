@@ -2,7 +2,7 @@ import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
 import { sleepFor } from "@sugarch/bc-mod-utility";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { findDrawOrderPair } from "@mod-utils/ChatRoomOrder/XCharacterDrawlist";
 
 /**

@@ -1,6 +1,6 @@
 import { Path, playItemAudio } from "../../resouce";
 import { ActivityManager } from "../../activityForward";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { ActivityExt } from "../../activityext";
 
 /** @type { CustomActivity } */

@@ -1,5 +1,5 @@
 import { ActivityManager } from "../../activityForward";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { DynImageProviders } from "../../dynamicImage";
 import { sleepFor } from "@sugarch/bc-mod-utility";
 import { playerStomach } from "./foodValue";

@@ -2,7 +2,7 @@ import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { SharedCenterModifier, DrawMods } from "./drawMods";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -22,9 +22,7 @@ const activity = {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-            const SrcChara = ChatRoomCharacter.find(
-                (C) => C.MemberNumber === info.SourceCharacter
-            );
+            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.SourceCharacter);
             if (!SrcChara) return;
             ChatRoomOrder.setDrawOrder({
                 prevCharacter: SrcChara.MemberNumber,
@@ -36,9 +34,7 @@ const activity = {
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
             await sleepFor(100);
-            const TgtChara = ChatRoomCharacter.find(
-                (C) => C.MemberNumber === info.TargetCharacter
-            );
+            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
             if (!TgtChara) return;
             InventoryWear(player, "马车_Luzi", "ItemDevices");
             ChatRoomOrder.setDrawOrder({
@@ -49,8 +45,7 @@ const activity = {
                 },
             });
             ChatRoomCharacterUpdate(player);
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0)
-                ChatRoomLeashList.push(TgtChara.MemberNumber);
+            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
         }
     },
     useImage: "Wiggle",

@@ -1,6 +1,6 @@
 import { sleepFor } from "@sugarch/bc-mod-utility";
 import { ActivityManager } from "../../activityForward";
-import { Prereqs } from "../../Prereqs";
+import { Prereqs } from "../../prereqs";
 import { ActivityExt } from "../../activityext";
 
 /**@type {Partial<Record<AssetGroupItemName, CustomGroupName[]>>} */
