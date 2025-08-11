@@ -3,80 +3,85 @@ import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { Prereqs } from "../../prereqs";
+import { monadic } from "@mod-utils/monadic";
 
 const items = [
     { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },
     { prev: "ChainLeash", next: "拉紧的链子_Luzi" },
 ];
 
+const itemMap = Object.fromEntries(items.map((i) => [i.prev, i.next]));
+
+/**@type {AssetGroupItemName[]}*/
+const nItemGroups = ["ItemMisc", "ItemHandheld"];
+
 /** @type { CustomActivity} */
 const activity = {
     activity: {
         Name: "拉到身边",
         Prerequisite: [
+            (_, acted, acting, _2) =>
+                ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acted.MemberNumber, acting),
             Prereqs.any(
-                ...items.map((i) =>
-                    Prereqs.and(
-                        Prereqs.Acting.GroupEmpty("ItemHandheld"),
-                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev)
-                    )
-                ),
-                ...items.map((i) =>
-                    Prereqs.and(
-                        Prereqs.Acting.GroupIs("ItemHandheld", i.next),
-                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev)
-                    )
+                ...items.flatMap((i) =>
+                    nItemGroups.flatMap((group) => [
+                        Prereqs.all(
+                            Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
+                            () => !!AssetGet("Female3DCG", group, i.next),
+                            Prereqs.Acting.GroupEmpty(group)
+                        ),
+                        Prereqs.all(
+                            Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
+                            () => !!AssetGet("Female3DCG", group, i.next),
+                            Prereqs.Acting.GroupIs(group, i.next)
+                        ),
+                    ])
                 )
             ),
         ],
         MaxProgress: 0,
         Target: ["ItemTorso", "ItemNeckRestraints", "ItemNeck"],
     },
-    run: (player, sender, info) => {
-        if (info.TargetCharacter === player.MemberNumber) {
+    run: (player, sender, { TargetCharacter, SourceCharacter }) => {
+        if (TargetCharacter === player.MemberNumber) {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.SourceCharacter);
-            if (!SrcChara) return;
-            const item = InventoryGet(player, "ItemNeckRestraints");
-            if (!item) return;
-            ChatRoomOrder.setDrawOrder({
-                nextCharacter: SrcChara.MemberNumber,
-                associatedAsset: {
-                    group: "ItemNeckRestraints",
-                    asset: item.Asset.Name,
-                },
-            });
-            if (!item.Property) item.Property = {};
-            if (!Array.isArray(item.Property.Effect)) item.Property.Effect = [];
-            if (item.Property.Effect.indexOf("IsLeashed") < 0) {
-                item.Property.Effect.push("IsLeashed");
-                ChatRoomCharacterUpdate(Player);
-            }
-            ChatRoomLeashPlayer = SrcChara.MemberNumber;
-        } else if (info.SourceCharacter === player.MemberNumber) {
-            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
-            if (!TgtChara) return;
-            const item = InventoryGet(TgtChara, "ItemNeckRestraints");
-            if (!item) return;
-            const dItemName = {
-                CollarLeash: "拉紧的牵绳_Luzi",
-                ChainLeash: "拉紧的链子_Luzi",
-            }[item.Asset.Name];
-            if (!dItemName) return;
-
-            InventoryWear(player, dItemName, "ItemHandheld");
-            ChatRoomCharacterItemUpdate(player, "ItemHandheld");
-
-            ChatRoomOrder.setDrawOrder({
-                prevCharacter: TgtChara.MemberNumber,
-                associatedAsset: {
-                    group: "ItemHandheld",
-                    asset: dItemName,
-                },
-            });
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
+            const group = "ItemNeckRestraints";
+            monadic(
+                "SourceC",
+                ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter)
+            )
+                .then(() => InventoryGet(player, group))
+                .then((item, { SourceC }) => {
+                    ChatRoomOrder.setDrawOrder({
+                        nextCharacter: SourceC.MemberNumber,
+                        associatedAsset: { group, asset: item.Asset.Name },
+                    });
+                    ChatRoomLeashPlayer = SourceC.MemberNumber;
+                    CharacterRefreshLeash(Player);
+                });
+        } else if (SourceCharacter === player.MemberNumber) {
+            monadic(
+                "TargetC",
+                ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter)
+            )
+                .then((target) => InventoryGet(target, "ItemNeckRestraints"))
+                .then((item) => itemMap[item.Asset.Name])
+                .then(
+                    (itemName) =>
+                        AssetGet("Female3DCG", "ItemMisc", itemName) ?? AssetGet("Female3DCG", "ItemHandheld", itemName)
+                )
+                .then((asset, { TargetC }) => {
+                    const group = /** @type {AssetGroupItemName}*/ (asset.Group.Name);
+                    InventoryWear(player, asset.Name, group);
+                    ChatRoomCharacterItemUpdate(player, group);
+                    ChatRoomOrder.setDrawOrder({
+                        prevCharacter: TargetC.MemberNumber,
+                        associatedAsset: { group, asset: asset.Name },
+                    });
+                    if (!ChatRoomLeashList.includes(TargetC.MemberNumber)) ChatRoomLeashList.push(TargetC.MemberNumber);
+                });
         }
     },
     useImage: Path.resolve("activities/pull_to_side.png"),
