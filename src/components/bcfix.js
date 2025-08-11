@@ -9,7 +9,9 @@ export default function () {
     // since character update will be sent back to itself, the following situation may happen:
     // send `A` -> send `B` -> receive `A` -> send `C` -> receive `B` -> receive `C`
     // which would cause the character state seems to "rollback" to previous states
-    HookManager.progressiveHook("ChatRoomCharacterUpdate")
-        .inside("DialogLeave")
-        .override(() => {});
+    if (GameVersion === "R118") {
+        HookManager.progressiveHook("ChatRoomCharacterUpdate")
+            .inside("DialogLeave")
+            .override(() => {});
+    }
 }
