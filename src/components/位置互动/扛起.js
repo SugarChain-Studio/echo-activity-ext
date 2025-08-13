@@ -1,40 +1,37 @@
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { SharedCenterModifier, DrawMods } from "./drawMods";
 import { Prereqs } from "../../prereqs";
+import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "./utils";
 
 /** @type { CustomActivity} */
 const activity = {
     activity: {
         Name: "扛起",
-        Prerequisite: [Prereqs.Acting.GroupEmpty("ItemMisc"), Prereqs.Acted.GroupIs("ItemDevices", "BurlapSack")],
+        Prerequisite: [
+            Prereqs.or(
+                Prereqs.Acting.GroupEmpty("ItemMisc"),
+                Prereqs.Acting.GroupIs("ItemMisc", ["扛起来的麻袋_Luzi"])
+            ),
+            Prereqs.Acted.GroupIs("ItemDevices", "BurlapSack"),
+        ],
         MaxProgress: 50,
         Target: ["ItemTorso"],
     },
     run: (player, sender, { SourceCharacter, TargetCharacter }) => {
         if (TargetCharacter === player.MemberNumber) {
-            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter);
-            if (!SrcChara) return;
-            ChatRoomOrder.setDrawOrder({
-                nextCharacter: SrcChara.MemberNumber,
-                associatedAsset: {
-                    group: "ItemDevices",
-                    asset: "BurlapSack",
-                },
-            });
-            ChatRoomLeashPlayer = SrcChara.MemberNumber;
+            findCharacter("SourceC", SourceCharacter)
+                .then(() => AssetGet("Female3DCG", "ItemDevices", "BurlapSack"))
+                .then((asset, { SourceC }) => {
+                    wearAndPair(player, asset, { nextCharacter: SourceC.MemberNumber });
+                    leashPlayer(SourceC, false);
+                });
         } else if (SourceCharacter === player.MemberNumber) {
-            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter);
-            if (!TgtChara) return;
-            InventoryWear(player, "扛起来的麻袋_Luzi", "ItemMisc");
-            ChatRoomOrder.setDrawOrder({
-                prevCharacter: TgtChara.MemberNumber,
-                associatedAsset: {
-                    group: "ItemMisc",
-                    asset: "扛起来的麻袋_Luzi",
-                },
-            });
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
+            findCharacter("TargetC", TargetCharacter)
+                .then(() => AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋_Luzi"))
+                .then((asset, { TargetC }) => {
+                    wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber });
+                    leashTarget(TargetC);
+                });
         }
     },
     useImage: ["ItemDevices", "BurlapSack"],

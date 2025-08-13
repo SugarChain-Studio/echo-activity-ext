@@ -1,9 +1,8 @@
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { Prereqs } from "../../prereqs";
-import { monadic } from "@mod-utils/monadic";
+import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "./utils";
 
 const items = [
     { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },
@@ -48,24 +47,14 @@ const activity = {
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
             const group = "ItemNeckRestraints";
-            monadic(
-                "SourceC",
-                ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter)
-            )
+            findCharacter("SourceC", SourceCharacter)
                 .then(() => InventoryGet(player, group))
                 .then((item, { SourceC }) => {
-                    ChatRoomOrder.setDrawOrder({
-                        nextCharacter: SourceC.MemberNumber,
-                        associatedAsset: { group, asset: item.Asset.Name },
-                    });
-                    ChatRoomLeashPlayer = SourceC.MemberNumber;
-                    CharacterRefreshLeash(Player);
+                    wearAndPair(player, item.Asset, { nextCharacter: SourceC.MemberNumber });
+                    leashPlayer(SourceC);
                 });
         } else if (SourceCharacter === player.MemberNumber) {
-            monadic(
-                "TargetC",
-                ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter)
-            )
+            findCharacter("TargetC", TargetCharacter)
                 .then((target) => InventoryGet(target, "ItemNeckRestraints"))
                 .then((item) => itemMap[item.Asset.Name])
                 .then(
@@ -73,14 +62,8 @@ const activity = {
                         AssetGet("Female3DCG", "ItemMisc", itemName) ?? AssetGet("Female3DCG", "ItemHandheld", itemName)
                 )
                 .then((asset, { TargetC }) => {
-                    const group = /** @type {AssetGroupItemName}*/ (asset.Group.Name);
-                    InventoryWear(player, asset.Name, group);
-                    ChatRoomCharacterItemUpdate(player, group);
-                    ChatRoomOrder.setDrawOrder({
-                        prevCharacter: TargetC.MemberNumber,
-                        associatedAsset: { group, asset: asset.Name },
-                    });
-                    if (!ChatRoomLeashList.includes(TargetC.MemberNumber)) ChatRoomLeashList.push(TargetC.MemberNumber);
+                    wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber });
+                    leashTarget(TargetC);
                 });
         }
     },
