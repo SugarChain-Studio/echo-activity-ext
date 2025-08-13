@@ -1,9 +1,8 @@
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { DynImageProviders } from "../../dynamicImage";
-import { monadic } from "@mod-utils/monadic";
+import { leashTarget, findCharacter, wearAndPair, leashPlayer } from "./utils";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -24,35 +23,18 @@ const activity = {
         if (TargetCharacter === player.MemberNumber) {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
-            monadic(
-                "SourceC",
-                ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter)
-            ).then((_, { SourceC }) => {
-                ChatRoomOrder.setDrawOrder({
-                    prevCharacter: SourceC.MemberNumber,
-                    associatedAsset: {
-                        group: "ItemDevices",
-                        asset: "Trolley",
-                    },
+            findCharacter("SourceC", SourceCharacter)
+                .then(() => AssetGet("Female3DCG", "ItemDevices", "Trolley"))
+                .then((asset, { SourceC }) => {
+                    wearAndPair(player, asset, { prevCharacter: SourceC.MemberNumber });
+                    leashPlayer(SourceC);
                 });
-                if (ChatRoomLeashList.indexOf(SourceC.MemberNumber) < 0) ChatRoomLeashList.push(SourceC.MemberNumber);
-            });
         } else if (SourceCharacter === player.MemberNumber) {
-            const group = "ItemMisc";
-            monadic(
-                "TargetC",
-                ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter)
-            )
-                .then(() => AssetGet("Female3DCG", group, "抓住推车"))
+            findCharacter("TargetC", TargetCharacter)
+                .then(() => AssetGet("Female3DCG", "ItemMisc", "抓住推车"))
                 .then((asset, { TargetC }) => {
-                    InventoryWear(player, asset.Name, group);
-                    ChatRoomCharacterItemUpdate(player, group);
-                    ChatRoomOrder.setDrawOrder({
-                        nextCharacter: TargetC.MemberNumber,
-                        associatedAsset: { group, asset: "抓住推车" },
-                    });
-                    ChatRoomLeashPlayer = TargetC.MemberNumber;
-                    CharacterRefreshLeash(Player);
+                    wearAndPair(player, asset, { nextCharacter: TargetC.MemberNumber });
+                    leashTarget(TargetC);
                 });
         }
     },
@@ -76,10 +58,10 @@ export default function () {
         DrawMods.asset(items, (_, { sharedC, initState, C }) => {
             const { Zoom } = initState;
             if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X, Y: sharedC.center.Y - 50 * Zoom, Zoom };
+                return { C, X: sharedC.center.X + 50 * Zoom, Y: sharedC.center.Y, Zoom };
             }
             if (sharedC.next.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
+                return { C, X: sharedC.center.X - 50 * Zoom, Y: sharedC.center.Y, Zoom };
             }
         })
     );
