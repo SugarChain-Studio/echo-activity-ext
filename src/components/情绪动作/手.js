@@ -111,97 +111,47 @@ const activities = [
         },
     },
     ...ActivityExt.fromTemplateActivity(
-        [
+        /** @type {CustomActivity["activity"][]}*/ ([
+            { Name: "戳脸", MaxProgress: 0, Target: ["ItemMouth"], TargetSelf: true },
+            { Name: "戳手臂", MaxProgress: 0, Target: ["ItemArms"], TargetSelf: true },
+            { Name: "戳腿", MaxProgress: 0, Target: ["ItemLegs", "ItemFeet"], TargetSelf: true },
+            { Name: "戳脚", MaxProgress: 30, Target: ["ItemBoots"], TargetSelf: true },
             {
-                activity: {
-                    Name: "戳脸",
-                    Prerequisite: ["UseHands", "UseArms"],
-                    MaxProgress: 0,
-                    Target: ["ItemMouth"],
-                    TargetSelf: true,
-                },
-                useImage: Path.resolve("activities/poke.png"),
+                Name: "戳胸部",
+                Prerequisite: ["Luzi_TargetHasBreast"],
+                MaxProgress: 30,
+                Target: ["ItemBreast"],
+                TargetSelf: true,
+            },
+            { Name: "戳臀部", MaxProgress: 40, Target: ["ItemButt"], TargetSelf: true },
+            {
+                Name: "戳乳头",
+                Prerequisite: ["Luzi_TargetHasBreast", "Luzi_ActedZoneNaked"],
+                MaxProgress: 60,
+                Target: ["ItemNipples"],
+                TargetSelf: true,
             },
             {
-                activity: {
-                    Name: "戳手臂",
-                    Prerequisite: ["UseHands", "UseArms"],
-                    MaxProgress: 0,
-                    Target: ["ItemArms"],
-                    TargetSelf: true,
-                },
-                useImage: Path.resolve("activities/poke.png"),
+                Name: "戳阴部",
+                Prerequisite: ["Luzi_TargetFemale", "Luzi_ActedZoneNaked"],
+                MaxProgress: 80,
+                Target: ["ItemVulva"],
+                TargetSelf: true,
             },
             {
-                activity: {
-                    Name: "戳胸部",
-                    Prerequisite: [
-                        "UseHands",
-                        "UseArms",
-                        "Luzi_TargetHasBreast",
-                    ],
-                    MaxProgress: 30,
-                    Target: ["ItemBreast"],
-                    TargetSelf: true,
-                },
-                useImage: Path.resolve("activities/poke.png"),
+                Name: "戳阴蒂",
+                Prerequisite: ["Luzi_TargetFemale", "Luzi_ActedZoneNaked"],
+                MaxProgress: 80,
+                Target: ["ItemVulvaPiercings"],
+                TargetSelf: true,
             },
-            {
-                activity: {
-                    Name: "戳臀部",
-                    Prerequisite: ["UseHands", "UseArms"],
-                    MaxProgress: 40,
-                    Target: ["ItemButt"],
-                    TargetSelf: true,
-                },
-                useImage: Path.resolve("activities/poke.png"),
-            },
-            {
-                activity: {
-                    Name: "戳乳头",
-                    Prerequisite: [
-                        "UseHands",
-                        "UseArms",
-                        "Luzi_TargetHasBreast",
-                        "Luzi_ActedZoneNaked",
-                    ],
-                    MaxProgress: 60,
-                    Target: ["ItemNipples"],
-                    TargetSelf: true,
-                },
-                useImage: Path.resolve("activities/poke.png"),
-            },
-            {
-                activity: {
-                    Name: "戳阴部",
-                    Prerequisite: [
-                        "UseHands",
-                        "UseArms",
-                        "Luzi_TargetFemale",
-                        "Luzi_ActedZoneNaked",
-                    ],
-                    MaxProgress: 80,
-                    Target: ["ItemVulva"],
-                    TargetSelf: true,
-                },
-                useImage: Path.resolve("activities/poke.png"),
-            },
-            {
-                activity: {
-                    Name: "戳阴蒂",
-                    Prerequisite: [
-                        "UseHands",
-                        "UseArms",
-                        "Luzi_TargetFemale",
-                        "Luzi_ActedZoneNaked",
-                    ],
-                    MaxProgress: 80,
-                    Target: ["ItemVulvaPiercings"],
-                    TargetSelf: true,
-                },
-                useImage: Path.resolve("activities/poke.png"),
-            },
-        ],
+        ]).map(
+            (a) =>
+                /** @type {CustomActivity}*/ ({
+                    activity: { ...a, Prerequisite: [...a.Prerequisite, "UseHands", "UseArms"] },
+                    useImage: Path.resolve("activities/poke.png"),
+                })
+        ),
         {
             CN: {
                 ItemMouth: "脸",
@@ -211,6 +161,9 @@ const activities = [
                 ItemNipples: "乳头",
                 ItemVulva: "阴部",
                 ItemVulvaPiercings: "阴蒂",
+                ItemLegs: "大腿",
+                ItemFeet: "小腿",
+                ItemBoots: "脚",
             },
             EN: {
                 ItemMouth: "Face",
@@ -220,6 +173,9 @@ const activities = [
                 ItemNipples: "Nipples",
                 ItemVulva: "Vulva",
                 ItemVulvaPiercings: "Clitoris",
+                ItemLegs: "Thighs",
+                ItemFeet: "Calves",
+                ItemBoots: "Feet",
             },
             RU: {
                 ItemMouth: "Лицо",
@@ -229,6 +185,9 @@ const activities = [
                 ItemNipples: "Соски",
                 ItemVulva: "Интимную зону",
                 ItemVulvaPiercings: "Клитор",
+                ItemLegs: "Бедра",
+                ItemFeet: "Икры",
+                ItemBoots: "Ступни",
             },
             UA: {
                 ItemMouth: "Обличчя",
@@ -238,6 +197,9 @@ const activities = [
                 ItemNipples: "Соски",
                 ItemVulva: "Інтимну зону",
                 ItemVulvaPiercings: "Клітор",
+                ItemLegs: "Сідниці",
+                ItemFeet: "Ікри",
+                ItemBoots: "Ступні",
             },
         },
         {
