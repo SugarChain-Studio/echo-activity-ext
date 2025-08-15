@@ -19,7 +19,7 @@ const activity = {
     activity: {
         Name: "拉到身边",
         Prerequisite: [
-            (_, acted, acting, _2) =>
+            (_, acting, acted, _2) =>
                 ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acted.MemberNumber, acting),
             Prereqs.any(
                 ...items.flatMap((i) =>
