@@ -82,14 +82,17 @@ function removingCheck(pool, { source, destination }, { time, posi }) {
 }
 
 function removeCallback(groups) {
-    return function (player, sender, info) {
-        if (player.MemberNumber !== info.TargetCharacter) return;
+    /** @type {CustomActivity["run"]} */
+    const ret = (player, sender, { TargetCharacter }) => {
+        if (player.MemberNumber !== TargetCharacter) return;
+        if (!ServerChatRoomGetAllowItem(sender, player)) return;
         removingCheck(
             player.Appearance.filter((item) => groups.includes(item.Asset.Group.Name)),
             { source: sender, destination: player },
             calcuTimeAndPosi(sender)
         );
     };
+    return ret;
 }
 
 /** @type { CustomActivity []} */
