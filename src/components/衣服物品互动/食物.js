@@ -2,6 +2,7 @@ import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DynImageProviders } from "../../dynamicImage";
 import { playerStomach } from "./foodValue";
+import { findCharacter } from "../../utils";
 
 const stomachValueSetting = {
     棒棒糖_Luzi: 0.1,
@@ -32,23 +33,17 @@ const activity = [
             Target: ["ItemMouth"],
         },
         useImage: DynImageProviders.itemOnActedGroup("ItemMouth"),
-        run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
+        run: (player, sender, { SourceCharacter, TargetCharacter }) => {
             if (SourceCharacter === player.MemberNumber) {
-                const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === TargetCharacter);
-                if (!target) return;
-
-                const targetItem = InventoryGet(target, ActivityGroup.Name);
-                if (!targetItem) return;
-
-                const nItem = InventoryWear(player, targetItem.Asset.Name, "ItemMouth");
-                if (!nItem) return;
-
-                InventoryRemove(target, ActivityGroup.Name);
-                Object.assign(nItem, targetItem);
-
-                ChatRoomCharacterUpdate(target);
-                ChatRoomCharacterUpdate(player);
-                CharacterRefresh(player, true);
+                findCharacter("TargetC", TargetCharacter)
+                    .then("MouthItem", (target) => InventoryGet(target, "ItemMouth"))
+                    .then((item) => InventoryWear(player, item.Asset.Name, "ItemMouth"))
+                    .then((item, { TargetC, MouthItem }) => {
+                        InventoryRemove(TargetC, "ItemMouth");
+                        Object.assign(item, MouthItem);
+                        ChatRoomCharacterItemUpdate(TargetC, "ItemMouth");
+                        ChatRoomCharacterItemUpdate(player, "ItemMouth");
+                    });
             }
         },
         item: (_, acted) => InventoryGet(acted, "ItemMouth"),
@@ -68,13 +63,7 @@ const activity = [
                 "UseMouth",
                 () => playerStomach.canEat(),
                 Prereqs.not(Prereqs.Acting.GroupIs("动物身体_Luzi", ["幽灵人形_Luzi"])), // 不允许幽灵人形吃东西
-                Prereqs.Acting.GroupIs("ItemMouth", [
-                    "棒棒糖_Luzi",
-                    "烤鱼_Luzi",
-                    "鸡腿_Luzi",
-                    "煎包_Luzi",
-                    "蛋糕卷_Luzi",
-                ]),
+                Prereqs.Acting.GroupIs("ItemMouth", Object.keys(stomachValueSetting)),
             ],
             MaxProgress: 0,
             Target: [],
@@ -105,13 +94,7 @@ const activity = [
             Prerequisite: [
                 "UseMouth",
                 () => !playerStomach.canEat(),
-                Prereqs.Acting.GroupIs("ItemMouth", [
-                    "棒棒糖_Luzi",
-                    "烤鱼_Luzi",
-                    "鸡腿_Luzi",
-                    "煎包_Luzi",
-                    "蛋糕卷_Luzi",
-                ]),
+                Prereqs.Acting.GroupIs("ItemMouth", Object.keys(stomachValueSetting)),
             ],
             MaxProgress: 0,
             Target: [],
@@ -170,6 +153,41 @@ const activity = [
         dialog: {
             CN: "SourceCharacter将手里的ActivityAsset塞进TargetCharacter的嘴里.",
             EN: "SourceCharacter stuffs DestinationCharacter mouth with ActivityAsset.",
+        },
+    },
+    {
+        activity: {
+            Name: `用嘴喂食物`,
+            Prerequisite: [
+                "UseMouth",
+                Prereqs.Acted.GroupEmpty(["ItemMouth"]),
+                Prereqs.Acting.GroupIs("ItemMouth", Object.keys(stomachValueSetting)),
+            ],
+            MaxProgress: 50,
+            Target: ["ItemMouth"],
+        },
+        useImage: DynImageProviders.itemOnActingGroup("ItemMouth"),
+        run: (player, sender, { SourceCharacter, TargetCharacter }) => {
+            if (SourceCharacter === player.MemberNumber) {
+                findCharacter("TargetC", TargetCharacter)
+                    .then("MouthItem", () => InventoryGet(player, "ItemMouth"))
+                    .then((item, { TargetC }) => InventoryWear(TargetC, item.Asset.Name, "ItemMouth"))
+                    .then((item, { MouthItem }) => Object.assign(item, MouthItem))
+                    .then((_, { TargetC }) => {
+                        InventoryRemove(player, "ItemMouth");
+                        ChatRoomCharacterItemUpdate(TargetC, "ItemMouth");
+                        ChatRoomCharacterItemUpdate(player, "ItemMouth");
+                    });
+            }
+        },
+        item: () => InventoryGet(Player, "ItemMouth"),
+        label: {
+            CN: "用嘴喂食",
+            EN: "Feed with Mouth",
+        },
+        dialog: {
+            CN: "SourceCharacter用嘴将ActivityAsset喂到TargetCharacter嘴里。",
+            EN: "SourceCharacter feeds ActivityAsset to TargetCharacter with mouth.",
         },
     },
 ];
