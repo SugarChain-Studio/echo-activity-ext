@@ -120,6 +120,7 @@ const prereqStorage = {
         if (!acting.IsPlayer()) return false;
         return ChatRoomLeashPlayer && ChatRoomLeashPlayer === acted.MemberNumber;
     },
+    Luz_NotBlind: (_prereq, acting, _acted, _group) => !acting.IsBlind(),
 };
 
 export default function () {
