@@ -1,23 +1,26 @@
 import { PathTools } from "@sugarch/bc-mod-utility";
 
-export class DynImageProviders {
+export const DynImageProviders = {
     /**
      * 使用动作发起者位于group的物品作为动作图片
      * @param {CustomGroupName} group
      * @returns {DynamicImageProvier}
      */
-    static itemOnActingGroup = (group) => () => {
+    itemOnActingGroup: (group) => () => {
         const item = InventoryGet(Player, /** @type {AssetGroupName}*/ (group));
         if (item) return PathTools.assetPreviewIconPath(item);
-    };
+    },
 
     /**
      * 使用动作接受者位于group的物品作为动作图片
-     * @param {CustomGroupName} group
+     * @param {CustomGroupName | CustomGroupName[]} arg
      * @returns {DynamicImageProvier}
      */
-    static itemOnActedGroup = (group) => (_, target) => {
-        const item = InventoryGet(target, /** @type {AssetGroupName}*/ (group));
-        if (item) return PathTools.assetPreviewIconPath(item);
-    };
-}
+    itemOnActedGroup: (arg) => {
+        const group = Array.isArray(arg) ? arg : [arg];
+        return (_, target) => {
+            const item = target.Appearance.find((item) => group.includes(item.Asset.Group.Name));
+            if (item) return PathTools.assetPreviewIconPath(item);
+        };
+    },
+};
