@@ -1,13 +1,14 @@
 import { ActivityManager } from "../../activityForward";
 import { SharedCenterModifier, DrawMods } from "./drawMods";
 import { Prereqs } from "../../prereqs";
-import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "./utils";
+import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "../../utils";
 
 /** @type { CustomActivity} */
 const activity = {
     activity: {
         Name: "扛起",
         Prerequisite: [
+            () => !!AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋_Luzi"),
             Prereqs.or(
                 Prereqs.Acting.GroupEmpty("ItemMisc"),
                 Prereqs.Acting.GroupIs("ItemMisc", ["扛起来的麻袋_Luzi"])

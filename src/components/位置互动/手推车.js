@@ -2,7 +2,7 @@ import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { DynImageProviders } from "../../dynamicImage";
-import { leashTarget, findCharacter, wearAndPair, leashPlayer } from "./utils";
+import { leashTarget, findCharacter, wearAndPair, leashPlayer } from "../../utils";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -11,7 +11,7 @@ const activity = {
         Prerequisite: [
             "UseHands",
             (_, acting, acted, _2) =>
-                ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acted.MemberNumber, acting),
+                ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acting.MemberNumber, acted),
             () => !!AssetGet("Female3DCG", "ItemMisc", "抓住推车"),
             Prereqs.Acted.GroupIs("ItemDevices", ["Trolley"]),
             Prereqs.or(Prereqs.Acting.GroupEmpty("ItemMisc"), Prereqs.Acting.GroupIs("ItemMisc", ["抓住推车"])),
@@ -58,7 +58,7 @@ export default function () {
         DrawMods.asset(items, (_, { sharedC, initState, C }) => {
             const { Zoom } = initState;
             if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X + 50 * Zoom, Y: sharedC.center.Y, Zoom };
+                return { C, X: sharedC.center.X + 50 * Zoom, Y: sharedC.center.Y - 50 * Zoom, Zoom };
             }
             if (sharedC.next.MemberNumber === C.MemberNumber) {
                 return { C, X: sharedC.center.X - 50 * Zoom, Y: sharedC.center.Y, Zoom };

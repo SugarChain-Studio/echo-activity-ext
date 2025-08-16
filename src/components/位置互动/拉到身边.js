@@ -2,7 +2,7 @@ import { ActivityManager } from "../../activityForward";
 import { Path } from "../../resouce";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { Prereqs } from "../../prereqs";
-import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "./utils";
+import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "../../utils";
 
 const items = [
     { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },
@@ -20,7 +20,7 @@ const activity = {
         Name: "拉到身边",
         Prerequisite: [
             (_, acting, acted, _2) =>
-                ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acted.MemberNumber, acting),
+                ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acting.MemberNumber, acted),
             Prereqs.any(
                 ...items.flatMap((i) =>
                     nItemGroups.flatMap((group) => [
