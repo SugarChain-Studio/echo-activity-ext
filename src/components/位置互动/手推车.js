@@ -10,8 +10,7 @@ const activity = {
         Name: "手推车",
         Prerequisite: [
             "UseHands",
-            (_, acting, acted, _2) =>
-                ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acting.MemberNumber, acted),
+            "Luzi_TargetLeashedOrCanBeLeashed",
             () => !!AssetGet("Female3DCG", "ItemMisc", "抓住推车"),
             Prereqs.Acted.GroupIs("ItemDevices", ["Trolley"]),
             Prereqs.or(Prereqs.Acting.GroupEmpty("ItemMisc"), Prereqs.Acting.GroupIs("ItemMisc", ["抓住推车"])),

@@ -11,31 +11,26 @@ const items = [
 
 const itemMap = Object.fromEntries(items.map((i) => [i.prev, i.next]));
 
-/**@type {AssetGroupItemName[]}*/
-const nItemGroups = ["ItemMisc", "ItemHandheld"];
-
 /** @type { CustomActivity} */
 const activity = {
     activity: {
         Name: "拉到身边",
         Prerequisite: [
-            (_, acting, acted, _2) =>
-                ChatRoomLeashList.includes(acted.MemberNumber) || ChatRoomCanBeLeashedBy(acting.MemberNumber, acted),
+            "UseHands",
+            "Luzi_TargetLeashedOrCanBeLeashed",
             Prereqs.any(
-                ...items.flatMap((i) =>
-                    nItemGroups.flatMap((group) => [
-                        Prereqs.all(
-                            Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
-                            () => !!AssetGet("Female3DCG", group, i.next),
-                            Prereqs.Acting.GroupEmpty(group)
-                        ),
-                        Prereqs.all(
-                            Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
-                            () => !!AssetGet("Female3DCG", group, i.next),
-                            Prereqs.Acting.GroupIs(group, i.next)
-                        ),
-                    ])
-                )
+                ...items.flatMap((i) => [
+                    Prereqs.all(
+                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
+                        () => !!AssetGet("Female3DCG", "ItemMisc", i.next),
+                        Prereqs.Acting.GroupEmpty("ItemMisc")
+                    ),
+                    Prereqs.all(
+                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
+                        () => !!AssetGet("Female3DCG", "ItemMisc", i.next),
+                        Prereqs.Acting.GroupIs("ItemMisc", i.next)
+                    ),
+                ])
             ),
         ],
         MaxProgress: 0,
@@ -57,10 +52,7 @@ const activity = {
             findCharacter("TargetC", TargetCharacter)
                 .then((target) => InventoryGet(target, "ItemNeckRestraints"))
                 .then((item) => itemMap[item.Asset.Name])
-                .then(
-                    (itemName) =>
-                        AssetGet("Female3DCG", "ItemMisc", itemName) ?? AssetGet("Female3DCG", "ItemHandheld", itemName)
-                )
+                .then((itemName) => AssetGet("Female3DCG", "ItemMisc", itemName))
                 .then((asset, { TargetC }) => {
                     wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber });
                     leashTarget(TargetC);

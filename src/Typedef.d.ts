@@ -17,6 +17,7 @@ type CustomActivityPrerequisite =
     | 'Luzi_HasWings'
     | 'Luzi_TargetHasWings'
     | 'Luzi_TargetCanBeLeashed'
+    | 'Luzi_TargetLeashedOrCanBeLeashed'
     | 'Luzi_IsLeashingTarget'
     | 'Luzi_HasTail'
     | 'Luzi_HasCatTail'
