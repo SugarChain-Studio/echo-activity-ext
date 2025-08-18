@@ -57,3 +57,8 @@ type CustomActivityPrerequisiteItem =
 type DynamicImageProvier = import('@sugarch/bc-activity-manager').DynamicActivityImageProvider;
 
 type ActivityGroupName = import('@sugarch/bc-mod-types').Translation.ActivityGroupName;
+
+declare module 'https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0/dist/bcmodsdk.js' {
+    import bcModSdk from 'bondage-club-mod-sdk';
+    export default bcModSdk;
+}
