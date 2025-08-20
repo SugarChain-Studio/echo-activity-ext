@@ -3,6 +3,7 @@ import { Path } from "../../resouce";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { Prereqs } from "../../prereqs";
 import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "../../utils";
+import { monadic } from "@mod-utils/monadic";
 
 const items = [
     { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },
@@ -10,6 +11,9 @@ const items = [
 ];
 
 const itemMap = Object.fromEntries(items.map((i) => [i.prev, i.next]));
+
+/** @type {AssetGroupItemName[]} */
+const pairiGroups = ["ItemMisc", "ItemHandheld"];
 
 /** @type { CustomActivity} */
 const activity = {
@@ -19,18 +23,20 @@ const activity = {
             "UseHands",
             "Luzi_TargetLeashedOrCanBeLeashed",
             Prereqs.any(
-                ...items.flatMap((i) => [
-                    Prereqs.all(
-                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
-                        () => !!AssetGet("Female3DCG", "ItemMisc", i.next),
-                        Prereqs.Acting.GroupEmpty("ItemMisc")
-                    ),
-                    Prereqs.all(
-                        Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
-                        () => !!AssetGet("Female3DCG", "ItemMisc", i.next),
-                        Prereqs.Acting.GroupIs("ItemMisc", i.next)
-                    ),
-                ])
+                ...pairiGroups.flatMap((group) =>
+                    items.flatMap((i) => [
+                        Prereqs.all(
+                            Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
+                            () => !!AssetGet("Female3DCG", group, i.next),
+                            Prereqs.Acting.GroupEmpty(group)
+                        ),
+                        Prereqs.all(
+                            Prereqs.Acted.GroupIs("ItemNeckRestraints", i.prev),
+                            () => !!AssetGet("Female3DCG", group, i.next),
+                            Prereqs.Acting.GroupIs(group, i.next)
+                        ),
+                    ])
+                )
             ),
         ],
         MaxProgress: 0,
@@ -52,7 +58,13 @@ const activity = {
             findCharacter("TargetC", TargetCharacter)
                 .then((target) => InventoryGet(target, "ItemNeckRestraints"))
                 .then((item) => itemMap[item.Asset.Name])
-                .then((itemName) => AssetGet("Female3DCG", "ItemMisc", itemName))
+                .then((pairItemName) =>
+                    monadic(player.Appearance.find((i) => i.Asset.Group.Name === pairItemName)?.Asset).valueOr(() =>
+                        monadic(pairiGroups.find((g) => !player.Appearance.some((i) => i.Asset.Group.Name === g)))
+                            .then((group) => AssetGet("Female3DCG", group, pairItemName))
+                            .valueOr(undefined)
+                    )
+                )
                 .then((asset, { TargetC }) => {
                     wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber });
                     leashTarget(TargetC);
