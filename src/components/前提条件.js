@@ -61,8 +61,10 @@ const prereqStorage = {
                 return !InventoryPrerequisiteMessage(acted, "AccessVulva") && !acted.IsVulvaChaste();
             case "ItemVulvaPiercings":
                 return !InventoryPrerequisiteMessage(acted, "AccessVulva") && !acted.IsVulvaChaste();
+            case "ItemHands":
+                return !acted.Appearance.some((i) => InventoryItemHasEffect(i, "MergedFingers"));
         }
-        Logger.warn(`Luzi_ActedZoneNaked cannot be used with group: {_group.Name}`);
+        Logger.warn(`Luzi_ActedZoneNaked cannot be used with group: ${_group.Name}`);
         return true;
     },
     Luzi_HasTentacles: Prereqs.any(
