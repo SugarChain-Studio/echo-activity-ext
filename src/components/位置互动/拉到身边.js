@@ -59,7 +59,7 @@ const activity = {
                 .then((target) => InventoryGet(target, "ItemNeckRestraints"))
                 .then((item) => itemMap[item.Asset.Name])
                 .then((pairItemName) =>
-                    monadic(player.Appearance.find((i) => i.Asset.Group.Name === pairItemName)?.Asset).valueOr(() =>
+                    monadic(player.Appearance.find((i) => i.Asset.Name === pairItemName)?.Asset).valueOr(() =>
                         monadic(pairiGroups.find((g) => !player.Appearance.some((i) => i.Asset.Group.Name === g)))
                             .then((group) => AssetGet("Female3DCG", group, pairItemName))
                             .valueOr(undefined)
