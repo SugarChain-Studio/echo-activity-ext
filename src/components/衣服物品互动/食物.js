@@ -10,6 +10,8 @@ const stomachValueSetting = {
     鸡腿_Luzi: 0.6,
     煎包_Luzi: 0.4,
     蛋糕卷_Luzi: 0.8,
+    吐司: 0.3,
+    曲奇: 0.1,
 };
 
 function eat(assetName) {
