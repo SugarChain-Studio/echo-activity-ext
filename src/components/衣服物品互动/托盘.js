@@ -113,20 +113,15 @@ const activities = [
                 "UseHands",
                 Prereqs.Acting.GroupEmpty("ItemHandheld"),
                 Prereqs.Acted.TargetGroupIs(["托盘"]),
-                (_1, acting, acted, group) => {
+                (_1, _2, acted, group) => {
                     const trayItem = InventoryGet(acted, group.Name);
                     if (trayItem.Asset.Name !== "托盘" || !trayItem.Property) return false;
 
                     const props = /** @type {ExtendItemProperties} */ (trayItem.Property);
-                    if (!props.Luzi_InventoryType || !(props.Luzi_InventoryContent?.length > 0)) return false;
-
-                    if (
-                        props.Luzi_InventoryType === "饮料" &&
-                        props.Luzi_InventoryContent.filter((i) => !i.IAsset).length === 0
-                    )
-                        return false;
-
-                    return true;
+                    if (props.Luzi_InventoryType === "饮料")
+                        return props.Luzi_InventoryContent.filter((it) => it.IAsset).length > 0;
+                    else if (props.Luzi_InventoryType === "曲奇") return props.Luzi_InventoryContent.length > 0;
+                    else return false;
                 },
             ],
             MaxProgress: 0,
@@ -141,11 +136,14 @@ const activities = [
                     .then((type, { trayItem, TargetC }) => {
                         const props = /** @type {ExtendItemProperties} */ (trayItem.Property);
                         props.Luzi_InventoryContent ??= [];
-                        const target = Math.floor(Math.random() * props.Luzi_InventoryContent.length);
 
                         if (type === "饮料") {
-                            const value = props.Luzi_InventoryContent[target];
-                            props.Luzi_InventoryContent[target] = {};
+                            const validTarget = props.Luzi_InventoryContent.filter((it) => it.IAsset);
+                            const target = Math.floor(Math.random() * validTarget.length);
+                            const value = validTarget[target];
+
+                            const idx = props.Luzi_InventoryContent.indexOf(value);
+                            props.Luzi_InventoryContent[idx] = {};
 
                             const item = InventoryWear(player, "杯饮", "ItemHandheld");
                             Object.assign(item, { ...value, IAsset: undefined, Asset: item.Asset });
@@ -154,6 +152,7 @@ const activities = [
                                 item.Property.TypeRecord = { typed: drinkType.indexOf(value.IAsset) };
                             }
                         } else if (type === "曲奇") {
+                            const target = Math.floor(Math.random() * props.Luzi_InventoryContent.length);
                             const value = props.Luzi_InventoryContent.splice(target, 1)[0];
 
                             const item = InventoryWear(player, "曲奇", "ItemHandheld");
