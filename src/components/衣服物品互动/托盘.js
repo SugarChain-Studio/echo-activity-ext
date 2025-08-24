@@ -120,6 +120,12 @@ const activities = [
                     const props = /** @type {ExtendItemProperties} */ (trayItem.Property);
                     if (!props.Luzi_InventoryType || !(props.Luzi_InventoryContent?.length > 0)) return false;
 
+                    if (
+                        props.Luzi_InventoryType === "饮料" &&
+                        props.Luzi_InventoryContent.filter((i) => !i.IAsset).length === 0
+                    )
+                        return false;
+
                     return true;
                 },
             ],
