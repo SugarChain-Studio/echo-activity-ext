@@ -118,7 +118,11 @@ const activity = [
             Name: `塞食物_Luzi`,
             Prerequisite: [
                 Prereqs.Acted.GroupEmpty(["ItemMouth"]),
-                Prereqs.Acting.GroupIs("ItemHandheld", ["棒棒糖_Luzi", "烤鱼_Luzi", "鸡腿_Luzi"]),
+                Prereqs.Acting.GroupIs("ItemHandheld", Object.keys(stomachValueSetting)),
+                (_1, acting, acted, group) => {
+                    const item = InventoryGet(acting, "ItemHandheld");
+                    return !!AssetGet("Female3DCG", "ItemMouth", item.Asset.Name);
+                },
             ],
             MaxProgress: 50,
             Target: ["ItemMouth"],
