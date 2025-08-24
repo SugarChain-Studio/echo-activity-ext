@@ -149,7 +149,7 @@ const activities = [
                             Object.assign(item, { ...value, IAsset: undefined, Asset: item.Asset });
                             if (!value.Property) {
                                 item.Property ??= {};
-                                item.Property.TypeRecord = { typed: drinkType.indexOf(value.IAsset) };
+                                ExtendedItemSetOptionByRecord(player, item, { typed: drinkType.indexOf(value.IAsset) });
                             }
                         } else if (type === "曲奇") {
                             const target = Math.floor(Math.random() * props.Luzi_InventoryContent.length);
