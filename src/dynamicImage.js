@@ -23,4 +23,13 @@ export const DynImageProviders = {
             if (item) return PathTools.assetPreviewIconPath(item);
         };
     },
+
+    /**
+     * 使用动作接受者位于动作目标的物品作为动作图片
+     * @returns {DynamicImageProvier}
+     */
+    itemOnActedTargetGroup: () => (_, target, group) => {
+        const item = target.Appearance.find((item) => group === item.Asset.Group.Name);
+        if (item) return PathTools.assetPreviewIconPath(item);
+    },
 };
