@@ -15,12 +15,6 @@ const queryItem = (acted) => {
     return acted.Appearance.find((item) => groups.includes(item.Asset.Group.Name));
 };
 
-const actedPelvisExposed = Prereqs.ActedCheck(
-    (acted) =>
-        !InventoryDoItemsBlockGroup(acted, "ItemPelvis", ["Cloth", "ClothLower"]) &&
-        InventoryDoItemsExposeGroup(acted, "ItemVulva", ["ClothLower"])
-);
-
 /** @type {CustomActivity[]} */
 const activity = [
     {
@@ -29,7 +23,7 @@ const activity = [
             Prerequisite: [
                 "Luzi_CanWalk",
                 "Luz_NotBlind",
-                actedPelvisExposed,
+                "Luzi_TargetPelvisExposed",
                 Prereqs.ActedCheck((acted) => !!queryItem(acted)),
             ],
             MaxProgress: 0,
@@ -55,7 +49,7 @@ const activity = [
             Prerequisite: [
                 "Luzi_CanWalk",
                 "Luz_NotBlind",
-                actedPelvisExposed,
+                "Luzi_TargetPelvisExposed",
                 Prereqs.ActedCheck((acted) => !queryItem(acted)),
             ],
             MaxProgress: 40,
