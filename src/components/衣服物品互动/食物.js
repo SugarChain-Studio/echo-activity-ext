@@ -119,7 +119,7 @@ const activity = [
             Prerequisite: [
                 Prereqs.Acted.GroupEmpty(["ItemMouth"]),
                 Prereqs.Acting.GroupIs("ItemHandheld", Object.keys(stomachValueSetting)),
-                (_1, acting, acted, group) => {
+                (_1, acting, _2, _3) => {
                     const item = InventoryGet(acting, "ItemHandheld");
                     return !!AssetGet("Female3DCG", "ItemMouth", item.Asset.Name);
                 },

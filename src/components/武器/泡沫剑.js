@@ -1,6 +1,5 @@
 import { ActivityManager } from "../../activityForward";
 import { DynImageProviders } from "../../dynamicImage";
-import { Prereqs } from "../../prereqs";
 
 /** @type { CustomActivity []} */
 const activities = [
