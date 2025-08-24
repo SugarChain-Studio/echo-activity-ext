@@ -1,48 +1,44 @@
 import { ActivityManager } from "../../activityForward";
+import { DynImageProviders } from "../../dynamicImage";
+import { Prereqs } from "../../prereqs";
 
 /** @type { CustomActivity []} */
 const activities = [
     {
         activity: {
-            Name: "泡沫剑架在脖子上",
+            Name: "剑架在脖子上",
             Prerequisite: ["UseHands", "UseArms", "Luzi_HasSword"],
             MaxProgress: 50,
-            Target: ["ItemNeck"],
+            Target: ["ItemNeck", "ItemNeckRestraints", "ItemNeckAccessories"],
             TargetSelf: true,
         },
-        useImage: ["ItemHandheld", "Sword"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHandheld"),
+        item: (actor) => InventoryGet(actor, "ItemHandheld"),
         label: {
-            CN: "泡沫剑架在脖子上",
-            EN: "Foam Sword Rests on the Neck",
-            RU: "Приставить Поролоновый Меч",
-            UA: "Прикласти меч на шию",
+            CN: "剑架在脖子上",
+            EN: "Sword Rests on the Neck",
         },
         dialog: {
-            CN: "SourceCharacter把泡沫剑架在TargetCharacter的脖子上",
-            EN: "SourceCharacter places the Foam Sword on DestinationCharacter Neck",
-            RU: "SourceCharacter приставляет к шее TargetCharacter поролоновый меч.",
-            UA: "SourceCharacter прикладає паралоновий меч на шию TargetCharacter.",
+            CN: "SourceCharacter把ActivityAsset架在DestinationCharacter脖子上.",
+            EN: "SourceCharacter places the ActivityAsset on DestinationCharacter neck.",
         },
     },
     {
         activity: {
-            Name: "泡沫剑拍脸",
+            Name: "剑拍脸",
             Prerequisite: ["UseHands", "UseArms", "Luzi_HasSword"],
             MaxProgress: 50,
             Target: ["ItemMouth"],
         },
-        useImage: ["ItemHandheld", "Sword"],
+        useImage: DynImageProviders.itemOnActingGroup("ItemHandheld"),
+        item: (actor) => InventoryGet(actor, "ItemHandheld"),
         label: {
-            CN: "泡沫剑拍脸",
-            EN: "Foam Sword Hits the Face",
-            RU: "Ударить Мечем по Лицу ",
-            UA: "Вдарити мечем по лиці",
+            CN: "剑拍脸",
+            EN: "Sword Slaps the Face",
         },
         dialog: {
-            CN: "SourceCharacter用泡沫剑轻轻拍了拍一下TargetCharacter的脸",
-            EN: "SourceCharacter gently hits DestinationCharacter face with a Foam Sword",
-            RU: "SourceCharacter аккуратно бьет TargetCharacter по лицу поролоновым мечем.",
-            UA: "SourceCharacter ніжно б'є TargetCharacter паралоновим мечем.",
+            CN: "SourceCharacter用ActivityAsset的侧面轻轻拍了拍DestinationCharacter脸。",
+            EN: "SourceCharacter gently slaps DestinationCharacter face with the side of the ActivityAsset.",
         },
     },
 ];

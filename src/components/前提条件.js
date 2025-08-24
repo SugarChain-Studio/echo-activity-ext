@@ -87,7 +87,20 @@ const prereqStorage = {
     Luzi_HasKennel: (_prereq, _acting, acted, _group) => InventoryIsItemInList(acted, "ItemDevices", ["Kennel"]),
     Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulvaPiercings"),
     Luzi_TargetHasItemVulva: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulva"),
-    Luzi_HasSword: (_prereq, acting, _acted, _group) => InventoryIsItemInList(acting, "ItemHandheld", ["Sword"]),
+    Luzi_HasSword: (_prereq, acting, _acted, _group) => {
+        const item = InventoryGet(acting, "ItemHandheld");
+        if (!item) return false;
+        if (item.Asset.Name === "Sword") return true;
+        if (item.Asset.Name === "分层剑") return true;
+        if (
+            item.Asset.Name === "武器组合" &&
+            item.Property?.TypeRecord?.["t"] === 1 &&
+            item.Property?.TypeRecord?.["s"] === 1
+        )
+            return true;
+        if (item.Asset.Name === "刀" && item.Property?.TypeRecord?.["A"] === 1) return true;
+        return false;
+    },
     Luzi_Has鱼鱼尾: Prereqs.Acting.GroupIs("动物身体_Luzi", ["鱼鱼尾_Luzi"]),
     Luzi_CharacterViewWithinReach: (_prereq, acting, acted, _group) => {
         if (!ServerPlayerIsInChatRoom()) return false;
