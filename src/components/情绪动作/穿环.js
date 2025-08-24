@@ -1,4 +1,5 @@
 import { ActivityManager } from "../../activityForward";
+import { DynImageProviders } from "../../dynamicImage";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -10,7 +11,8 @@ const activities = [
             Target: ["ItemVulvaPiercings"],
             TargetSelf: true,
         },
-        useImage: "Pinch",
+        useImage: DynImageProviders.itemOnActedGroup("ItemVulvaPiercings"),
+        item: (_, acted) => InventoryGet(acted, "ItemVulvaPiercings"),
         label: {
             CN: "勾弄阴蒂环",
             EN: "Hook Clitoral Ring",
@@ -32,7 +34,8 @@ const activities = [
             Target: ["ItemVulvaPiercings"],
             TargetSelf: true,
         },
-        useImage: "Pinch",
+        useImage: DynImageProviders.itemOnActedGroup("ItemVulvaPiercings"),
+        item: (_, acted) => InventoryGet(acted, "ItemVulvaPiercings"),
         label: {
             CN: "轻扯阴蒂环",
             EN: "Tug Clitoral Ring",
@@ -53,7 +56,8 @@ const activities = [
             MaxProgress: 60,
             Target: ["ItemVulvaPiercings"],
         },
-        useImage: "Pinch",
+        useImage: DynImageProviders.itemOnActedGroup("ItemVulvaPiercings"),
+        item: (_, acted) => InventoryGet(acted, "ItemVulvaPiercings"),
         label: {
             CN: "检视阴蒂环",
             EN: "Inspect Piercing",
@@ -74,7 +78,8 @@ const activities = [
             MaxProgress: 100,
             Target: ["ItemVulvaPiercings"],
         },
-        useImage: "Pinch",
+        useImage: DynImageProviders.itemOnActedGroup("ItemVulvaPiercings"),
+        item: (_, acted) => InventoryGet(acted, "ItemVulvaPiercings"),
         label: {
             CN: "把玩阴蒂环",
             EN: "Toy with Piercing",
@@ -95,7 +100,8 @@ const activities = [
             MaxProgress: 100,
             Target: ["ItemVulvaPiercings"],
         },
-        useImage: "Pinch",
+        useImage: DynImageProviders.itemOnActedGroup("ItemVulvaPiercings"),
+        item: (_, acted) => InventoryGet(acted, "ItemVulvaPiercings"),
         label: {
             CN: "轻拉阴蒂环",
             EN: "Tug Piercing",
@@ -116,7 +122,8 @@ const activities = [
             MaxProgress: 40,
             Target: ["ItemVulvaPiercings"],
         },
-        useImage: "Pinch",
+        useImage: DynImageProviders.itemOnActedGroup("ItemVulvaPiercings"),
+        item: (_, acted) => InventoryGet(acted, "ItemVulvaPiercings"),
         label: {
             CN: "调整阴蒂环位置",
             EN: "Adjust Piercing",
@@ -135,6 +142,3 @@ const activities = [
 export default function () {
     ActivityManager.addCustomActivities(activities);
 }
-
-
-
