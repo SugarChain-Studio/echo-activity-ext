@@ -1,6 +1,6 @@
 import { ActivityExt } from "../../activityext";
 import { ActivityManager } from "../../activityForward";
-import { Path } from "../../resouce";
+import { Path, playItemAudio } from "../../resouce";
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -268,7 +268,7 @@ const activities = [
             Target: [],
             TargetSelf: ["ItemHands"],
         },
-        useImage: "Wiggle",
+        useImage: "Caress",
         labelSelf: {
             CN: "扭动手腕",
             EN: "Twist Wrists",
@@ -410,6 +410,53 @@ const activities = [
             EN: "SourceCharacter pulls DestinationCharacter chain.",
             RU: "SourceCharacter тянет TargetCharacter за поводок.",
             UA: "SourceCharacter тягне TargetCharacter за ланцюг.",
+        },
+    },
+    {
+        activity: {
+            Name: "打响指",
+            Prerequisite: ["UseHands"],
+            MaxProgress: 0,
+            Target: [],
+            TargetSelf: ["ItemHands"],
+        },
+        useImage: "MasturbateFist",
+        mode: "AnyInvolved",
+        run: (player, _, { SourceCharacter, TargetCharacter }) =>
+            playItemAudio(
+                Path.resolve(`audio/snap${Math.ceil(Math.random() * 4)}.mp3`),
+                SourceCharacter === player.MemberNumber || TargetCharacter === player.MemberNumber
+            ),
+        label: {
+            CN: "打响指",
+            EN: "Snap Fingers",
+        },
+        dialog: {
+            CN: "SourceCharacter打了一个清脆的响指。",
+            EN: "SourceCharacter snaps fingers sharply.",
+        },
+    },
+    {
+        activity: {
+            Name: "耳边打响指",
+            Prerequisite: ["UseHands"],
+            MaxProgress: 0,
+            Target: ["ItemEars"],
+        },
+        useImage: "MasturbateFist",
+        mode: "OthersOnSelf",
+        run: (player, _, { SourceCharacter, TargetCharacter }) =>
+            playItemAudio(
+                Path.resolve(`audio/snap${Math.ceil(Math.random() * 4)}.mp3`),
+                SourceCharacter === player.MemberNumber || TargetCharacter === player.MemberNumber
+            ),
+        label: {
+            CN: "耳边打响指",
+            EN: "Snap Fingers Near Ears",
+        },
+        dialog: {
+            CN: "SourceCharacter在DestinationCharacter耳边打了一个清脆的响指。",
+            EN: "SourceCharacter snaps fingers sharply near DestinationCharacter ears.",
         },
     },
 ];
