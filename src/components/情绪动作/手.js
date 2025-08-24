@@ -56,7 +56,7 @@ const activities = [
         },
         useImage: "Caress",
         label: {
-            CN: "轻抬下巴",
+            CN: "手指抬下巴",
             EN: "Chin Lift",
             RU: "Приподнять подбородок",
             UA: "Підняти підборіддя",

@@ -234,7 +234,7 @@ const activities = [
             {
                 activity: {
                     Name: "脚戳刺激",
-                    Prerequisite: ["UseFeet", "Luzi_IsStanding", "Luzi_TargetKneelOrAllFours"],
+                    Prerequisite: ["UseFeet", "Luzi_IsStanding", "TargetZoneNaked", "Luzi_TargetKneelOrAllFours"],
                     MaxProgress: 60,
                     Target: ["ItemNipples", "ItemVulva", "ItemVulvaPiercings", "ItemButt"],
                 },
