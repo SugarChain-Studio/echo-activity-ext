@@ -12,7 +12,7 @@ interface Rect {
 
 type CustomActivityPrerequisite =
     | ActivityPrerequisite
-    | 'Luz_NotBlind'
+    | 'Luzi_NotBlind'
     | 'Luzi_TargetHasTail'
     | 'Luzi_HasWings'
     | 'Luzi_TargetHasWings'

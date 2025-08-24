@@ -22,7 +22,7 @@ const activity = [
             Name: "看看裙底",
             Prerequisite: [
                 "Luzi_CanWalk",
-                "Luz_NotBlind",
+                "Luzi_NotBlind",
                 "Luzi_TargetPelvisExposed",
                 Prereqs.ActedCheck((acted) => !!queryItem(acted)),
             ],
@@ -48,7 +48,7 @@ const activity = [
             Name: "看看裙底真空",
             Prerequisite: [
                 "Luzi_CanWalk",
-                "Luz_NotBlind",
+                "Luzi_NotBlind",
                 "Luzi_TargetPelvisExposed",
                 Prereqs.ActedCheck((acted) => !queryItem(acted)),
             ],

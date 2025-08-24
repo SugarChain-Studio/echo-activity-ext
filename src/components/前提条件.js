@@ -137,7 +137,7 @@ const prereqStorage = {
         if (!acting.IsPlayer()) return false;
         return ChatRoomLeashPlayer && ChatRoomLeashPlayer === acted.MemberNumber;
     },
-    Luz_NotBlind: (_prereq, acting, _acted, _group) => !acting.IsBlind(),
+    Luzi_NotBlind: (_prereq, acting, _acted, _group) => !acting.IsBlind(),
     Luzi_TargetPelvisExposed: Prereqs.ActedCheck(
         (acted) =>
             !InventoryDoItemsBlockGroup(acted, "ItemPelvis", ["Cloth", "ClothLower"]) &&
