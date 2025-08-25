@@ -92,6 +92,7 @@ const activities = [
                         ChatRoomCharacterUpdate(player);
                         ChatRoomCharacterItemUpdate(TargetC, ActivityGroup.Name);
                         CharacterRefresh(player);
+                        CharacterRefresh(TargetC);
                     });
             }
         },
@@ -133,7 +134,7 @@ const activities = [
                 findCharacter("TargetC", TargetCharacter)
                     .then("trayItem", (target) => InventoryGet(target, ActivityGroup.Name))
                     .then((item) => /**@type {ExtendItemProperties}*/ (item.Property)?.Luzi_InventoryType)
-                    .then((type, { trayItem, TargetC }) => {
+                    .then((type, { trayItem }) => {
                         const props = /** @type {ExtendItemProperties} */ (trayItem.Property);
                         props.Luzi_InventoryContent ??= [];
 
@@ -165,6 +166,7 @@ const activities = [
                         ChatRoomCharacterItemUpdate(player, "ItemHandheld");
                         ChatRoomCharacterItemUpdate(TargetC, ActivityGroup.Name);
                         CharacterRefresh(player);
+                        CharacterRefresh(TargetC);
                     });
             }
         },
