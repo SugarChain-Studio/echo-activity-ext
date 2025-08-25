@@ -78,7 +78,7 @@ const activities = [
                             const drinkTypeNum = handItem.Property?.TypeRecord?.["typed"];
                             if (!drinkTypeNum) return;
 
-                            const value = /** @type {ContentData} */ ({ IAsset: drinkType[drinkTypeNum], ...content });
+                            const value = /** @type {ContentData} */ ({ ...content, IAsset: drinkType[drinkTypeNum] });
                             const empty = props.Luzi_InventoryContent.findIndex((it) => !it.IAsset);
                             if (empty >= 0) props.Luzi_InventoryContent[empty] = value;
                             else props.Luzi_InventoryContent.push(value);
@@ -146,19 +146,22 @@ const activities = [
                             props.Luzi_InventoryContent[idx] = {};
 
                             const item = InventoryWear(player, "杯饮", "ItemHandheld");
+                            if (!item) return undefined;
                             Object.assign(item, { ...value, IAsset: undefined, Asset: item.Asset });
-                            if (!value.Property) {
-                                item.Property ??= {};
-                                ExtendedItemSetOptionByRecord(player, item, { typed: drinkType.indexOf(value.IAsset) });
-                            }
+                            const typed = drinkType.indexOf(value.IAsset);
+                            if (typed < 0) return undefined;
+                            item.Property ??= {};
+                            ExtendedItemSetOptionByRecord(player, item, { typed });
                         } else if (type === "曲奇") {
                             const target = Math.floor(Math.random() * props.Luzi_InventoryContent.length);
                             const value = props.Luzi_InventoryContent.splice(target, 1)[0];
 
                             const item = InventoryWear(player, "曲奇", "ItemHandheld");
+                            if (!item) return undefined;
                             Object.assign(item, { ...value, IAsset: undefined, Asset: item.Asset });
                         }
-
+                    })
+                    .then((_, { TargetC }) => {
                         ChatRoomCharacterItemUpdate(player, "ItemHandheld");
                         ChatRoomCharacterItemUpdate(TargetC, ActivityGroup.Name);
                         CharacterRefresh(player);
