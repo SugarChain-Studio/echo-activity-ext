@@ -1,7 +1,8 @@
 import { ActivityManager } from "../../activityForward";
-import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
+import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "../../utils";
+import { Path } from "../../resouce";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -15,37 +16,37 @@ const activity = {
             Prereqs.Acted.TargetGroupIs(["鞍_Luzi"]),
         ],
         MaxProgress: 50,
-        Target: ["ItemTorso"],
+        Target: ["ItemTorso", "ItemTorso2"],
     },
-    run: (player, sender, { TargetCharacter, SourceCharacter }) => {
+    run: (player, sender, { TargetCharacter, SourceCharacter, ActivityGroup }) => {
         if (TargetCharacter === player.MemberNumber) {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-            const SrcChara = ChatRoomCharacter.find((C) => C.MemberNumber === SourceCharacter);
-            if (!SrcChara) return;
-            ChatRoomOrder.setDrawOrder({
-                prevCharacter: SrcChara.MemberNumber,
-                associatedAsset: {
-                    group: "ItemTorso",
-                    asset: "鞍_Luzi",
-                },
-            });
-            ChatRoomLeashPlayer = SrcChara.MemberNumber;
+            findCharacter("SourceC", SourceCharacter)
+                .then(() => InventoryGet(player, ActivityGroup.Name))
+                .then((item, { SourceC }) => {
+                    wearAndPair(player, item.Asset, { prevCharacter: SourceC.MemberNumber });
+                    leashPlayer(SourceC);
+
+                    if (PoseAvailable(player, "BodyFull", "AllFours")) {
+                        PoseSetActive(player, "AllFours");
+                    }
+                });
         } else if (SourceCharacter === player.MemberNumber) {
-            const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === TargetCharacter);
-            if (!TgtChara) return;
-            ChatRoomOrder.setDrawOrder({
-                nextCharacter: TgtChara.MemberNumber,
-                associatedAsset: {
-                    group: "ItemTorso",
-                    asset: "缰绳_Luzi",
-                },
-            });
-            if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);
+            findCharacter("TargetC", TargetCharacter)
+                .then(() => player.Appearance.find((i) => i.Asset.Name === "缰绳_Luzi"))
+                .then((leashItem, { TargetC }) => {
+                    wearAndPair(player, leashItem.Asset, { nextCharacter: TargetC.MemberNumber });
+                    leashTarget(TargetC);
+
+                    if (PoseAvailable(player, "BodyLower", "KneelingSpread")) {
+                        PoseSetActive(player, "KneelingSpread");
+                    }
+                });
         }
     },
-    useImage: "Wiggle",
+    useImage: Path.resolve("activities/rideon.png"),
     label: {
         CN: "骑上去",
         EN: "Ride On",
@@ -67,7 +68,7 @@ export default function () {
         DrawMods.asset(items, (_, { sharedC, initState, C }) => {
             const { Zoom } = initState;
             if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X, Y: sharedC.center.Y - 50 * Zoom, Zoom };
+                return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
             }
             if (sharedC.next.MemberNumber === C.MemberNumber) {
                 return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
