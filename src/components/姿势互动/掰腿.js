@@ -14,7 +14,7 @@ const activities = [
                     Prereqs.Acted.PoseAnyAvailable("BodyUpper", ["KneelingSpread", "BaseLower"])
                 ),
             ],
-            MaxProgress: 500,
+            MaxProgress: 50,
             MaxProgressSelf: 50,
             Target: ["ItemLegs"],
         },
@@ -38,6 +38,39 @@ const activities = [
             EN: "SourceCharacter spreads DestinationCharacter legs.",
             RU: "SourceCharacter раздвигает ноги TargetCharacter.",
             UA: "SourceCharacter Розширює ноги TargetCharacter.",
+        },
+    },
+    {
+        activity: {
+            Name: "合并双腿",
+            Prerequisite: [
+                "UseHands",
+                "UseArms",
+                Prereqs.and(
+                    Prereqs.Acted.PoseIs("BodyLower", ["KneelingSpread", "BaseLower"]),
+                    Prereqs.Acted.PoseAnyAvailable("BodyUpper", ["Kneel", "LegsClosed"])
+                ),
+            ],
+            MaxProgress: 50,
+            MaxProgressSelf: 50,
+            Target: ["ItemLegs"],
+        },
+        mode: "OthersOnSelf",
+        run: (player, sender) => {
+            // 遵守物品权限
+            if (!ServerChatRoomGetAllowItem(sender, player)) return;
+
+            if (player.IsKneeling()) PoseSetActive(player, "Kneel");
+            else PoseSetActive(player, "LegsClosed");
+        },
+        useImage: "Wiggle",
+        label: {
+            CN: "合并双腿",
+            EN: "Merge Legs",
+        },
+        dialog: {
+            CN: "SourceCharacter用手将DestinationCharacter双腿并拢.",
+            EN: "SourceCharacter uses hands to bring DestinationCharacter legs together.",
         },
     },
 ];
