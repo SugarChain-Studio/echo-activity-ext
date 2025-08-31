@@ -70,7 +70,7 @@ export default function () {
     SharedCenterModifier.addModifier(
         DrawMods.timer((_, { sharedC, initState, C }) => {
             if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { ...initState, X: sharedC.where.next.X };
+                return { ...initState, X: sharedC.where.next.X, Y: sharedC.where.next.Y };
             }
             if (sharedC.next.MemberNumber === C.MemberNumber) {
                 return initState;
