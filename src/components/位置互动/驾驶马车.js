@@ -28,6 +28,7 @@ const activity = {
                     group: "ItemDevices",
                     asset: "马车前_Luzi",
                 },
+                leash: "lead",
             });
             ChatRoomLeashPlayer = SrcChara.MemberNumber;
         } else if (info.SourceCharacter === player.MemberNumber) {
@@ -40,6 +41,7 @@ const activity = {
                     group: "ItemDevices",
                     asset: "马车_Luzi",
                 },
+                leash: "follow",
             });
             ChatRoomCharacterUpdate(player);
             if (ChatRoomLeashList.indexOf(TgtChara.MemberNumber) < 0) ChatRoomLeashList.push(TgtChara.MemberNumber);

@@ -1,7 +1,7 @@
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
-import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "../../utils";
+import { findCharacter, wearAndPair } from "../../utils";
 import { Path } from "../../resouce";
 
 /** @type { CustomActivity } */
@@ -26,9 +26,7 @@ const activity = {
             findCharacter("SourceC", SourceCharacter)
                 .then(() => InventoryGet(player, ActivityGroup.Name))
                 .then((item, { SourceC }) => {
-                    wearAndPair(player, item.Asset, { prevCharacter: SourceC.MemberNumber });
-                    leashPlayer(SourceC);
-
+                    wearAndPair(player, item.Asset, { prevCharacter: SourceC.MemberNumber }, "follow");
                     if (PoseAvailable(player, "BodyFull", "AllFours")) {
                         PoseSetActive(player, "AllFours");
                     }
@@ -37,9 +35,7 @@ const activity = {
             findCharacter("TargetC", TargetCharacter)
                 .then(() => player.Appearance.find((i) => i.Asset.Name === "缰绳_Luzi"))
                 .then((leashItem, { TargetC }) => {
-                    wearAndPair(player, leashItem.Asset, { nextCharacter: TargetC.MemberNumber });
-                    leashTarget(TargetC);
-
+                    wearAndPair(player, leashItem.Asset, { nextCharacter: TargetC.MemberNumber }, "lead");
                     if (PoseAvailable(player, "BodyLower", "KneelingSpread")) {
                         PoseSetActive(player, "KneelingSpread");
                     }

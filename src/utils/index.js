@@ -1,12 +1,14 @@
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
+import { Pick } from "@mod-utils/ChatRoomOrder/checks";
 import { Optional } from "@mod-utils/monadic";
 
 /**
  * @param {PlayerCharacter} player
  * @param {Asset} asset
  * @param {PrevOrNextXCharacter} pair
+ * @param {XCharacterDrawOrderBase["leash"]} [leash] 如果提供，则设置牵引状态
  */
-export const wearAndPair = (player, asset, pair) => {
+export const wearAndPair = (player, asset, pair, leash) => {
     if (!player.Appearance.some((i) => i.Asset.Group.Name === asset.Group.Name && i.Asset.Name === asset.Name)) {
         InventoryWear(player, asset.Name, asset.Group.Name);
         ChatRoomCharacterItemUpdate(player, asset.Group.Name);
@@ -14,6 +16,7 @@ export const wearAndPair = (player, asset, pair) => {
     ChatRoomOrder.setDrawOrder({
         ...pair,
         associatedAsset: { group: /** @type {AssetGroupItemName}*/ (asset.Group.Name), asset: asset.Name },
+        leash,
     });
 };
 
@@ -31,6 +34,9 @@ export const findCharacter = (key, memberNumber) => {
  * @param {Character} target
  */
 export const leashTarget = (target) => {
+    const prevOther = Pick.other(Player);
+    if (prevOther) ChatRoomLeashList = ChatRoomLeashList.filter((id) => id !== prevOther);
+
     if (!ChatRoomLeashList.some((id) => id === target.MemberNumber)) {
         ChatRoomLeashList.push(target.MemberNumber);
     }

@@ -2,7 +2,7 @@ import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { DynImageProviders } from "../../dynamicImage";
-import { leashTarget, findCharacter, wearAndPair, leashPlayer } from "../../utils";
+import { findCharacter, wearAndPair } from "../../utils";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -25,15 +25,13 @@ const activity = {
             findCharacter("SourceC", SourceCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemDevices", "Trolley"))
                 .then((asset, { SourceC }) => {
-                    wearAndPair(player, asset, { prevCharacter: SourceC.MemberNumber });
-                    leashPlayer(SourceC);
+                    wearAndPair(player, asset, { prevCharacter: SourceC.MemberNumber }, "follow");
                 });
         } else if (SourceCharacter === player.MemberNumber) {
             findCharacter("TargetC", TargetCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemMisc", "抓住推车"))
                 .then((asset, { TargetC }) => {
-                    wearAndPair(player, asset, { nextCharacter: TargetC.MemberNumber });
-                    leashTarget(TargetC);
+                    wearAndPair(player, asset, { nextCharacter: TargetC.MemberNumber }, "lead");
                 });
         }
     },

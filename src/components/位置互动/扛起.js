@@ -1,7 +1,7 @@
 import { ActivityManager } from "../../activityForward";
 import { SharedCenterModifier, DrawMods } from "./drawMods";
 import { Prereqs } from "../../prereqs";
-import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "../../utils";
+import { findCharacter, wearAndPair } from "../../utils";
 
 /** @type { CustomActivity} */
 const activity = {
@@ -23,15 +23,13 @@ const activity = {
             findCharacter("SourceC", SourceCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemDevices", "BurlapSack"))
                 .then((asset, { SourceC }) => {
-                    wearAndPair(player, asset, { nextCharacter: SourceC.MemberNumber });
-                    leashPlayer(SourceC, false);
+                    wearAndPair(player, asset, { nextCharacter: SourceC.MemberNumber }, "follow");
                 });
         } else if (SourceCharacter === player.MemberNumber) {
             findCharacter("TargetC", TargetCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋_Luzi"))
                 .then((asset, { TargetC }) => {
-                    wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber });
-                    leashTarget(TargetC);
+                    wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber }, "lead");
                 });
         }
     },
