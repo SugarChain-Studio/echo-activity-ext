@@ -9,9 +9,15 @@ const activities = [
             Prerequisite: [
                 "UseHands",
                 "UseArms",
-                Prereqs.and(
-                    Prereqs.Acted.PoseIs("BodyLower", ["Kneel", "LegsClosed"]),
-                    Prereqs.Acted.PoseAnyAvailable("BodyUpper", ["KneelingSpread", "BaseLower"])
+                Prereqs.or(
+                    Prereqs.and(
+                        Prereqs.Acted.PoseIs("BodyLower", "Kneel"),
+                        Prereqs.Acted.PoseAnyAvailable("BodyUpper", "KneelingSpread")
+                    ),
+                    Prereqs.and(
+                        Prereqs.Acted.PoseIs("BodyLower", "LegsClosed"),
+                        Prereqs.Acted.PoseAnyAvailable("BodyUpper", "BaseLower")
+                    )
                 ),
             ],
             MaxProgress: 50,
@@ -26,7 +32,7 @@ const activities = [
             if (player.IsKneeling()) PoseSetActive(player, "KneelingSpread");
             else PoseSetActive(player, "BaseLower");
         },
-        useImage: "Wiggle",
+        useImage: "MasturbateFist",
         label: {
             CN: "掰开双腿",
             EN: "Spread Legs",
@@ -46,9 +52,15 @@ const activities = [
             Prerequisite: [
                 "UseHands",
                 "UseArms",
-                Prereqs.and(
-                    Prereqs.Acted.PoseIs("BodyLower", ["KneelingSpread", "BaseLower"]),
-                    Prereqs.Acted.PoseAnyAvailable("BodyUpper", ["Kneel", "LegsClosed"])
+                Prereqs.or(
+                    Prereqs.and(
+                        Prereqs.Acted.PoseIs("BodyLower", "KneelingSpread"),
+                        Prereqs.Acted.PoseAnyAvailable("BodyUpper", "Kneel")
+                    ),
+                    Prereqs.and(
+                        Prereqs.Acted.PoseIs("BodyLower", "BaseLower"),
+                        Prereqs.Acted.PoseAnyAvailable("BodyUpper", "LegsClosed")
+                    )
                 ),
             ],
             MaxProgress: 50,
@@ -63,7 +75,7 @@ const activities = [
             if (player.IsKneeling()) PoseSetActive(player, "Kneel");
             else PoseSetActive(player, "LegsClosed");
         },
-        useImage: "Wiggle",
+        useImage: "MasturbateFist",
         label: {
             CN: "合并双腿",
             EN: "Merge Legs",
