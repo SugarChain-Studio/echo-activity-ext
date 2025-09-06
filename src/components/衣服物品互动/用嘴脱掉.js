@@ -3,23 +3,13 @@ import { Prereqs } from "../../prereqs";
 import { makeI18nMessage } from "../../messager";
 
 /** @type {CustomGroupName[]} */
-const gloves = ["Gloves", "Gloves_笨笨蛋Luzi", "Gloves_笨笨笨蛋Luzi2"];
+const gloves = ["Gloves", "Gloves_笨笨蛋Luzi"];
 
 /** @type {CustomGroupName[]} */
-const shoes = ["Shoes", "Shoes_笨笨蛋Luzi", "Shoes_笨笨笨蛋Luzi2"];
+const shoes = ["Shoes", "Shoes_笨笨蛋Luzi"];
 
 /** @type {CustomGroupName[]} */
-const socks = [
-    "Socks",
-    "SocksLeft",
-    "SocksRight",
-    "Socks_笨笨蛋Luzi",
-    "SocksLeft_笨笨蛋Luzi",
-    "SocksRight_笨笨蛋Luzi",
-    "Socks_笨笨笨蛋Luzi2",
-    "SocksLeft_笨笨笨蛋Luzi2",
-    "SocksRight_笨笨笨蛋Luzi2",
-];
+const socks = ["Socks", "SocksLeft", "SocksRight"];
 
 const messages = makeI18nMessage({
     NotFound: {

@@ -18,7 +18,7 @@ const groupMap = {
     ItemFeet: ["Socks", "SocksLeft", "SocksRight"],
     ItemBoots: ["Shoes", "Shoes_笨笨蛋Luzi"],
     ItemHead: ["Hat", "Hat_笨笨蛋Luzi"],
-    ItemMouth: ["Mask", "Mask_笨笨蛋Luzi", "Mask_笨笨笨蛋Luzi2"],
+    ItemMouth: ["Mask", "Mask_笨笨蛋Luzi"],
     ItemArms: ["Gloves", "Gloves_笨笨蛋Luzi"],
 };
 
