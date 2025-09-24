@@ -43,10 +43,10 @@ const translation = {
     "Allow LSCG Leashing:": "允许束缚互动:",
     "Allow custom leashing from LSCG activities such as hand-holding, hypnosis, etc.":
         "允许通过牵手、催眠等 LSCG 互动建立束缚关系",
-    "Enable Tamperproof Items:": "启用物品保护:",
+    "Enable Tamperproof Items:": "启用Tamperproof词条物品:",
     "Enable tamperproof features on crafted items you wear.": "为穿戴的自制物品启用防篡改保护",
-    "Enable Chaotic/Evolving Items:": "启用混沌/进化物品:",
-    "Enable chaotic/evolving features on crafted items you wear.": "为穿戴的自制物品启用混沌进化特性",
+    "Enable Chaotic/Evolving Items:": "启用Chaotic/Evolving词条物品:",
+    "Enable chaotic/evolving features on crafted items you wear.": "为穿戴的自制物品启用混沌/进化特性",
 
     // 触发催眠第一页
     "Triggered Hypnosis": "指令触发式催眠",
