@@ -73,14 +73,17 @@ const prereqStorage = {
     ),
     Luzi_HasPawMittens: (_prereq, acting, _acted, _group) =>
         InventoryIsItemInList(acting, "ItemHands", ["PawMittens", "ElbowLengthMittens"]),
-    Luzi_HasPetSuit: Prereqs.or(
+    Luzi_HasPetSuit: Prereqs.any(
         Prereqs.Acting.GroupIs("ItemArms", [
             "ShinyPetSuit",
             "BitchSuit",
             "StrictLeatherPetCrawler",
             "乳胶宠物拘束服_Luzi",
         ]),
-        Prereqs.and(Prereqs.Acting.GroupIs("ItemArms", ["宠物服上"]), Prereqs.Acting.GroupIs("ItemArms", ["宠物服下"]))
+        Prereqs.and(
+            Prereqs.Acting.GroupIs("ItemArms", ["宠物服上", "PawPaddedPetsuitArms", "StrappedPetsuitArms"]),
+            Prereqs.Acting.GroupIs("ItemLegs", ["宠物服下", "PawPaddedPetsuitLegs", "StrappedPetsuitLegs"])
+        )
     ),
     Luzi_HasBreast: Prereqs.Acting.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
     Luzi_TargetHasBreast: Prereqs.Acted.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
