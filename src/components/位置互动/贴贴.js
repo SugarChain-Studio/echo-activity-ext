@@ -86,7 +86,7 @@ export default function () {
         DrawMods.asset(items, (_, { sharedC, initState, C }) => {
             const { Zoom } = initState;
             if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X, Y: sharedC.center.Y + 50, Zoom };
+                return { C, X: sharedC.center.X, Y: sharedC.center.Y - 50, Zoom };
             }
             if (sharedC.next.MemberNumber === C.MemberNumber) {
                 return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
