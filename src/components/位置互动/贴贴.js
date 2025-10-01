@@ -26,7 +26,12 @@ const activity = [
     {
         activity: {
             Name: "钻进怀里",
-            Prerequisite: [() => !!AssetGet("Female3DCG", "ItemMisc", "贴贴"), Prereqs.Acted.GroupEmpty(["ItemMisc"])],
+            Prerequisite: [
+                () => !!AssetGet("Female3DCG", "ItemMisc", "贴贴"),
+                "Luzi_CanWalk",
+                Prereqs.Acted.GroupEmpty(["ItemMisc"]),
+                Prereqs.Acting.GroupEmpty(["ItemMisc"]),
+            ],
             MaxProgress: 0,
             Target: ["ItemTorso", "ItemTorso2", "ItemArms"],
         },
@@ -52,7 +57,12 @@ const activity = [
     {
         activity: {
             Name: "抱入怀中",
-            Prerequisite: [() => !!AssetGet("Female3DCG", "ItemMisc", "贴贴"), Prereqs.Acted.GroupEmpty(["ItemMisc"])],
+            Prerequisite: [
+                () => !!AssetGet("Female3DCG", "ItemMisc", "贴贴"),
+                "Luzi_CanWalk",
+                Prereqs.Acted.GroupEmpty(["ItemMisc"]),
+                Prereqs.Acting.GroupEmpty(["ItemMisc"]),
+            ],
             MaxProgress: 0,
             Target: ["ItemTorso", "ItemTorso2", "ItemArms"],
         },
