@@ -13,6 +13,7 @@ const stomachValueSetting = {
     吐司: 0.3,
     曲奇: 0.1,
     蛋挞: 0.2,
+    月饼: 0.2,
 };
 
 function eat(assetName) {
