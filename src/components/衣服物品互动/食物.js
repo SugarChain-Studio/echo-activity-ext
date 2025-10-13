@@ -131,26 +131,23 @@ const activity = [
             TargetSelf: true,
         },
         useImage: DynImageProviders.itemOnActingGroup("ItemHandheld"),
-        run: (player, sender, info) => {
-            if (info.SourceCharacter === player.MemberNumber) {
-                const heldItem = InventoryGet(player, "ItemHandheld");
-                if (!heldItem) return;
+        run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
+            if (SourceCharacter === player.MemberNumber) {
+                findCharacter("TargetC", TargetCharacter)
+                    .then("HeldItem", () => InventoryGet(player, "ItemHandheld"))
+                    .then((item) => AssetGet("Female3DCG", "ItemMouth", item.Asset.Name))
+                    .then((_, { TargetC, HeldItem }) => {
+                        // 给棒棒糖
+                        const nItem = InventoryWear(TargetC, HeldItem.Asset.Name, ActivityGroup.Name);
 
-                const asset = AssetGet("Female3DCG", "ItemMouth", heldItem.Asset.Name);
-                if (!asset) return;
+                        if (HeldItem.Craft) nItem.Craft = HeldItem.Craft;
+                        InventoryRemove(player, "ItemHandheld");
 
-                // 获取 TargetCharacter 玩家信息
-                const target = ChatRoomCharacter.find((obj) => obj.MemberNumber === info.TargetCharacter);
-                if (!target) return;
-
-                // 给棒棒糖
-                InventoryWear(target, heldItem.Asset.Name, info.ActivityGroup.Name);
-                InventoryRemove(player, "ItemHandheld");
-
-                // 更新外观
-                ChatRoomCharacterItemUpdate(target, info.ActivityGroup.Name);
-                ChatRoomCharacterItemUpdate(player, "ItemHandheld");
-                CharacterRefresh(player, true);
+                        // 更新外观
+                        ChatRoomCharacterItemUpdate(TargetC, ActivityGroup.Name);
+                        ChatRoomCharacterItemUpdate(player, "ItemHandheld");
+                        CharacterRefresh(player, true);
+                    });
             }
         },
         item: (actor) => InventoryGet(actor, "ItemHandheld"),
