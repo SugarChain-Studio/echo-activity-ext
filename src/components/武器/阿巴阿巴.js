@@ -56,7 +56,7 @@ const activity = [
             mode: "AnyInvolved",
             run: (player, _, { SourceCharacter, TargetCharacter }) =>
                 playItemAudio(
-                    Path.resolve("audio/阿巴阿巴.mp3"),
+                    Path.resolve(`audio/gelgun${Math.floor(Math.random() * 4) + 1}.mp3`),
                     SourceCharacter === player.MemberNumber || TargetCharacter === player.MemberNumber
                 ),
             useImage: ["ItemHandheld", "阿巴阿巴_Luzi"],
@@ -70,7 +70,7 @@ const activity = [
             },
             dialog: {
                 CN: "SourceCharacter举起ActivityAsset瞄准, 水弹直直击中了DestinationCharacter$group。",
-                EN: "SourceCharacter raised the ActivityAsset and aimed, the water bullet hit DestinationCharacter $group directly.",
+                EN: "SourceCharacter raised the ActivityAsset and aimed, the gel bullet hit DestinationCharacter $group directly.",
             },
         }
     ),
