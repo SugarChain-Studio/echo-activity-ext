@@ -100,7 +100,7 @@ const i18n = {
 </div>
 `,
         shareUnsupport: "不支持你分享的链接，目前支持的有：%s。使用'/分享'获取帮助! ",
-        shareInfo: "SourceCharacter 发送了一个 SourceType 嵌入分享 ╰(*°▽°*)╯",
+        shareInfo: "SourceCharacter 发送了一个 SourceType 嵌入分享 ╰(*°▽°*)╯: SourceLink",
     },
     EN: {
         shareHelp: `
@@ -141,7 +141,7 @@ const i18n = {
 `,
         shareUnsupport:
             "The link you shared is not supported, currently supported are: %s. Use '/sharelink' to get help! ",
-        shareInfo: "SourceCharacter sends a SourceType embedded share ╰(*°▽°*)╯",
+        shareInfo: "SourceCharacter sends a SourceType embedded share ╰(*°▽°*)╯: SourceLink",
     },
 };
 
@@ -180,15 +180,18 @@ function shareErrReport(lang) {
 function shareHandle(parsed, lang = "CN") {
     const shareContent = parsed;
 
-    /** @type {ShareInfo | undefined} */
-    const sendv = (() => {
+    /** @type {[ShareInfo, string] | undefined} */
+    const result = (() => {
         if (shareContent.includes("music.163.com")) {
             const match = shareContent.match(/[?&]id=(\d+)/); // 拿到歌曲ID   用户ID不能发出去 保护隐私
             if (match)
-                return {
-                    linkType: "nm",
-                    info: btoa(match[1]),
-                };
+                return [
+                    {
+                        linkType: "nm",
+                        info: btoa(match[1]),
+                    },
+                    `https://music.163.com/song?id=${match[1]}`,
+                ];
         } else if (shareContent.startsWith('<iframe src="//player.bilibili.com/player.html')) {
             const src = shareContent.match(/src="([^"]+)"/)?.[1];
             if (!src) return undefined;
@@ -196,31 +199,44 @@ function shareHandle(parsed, lang = "CN") {
                 const shareUrl = new URL(window.location.protocol + src);
                 const args = ["aid", "bvid", "cid", "p"].map((key) => shareUrl.searchParams.get(key));
                 if (args.some((v) => !v)) return undefined;
-                return {
-                    linkType: "bili",
-                    info: btoa(JSON.stringify(args)),
-                };
+                return [
+                    {
+                        linkType: "bili",
+                        info: btoa(JSON.stringify(args)),
+                    },
+                    `https://www.bilibili.com/video/${args[1]}`,
+                ];
             } catch (e) {
                 console.error("Error parsing Bilibili iframe:", e);
                 return undefined;
             }
         } else if (shareContent.startsWith("https://youtu.be/")) {
             const match = shareContent.match(/youtu\.be\/(\w+)/);
-            if (match) return { linkType: "ytb", info: btoa(JSON.stringify([match[1], match[2]])) };
+            if (match)
+                return [
+                    { linkType: "ytb", info: btoa(JSON.stringify([match[1], match[2]])) },
+                    `https://youtu.be/${match[1]}`,
+                ];
         } else if (shareContent.startsWith("https://www.youtube.com/watch")) {
             const match = shareContent.match(/[?&]v=(\w+)&/);
-            if (match) return { linkType: "ytb", info: btoa(JSON.stringify([match[1]])) };
+            if (match)
+                return [{ linkType: "ytb", info: btoa(JSON.stringify([match[1]])) }, `https://youtu.be/${match[1]}`];
         } else if (shareContent.includes("pornhub.com/view_video.php")) {
             const match = shareContent.match(/viewkey=([A-Za-z0-9]+)/);
-            if (match) return { linkType: "phb", info: btoa(match[1]) };
+            if (match)
+                return [
+                    { linkType: "phb", info: btoa(match[1]) },
+                    `https://pornhub.com/view_video.php?viewkey=${match[1]}`,
+                ];
         }
 
         return undefined;
     })();
 
-    if (!sendv) {
+    if (!result) {
         shareErrReport(lang);
     } else {
+        const [sendv, src] = result;
         // 发送
         ServerSend("ChatRoomChat", {
             Type: "Hidden",
@@ -231,7 +247,10 @@ function shareHandle(parsed, lang = "CN") {
         // 发送消息
         messager.action(text(lang).shareInfo, {
             source: Player,
-            text: { tag: "SourceType", text: valuify(frame[sendv.linkType].displayName) },
+            text: [
+                { tag: "SourceType", text: valuify(frame[sendv.linkType].displayName) },
+                { tag: "SourceLink", text: src },
+            ],
         });
         // 清理输入框内容
         ElementValue("InputChat", "");
