@@ -458,13 +458,13 @@ const activities = [
             TargetSelf: true,
         },
         useImage: DynImageProviders.itemOnActingGroup("ItemHands"),
-        labelSelf: {
+        label: {
             CN: "猫爪防护",
             EN: "Paw Protective Cover",
             RU: "Прикрыть лапкой",
             UA: "Захистити лапкою",
         },
-        dialogSelf: {
+        dialog: {
             CN: "SourceCharacter用爪子轻轻护住TargetCharacter的私密部位。",
             EN: "SourceCharacter gently covers DestinationCharacter private area with PronounPossessive paws.",
             RU: "SourceCharacter нежно прикрывает интимную зону TargetCharacter своей лапкой.",
