@@ -55,26 +55,17 @@ export default function () {
     ActivityManager.addCustomActivity(activity);
 
     SharedCenterModifier.addModifier(
-        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
-            const { Zoom } = initState;
-            if (sharedC.prev.MemberNumber === C.MemberNumber) {
+        DrawMods.asset(
+            items,
+            (state, ctx) => {
+                const { sharedC } = ctx;
                 if (sharedC.next.ActivePose[0] === "Kneel" || sharedC.next.ActivePose[0] === "KneelingSpread") {
-                    return {
-                        X: sharedC.center.X,
-                        Y: sharedC.center.Y - 120 * Zoom,
-                        Zoom,
-                    };
+                    return DrawMods.builder("center", { X: 0, Y: -120 })(state, ctx);
                 } else {
-                    return {
-                        X: sharedC.center.X,
-                        Y: sharedC.center.Y - 340 * Zoom,
-                        Zoom,
-                    };
+                    return DrawMods.builder("center", { X: 0, Y: -340 })(state, ctx);
                 }
-            }
-            if (sharedC.next.MemberNumber === C.MemberNumber) {
-                return { X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
-            }
-        })
+            },
+            ["center"]
+        )
     );
 }

@@ -70,16 +70,5 @@ const items = [{ prev: "缰绳_Luzi", next: "鞍_Luzi" }];
 
 export default function () {
     ActivityManager.addCustomActivity(activity);
-
-    SharedCenterModifier.addModifier(
-        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
-            const { Zoom } = initState;
-            if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
-            }
-            if (sharedC.next.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X, Y: sharedC.center.Y, Zoom };
-            }
-        })
-    );
+    SharedCenterModifier.addModifier(DrawMods.asset(items, ["center"], ["center"]));
 }

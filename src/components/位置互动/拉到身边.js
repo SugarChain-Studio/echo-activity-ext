@@ -89,20 +89,5 @@ const activity = {
 
 export default function () {
     ActivityManager.addCustomActivity(activity);
-
-    SharedCenterModifier.addModifier(
-        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
-            const { Zoom } = initState;
-            if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return {
-                    X: sharedC.center.X - 75 * Zoom,
-                    Y: sharedC.center.Y,
-                    Zoom,
-                };
-            }
-            if (sharedC.next.MemberNumber === C.MemberNumber) {
-                return { X: sharedC.center.X + 75 * Zoom, Y: sharedC.center.Y, Zoom };
-            }
-        })
-    );
+    SharedCenterModifier.addModifier(DrawMods.asset(items, ["center", { X: -75, Y: 0 }], ["center", { X: 75, Y: 0 }]));
 }

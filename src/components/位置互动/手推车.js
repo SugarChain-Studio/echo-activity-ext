@@ -53,14 +53,6 @@ export default function () {
     ActivityManager.addCustomActivity(activity);
 
     SharedCenterModifier.addModifier(
-        DrawMods.asset(items, (_, { sharedC, initState, C }) => {
-            const { Zoom } = initState;
-            if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X + 50 * Zoom, Y: sharedC.center.Y - 50 * Zoom, Zoom };
-            }
-            if (sharedC.next.MemberNumber === C.MemberNumber) {
-                return { C, X: sharedC.center.X - 50 * Zoom, Y: sharedC.center.Y, Zoom };
-            }
-        })
+        DrawMods.asset(items, ["center", { X: 50, Y: -50 }], ["center", { X: -50, Y: 0 }])
     );
 }

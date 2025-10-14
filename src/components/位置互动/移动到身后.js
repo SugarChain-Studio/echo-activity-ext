@@ -66,15 +66,5 @@ const activities = [
 
 export default function () {
     ActivityManager.addCustomActivities(activities);
-
-    SharedCenterModifier.addModifier(
-        DrawMods.timer((_, { sharedC, initState, C }) => {
-            if (sharedC.prev.MemberNumber === C.MemberNumber) {
-                return { ...initState, X: sharedC.where.next.X, Y: sharedC.where.next.Y };
-            }
-            if (sharedC.next.MemberNumber === C.MemberNumber) {
-                return initState;
-            }
-        })
-    );
+    SharedCenterModifier.addModifier(DrawMods.timer(["next"], ["unchanged"]));
 }
