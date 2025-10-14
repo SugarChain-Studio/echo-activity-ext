@@ -1,7 +1,8 @@
 import { ActivityManager } from "../../activityForward";
 import { SharedCenterModifier, DrawMods } from "./drawMods";
 import { Prereqs } from "../../prereqs";
-import { findCharacter, wearAndPair } from "../../utils";
+import { ChatRoomOrderTools } from "@mod-utils/ChatRoomOrder";
+import { Tools } from "@mod-utils/Tools";
 
 /** @type { CustomActivity} */
 const activity = {
@@ -20,16 +21,16 @@ const activity = {
     },
     run: (player, sender, { SourceCharacter, TargetCharacter }) => {
         if (TargetCharacter === player.MemberNumber) {
-            findCharacter("SourceC", SourceCharacter)
+            Tools.findCharacter("SourceC", SourceCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemDevices", "BurlapSack"))
                 .then((asset, { SourceC }) => {
-                    wearAndPair(player, asset, { nextCharacter: SourceC.MemberNumber }, "follow");
+                    ChatRoomOrderTools.wearAndPair(player, asset, { nextCharacter: SourceC.MemberNumber }, "follow");
                 });
         } else if (SourceCharacter === player.MemberNumber) {
-            findCharacter("TargetC", TargetCharacter)
+            Tools.findCharacter("TargetC", TargetCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋_Luzi"))
                 .then((asset, { TargetC }) => {
-                    wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber }, "lead");
+                    ChatRoomOrderTools.wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber }, "lead");
                 });
         }
     },

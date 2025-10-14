@@ -1,8 +1,9 @@
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
-import { findCharacter, wearAndPair } from "../../utils";
 import { Path } from "../../resouce";
+import { ChatRoomOrderTools } from "@mod-utils/ChatRoomOrder";
+import { Tools } from "@mod-utils/Tools";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -23,19 +24,29 @@ const activity = {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
-            findCharacter("SourceC", SourceCharacter)
+            Tools.findCharacter("SourceC", SourceCharacter)
                 .then(() => InventoryGet(player, ActivityGroup.Name))
                 .then((item, { SourceC }) => {
-                    wearAndPair(player, item.Asset, { prevCharacter: SourceC.MemberNumber }, "follow");
+                    ChatRoomOrderTools.wearAndPair(
+                        player,
+                        item.Asset,
+                        { prevCharacter: SourceC.MemberNumber },
+                        "follow"
+                    );
                     if (PoseAvailable(player, "BodyFull", "AllFours")) {
                         PoseSetActive(player, "AllFours");
                     }
                 });
         } else if (SourceCharacter === player.MemberNumber) {
-            findCharacter("TargetC", TargetCharacter)
+            Tools.findCharacter("TargetC", TargetCharacter)
                 .then(() => player.Appearance.find((i) => i.Asset.Name === "缰绳_Luzi"))
                 .then((leashItem, { TargetC }) => {
-                    wearAndPair(player, leashItem.Asset, { nextCharacter: TargetC.MemberNumber }, "lead");
+                    ChatRoomOrderTools.wearAndPair(
+                        player,
+                        leashItem.Asset,
+                        { nextCharacter: TargetC.MemberNumber },
+                        "lead"
+                    );
                     if (PoseAvailable(player, "BodyLower", "KneelingSpread")) {
                         PoseSetActive(player, "KneelingSpread");
                     }

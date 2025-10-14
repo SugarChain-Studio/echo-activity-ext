@@ -1,9 +1,10 @@
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
-import { findCharacter, wearAndPair } from "../../utils";
 import { Path } from "../../resouce";
 import { monadic } from "@mod-utils/monadic";
+import { ChatRoomOrderTools } from "@mod-utils/ChatRoomOrder";
+import { Tools } from "@mod-utils/Tools";
 
 /**
  * @param {object} arg
@@ -13,9 +14,9 @@ import { monadic } from "@mod-utils/monadic";
 function cuddle({ next, prev }) {
     monadic(AssetGet("Female3DCG", "ItemMisc", "贴贴")).then((asset) => {
         if (prev.MemberNumber === Player.MemberNumber) {
-            wearAndPair(Player, asset, { nextCharacter: next.MemberNumber }, "follow");
+            ChatRoomOrderTools.wearAndPair(Player, asset, { nextCharacter: next.MemberNumber }, "follow");
         } else if (next.MemberNumber === Player.MemberNumber) {
-            wearAndPair(Player, asset, { prevCharacter: prev.MemberNumber }, "lead");
+            ChatRoomOrderTools.wearAndPair(Player, asset, { prevCharacter: prev.MemberNumber }, "lead");
         }
         ChatRoomCharacterUpdate(Player);
     });
@@ -39,9 +40,13 @@ const activity = [
             if (TargetCharacter === player.MemberNumber) {
                 // 遵守物品权限
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
-                findCharacter("SourceC", SourceCharacter).then((source) => cuddle({ next: source, prev: player }));
+                Tools.findCharacter("SourceC", SourceCharacter).then((source) =>
+                    cuddle({ next: source, prev: player })
+                );
             } else if (SourceCharacter === player.MemberNumber) {
-                findCharacter("TargetC", TargetCharacter).then((target) => cuddle({ next: player, prev: target }));
+                Tools.findCharacter("TargetC", TargetCharacter).then((target) =>
+                    cuddle({ next: player, prev: target })
+                );
             }
         },
         useImage: Path.resolve("activities/cuddle_held.png"),
@@ -70,9 +75,13 @@ const activity = [
             if (TargetCharacter === player.MemberNumber) {
                 // 遵守物品权限
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
-                findCharacter("SourceC", SourceCharacter).then((source) => cuddle({ next: player, prev: source }));
+                Tools.findCharacter("SourceC", SourceCharacter).then((source) =>
+                    cuddle({ next: player, prev: source })
+                );
             } else if (SourceCharacter === player.MemberNumber) {
-                findCharacter("TargetC", TargetCharacter).then((target) => cuddle({ next: target, prev: player }));
+                Tools.findCharacter("TargetC", TargetCharacter).then((target) =>
+                    cuddle({ next: target, prev: player })
+                );
             }
         },
         useImage: Path.resolve("activities/cuddle_hold.png"),

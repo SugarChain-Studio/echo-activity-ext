@@ -2,7 +2,8 @@ import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { DynImageProviders } from "../../dynamicImage";
-import { findCharacter, wearAndPair } from "../../utils";
+import { ChatRoomOrderTools } from "@mod-utils/ChatRoomOrder";
+import { Tools } from "@mod-utils/Tools";
 
 /** @type { CustomActivity } */
 const activity = {
@@ -22,16 +23,16 @@ const activity = {
         if (TargetCharacter === player.MemberNumber) {
             // 遵守物品权限
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
-            findCharacter("SourceC", SourceCharacter)
+            Tools.findCharacter("SourceC", SourceCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemDevices", "Trolley"))
                 .then((asset, { SourceC }) => {
-                    wearAndPair(player, asset, { prevCharacter: SourceC.MemberNumber }, "follow");
+                    ChatRoomOrderTools.wearAndPair(player, asset, { prevCharacter: SourceC.MemberNumber }, "follow");
                 });
         } else if (SourceCharacter === player.MemberNumber) {
-            findCharacter("TargetC", TargetCharacter)
+            Tools.findCharacter("TargetC", TargetCharacter)
                 .then(() => AssetGet("Female3DCG", "ItemMisc", "抓住推车"))
                 .then((asset, { TargetC }) => {
-                    wearAndPair(player, asset, { nextCharacter: TargetC.MemberNumber }, "lead");
+                    ChatRoomOrderTools.wearAndPair(player, asset, { nextCharacter: TargetC.MemberNumber }, "lead");
                 });
         }
     },

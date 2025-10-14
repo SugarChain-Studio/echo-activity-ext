@@ -2,8 +2,9 @@ import { ActivityManager } from "../../activityForward";
 import { Path } from "../../resouce";
 import { DrawMods, SharedCenterModifier } from "./drawMods";
 import { Prereqs } from "../../prereqs";
-import { findCharacter, leashPlayer, leashTarget, wearAndPair } from "../../utils";
 import { monadic } from "@mod-utils/monadic";
+import { ChatRoomOrderTools } from "@mod-utils/ChatRoomOrder";
+import { Tools } from "@mod-utils/Tools";
 
 const items = [
     { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },
@@ -48,14 +49,14 @@ const activity = {
             if (!ServerChatRoomGetAllowItem(sender, player)) return;
 
             const group = "ItemNeckRestraints";
-            findCharacter("SourceC", SourceCharacter)
+            Tools.findCharacter("SourceC", SourceCharacter)
                 .then(() => InventoryGet(player, group))
                 .then((item, { SourceC }) => {
-                    wearAndPair(player, item.Asset, { nextCharacter: SourceC.MemberNumber });
-                    leashPlayer(SourceC);
+                    ChatRoomOrderTools.wearAndPair(player, item.Asset, { nextCharacter: SourceC.MemberNumber });
+                    ChatRoomOrderTools.leashPlayer(SourceC);
                 });
         } else if (SourceCharacter === player.MemberNumber) {
-            findCharacter("TargetC", TargetCharacter)
+            Tools.findCharacter("TargetC", TargetCharacter)
                 .then((target) => InventoryGet(target, "ItemNeckRestraints"))
                 .then((item) => itemMap[item.Asset.Name])
                 .then((pairItemName) =>
@@ -66,8 +67,8 @@ const activity = {
                     )
                 )
                 .then((asset, { TargetC }) => {
-                    wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber });
-                    leashTarget(TargetC);
+                    ChatRoomOrderTools.wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber });
+                    ChatRoomOrderTools.leashTarget(TargetC);
                 });
         }
     },

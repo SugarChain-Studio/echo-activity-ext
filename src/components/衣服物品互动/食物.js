@@ -2,7 +2,7 @@ import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
 import { DynImageProviders } from "../../dynamicImage";
 import { playerStomach } from "./foodValue";
-import { findCharacter } from "../../utils";
+import { Tools } from "@mod-utils/Tools";
 
 const stomachValueSetting = {
     棒棒糖_Luzi: 0.1,
@@ -39,7 +39,7 @@ const activity = [
         useImage: DynImageProviders.itemOnActedGroup("ItemMouth"),
         run: (player, sender, { SourceCharacter, TargetCharacter }) => {
             if (SourceCharacter === player.MemberNumber) {
-                findCharacter("TargetC", TargetCharacter)
+                Tools.findCharacter("TargetC", TargetCharacter)
                     .then("MouthItem", (target) => InventoryGet(target, "ItemMouth"))
                     .then((item) => InventoryWear(player, item.Asset.Name, "ItemMouth"))
                     .then((item, { TargetC, MouthItem }) => {
@@ -133,7 +133,7 @@ const activity = [
         useImage: DynImageProviders.itemOnActingGroup("ItemHandheld"),
         run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
             if (SourceCharacter === player.MemberNumber) {
-                findCharacter("TargetC", TargetCharacter)
+                Tools.findCharacter("TargetC", TargetCharacter)
                     .then("HeldItem", () => InventoryGet(player, "ItemHandheld"))
                     .then((item) => AssetGet("Female3DCG", "ItemMouth", item.Asset.Name))
                     .then((_, { TargetC, HeldItem }) => {
@@ -174,7 +174,7 @@ const activity = [
         useImage: DynImageProviders.itemOnActingGroup("ItemMouth"),
         run: (player, sender, { SourceCharacter, TargetCharacter }) => {
             if (SourceCharacter === player.MemberNumber) {
-                findCharacter("TargetC", TargetCharacter)
+                Tools.findCharacter("TargetC", TargetCharacter)
                     .then("MouthItem", () => InventoryGet(player, "ItemMouth"))
                     .then((item, { TargetC }) => InventoryWear(TargetC, item.Asset.Name, "ItemMouth"))
                     .then((item, { MouthItem }) => Object.assign(item, MouthItem))
