@@ -1,6 +1,6 @@
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
-import { DrawMods, SharedCenterModifier } from "./drawMods";
+import { DrawMods, SharedCenterModifier } from "@mod-utils/ChatRoomOrder";
 import { Prereqs } from "../../prereqs";
 import { findDrawOrderPair } from "@mod-utils/ChatRoomOrder/XCharacterDrawlist";
 

@@ -1,6 +1,6 @@
 import { ActivityManager } from "../../activityForward";
 import { Prereqs } from "../../prereqs";
-import { DrawMods, SharedCenterModifier } from "./drawMods";
+import { DrawMods, SharedCenterModifier } from "@mod-utils/ChatRoomOrder";
 import { Path } from "../../resouce";
 import { monadic } from "@mod-utils/monadic";
 import { ChatRoomOrderTools } from "@mod-utils/ChatRoomOrder";

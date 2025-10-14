@@ -1,6 +1,6 @@
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { ActivityManager } from "../../activityForward";
-import { DrawMods, SharedCenterModifier } from "./drawMods";
+import { DrawMods, SharedCenterModifier } from "@mod-utils/ChatRoomOrder";
 
 /** @type {CustomActivity["run"]} */
 const moveBehindRun = (player, sender, { TargetCharacter, SourceCharacter }) => {
