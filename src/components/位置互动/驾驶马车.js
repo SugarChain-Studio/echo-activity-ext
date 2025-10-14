@@ -1,6 +1,6 @@
 import { ActivityManager } from "../../activityForward";
 import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
-import { SharedCenterModifier, DrawMods } from "./drawMods";
+import { SharedCenterModifier, DrawMods } from "@mod-utils/ChatRoomOrder";
 import { Prereqs } from "../../prereqs";
 
 /** @type { CustomActivity } */
