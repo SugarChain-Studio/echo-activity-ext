@@ -6,13 +6,14 @@ import { ChatRoomOrder } from "@mod-utils/ChatRoomOrder";
 import { setup } from "./components";
 import { once } from "@sugarch/bc-mod-utility";
 import { Logger } from "@mod-utils/log";
-import bcModSdk from "bondage-club-mod-sdk";
 
 HookManager.setLogger(Logger);
 ActivityManager.setLogger(Logger);
 
-once(ModInfo.name, () => {
-    const mod = bcModSdk.registerMod(ModInfo);
+once(ModInfo.name, async () => {
+    await import("https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0");
+
+    const mod = globalThis.bcModSdk.registerMod(ModInfo);
     HookManager.initWithMod(mod);
     ChatRoomOrder.setup();
     ActivityManager.init();

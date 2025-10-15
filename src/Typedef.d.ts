@@ -59,7 +59,10 @@ type DynamicImageProvier = import('@sugarch/bc-activity-manager').DynamicActivit
 
 type ActivityGroupName = import('@sugarch/bc-mod-types').Translation.ActivityGroupName;
 
-declare module 'https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0/dist/bcmodsdk.js' {
-    import bcModSdk from 'bondage-club-mod-sdk';
-    export default bcModSdk;
+declare module 'https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0' {}
+
+declare global {
+    interface GlobalThis {
+        bcModSdk: typeof import('bondage-club-mod-sdk');
+    }
 }
