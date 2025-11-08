@@ -61,6 +61,7 @@
         "bondage-club-mod-sdk": "^1.2.0",
         "conventional-changelog": "^7.1.1",
         "conventional-changelog-angular": "^8.0.0",
+        "conventional-changelog-preset-loader": "^5.0.0",
         "copyfiles": "^2.4.1",
         "eslint": "^9.34.0",
         "github-markdown-css": "^5.8.1",
