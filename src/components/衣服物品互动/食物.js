@@ -31,12 +31,12 @@ const activity = [
             Prerequisite: [
                 "UseMouth",
                 Prereqs.Acting.GroupEmpty(["ItemMouth"]),
-                Prereqs.Acted.GroupIs("ItemMouth", Object.keys(stomachValueSetting)),
+                Prereqs.Acted.TargetGroupIs(Object.keys(stomachValueSetting)),
             ],
             MaxProgress: 50,
-            Target: ["ItemMouth"],
+            Target: ["ItemMouth", "ItemHandheld"],
         },
-        useImage: DynImageProviders.itemOnActedGroup("ItemMouth"),
+        useImage: DynImageProviders.itemOnActedTargetGroup(),
         run: (player, sender, { SourceCharacter, TargetCharacter }) => {
             if (SourceCharacter === player.MemberNumber) {
                 Tools.findCharacter("TargetC", TargetCharacter)
@@ -56,8 +56,14 @@ const activity = [
             EN: "Bite off",
         },
         dialog: {
-            CN: "SourceCharacter从TargetCharacter嘴里咬走ActivityAsset.",
-            EN: "SourceCharacter bites off ActivityAsset from DestinationCharacter mouth.",
+            CN: {
+                ItemMouth: "SourceCharacter从TargetCharacter嘴里咬走ActivityAsset.",
+                ItemHandheld: "SourceCharacter从TargetCharacter手里咬走ActivityAsset.",
+            },
+            EN: {
+                ItemMouth: "SourceCharacter bites off ActivityAsset from DestinationCharacter mouth.",
+                ItemHandheld: "SourceCharacter bites off ActivityAsset from DestinationCharacter hand.",
+            },
         },
     },
     {
