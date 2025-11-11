@@ -4,7 +4,7 @@ import { load, save } from "./dataAccess";
 import { Logger } from "@mod-utils/log";
 
 /**
- * @typedef { {Name:string, Target?:string, TargetSelf?: string, Dialog?:string, DialogSelf?:string} } ActivityData
+ * @typedef { {Name:string, Target?:string, TargetSelf?: string, Dialog?:string, DialogSelf?:string} } ActivityDataItem
  */
 
 function stringToHash(src) {
@@ -28,10 +28,10 @@ export function activityName(actName) {
 
 /**
  * @param {any} data
- * @returns {Record<string, ActivityData>}
+ * @returns {Record<string, ActivityDataItem>}
  */
 function validate(data) {
-    /** @type {Record<string, ActivityData>} */
+    /** @type {Record<string, ActivityDataItem>} */
     const ret = {};
     if (typeof ret !== "object") return ret;
 
@@ -46,44 +46,44 @@ function validate(data) {
     return ret;
 }
 
-const 动作数据key = "动作数据";
+const DATA_KEY = "动作数据";
 
-class 动作数据 {
+class ActivityData {
     constructor() {
-        /** @type {Record<string, ActivityData>} */
+        /** @type {Record<string, ActivityDataItem>} */
         this.data = validate(
             (() => {
-                const ret = load(动作数据key);
-                if (Object.keys(ret).length === 0) return load(动作数据.name);
+                const ret = load(DATA_KEY);
+                if (Object.keys(ret).length === 0) return load(ActivityData.name);
                 return ret;
             })()
         );
-        Object.values(this.data).forEach((act) => this.注册动作(act));
+        Object.values(this.data).forEach((act) => this.registerAct(act));
     }
 
     /**
-     * @param {ActivityData[]} acts
+     * @param {ActivityDataItem[]} acts
      */
-    增加一组动作(acts) {
+    addActivities(acts) {
         acts.forEach((act) => {
             if (this.data[act.Name]) return;
             if (!ActivityManager.checkActivityAvailability(activityName(act.Name))) return;
             this.data[act.Name] = act;
-            this.注册动作(act);
+            this.registerAct(act);
         });
-        this.保存();
+        this.save();
     }
 
     /**
-     * @param {ActivityData} act
+     * @param {ActivityDataItem} act
      * @returns {boolean} 如果添加成功返回true
      */
-    增加动作(act) {
+    addActivity(act) {
         if (this.data[act.Name]) return false;
         if (!ActivityManager.checkActivityAvailability(activityName(act.Name))) return false;
         this.data[act.Name] = act;
-        this.注册动作(act);
-        this.保存();
+        this.registerAct(act);
+        this.save();
         return true;
     }
 
@@ -91,25 +91,25 @@ class 动作数据 {
      * @param {string} actName
      * @returns { boolean}
      */
-    动作可用(actName) {
+    activityAvailable(actName) {
         return this.data[actName] === undefined;
     }
 
     /**
      * @param {string} actName
      */
-    删除动作(actName) {
+    removeActivity(actName) {
         const name = activityName(actName);
         ActivityManager.removeCustomActivity(name);
         delete this.data[actName];
-        this.保存();
+        this.save();
     }
 
     /**
      *
-     * @param {ActivityData} act
+     * @param {ActivityDataItem} act
      */
-    注册动作(act) {
+    registerAct(act) {
         if (!act.Name) {
             Logger.warn(`动作名称为空 : ${JSON.stringify(act)}`);
             return;
@@ -138,25 +138,25 @@ class 动作数据 {
         ActivityManager.addCustomActivity(nAct);
     }
 
-    保存() {
-        save(动作数据key, this.data);
+    save() {
+        save(DATA_KEY, this.data);
     }
 
-    清空() {
+    clear() {
         Object.keys(this.data).forEach((key) => {
             ActivityManager.removeCustomActivity(activityName(key));
         });
 
         this.data = {};
-        this.保存();
+        this.save();
     }
 }
 
-/** @type {动作数据 | undefined} */
+/** @type {ActivityData | undefined} */
 let data = undefined;
 export default function () {
     HookManager.afterPlayerLogin(() => {
-        data = new 动作数据();
+        data = new ActivityData();
 
         const olddata = /** @type {any} */ (Player.OnlineSettings).ECHO;
         if (olddata) {
@@ -172,7 +172,7 @@ export default function () {
 
                     const oldPrefix = "笨蛋笨Luzi_";
 
-                    /** @type {ActivityData[]} */
+                    /** @type {ActivityDataItem[]} */
                     const resultActivity = [];
                     decompressedActivity.forEach((act) => {
                         if (ActivityManager.checkActivityAvailability(act.Name)) {
@@ -199,7 +199,7 @@ export default function () {
                         if (selfdialog) data.Dialog = targetdialog[1];
                     });
 
-                    data.增加一组动作(resultActivity);
+                    data.addActivities(resultActivity);
                     delete olddata["炉子ActivityFemale3DCG"];
                     delete olddata["炉子ActivityDictionary"];
                     ServerAccountUpdate.QueueData({ OnlineSettings: Player.OnlineSettings });
@@ -211,6 +211,6 @@ export default function () {
     });
 }
 
-export function 动作数据管理() {
+export function activityDataManager() {
     return data;
 }

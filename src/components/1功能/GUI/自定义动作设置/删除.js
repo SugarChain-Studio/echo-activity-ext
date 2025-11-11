@@ -1,5 +1,5 @@
 import { Preloader } from "../../../../resouce";
-import { 动作数据管理 } from "../../../保存数据/保存动作";
+import { activityDataManager } from "../../../保存数据/保存动作";
 import { BaseSubscreen } from "../gui";
 import { RDrawBackNextButton, RDrawButton, RMouseIn } from "../RDraw";
 import { i18n } from "../i18n";
@@ -16,7 +16,7 @@ export class 自定义动作设置_删除 extends BaseSubscreen {
 
         this.deleteAllButtonRect = { X: 1600, Y: 720, W: 90, H: 90 };
 
-        const acts = Object.keys(动作数据管理()?.data || {});
+        const acts = Object.keys(activityDataManager()?.data || {});
         this.actIndex = Math.max(acts.length - 1, 0);
     }
     run() {
@@ -25,7 +25,7 @@ export class 自定义动作设置_删除 extends BaseSubscreen {
 
         DrawText(i18n("Setting::Act::DeleteExisting"), 1000, 260, "White");
 
-        const acts = Object.keys(动作数据管理()?.data || {});
+        const acts = Object.keys(activityDataManager()?.data || {});
 
         const targetActText = acts.length > 0 ? `[${acts[this.actIndex]}]` : i18n("Setting::Act::NoMore");
         const prevActText =
@@ -53,7 +53,7 @@ export class 自定义动作设置_删除 extends BaseSubscreen {
     }
     click() {
         if (RMouseIn(this.backNextButtonRect)) {
-            const acts = Object.keys(动作数据管理()?.data || {});
+            const acts = Object.keys(activityDataManager()?.data || {});
             if (acts.length > 1) {
                 if (RMouseIn(this.backNextButtonRectLeft))
                     this.actIndex = (this.actIndex - 1 + acts.length) % acts.length;
@@ -63,8 +63,8 @@ export class 自定义动作设置_删除 extends BaseSubscreen {
             }
         }
         if (RMouseIn(this.deleteOneButtonRect)) {
-            const targetAct = Object.keys(动作数据管理()?.data || {})[this.actIndex];
-            if (targetAct) 动作数据管理()?.删除动作(targetAct);
+            const targetAct = Object.keys(activityDataManager()?.data || {})[this.actIndex];
+            if (targetAct) activityDataManager()?.removeActivity(targetAct);
         }
     }
 }

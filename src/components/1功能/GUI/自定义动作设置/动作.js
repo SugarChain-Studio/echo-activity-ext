@@ -1,5 +1,5 @@
 import { Preloader } from "../../../../resouce";
-import { 动作数据管理 } from "../../../保存数据/保存动作";
+import { activityDataManager } from "../../../保存数据/保存动作";
 import { BaseSubscreen } from "../gui";
 import {
     getInputElementById,
@@ -49,7 +49,8 @@ export class 自定义动作设置_动作 extends BaseSubscreen {
         if (!this.targetGroup()?.Name) return { ret: false, what: i18n("Setting::Act::Save::NeedBodyArea") };
         const name = getInputElementById(this.actNameId)?.value;
         if (!name) return { ret: false, what: i18n("Setting::Act::Save::NeedActName") };
-        if (!动作数据管理()?.动作可用(name)) return { ret: false, what: i18n("Setting::Act::Save::ActExisted") };
+        if (!activityDataManager()?.activityAvailable(name))
+            return { ret: false, what: i18n("Setting::Act::Save::ActExisted") };
         return { ret: true, what: "" };
     }
 
@@ -150,7 +151,7 @@ export class 自定义动作设置_动作 extends BaseSubscreen {
                     Dialog: getInputElementById(this.targetTextAreaId)?.value || "",
                     DialogSelf: getInputElementById(this.targetSelfTextAreaId)?.value || "",
                 };
-                动作数据管理()?.增加动作(act);
+                activityDataManager()?.addActivity(act);
                 this.当前页面 = "动作";
             }
         }

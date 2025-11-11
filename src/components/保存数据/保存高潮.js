@@ -1,24 +1,24 @@
 import { HookManager } from "@sugarch/bc-mod-hook-manager";
 import { load, save } from "./dataAccess";
 
-const 高潮数据key = "高潮数据";
+const DATA_KEY = "高潮数据";
 
-class 高潮数据 {
+class OrgasmData {
     constructor() {
         /** @type {boolean} */
-        this.高潮开关 = false;
+        this.isOn = false;
         /** @type {number} */
-        this.高潮次数 = 0;
+        this.counter = 0;
 
         /** @type {{高潮开关:boolean, 高潮次数:number }} */
         const data = (() => {
-            const ret = load(高潮数据key);
-            if (Object.keys(ret).length === 0) return load(高潮数据.name);
+            const ret = load(DATA_KEY);
+            if (Object.keys(ret).length === 0) return load(OrgasmData.name);
             return ret;
         })();
         if (data) {
-            this.高潮开关 = data.高潮开关;
-            this.高潮次数 = data.高潮次数;
+            this.isOn = data.高潮开关;
+            this.counter = data.高潮次数;
         }
     }
 
@@ -28,32 +28,32 @@ class 高潮数据 {
      * @param {boolean} [param0.高潮开关] 高潮开关
      * @param {number} [param0.高潮次数] 高潮次数
      */
-    设置值({ 高潮开关, 高潮次数 } = {}) {
-        if (高潮开关 !== undefined) this.高潮开关 = 高潮开关;
-        if (高潮次数 !== undefined) this.高潮次数 = 高潮次数;
-        this.保存();
+    setValue({ 高潮开关, 高潮次数 } = {}) {
+        if (高潮开关 !== undefined) this.isOn = 高潮开关;
+        if (高潮次数 !== undefined) this.counter = 高潮次数;
+        this.save();
     }
 
-    增加() {
-        if (this.高潮开关) {
-            this.高潮次数++;
-            this.保存();
+    increase() {
+        if (this.isOn) {
+            this.counter++;
+            this.save();
         }
     }
 
     data() {
         return {
-            高潮开关: this.高潮开关,
-            高潮次数: this.高潮次数,
+            高潮开关: this.isOn,
+            高潮次数: this.counter,
         };
     }
 
-    保存() {
-        save(高潮数据key, this.data());
+    save() {
+        save(DATA_KEY, this.data());
     }
 }
 
-/** @type { 高潮数据 | undefined } */
+/** @type { OrgasmData | undefined } */
 let data = undefined;
 
 /**
@@ -61,7 +61,7 @@ let data = undefined;
  * @param { { 高潮开关?:boolean, 高潮次数?:number } } param0
  */
 export function 设置高潮数据(param0) {
-    data?.设置值(param0);
+    data?.setValue(param0);
 }
 
 /** @returns {boolean} */
@@ -71,7 +71,7 @@ export function 高潮数据开关() {
 
 export default function () {
     HookManager.afterPlayerLogin(() => {
-        data = new 高潮数据();
+        data = new OrgasmData();
 
         const olddata = /** @type {any} */ (Player.OnlineSettings).ECHO;
         if (olddata) {
@@ -79,7 +79,7 @@ export default function () {
             const { 高潮开关, 高潮次数 } = olddata;
             if (高潮开关 !== undefined || 高潮次数 !== undefined) {
                 console.info("迁移高潮数据");
-                data.设置值(olddata);
+                data.setValue(olddata);
                 delete olddata["高潮开关"];
                 delete olddata["高潮次数"];
                 ServerAccountUpdate.QueueData({ OnlineSettings: Player.OnlineSettings });
@@ -88,8 +88,8 @@ export default function () {
     });
 
     HookManager.hookFunction("ChatRoomRun", 1, (args, next) => {
-        if (data?.高潮开关 && Player.ArousalSettings?.OrgasmCount !== undefined) {
-            Player.ArousalSettings.OrgasmCount = data?.高潮次数;
+        if (data?.isOn && Player.ArousalSettings?.OrgasmCount !== undefined) {
+            Player.ArousalSettings.OrgasmCount = data?.counter;
         }
         next(args);
     });
@@ -97,7 +97,7 @@ export default function () {
     HookManager.hookFunction("ActivityOrgasmStart", 1, (args, next) => {
         const [C] = args;
         if (C.IsPlayer() && !ActivityOrgasmRuined) {
-            data?.增加();
+            data?.increase();
         }
         next(args);
     });
