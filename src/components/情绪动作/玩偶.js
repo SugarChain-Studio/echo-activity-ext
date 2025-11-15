@@ -93,7 +93,7 @@ const activities = [
         ...useTheirPlushie,
         label: { CN: "玩偶戳戳", EN: "Plushie Poke" },
         dialog: {
-            CN: "SourceCharacter轻轻戳了戳DestinationCharacter手中ActivityPlushieAsset的脸。",
+            CN: "SourceCharacter轻轻戳了戳DestinationCharacter手中ActivityPlushieAsset玩偶的脸。",
             EN: "SourceCharacter gently pokes the face of the ActivityPlushieAsset plushie held by DestinationCharacter",
         },
     },
@@ -107,8 +107,8 @@ const activities = [
         ...useTheirPlushie,
         label: { CN: "玩偶蹭蹭", EN: "Plushie Rubs" },
         dialog: {
-            CN: "SourceCharacter用PronounPossessive手中的ActivityPlushieAssetMine蹭了蹭DestinationCharacter手中ActivityPlushieAssetTheirs。",
-            EN: "SourceCharacter rubs the ActivityPlushieAssetTheirs plushie held by TargetCharacter with the ActivityPlushieAssetMine plushie in PronounPossessive hand.",
+            CN: "SourceCharacter用PronounPossessiveActivityPlushieAssetMine玩偶蹭了蹭DestinationCharacterActivityPlushieAssetTheirs玩偶。",
+            EN: "SourceCharacter rubs DestinationCharacter ActivityPlushieAssetMine plushie with PronounPossessive ActivityPlushieAssetTheirs plushie.",
         },
         dictionary: (prev, actor, acted) => {
             const mine = findPlushieText(actor).valueOr(() => null);
