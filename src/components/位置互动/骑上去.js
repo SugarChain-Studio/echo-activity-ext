@@ -11,10 +11,10 @@ const activity = {
         Name: "骑上去",
         Prerequisite: [
             Prereqs.or(
-                Prereqs.Acting.GroupIs("ItemTorso", ["缰绳_Luzi"]),
-                Prereqs.Acting.GroupIs("ItemTorso2", ["缰绳_Luzi"])
+                Prereqs.Acting.GroupIs("ItemTorso", ["缰绳-Luzi"]),
+                Prereqs.Acting.GroupIs("ItemTorso2", ["缰绳-Luzi"])
             ),
-            Prereqs.Acted.TargetGroupIs(["鞍_Luzi"]),
+            Prereqs.Acted.TargetGroupIs(["鞍-Luzi"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso", "ItemTorso2"],
@@ -39,7 +39,7 @@ const activity = {
                 });
         } else if (SourceCharacter === player.MemberNumber) {
             Tools.findCharacter("TargetC", TargetCharacter)
-                .then(() => player.Appearance.find((i) => i.Asset.Name === "缰绳_Luzi"))
+                .then(() => player.Appearance.find((i) => i.Asset.Name === "缰绳-Luzi"))
                 .then((leashItem, { TargetC }) => {
                     ChatRoomOrderTools.wearAndPair(
                         player,
@@ -66,7 +66,7 @@ const activity = {
     },
 };
 
-const items = [{ prev: "缰绳_Luzi", next: "鞍_Luzi" }];
+const items = [{ prev: "缰绳-Luzi", next: "鞍-Luzi" }];
 
 export default function () {
     ActivityManager.addCustomActivity(activity);

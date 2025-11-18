@@ -11,31 +11,31 @@ import { findDrawOrderPair } from "@mod-utils/ChatRoomOrder/XCharacterDrawlist";
  */
 function playerLiesInBed({ next, prev }) {
     if (prev.MemberNumber === Player.MemberNumber) {
-        const asset = AssetGet("Female3DCG", "ItemDevices", "床左边_Luzi");
+        const asset = AssetGet("Female3DCG", "ItemDevices", "床左边-Luzi");
         if (!asset) return;
-        InventoryWear(Player, "床左边_Luzi", "ItemDevices");
-        InventoryWear(Player, "被子左边_Luzi", "ItemAddon");
+        InventoryWear(Player, "床左边-Luzi", "ItemDevices");
+        InventoryWear(Player, "被子左边-Luzi", "ItemAddon");
 
         ChatRoomOrder.setDrawOrder({
             nextCharacter: next.MemberNumber,
             associatedAsset: {
                 group: "ItemDevices",
-                asset: "床左边_Luzi",
+                asset: "床左边-Luzi",
             },
         });
 
         ChatRoomCharacterUpdate(Player);
     } else if (next.MemberNumber === Player.MemberNumber) {
-        const asset = AssetGet("Female3DCG", "ItemDevices", "床右边_Luzi");
+        const asset = AssetGet("Female3DCG", "ItemDevices", "床右边-Luzi");
         if (!asset) return;
-        InventoryWear(Player, "床右边_Luzi", "ItemDevices");
-        InventoryWear(Player, "被子右边_Luzi", "ItemAddon");
+        InventoryWear(Player, "床右边-Luzi", "ItemDevices");
+        InventoryWear(Player, "被子右边-Luzi", "ItemAddon");
 
         ChatRoomOrder.setDrawOrder({
             prevCharacter: prev.MemberNumber,
             associatedAsset: {
                 group: "ItemDevices",
-                asset: "床右边_Luzi",
+                asset: "床右边-Luzi",
             },
         });
 
@@ -49,7 +49,7 @@ const activities = [
         activity: {
             Name: "躺上去",
             Prerequisite: [
-                Prereqs.Acted.GroupIs("ItemDevices", ["Bed", "床左边_Luzi", "床右边_Luzi"]),
+                Prereqs.Acted.GroupIs("ItemDevices", ["Bed", "床左边-Luzi", "床右边-Luzi"]),
                 Prereqs.ActedCheck((C) => !findDrawOrderPair(C, ChatRoomCharacter)),
             ],
             MaxProgress: 0,
@@ -59,7 +59,7 @@ const activities = [
             if (TargetCharacter === player.MemberNumber) {
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
                 playerLiesInBed(
-                    InventoryIsItemInList(Player, "ItemDevices", ["Bed", "床左边_Luzi"])
+                    InventoryIsItemInList(Player, "ItemDevices", ["Bed", "床左边-Luzi"])
                         ? { next: SourceCharacterC, prev: Player }
                         : { next: player, prev: SourceCharacterC }
                 );
@@ -67,7 +67,7 @@ const activities = [
                 const targetC = ChatRoomCharacter.find((c) => c.MemberNumber === TargetCharacter);
                 if (!targetC) return;
                 playerLiesInBed(
-                    InventoryIsItemInList(targetC, "ItemDevices", ["Bed", "床左边_Luzi"])
+                    InventoryIsItemInList(targetC, "ItemDevices", ["Bed", "床左边-Luzi"])
                         ? { next: player, prev: targetC }
                         : { next: targetC, prev: Player }
                 );
@@ -93,7 +93,7 @@ const activities = [
             Prerequisite: [
                 "UseHands",
                 Prereqs.or(Prereqs.Relation.Lover(), Prereqs.Relation.ActingOwnActed()),
-                Prereqs.Acting.GroupIs("ItemDevices", ["Bed", "床左边_Luzi", "床右边_Luzi"]),
+                Prereqs.Acting.GroupIs("ItemDevices", ["Bed", "床左边-Luzi", "床右边-Luzi"]),
                 Prereqs.ActingCheck((C) => !findDrawOrderPair(C, ChatRoomCharacter)),
             ],
             MaxProgress: 0,
@@ -104,7 +104,7 @@ const activities = [
             if (TargetCharacter === player.MemberNumber) {
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
                 playerLiesInBed(
-                    InventoryIsItemInList(SourceCharacterC, "ItemDevices", ["Bed", "床左边_Luzi"])
+                    InventoryIsItemInList(SourceCharacterC, "ItemDevices", ["Bed", "床左边-Luzi"])
                         ? { next: Player, prev: SourceCharacterC }
                         : { next: SourceCharacterC, prev: Player }
                 );
@@ -112,7 +112,7 @@ const activities = [
                 const targetC = ChatRoomCharacter.find((c) => c.MemberNumber === TargetCharacter);
                 if (!targetC) return;
                 playerLiesInBed(
-                    InventoryIsItemInList(Player, "ItemDevices", ["Bed", "床左边_Luzi"])
+                    InventoryIsItemInList(Player, "ItemDevices", ["Bed", "床左边-Luzi"])
                         ? { next: targetC, prev: Player }
                         : { next: Player, prev: targetC }
                 );
@@ -133,7 +133,7 @@ const activities = [
     },
 ];
 
-const items = [{ prev: "床左边_Luzi", next: "床右边_Luzi" }];
+const items = [{ prev: "床左边-Luzi", next: "床右边-Luzi" }];
 
 export default function () {
     ActivityManager.addCustomActivities(activities);

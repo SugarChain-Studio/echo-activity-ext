@@ -4,15 +4,15 @@ import { Prereqs } from "../../prereqs";
 import { shakeItem } from "./shakeItem";
 
 const tailRecord = [
-    ["TailStrap", "穿戴式猫尾镜像_Luzi"],
-    ["PuppyTailStrap", "穿戴式狗尾镜像_Luzi"],
-    ["PuppyTailStrap1", "穿戴式软小狗尾镜像_Luzi"],
-    ["KittenTailStrap1", "穿戴式浅色猫尾镜像_Luzi"],
-    ["KittenTailStrap2", "小型穿戴式软猫尾镜像_Luzi"],
+    ["TailStrap", "穿戴式猫尾镜像-Luzi"],
+    ["PuppyTailStrap", "穿戴式狗尾镜像-Luzi"],
+    ["PuppyTailStrap1", "穿戴式软小狗尾镜像-Luzi"],
+    ["KittenTailStrap1", "穿戴式浅色猫尾镜像-Luzi"],
+    ["KittenTailStrap2", "小型穿戴式软猫尾镜像-Luzi"],
     ["FoxTailStrap1", "FoxTailStrap2"],
-    ["WolfTailStrap1", "大型穿戴式狼尾镜像_Luzi"],
-    ["WolfTailStrap2", "小型穿戴式狼尾镜像_Luzi"],
-    ["WolfTailStrap3", "白色穿戴式狼尾镜像_Luzi"],
+    ["WolfTailStrap1", "大型穿戴式狼尾镜像-Luzi"],
+    ["WolfTailStrap2", "小型穿戴式狼尾镜像-Luzi"],
+    ["WolfTailStrap3", "白色穿戴式狼尾镜像-Luzi"],
     ["DragonTailStrap2Left", "DragonTailStrap2Right"],
 ].reduce((acc, [item1, item2]) => {
     acc[item1] = item2;

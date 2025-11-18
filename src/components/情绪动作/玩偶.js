@@ -6,7 +6,7 @@ import { monadic } from "@mod-utils/monadic";
 function findPlushie(target) {
     return monadic(
         "Item",
-        target.Appearance.find((item) => item.Asset.Name === "玩偶_Luzi")
+        target.Appearance.find((item) => item.Asset.Name === "玩偶-Luzi")
     )
         .then((item) => item.Property.TypeRecord)
         .then("Type", (tr) => Object.entries(tr).find(([_, value]) => Boolean(value)));
@@ -30,7 +30,7 @@ const findPlushieText = (target) =>
 /** @type {Pick<CustomActivity,"useImage" | "item" | "dictionary">} */
 const useMyPlushie = {
     useImage: () => findPlushieImage(Player).valueOr(() => null),
-    item: (actor) => actor.Appearance.find((item) => item.Asset.Name === "玩偶_Luzi"),
+    item: (actor) => actor.Appearance.find((item) => item.Asset.Name === "玩偶-Luzi"),
     dictionary: (prev, actor) =>
         findPlushieText(actor)
             .then((text) => [...prev, { Tag: "ActivityPlushieAsset", Text: text }])
@@ -40,15 +40,15 @@ const useMyPlushie = {
 /** @type {Pick<CustomActivity,"useImage" | "item" | "dictionary">} */
 const useTheirPlushie = {
     useImage: (_, target) => findPlushieImage(target).valueOr(() => null),
-    item: (_, acted) => acted.Appearance.find((item) => item.Asset.Name === "玩偶_Luzi"),
+    item: (_, acted) => acted.Appearance.find((item) => item.Asset.Name === "玩偶-Luzi"),
     dictionary: (prev, _, acted) =>
         findPlushieText(acted)
             .then((text) => [...prev, { Tag: "ActivityPlushieAsset", Text: text }])
             .valueOr(() => prev),
 };
 
-const hasPlushie = Prereqs.ActingCheck((acting) => acting.Appearance.some((item) => item.Asset.Name === "玩偶_Luzi"));
-const theyHavePlushie = Prereqs.ActedCheck((acted) => acted.Appearance.some((item) => item.Asset.Name === "玩偶_Luzi"));
+const hasPlushie = Prereqs.ActingCheck((acting) => acting.Appearance.some((item) => item.Asset.Name === "玩偶-Luzi"));
+const theyHavePlushie = Prereqs.ActedCheck((acted) => acted.Appearance.some((item) => item.Asset.Name === "玩偶-Luzi"));
 
 /** @type { CustomActivity []} */
 const activities = [

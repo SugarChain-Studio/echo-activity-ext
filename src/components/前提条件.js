@@ -27,8 +27,8 @@ const tailItems = [
     "TailStrap",
     "KittenTailStrap2",
     "KittenTailStrap1",
-    "穿戴式浅色猫尾镜像_Luzi",
-    "小型穿戴式软猫尾镜像_Luzi",
+    "穿戴式浅色猫尾镜像-Luzi",
+    "小型穿戴式软猫尾镜像-Luzi",
 ];
 
 /** @type { Record<Exclude<CustomActivityPrerequisite,ActivityPrerequisite>, PrerequisiteCheckFunction> }  */
@@ -78,7 +78,7 @@ const prereqStorage = {
             "ShinyPetSuit",
             "BitchSuit",
             "StrictLeatherPetCrawler",
-            "乳胶宠物拘束服_Luzi",
+            "乳胶宠物拘束服-Luzi",
         ]),
         Prereqs.and(
             Prereqs.Acting.GroupIs("ItemArms", ["宠物服上", "PawPaddedPetsuitArms", "StrappedPetsuitArms"]),
@@ -104,7 +104,7 @@ const prereqStorage = {
         if (item.Asset.Name === "刀" && item.Property?.TypeRecord?.["A"] === 1) return true;
         return false;
     },
-    Luzi_Has鱼鱼尾: Prereqs.Acting.GroupIs("动物身体_Luzi", ["鱼鱼尾_Luzi"]),
+    Luzi_Has鱼鱼尾: Prereqs.Acting.GroupIs("动物身体_Luzi", ["鱼鱼尾-Luzi"]),
     Luzi_CharacterViewWithinReach: (_prereq, acting, acted, _group) => {
         if (!ServerPlayerIsInChatRoom()) return false;
         if (!ChatRoomCharacterViewIsActive()) return true;

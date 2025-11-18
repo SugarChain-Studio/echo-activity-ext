@@ -72,7 +72,7 @@ const activity = [
             Prerequisite: [
                 "UseMouth",
                 () => playerStomach.canEat(),
-                Prereqs.not(Prereqs.Acting.GroupIs("动物身体_Luzi", ["幽灵人形_Luzi"])), // 不允许幽灵人形吃东西
+                Prereqs.not(Prereqs.Acting.GroupIs("动物身体_Luzi", ["幽灵人形-Luzi"])), // 不允许幽灵人形吃东西
                 Prereqs.Acting.GroupIs("ItemMouth", Object.keys(stomachValueSetting)),
             ],
             MaxProgress: 0,
