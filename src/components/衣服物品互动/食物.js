@@ -5,11 +5,11 @@ import { playerStomach } from "./foodValue";
 import { Tools } from "@mod-utils/Tools";
 
 const stomachValueSetting = {
-    棒棒糖_Luzi: 0.1,
-    烤鱼_Luzi: 0.5,
-    鸡腿_Luzi: 0.6,
-    煎包_Luzi: 0.4,
-    蛋糕卷_Luzi: 0.8,
+    棒棒糖: 0.1,
+    烤鱼: 0.5,
+    鸡腿: 0.6,
+    煎包: 0.4,
+    蛋糕卷: 0.8,
     吐司: 0.3,
     曲奇: 0.1,
     蛋挞: 0.2,
@@ -72,7 +72,7 @@ const activity = [
             Prerequisite: [
                 "UseMouth",
                 () => playerStomach.canEat(),
-                Prereqs.not(Prereqs.Acting.GroupIs("动物身体_Luzi", ["幽灵人形-Luzi"])), // 不允许幽灵人形吃东西
+                Prereqs.not(Prereqs.Acting.GroupIs("动物身体_Luzi", ["幽灵人形"])), // 不允许幽灵人形吃东西
                 Prereqs.Acting.GroupIs("ItemMouth", Object.keys(stomachValueSetting)),
             ],
             MaxProgress: 0,

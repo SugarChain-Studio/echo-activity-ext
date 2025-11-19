@@ -15,21 +15,15 @@ const chainLength = {
         CollarLeash: 1,
         ChainLeash: 1,
         PetPost: 2,
-        哥布哥布_Luzi: 2,
-        监控机器人_Luzi: 1,
+        哥布哥布: 2,
+        监控机器人: 1,
     },
     ItemMouth: {
         PonyGag: 1,
     },
 };
 
-const tailItems = [
-    "TailStrap",
-    "KittenTailStrap2",
-    "KittenTailStrap1",
-    "穿戴式浅色猫尾镜像-Luzi",
-    "小型穿戴式软猫尾镜像-Luzi",
-];
+const tailItems = ["TailStrap", "KittenTailStrap2", "KittenTailStrap1", "穿戴式浅色猫尾镜像", "小型穿戴式软猫尾镜像"];
 
 /** @type { Record<Exclude<CustomActivityPrerequisite,ActivityPrerequisite>, PrerequisiteCheckFunction> }  */
 const prereqStorage = {
@@ -74,12 +68,7 @@ const prereqStorage = {
     Luzi_HasPawMittens: (_prereq, acting, _acted, _group) =>
         InventoryIsItemInList(acting, "ItemHands", ["PawMittens", "ElbowLengthMittens"]),
     Luzi_HasPetSuit: Prereqs.any(
-        Prereqs.Acting.GroupIs("ItemArms", [
-            "ShinyPetSuit",
-            "BitchSuit",
-            "StrictLeatherPetCrawler",
-            "乳胶宠物拘束服-Luzi",
-        ]),
+        Prereqs.Acting.GroupIs("ItemArms", ["ShinyPetSuit", "BitchSuit", "StrictLeatherPetCrawler", "乳胶宠物拘束服"]),
         Prereqs.and(
             Prereqs.Acting.GroupIs("ItemArms", ["宠物服上", "PawPaddedPetsuitArms", "StrappedPetsuitArms"]),
             Prereqs.Acting.GroupIs("ItemLegs", ["宠物服下", "PawPaddedPetsuitLegs", "StrappedPetsuitLegs"])
@@ -104,7 +93,7 @@ const prereqStorage = {
         if (item.Asset.Name === "刀" && item.Property?.TypeRecord?.["A"] === 1) return true;
         return false;
     },
-    Luzi_Has鱼鱼尾: Prereqs.Acting.GroupIs("动物身体_Luzi", ["鱼鱼尾-Luzi"]),
+    Luzi_Has鱼鱼尾: Prereqs.Acting.GroupIs("动物身体_Luzi", ["鱼鱼尾"]),
     Luzi_CharacterViewWithinReach: (_prereq, acting, acted, _group) => {
         if (!ServerPlayerIsInChatRoom()) return false;
         if (!ChatRoomCharacterViewIsActive()) return true;

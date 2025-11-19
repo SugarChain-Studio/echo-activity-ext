@@ -3,7 +3,7 @@ import { DynImageProviders } from "../../dynamicImage";
 import { Prereqs } from "../../prereqs";
 import { shakeItem } from "./shakeItem";
 
-const earRecord = [["KittenEars1", "黑猫耳镜像_Luzi"]].reduce((acc, [item1, item2]) => {
+const earRecord = [["KittenEars1", "黑猫耳镜像"]].reduce((acc, [item1, item2]) => {
     acc[item1] = item2;
     acc[item2] = item1;
     return acc;

@@ -9,8 +9,8 @@ const activity = {
         Name: "驾驶马车",
         Prerequisite: [
             "UseFeet",
-            Prereqs.Acting.GroupIs("ItemDevices", ["马车-Luzi"]),
-            Prereqs.Acted.GroupIs("ItemDevices", ["马车前-Luzi"]),
+            Prereqs.Acting.GroupIs("ItemDevices", ["马车"]),
+            Prereqs.Acted.GroupIs("ItemDevices", ["马车前"]),
         ],
         MaxProgress: 50,
         Target: ["ItemTorso"],
@@ -26,7 +26,7 @@ const activity = {
                 prevCharacter: SrcChara.MemberNumber,
                 associatedAsset: {
                     group: "ItemDevices",
-                    asset: "马车前-Luzi",
+                    asset: "马车前",
                 },
                 leash: "lead",
             });
@@ -34,12 +34,12 @@ const activity = {
         } else if (info.SourceCharacter === player.MemberNumber) {
             const TgtChara = ChatRoomCharacter.find((C) => C.MemberNumber === info.TargetCharacter);
             if (!TgtChara) return;
-            InventoryWear(player, "马车-Luzi", "ItemDevices");
+            InventoryWear(player, "马车", "ItemDevices");
             ChatRoomOrder.setDrawOrder({
                 nextCharacter: TgtChara.MemberNumber,
                 associatedAsset: {
                     group: "ItemDevices",
-                    asset: "马车-Luzi",
+                    asset: "马车",
                 },
                 leash: "follow",
             });
@@ -56,7 +56,7 @@ const activity = {
     },
 };
 
-const items = [{ prev: "马车-Luzi", next: "马车前-Luzi" }];
+const items = [{ prev: "马车", next: "马车前" }];
 
 export default function () {
     ActivityManager.addCustomActivity(activity);

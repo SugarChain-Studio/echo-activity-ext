@@ -9,11 +9,8 @@ const activity = {
     activity: {
         Name: "扛起",
         Prerequisite: [
-            () => !!AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋_Luzi"),
-            Prereqs.or(
-                Prereqs.Acting.GroupEmpty("ItemMisc"),
-                Prereqs.Acting.GroupIs("ItemMisc", ["扛起来的麻袋_Luzi"])
-            ),
+            () => !!AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋"),
+            Prereqs.or(Prereqs.Acting.GroupEmpty("ItemMisc"), Prereqs.Acting.GroupIs("ItemMisc", ["扛起来的麻袋"])),
             Prereqs.Acted.GroupIs("ItemDevices", "BurlapSack"),
         ],
         MaxProgress: 50,
@@ -28,7 +25,7 @@ const activity = {
                 });
         } else if (SourceCharacter === player.MemberNumber) {
             Tools.findCharacter("TargetC", TargetCharacter)
-                .then(() => AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋_Luzi"))
+                .then(() => AssetGet("Female3DCG", "ItemMisc", "扛起来的麻袋"))
                 .then((asset, { TargetC }) => {
                     ChatRoomOrderTools.wearAndPair(player, asset, { prevCharacter: TargetC.MemberNumber }, "lead");
                 });
@@ -49,7 +46,7 @@ const activity = {
     },
 };
 
-const items = [{ prev: "BurlapSack", next: "扛起来的麻袋_Luzi" }];
+const items = [{ prev: "BurlapSack", next: "扛起来的麻袋" }];
 
 export default function () {
     ActivityManager.addCustomActivity(activity);

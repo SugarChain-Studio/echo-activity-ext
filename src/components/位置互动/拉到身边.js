@@ -7,8 +7,8 @@ import { ChatRoomOrderTools } from "@mod-utils/ChatRoomOrder";
 import { Tools } from "@mod-utils/Tools";
 
 const items = [
-    { prev: "CollarLeash", next: "拉紧的牵绳_Luzi" },
-    { prev: "ChainLeash", next: "拉紧的链子_Luzi" },
+    { prev: "CollarLeash", next: "拉紧的牵绳" },
+    { prev: "ChainLeash", next: "拉紧的链子" },
 ];
 
 const itemMap = Object.fromEntries(items.map((i) => [i.prev, i.next]));

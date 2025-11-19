@@ -48,7 +48,7 @@ const activity = [
         {
             activity: {
                 Name: "阿巴阿巴",
-                Prerequisite: ["UseArms", "UseHands", Prereqs.Acting.GroupIs("ItemHandheld", ["阿巴阿巴-Luzi"])],
+                Prerequisite: ["UseArms", "UseHands", Prereqs.Acting.GroupIs("ItemHandheld", ["阿巴阿巴"])],
                 MaxProgress: 50,
                 Target: regions,
                 TargetSelf: true,
@@ -59,7 +59,7 @@ const activity = [
                     Path.resolve(`audio/gelgun${Math.floor(Math.random() * 4) + 1}.mp3`),
                     SourceCharacter === player.MemberNumber || TargetCharacter === player.MemberNumber
                 ),
-            useImage: ["ItemHandheld", "阿巴阿巴-Luzi"],
+            useImage: ["ItemHandheld", "阿巴阿巴"],
             item: (actor) => InventoryGet(actor, "ItemHandheld"),
         },
         regionTexts,
@@ -78,12 +78,12 @@ const activity = [
         {
             activity: {
                 Name: "阿巴阿巴_瞄准",
-                Prerequisite: ["UseArms", "UseHands", Prereqs.Acting.GroupIs("ItemHandheld", ["阿巴阿巴-Luzi"])],
+                Prerequisite: ["UseArms", "UseHands", Prereqs.Acting.GroupIs("ItemHandheld", ["阿巴阿巴"])],
                 MaxProgress: 50,
                 Target: regions,
             },
             mode: "AnyInvolved",
-            useImage: ["ItemHandheld", "阿巴阿巴-Luzi"],
+            useImage: ["ItemHandheld", "阿巴阿巴"],
             item: (actor) => InventoryGet(actor, "ItemHandheld"),
         },
         regionTexts,

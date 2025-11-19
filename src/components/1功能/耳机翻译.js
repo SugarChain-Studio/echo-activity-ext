@@ -6,7 +6,7 @@ import { i18n } from "../../i18n";
 /** @type {Partial<Record<CustomGroupName,Set<string> | "any">>} */
 const speakingAssets = {
     ItemMisc: new Set(["TeddyBear", "PetPotato", "BunPlush", "FoxPlush", "Karl"]),
-    ItemHandheld: new Set(["Shark", "伊偶-Luzi", "Smartphone", "Phone1", "Phone2"]),
+    ItemHandheld: new Set(["Shark", "伊偶", "Smartphone", "Phone1", "Phone2"]),
 };
 
 /** @type {Partial<Record<CustomGroupName,Set<string> | "any">>} */
