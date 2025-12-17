@@ -3,6 +3,7 @@ import { Prereqs } from "../../prereqs";
 import { DynImageProviders } from "../../dynamicImage";
 import { playerStomach } from "./foodValue";
 import { Tools } from "@mod-utils/Tools";
+import { PathTools } from "@sugarch/bc-mod-utility";
 
 const stomachValueSetting = {
     棒棒糖: 0.1,
@@ -31,26 +32,43 @@ const activity = [
             Prerequisite: [
                 "UseMouth",
                 Prereqs.Acting.GroupEmpty(["ItemMouth"]),
-                Prereqs.Acted.TargetGroupIs(Object.keys(stomachValueSetting)),
+                Prereqs.any(
+                    Prereqs.and(
+                        (_1, _2, _3, group) => group.Name === "ItemMouth",
+                        Prereqs.Acted.GroupIs("ItemMouth", Object.keys(stomachValueSetting))
+                    ),
+                    Prereqs.and(
+                        (_1, _2, _3, group) => group.Name === "ItemHands",
+                        Prereqs.Acted.GroupIs("ItemHandheld", Object.keys(stomachValueSetting))
+                    )
+                ),
             ],
             MaxProgress: 50,
-            Target: ["ItemMouth", "ItemHandheld"],
+            Target: ["ItemMouth", "ItemHands"],
         },
-        useImage: DynImageProviders.itemOnActedTargetGroup(),
-        run: (player, sender, { SourceCharacter, TargetCharacter }) => {
+        useImage: (_, target, group) => {
+            const groupName = group === "ItemMouth" ? "ItemMouth" : "ItemHandheld";
+            const item = target.Appearance.find((item) => groupName === item.Asset.Group.Name);
+            if (item) return PathTools.assetPreviewIconPath(item);
+        },
+        run: (player, sender, { SourceCharacter, TargetCharacter, ActivityGroup }) => {
             if (SourceCharacter === player.MemberNumber) {
+                const groupName = ActivityGroup.Name === "ItemMouth" ? "ItemMouth" : "ItemHandheld";
+
                 Tools.findCharacter("TargetC", TargetCharacter)
-                    .then("MouthItem", (target) => InventoryGet(target, "ItemMouth"))
+                    .then("TargetItem", (target) => InventoryGet(target, groupName))
                     .then((item) => InventoryWear(player, item.Asset.Name, "ItemMouth"))
-                    .then((item, { TargetC, MouthItem }) => {
-                        InventoryRemove(TargetC, "ItemMouth");
-                        Object.assign(item, MouthItem);
-                        ChatRoomCharacterItemUpdate(TargetC, "ItemMouth");
+                    .then((item, { TargetC, TargetItem }) => {
+                        const Asset = item.Asset;
+                        InventoryRemove(TargetC, groupName);
+                        Object.assign(item, { ...TargetItem, Asset });
+                        ChatRoomCharacterItemUpdate(TargetC, groupName);
                         ChatRoomCharacterItemUpdate(player, "ItemMouth");
                     });
             }
         },
-        item: (_, acted) => InventoryGet(acted, "ItemMouth"),
+        item: (_, acted, group) =>
+            group.Name === "ItemMouth" ? InventoryGet(acted, "ItemMouth") : InventoryGet(acted, "ItemHandheld"),
         label: {
             CN: "咬走",
             EN: "Bite off",
@@ -58,11 +76,11 @@ const activity = [
         dialog: {
             CN: {
                 ItemMouth: "SourceCharacter从TargetCharacter嘴里咬走ActivityAsset.",
-                ItemHandheld: "SourceCharacter从TargetCharacter手里咬走ActivityAsset.",
+                ItemHands: "SourceCharacter从TargetCharacter手里咬走ActivityAsset.",
             },
             EN: {
                 ItemMouth: "SourceCharacter bites off ActivityAsset from DestinationCharacter mouth.",
-                ItemHandheld: "SourceCharacter bites off ActivityAsset from DestinationCharacter hand.",
+                ItemHands: "SourceCharacter bites off ActivityAsset from DestinationCharacter hand.",
             },
         },
     },
@@ -146,7 +164,9 @@ const activity = [
                         // 给棒棒糖
                         const nItem = InventoryWear(TargetC, HeldItem.Asset.Name, ActivityGroup.Name);
 
-                        if (HeldItem.Craft) nItem.Craft = HeldItem.Craft;
+                        const Asset = nItem.Asset;
+                        Object.assign(nItem, { ...HeldItem, Asset });
+
                         InventoryRemove(player, "ItemHandheld");
 
                         // 更新外观

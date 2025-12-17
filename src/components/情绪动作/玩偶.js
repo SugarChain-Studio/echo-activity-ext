@@ -58,7 +58,7 @@ const activities = [
             Prerequisite: ["UseHands", "UseArms", hasPlushie],
             MaxProgress: 0,
             Target: [],
-            TargetSelf: ["ItemHandheld"],
+            TargetSelf: ["ItemHands"],
         },
         ...useMyPlushie,
         label: { CN: "脸蹭玩偶", EN: "Face Rubs the Doll" },
