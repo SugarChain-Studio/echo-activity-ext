@@ -204,28 +204,6 @@ const activities = [
     },
     {
         activity: {
-            Name: "吮吸手指",
-            Prerequisite: ["UseMouth", "Luzi_ActedZoneNaked"],
-            MaxProgress: 30,
-            Target: ["ItemHands"],
-            TargetSelf: true,
-        },
-        useImage: "MasturbateTongue",
-        label: {
-            CN: "吮吸手指",
-            EN: "Suck on Fingers",
-            RU: "Пососать Пальцы",
-            UA: "Смоктати пальці",
-        },
-        dialog: {
-            CN: "SourceCharacter吮吸DestinationCharacter的手指.",
-            EN: "SourceCharacter sucks on DestinationCharacter fingers.",
-            RU: "SourceCharacter посасывает пальцы TargetCharacter.",
-            UA: "SourceCharacter смокче пальці TargetCharacter.",
-        },
-    },
-    {
-        activity: {
             Name: "舔脸",
             Prerequisite: ["UseTongue"],
             MaxProgress: 10,
