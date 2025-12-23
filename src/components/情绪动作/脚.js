@@ -258,6 +258,8 @@ const activities = [
                 ItemFeet: "小腿",
                 ItemBoots: "脚",
                 ItemArms: "手臂",
+                ItemGlans: "龟头",
+                ItemPenis: "阴茎",
             },
             EN: {
                 ItemMouth: "Face",
@@ -275,6 +277,8 @@ const activities = [
                 ItemFeet: "Calves",
                 ItemBoots: "Feet",
                 ItemArms: "Arms",
+                ItemGlans: "Glans",
+                ItemPenis: "Penis",
             },
         },
         {
