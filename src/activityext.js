@@ -10,6 +10,12 @@
  * @property {Translation.Entry} [dialogSelf]
  */
 
+/** @type {Partial<Record<CustomGroupName, string>>} */
+const alterNames = {
+    ItemVulva: "ItemPenis",
+    ItemVulvaPiercings: "ItemGlans",
+};
+
 /**
  * @function
  * @overload
@@ -68,6 +74,12 @@ function fromTemplateActivity(activity, groupEntry, template, tag = "$group") {
                 for (const group of groups) {
                     if (!groupText[group]) continue;
                     entry[lang][group] = template.replace(tag, groupText[group] ?? fallback[group] ?? group);
+                }
+
+                for (const [alt, altTo] of Object.entries(alterNames)) {
+                    if (!groups.includes(alt)) continue;
+                    if (!groupText[altTo]) continue;
+                    entry[lang][altTo] = template.replace(tag, groupText[altTo] ?? fallback[altTo] ?? altTo);
                 }
             }
             ret[entryTag] = entry;
