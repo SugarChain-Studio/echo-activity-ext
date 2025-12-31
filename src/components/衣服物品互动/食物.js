@@ -68,7 +68,9 @@ const activity = [
             }
         },
         item: (_, acted, group) =>
-            group.Name === "ItemMouth" ? InventoryGet(acted, "ItemMouth") : InventoryGet(acted, "ItemHandheld"),
+            group.DynamicGroupName === "ItemMouth"
+                ? InventoryGet(acted, "ItemMouth")
+                : InventoryGet(acted, "ItemHandheld"),
         label: {
             CN: "咬走",
             EN: "Bite off",
