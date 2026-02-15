@@ -471,6 +471,23 @@ const activities = [
             UA: "SourceCharacter ніжно прикриває інтимну зону TargetCharacter своєю лапкою.",
         },
     },
+    {
+        activity: {
+            Name: "捏猫爪",
+            Prerequisite: ["Luzi_TargetHasPawMittens", "UseArms"],
+            MaxProgress: 20,
+            Target: ["ItemHands"],
+        },
+        useImage: DynImageProviders.itemOnActedGroup("ItemHands"),
+        label: {
+            CN: "揉捏猫爪",
+            EN: "Squeeze the Paw",
+        },
+        dialog: {
+            CN: "SourceCharacter轻轻揉捏着TargetCharacter的爪子肉垫。",
+            EN: "SourceCharacter gently squeezes DestinationCharacter paw cushion.",
+        },
+    },
 ];
 
 export default function () {

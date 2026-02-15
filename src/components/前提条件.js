@@ -67,6 +67,8 @@ const prereqStorage = {
     ),
     Luzi_HasPawMittens: (_prereq, acting, _acted, _group) =>
         InventoryIsItemInList(acting, "ItemHands", ["PawMittens", "ElbowLengthMittens"]),
+    Luzi_TargetHasPawMittens: (_prereq, _acting, acted, _group) =>
+        InventoryIsItemInList(acted, "ItemHands", ["PawMittens", "ElbowLengthMittens"]),
     Luzi_HasPetSuit: Prereqs.any(
         Prereqs.Acting.GroupIs("ItemArms", ["ShinyPetSuit", "BitchSuit", "StrictLeatherPetCrawler", "乳胶宠物拘束服"]),
         Prereqs.and(
@@ -134,6 +136,9 @@ const prereqStorage = {
         (acted) =>
             !InventoryDoItemsBlockGroup(acted, "ItemPelvis", ["Cloth", "ClothLower"]) &&
             InventoryDoItemsExposeGroup(acted, "ItemVulva", ["ClothLower"])
+    ),
+    Luzi_PrivateExposed: Prereqs.ActingCheck(
+        (acting) => !InventoryPrerequisiteMessage(acting, "AccessVulva") && !acting.IsVulvaChaste()
     ),
 };
 
