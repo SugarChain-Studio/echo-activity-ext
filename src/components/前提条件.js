@@ -79,7 +79,20 @@ const prereqStorage = {
     Luzi_HasBreast: Prereqs.Acting.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
     Luzi_TargetHasBreast: Prereqs.Acted.GroupIs("BodyUpper", ["Small", "Normal", "Large", "XLarge"]),
     Luzi_HasKennel: (_prereq, _acting, acted, _group) => InventoryIsItemInList(acted, "ItemDevices", ["Kennel"]),
-    Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulvaPiercings"),
+    Luzi_TargetHasItemVulvaPiercings: (_prereq, _acting, acted, _group) => {
+        const item = InventoryGet(acted, "ItemVulvaPiercings");
+        if (!item) return false;
+        return [
+            "StraightClitPiercing",
+            "RoundClitPiercing",
+            "BarbellClitPiercing",
+            "ChastityClitPiercing",
+            "JewelClitPiercing",
+            "AdornedClitPiercing",
+            "VibeHeartClitPiercing",
+            "ClitRing",
+        ].includes(item.Asset.Name);
+    },
     Luzi_TargetHasItemVulva: (_prereq, _acting, acted, _group) => !!InventoryGet(acted, "ItemVulva"),
     Luzi_HasSword: (_prereq, acting, _acted, _group) => {
         const item = InventoryGet(acting, "ItemHandheld");
