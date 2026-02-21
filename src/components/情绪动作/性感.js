@@ -1,23 +1,9 @@
 import { Prereqs } from "../../prereqs";
 import { ActivityManager } from "../../activityForward";
 import { ActivityExt } from "../../activityext";
+import { createActivityStateCtrl } from "../../lib/statedActivity";
 
-/**
- * @typedef {Object} FingerActivityState
- * @property {number} target
- * @property {number} time
- */
-
-/** @type {FingerActivityState | undefined} */
-let fingerActivityState = undefined;
-
-setInterval(() => {
-    const now = Date.now();
-    if (fingerActivityState === undefined) return;
-    if (now - fingerActivityState.time > 8000) {
-        fingerActivityState = undefined;
-    }
-}, 5000);
+const fingerState = createActivityStateCtrl();
 
 /** @type { CustomActivity []} */
 const activities = [
@@ -136,7 +122,10 @@ const activities = [
                 "UseHands",
                 "ZoneNaked",
                 "Luzi_ActedZoneNaked",
-                Prereqs.ActedCheck((acted) => acted.MemberNumber !== fingerActivityState?.target),
+                Prereqs.ActedCheck(
+                    (acted) =>
+                        !fingerState.isActive() || fingerState.check((state) => state.target !== acted.MemberNumber)
+                ),
             ],
             MaxProgress: 90,
             Target: ["ItemVulva"],
@@ -157,7 +146,7 @@ const activities = [
         },
         run: (player, sender, { SourceCharacterC, TargetCharacter }) => {
             if (SourceCharacterC.IsPlayer()) {
-                fingerActivityState = { target: TargetCharacter, time: Date.now() };
+                fingerState.update(TargetCharacter);
             }
         },
     },
@@ -168,7 +157,7 @@ const activities = [
                 "UseHands",
                 "ZoneNaked",
                 "Luzi_ActedZoneNaked",
-                Prereqs.ActedCheck((acted) => acted.MemberNumber === fingerActivityState?.target),
+                Prereqs.ActedCheck((acted) => fingerState.check((state) => state.target === acted.MemberNumber)),
             ],
             MaxProgress: 90,
             Target: ["ItemVulva"],
@@ -189,7 +178,7 @@ const activities = [
         },
         run: (player, sender, { SourceCharacterC, TargetCharacter }) => {
             if (SourceCharacterC.IsPlayer()) {
-                fingerActivityState = undefined;
+                fingerState.clear();
             }
         },
     },
@@ -200,7 +189,7 @@ const activities = [
                 "UseHands",
                 "ZoneNaked",
                 "Luzi_ActedZoneNaked",
-                Prereqs.ActedCheck((acted) => acted.MemberNumber === fingerActivityState?.target),
+                Prereqs.ActedCheck((acted) => fingerState.check((state) => state.target === acted.MemberNumber)),
             ],
             MaxProgress: 90,
             Target: ["ItemVulva"],
@@ -220,8 +209,8 @@ const activities = [
             UA: "SourceCharacter TargetCharacter.",
         },
         run: (player, sender, { SourceCharacterC }) => {
-            if (SourceCharacterC.IsPlayer() && fingerActivityState) {
-                fingerActivityState.time = Date.now();
+            if (SourceCharacterC.IsPlayer() && fingerState.isActive()) {
+                fingerState.update();
             }
         },
     },
@@ -231,7 +220,7 @@ const activities = [
             Prerequisite: [
                 "UseHands",
                 "ZoneNaked",
-                Prereqs.ActedCheck((acted) => acted.MemberNumber === fingerActivityState?.target),
+                Prereqs.ActedCheck((acted) => fingerState.check((state) => state.target === acted.MemberNumber)),
             ],
             MaxProgress: 100,
             Target: ["ItemVulva"],
@@ -251,8 +240,8 @@ const activities = [
             UA: "SourceCharacter швидко вштовхує своїми пальцями в вагіну TargetCharacter дразливо бавлячись з PronounPossessive ж вагіною.",
         },
         run: (player, sender, { SourceCharacterC }) => {
-            if (SourceCharacterC.IsPlayer() && fingerActivityState) {
-                fingerActivityState.time = Date.now();
+            if (SourceCharacterC.IsPlayer() && fingerState.isActive()) {
+                fingerState.update();
             }
         },
     },
