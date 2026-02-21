@@ -14,7 +14,7 @@ let fingerActivityState = undefined;
 setInterval(() => {
     const now = Date.now();
     if (fingerActivityState === undefined) return;
-    if (now - fingerActivityState.time > 5000) {
+    if (now - fingerActivityState.time > 8000) {
         fingerActivityState = undefined;
     }
 }, 5000);
@@ -219,6 +219,11 @@ const activities = [
             RU: "SourceCharacter двигает пальцем внутри вагины TargetCharacter.",
             UA: "SourceCharacter TargetCharacter.",
         },
+        run: (player, sender, { SourceCharacterC }) => {
+            if (SourceCharacterC.IsPlayer() && fingerActivityState) {
+                fingerActivityState.time = Date.now();
+            }
+        },
     },
     {
         activity: {
@@ -244,6 +249,11 @@ const activities = [
             EN: "SourceCharacter's finger quickly thrusts in and out of DestinationCharacter vagina, rubbing and kneading.",
             RU: "Рука SourceCharacter быстро входит и выходит из вагины TargetCharacter, растягивая и разминая её.",
             UA: "SourceCharacter швидко вштовхує своїми пальцями в вагіну TargetCharacter дразливо бавлячись з PronounPossessive ж вагіною.",
+        },
+        run: (player, sender, { SourceCharacterC }) => {
+            if (SourceCharacterC.IsPlayer() && fingerActivityState) {
+                fingerActivityState.time = Date.now();
+            }
         },
     },
     {
