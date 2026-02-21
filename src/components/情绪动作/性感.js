@@ -1,5 +1,6 @@
 import { Prereqs } from "../../prereqs";
 import { ActivityManager } from "../../activityForward";
+import { ActivityExt } from "../../activityext";
 
 /**
  * @typedef {Object} FingerActivityState
@@ -289,6 +290,47 @@ const activities = [
             UA: "Сеча тече по стегнам SourceCharacter.",
         },
     },
+    ...ActivityExt.fromTemplateActivity(
+        [
+            {
+                activity: {
+                    Name: "阴茎摩擦",
+                    Prerequisite: ["Luzi_CanWalk", "Luzi_HasPenis", "Luzi_PrivateExposed"],
+                    MaxProgress: 99,
+                    Target: ["ItemHands", "ItemArms", "ItemFeet", "ItemLegs", "ItemButt", "ItemBreast"],
+                },
+                useImage: "Wiggle",
+            },
+        ],
+        {
+            CN: {
+                ItemHands: "手",
+                ItemArms: "手臂",
+                ItemFeet: "脚",
+                ItemLegs: "腿",
+                ItemButt: "臀部",
+                ItemBreast: "胸部",
+            },
+            EN: {
+                ItemHands: "hands",
+                ItemArms: "arms",
+                ItemFeet: "feet",
+                ItemLegs: "legs",
+                ItemButt: "butt",
+                ItemBreast: "breasts",
+            },
+        },
+        {
+            label: {
+                CN: "阴茎摩擦",
+                EN: "Penis Nuzzle",
+            },
+            dialog: {
+                CN: "SourceCharacter用阴茎摩擦TargetCharacter的$group.",
+                EN: "SourceCharacter nuzzles DestinationCharacter $group with PronounPossessive penis.",
+            },
+        }
+    ),
 ];
 
 export default function () {
