@@ -47,7 +47,8 @@ type CustomActivityPrerequisite =
     | "Luzi_TargetAllFours"
     | "Luzi_LeashedBy"
     | "Luzi_TargetPelvisExposed"
-    | "Luzi_PrivateExposed";
+    | "Luzi_PrivateExposed"
+    | "Luzi_HasPenis";
 
 type CustomActivity = import("@sugarch/bc-activity-manager").CustomActivity<string, CustomActivityPrerequisite>;
 

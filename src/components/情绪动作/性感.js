@@ -1,6 +1,23 @@
 import { Prereqs } from "../../prereqs";
 import { ActivityManager } from "../../activityForward";
 
+/**
+ * @typedef {Object} FingerActivityState
+ * @property {number} target
+ * @property {number} time
+ */
+
+/** @type {FingerActivityState | undefined} */
+let fingerActivityState = undefined;
+
+setInterval(() => {
+    const now = Date.now();
+    if (fingerActivityState === undefined) return;
+    if (now - fingerActivityState.time > 5000) {
+        fingerActivityState = undefined;
+    }
+}, 5000);
+
 /** @type { CustomActivity []} */
 const activities = [
     {
@@ -114,7 +131,12 @@ const activities = [
     {
         activity: {
             Name: "手指插进阴道",
-            Prerequisite: ["UseHands", "ZoneNaked", "Luzi_ActedZoneNaked"],
+            Prerequisite: [
+                "UseHands",
+                "ZoneNaked",
+                "Luzi_ActedZoneNaked",
+                Prereqs.ActedCheck((acted) => acted.MemberNumber !== fingerActivityState?.target),
+            ],
             MaxProgress: 90,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -132,11 +154,21 @@ const activities = [
             RU: "SourceCharacter вставляет палец в вагину TargetCharacter.",
             UA: "SourceCharacter вставляє палець у вагіну TargetCharacter.",
         },
+        run: (player, sender, { SourceCharacterC, TargetCharacter }) => {
+            if (SourceCharacterC.IsPlayer()) {
+                fingerActivityState = { target: TargetCharacter, time: Date.now() };
+            }
+        },
     },
     {
         activity: {
             Name: "拔出自己的手指",
-            Prerequisite: ["UseHands", "ZoneNaked", "Luzi_ActedZoneNaked"],
+            Prerequisite: [
+                "UseHands",
+                "ZoneNaked",
+                "Luzi_ActedZoneNaked",
+                Prereqs.ActedCheck((acted) => acted.MemberNumber === fingerActivityState?.target),
+            ],
             MaxProgress: 90,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -154,11 +186,21 @@ const activities = [
             RU: "SourceCharacter вынимает покрытый любовным соком палец из вагины TargetCharacter.",
             UA: "SourceCharacter витягує палець покритий тонким шаром сексапільного соку з вагіни TargetCharacter.",
         },
+        run: (player, sender, { SourceCharacterC, TargetCharacter }) => {
+            if (SourceCharacterC.IsPlayer()) {
+                fingerActivityState = undefined;
+            }
+        },
     },
     {
         activity: {
             Name: "蠕动手指",
-            Prerequisite: ["UseHands", "ZoneNaked", "Luzi_ActedZoneNaked"],
+            Prerequisite: [
+                "UseHands",
+                "ZoneNaked",
+                "Luzi_ActedZoneNaked",
+                Prereqs.ActedCheck((acted) => acted.MemberNumber === fingerActivityState?.target),
+            ],
             MaxProgress: 90,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -180,7 +222,11 @@ const activities = [
     {
         activity: {
             Name: "快速抽插",
-            Prerequisite: ["UseHands", "ZoneNaked"],
+            Prerequisite: [
+                "UseHands",
+                "ZoneNaked",
+                Prereqs.ActedCheck((acted) => acted.MemberNumber === fingerActivityState?.target),
+            ],
             MaxProgress: 100,
             Target: ["ItemVulva"],
             TargetSelf: true,
@@ -188,13 +234,13 @@ const activities = [
         useImage: "Pinch",
         label: {
             CN: "用手快速抽插",
-            EN: "Quickly Thrust With Hand",
+            EN: "Quickly Thrust With Finger",
             RU: "Интим",
             UA: "Вштовхувати",
         },
         dialog: {
-            CN: "SourceCharacter的手在TargetCharacter的阴道内快速抽插.",
-            EN: "SourceCharacter hand quickly thrusts in and out of DestinationCharacter vagina, rubbing and kneading.",
+            CN: "SourceCharacter的手指在TargetCharacter的阴道内快速抽插，摩擦并揉捏着.",
+            EN: "SourceCharacter's finger quickly thrusts in and out of DestinationCharacter vagina, rubbing and kneading.",
             RU: "Рука SourceCharacter быстро входит и выходит из вагины TargetCharacter, растягивая и разминая её.",
             UA: "SourceCharacter швидко вштовхує своїми пальцями в вагіну TargetCharacter дразливо бавлячись з PronounPossessive ж вагіною.",
         },

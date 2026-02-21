@@ -153,6 +153,7 @@ const prereqStorage = {
     Luzi_PrivateExposed: Prereqs.ActingCheck(
         (acting) => !InventoryPrerequisiteMessage(acting, "AccessVulva") && !acting.IsVulvaChaste()
     ),
+    Luzi_HasPenis: Prereqs.ActingCheck((acting) => acting.HasPenis()),
 };
 
 export default function () {
