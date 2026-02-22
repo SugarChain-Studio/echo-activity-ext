@@ -176,7 +176,7 @@ const activities = [
             RU: "SourceCharacter вынимает покрытый любовным соком палец из вагины TargetCharacter.",
             UA: "SourceCharacter витягує палець покритий тонким шаром сексапільного соку з вагіни TargetCharacter.",
         },
-        run: (player, sender, { SourceCharacterC, TargetCharacter }) => {
+        run: (player, sender, { SourceCharacterC }) => {
             if (SourceCharacterC.IsPlayer()) {
                 fingerState.clear();
             }
