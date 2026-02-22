@@ -50,10 +50,16 @@ export function setCurrentScreen(screen) {
     GUIScreen.Current = screen;
 }
 
+/** @type {Translation.Entry} */
+const buttonText = {
+    CN: "动作拓展设置",
+    EN: "Echo Activity Ext Settings",
+};
+
 export default function () {
     PreferenceRegisterExtensionSetting({
         Identifier: "动作拓展设置",
-        ButtonText: "动作拓展设置",
+        ButtonText: () => buttonText[TranslationLanguage] || buttonText.EN,
         Image: "Icons/Use.png",
         load: () => {
             if (defaultScreenProvider) GUIScreen.Current = defaultScreenProvider();
