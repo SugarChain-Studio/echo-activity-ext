@@ -12,7 +12,7 @@ export default function () {
         const _args = /** @type {any[]} */ (args);
         const ret = /** @type {HTMLButtonElement} */ (next(args));
         if (ActivityManager.activityIsCustom(_args[1].Activity.Name)) {
-            ret.appendChild(cloneWithTooltip(iconDiv));
+            ret.appendChild(cloneWithTooltip(iconDiv, "dialog-activity"));
         }
         return ret;
     });
