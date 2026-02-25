@@ -47,6 +47,12 @@ const translation = {
     "Enable tamperproof features on crafted items you wear.": "为穿戴的自制物品启用防篡改保护",
     "Enable Chaotic/Evolving Items:": "启用Chaotic/Evolving词条物品:",
     "Enable chaotic/evolving features on crafted items you wear.": "为穿戴的自制物品启用混沌/进化特性",
+    "Block DOGS Devious Padlocks:": "屏蔽DOGS挂锁:",
+    "If checked, LSCG item applier (magic, cursed item, etc) will turn Devious Padlocks into regular Exclusive Padlocks on apply.":
+        "勾选后，LSCG 物品应用（如魔法、诅咒物品等）将把Devious Padlocks转换为普通Exclusive Padlocks",
+    "Enhance Map Lighting [EXPERIMENTAL]:": "增强地图照明 [实验性]:",
+    "If checked, map lighting will become more dynamic based on light sources.":
+        "勾选后，地图照明将根据光源变得更加动态",
 
     // 触发催眠第一页
     "Triggered Hypnosis": "指令触发式催眠",
@@ -96,11 +102,15 @@ const translation = {
     "If checked, allowed users can lock you out of these settings.": "授权用户可锁定当前设置界面",
     "Build arousal while hypnotized:": "催眠状态兴奋累积:",
     "If checked being hypnotized will increase arousal.": "处于催眠状态时将持续积累兴奋值",
+    "Enable Spirals:": "启用催眠螺旋:",
+    "If checked headsets and other spirals can cause trance.": "启用后，头戴设备和其他螺旋类物品可以引发催眠状态",
     "Hypnotized Eye Color:": "催眠瞳色:",
     "Hex code of your eye color while hypnotized (default: #A2A2A2).":
         "催眠状态下的瞳孔色值（十六进制，默认：#A2A2A2）",
     "Hypnotized Eye Type:": "催眠眼型:",
     "Eye type # to use while under hypnosis (default: 9).": "催眠时采用的眼型编号（默认：9）",
+    "Enable wake-up on snaps:": "启用打响指唤醒:",
+    "If checked you exit the trance when you hear someone snapping.": "启用后听到打响指声时将结束催眠状态",
 
     // 触发催眠第三页
     "Enable Suggestion Programming": "启用暗示植入",
@@ -109,6 +119,9 @@ const translation = {
     "Programming Limited to Hypnotizer": "仅限催眠者植入",
     "If checked, hypnotic suggestions may be induced within you while under trance.":
         "勾选后，在催眠状态下可被植入暗示",
+    "Limit Suggestion Removal": "限制暗示移除",
+    "If checked, only your owner or whoever added the suggestion can change/remove it.":
+        "勾选后，只有你的主人或添加暗示的人可以更改/移除暗示",
     "Allow Suggestion Removal": "允许移除暗示",
     "If checked, you can remove suggestions installed in you with '/lscg remove-suggestion' if you are not immersive and not on extreme difficulty.":
         "勾选后，若非沉浸模式且非极端难度，可使用指令'/lscg remove-suggestion'移除已植入的暗示",
@@ -151,6 +164,8 @@ const translation = {
     "Enable Gag Suffocation:": "启用口塞窒息:",
     'Enables breathplay using "Choke Neck" activity. If done repeatedly will cause blackout.':
         '启用"颈部窒息"活动进行窒息玩法，反复操作可能导致昏迷',
+    "Enable Chain Choking:": "启用链条窒息:",
+    "Enabled breathplay using choke chain neck restraint.": "启用通过颈部束缚链进行的窒息玩法",
     "Sleep on Passout:": "昏迷后沉睡:",
     "Will force sleep on passout.": "昏迷后将强制进入睡眠状态",
     "Sleep time (minutes):": "沉睡时间(分钟):",
@@ -349,6 +364,27 @@ const translation = {
     "If checked, only people on your whitelist can cast spells on you or teach you spells.":
         "启用后仅白名单成员可对你施法或传授法术",
 
+    // 魔法 - 灵魂出窍设置
+    "-- Astral Projection Settings --": "-- 灵魂出窍设置 --",
+    "Extra configuration for your spirit form.": "关于灵魂形态的额外配置",
+    "Spirit Speech effects:": "灵魂语言效果:",
+    "Select what level of effect to apply to spirit speech.": "选择对灵魂语言施加的效果等级",
+    "None": "无",
+    "Glow": "发光",
+    "Float": "漂浮",
+    "Disable Soul Bindings:": "解除灵魂绑定:",
+    "If checked, prevent any soul-bound restraints from binding your spirit form.":
+        "启用后，任何灵魂绑定的束缚都无法影响你的灵魂形态",
+    "Spirit Color:": "灵魂颜色:",
+    "Overrides the default tint color of your astral projection (default is #00ced1).":
+        "覆盖默认的灵魂形态色调（默认值为#00ced1）",
+    "Spirit Form Outfit:": "灵魂形态装扮:",
+    "Outfit name that will be used for your spirit form. Highly recommended that this outfit includes all desired body/cosplay/clothing.":
+        "将用于灵魂形态的装扮名称。强烈建议该装扮包含所有想要的身体/角色/服装元素",
+    "Hide Corporeal Form:": "隐藏肉体形态:",
+    "If true, your corporeal form will vanish while projected into spirit realm":
+        "启用后，进入灵魂形态时肉体将完全隐形",
+
     // 魔法翻译
     "Hypnotizing": "催眠术",
     "Hypnotizes the target.": "使目标进入催眠状态",
@@ -378,9 +414,8 @@ const translation = {
     "Magically change the target's clothing and equipment.": "魔法改变目标的衣着装备",
     "Polymorph": "变形术",
     "Polymorph the target's body and/or cosplay items": "改变目标形体及装扮",
-    "Dispell": "驱散术",
-    "Dispells any existing effects on the target (including anything drug induced).":
-        "解除目标所有状态效果(含药物影响)",
+    "Dispel": "驱散术",
+    "Dispels any existing effects on the target (including anything drug induced).": "解除目标所有状态效果(含药物影响)",
     "X-Ray Vision": "透视之眼",
     "Grants the target X-Ray vision": "赋予目标透视能力",
     "Magic Barrier": "魔法屏障",
@@ -391,6 +426,8 @@ const translation = {
     "Denies the target any orgasms.": "禁止目标获得高潮",
     "Forced Orgasm": "强制高潮",
     "Forced an orgasm upon the target.": "强制引发目标高潮",
+    "Astral Projection": "灵魂出窍",
+    "Project the target's soul into the Astral Plane": "将目标的灵魂投射到星界",
 
     // 飞溅效果
     "Splatters": "飞溅效果",
@@ -461,7 +498,7 @@ const translation = {
     "Instruction #2:": "",
     "Instruction #3:": "",
     "A suggested instruction.": "一个催眠指令",
-    "None": "无",
+    // "None": "无",
     "Select Instructions to Forget:": "",
     "Target": "目标",
     "Self": "自己",
@@ -604,6 +641,26 @@ const translation = {
     "Nude": "裸体",
     "View previous items": "查看上一项",
     "Cosplay": "角色装扮",
+
+    // 地图增强设置
+    "- LSCG Map Enhancements -": "- LSCG 地图增强设置 -",
+    "Map Enhancements": "地图增强",
+    "Enhance Map Lighting:": "增强地图照明:",
+    "If checked, map lighting will become more dynamic based on light sources [EXPERIMENTAL].":
+        "如果勾选，地图照明将根据光源变得更加动态 [实验性].",
+    "Disable Lighting Animation:": "禁用照明动画:",
+    "If checked, lighting animations will be disabled (Enable if maps running slow).":
+        "如果勾选，照明动画将被禁用（如果地图运行缓慢，请启用）.",
+    "Use Room's Ambient Darkness:": "使用房间的环境黑暗:",
+    "If checked, will use the room customization filter as ambient darkness (Recommended).":
+        "如果勾选，将使用房间自定义滤镜作为环境黑暗（推荐）.",
+    "Use Alternate Blinding Effect:": "使用替代失明效果:",
+    "If checked, you will use an alternate blinding effect while in maps.": "如果勾选，在地图中将使用替代失明效果.",
+    "Hide Vanilla Fog Squares:": "隐藏原版迷雾方块:",
+    "If checked, the vanilla fog squares will be hidden leaving just the enhanced vision lines.":
+        "如果勾选，原版迷雾方块将被隐藏，只留下增强的视觉线条.",
+    "Hide Dark Lights:": "隐藏暗光源:",
+    "If checked, lights that emit 'darkness' will not be used.": "如果勾选，发出“黑暗”的光源将不被使用.",
 
     // 主菜单
     "Open Help": "打开帮助",
