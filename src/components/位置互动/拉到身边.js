@@ -72,7 +72,7 @@ const activity = {
                 });
         }
     },
-    useImage: Path.resolve("activities/pull_to_side.png"),
+    useImage: () => Path.resolve("activities/pull_to_side.png"),
     label: {
         CN: "拉到身边",
         EN: "Pull to One's Side",

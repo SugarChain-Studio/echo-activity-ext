@@ -49,7 +49,7 @@ const activity = [
                 );
             }
         },
-        useImage: Path.resolve("activities/cuddle_held.png"),
+        useImage: () => Path.resolve("activities/cuddle_held.png"),
         label: {
             CN: "钻进怀里",
             EN: "Get In Arms",
@@ -84,7 +84,7 @@ const activity = [
                 );
             }
         },
-        useImage: Path.resolve("activities/cuddle_hold.png"),
+        useImage: () => Path.resolve("activities/cuddle_hold.png"),
         label: {
             CN: "抱入怀中",
             EN: "Hold In Arms",

@@ -1,7 +1,6 @@
 import { Logger } from "@mod-utils/log";
-import { resourceBaseURL } from "@mod-utils/rollupHelper";
+import { debugFlag, ModInfo, resourceBaseURL } from "@mod-utils/rollupHelper";
 import { fetchAssetOverrides } from "@mod-utils/fetchAssetOverrides";
-import { resolveAssetOverrides } from "@sugarch/bc-activity-manager";
 
 const fixSeparator = resourceBaseURL.endsWith("/")
     ? (path) => (path.startsWith("/") ? path.substring(1) : path)
@@ -86,6 +85,16 @@ class _Preloader {
 
 export const Preloader = new _Preloader();
 
+const jsDelivrBase = `https://cdn.jsdelivr.net/${ModInfo.repository?.replace("https://github.com/", "gh/")}`;
+
+const assetPath = (path, version) => {
+    if (debugFlag) {
+        return `${resourceBaseURL}/${path}?v=${version}`;
+    } else {
+        return `${jsDelivrBase}@${version}/resources/${path}`;
+    }
+};
+
 class _Path {
     constructor() {
         /** @type {Record<string, string>} */
@@ -98,7 +107,16 @@ class _Path {
         (async () => {
             try {
                 const container = await fetchAssetOverrides();
-                this.overrides = await resolveAssetOverrides(resourceBaseURL, container);
+                this.overrides = ((override) => {
+                    /** @type {Record<string, string>} */
+                    const ret = {};
+                    for (const [version, paths] of Object.entries(override)) {
+                        for (const path of paths) {
+                            ret[path] = assetPath(path, version);
+                        }
+                    }
+                    return ret;
+                })(container);
                 this.loaded = true;
                 for (const fn of this.afterLoadEvents) fn();
                 this.afterLoadEvents = [];
@@ -127,6 +145,7 @@ class _Path {
         if (path in this.overrides) {
             return /** @type {`${'http://' | 'https://'}${string}`}*/ (this.overrides[path]);
         } else {
+            console.warn(`Path "${path}" not found in overrides, using default path.`);
             return `${resourceBaseURL}${fixSeparator(path)}`;
         }
     }

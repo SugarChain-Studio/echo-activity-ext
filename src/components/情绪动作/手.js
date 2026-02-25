@@ -149,7 +149,7 @@ const activities = [
             (a) =>
                 /** @type {CustomActivity}*/ ({
                     activity: { ...a, Prerequisite: [...(a.Prerequisite ?? []), "UseHands", "UseArms"] },
-                    useImage: Path.resolve("activities/poke.png"),
+                    useImage: () => Path.resolve("activities/poke.png"),
                 })
         ),
         {

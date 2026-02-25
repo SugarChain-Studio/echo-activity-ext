@@ -55,7 +55,7 @@ const activity = [
             MaxProgress: 40,
             Target: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"],
         },
-        useImage: Path.resolve("activities/nopan.png"),
+        useImage: () => Path.resolve("activities/nopan.png"),
         label: {
             CN: "看看裙底",
             EN: "Look under the skirt",

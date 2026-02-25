@@ -50,7 +50,7 @@ const activity = {
                 });
         }
     },
-    useImage: Path.resolve("activities/rideon.png"),
+    useImage: () => Path.resolve("activities/rideon.png"),
     label: {
         CN: "骑上去",
         EN: "Ride On",
