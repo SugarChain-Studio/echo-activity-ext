@@ -1,5 +1,4 @@
 import { HookManager } from "@sugarch/bc-mod-hook-manager";
-import { Path } from "../../resouce";
 import { once } from "@sugarch/bc-mod-utility";
 import { debugFlag, ModInfo, resourceBaseURL } from "@mod-utils/rollupHelper";
 import { Logger } from "@mod-utils/log";
