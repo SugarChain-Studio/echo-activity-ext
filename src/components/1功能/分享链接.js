@@ -218,7 +218,7 @@ function shareHandle(parsed, lang = "CN") {
                     `https://youtu.be/${match[1]}`,
                 ];
         } else if (shareContent.startsWith("https://www.youtube.com/watch")) {
-            const match = shareContent.match(/[?&]v=([\w-]+)&/);
+            const match = shareContent.match(/[?&]v=([\w-]+)/);
             if (match)
                 return [{ linkType: "ytb", info: btoa(JSON.stringify([match[1]])) }, `https://youtu.be/${match[1]}`];
         } else if (shareContent.includes("pornhub.com/view_video.php")) {
