@@ -50,15 +50,15 @@ const iso639_1_codes = new Set(
         .filter((x) => x.length > 0)
 );
 
-/** @type {Record<string, Translation.Entry>} */
+/** @type {Translation.String} */
 const messages = {
-    hearing: {
-        CN: `[${ModInfo.name}] 📞 翻译你听到的话为 {0}`,
-        EN: `[${ModInfo.name}] 📞 Translate what you hear to {0}`,
+    CN: {
+        hearing: `[${ModInfo.name}] 📞 翻译你听到的话为 {0}`,
+        speaking: `[${ModInfo.name}] 🔊 翻译你说出的话为 {0}`,
     },
-    speaking: {
-        CN: `[${ModInfo.name}] 🔊 翻译你说出的话为 {0}`,
-        EN: `[${ModInfo.name}] 🔊 Translate what you say to {0}`,
+    EN: {
+        hearing: `[${ModInfo.name}] 📞 Translate what you hear to {0}`,
+        speaking: `[${ModInfo.name}] 🔊 Translate what you say to {0}`,
     },
 };
 
