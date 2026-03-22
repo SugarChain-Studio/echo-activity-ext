@@ -64,7 +64,7 @@ const activities = [
         label: { CN: "脸蹭玩偶", EN: "Face Rubs the Doll" },
         dialog: {
             CN: "SourceCharacter用脸轻轻蹭了蹭自己手中的ActivityPlushieAsset玩偶。",
-            EN: "SourceCharacter gently rubs PronounPossesive face with the ActivityPlushieAsset plushie in PronounPossessive hand.",
+            EN: "SourceCharacter gently rubs PronounPossessive face with the ActivityPlushieAsset plushie in PronounPossessive hand.",
         },
     },
     {
