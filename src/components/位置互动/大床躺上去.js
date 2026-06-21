@@ -10,11 +10,24 @@ import { findDrawOrderPair } from "@mod-utils/ChatRoomOrder/XCharacterDrawlist";
  * @param {XCharacter} arg.prev
  */
 function playerLiesInBed({ next, prev }) {
+    const prevBedAsset = InventoryGet(prev, "ItemDevices");
+    const prevSheetAsset = InventoryGet(prev, "ItemAddon");
+
     if (prev.MemberNumber === Player.MemberNumber) {
         const asset = AssetGet("Female3DCG", "ItemDevices", "床左边");
         if (!asset) return;
-        InventoryWear(Player, "床左边", "ItemDevices");
-        InventoryWear(Player, "被子左边", "ItemAddon");
+
+        const newBed = InventoryWear(Player, "床左边", "ItemDevices");
+        const newSheet = InventoryWear(Player, "被子左边", "ItemAddon");
+
+        if (prevBedAsset && ["Bed", "床左边"].includes(prevBedAsset.Asset.Name)) {
+            newBed.Color = prevBedAsset.Color;
+            newBed.Craft = prevBedAsset.Craft;
+        }
+        if (prevSheetAsset && prevSheetAsset.Asset.Name === "Covers") {
+            newSheet.Color = prevSheetAsset.Color;
+            newSheet.Craft = prevSheetAsset.Craft;
+        }
 
         ChatRoomOrder.setDrawOrder({
             nextCharacter: next.MemberNumber,
@@ -28,8 +41,14 @@ function playerLiesInBed({ next, prev }) {
     } else if (next.MemberNumber === Player.MemberNumber) {
         const asset = AssetGet("Female3DCG", "ItemDevices", "床右边");
         if (!asset) return;
+
         InventoryWear(Player, "床右边", "ItemDevices");
-        InventoryWear(Player, "被子右边", "ItemAddon");
+
+        const newSheet = InventoryWear(Player, "被子右边", "ItemAddon");
+        if (prevSheetAsset && prevSheetAsset.Asset.Name === "Covers") {
+            newSheet.Color = prevSheetAsset.Color;
+            newSheet.Craft = prevSheetAsset.Craft;
+        }
 
         ChatRoomOrder.setDrawOrder({
             prevCharacter: prev.MemberNumber,
