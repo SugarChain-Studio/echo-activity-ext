@@ -13,7 +13,7 @@ ActivityManager.setLogger(Logger);
 once(ModInfo.name, async () => {
     await import("https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0");
 
-    const mod = globalThis.bcModSdk.registerMod(ModInfo);
+    const mod = /** @type {any}*/ (globalThis).bcModSdk.registerMod(ModInfo);
     HookManager.initWithMod(mod);
     ChatRoomOrder.setup();
     ActivityManager.init();

@@ -45,8 +45,8 @@ importers:
         specifier: ^0.2.11
         version: 0.2.11
       bc-stubs:
-        specifier: 123.0.0-Beta.3
-        version: 123.0.0-Beta.3
+        specifier: 129.0.0
+        version: 129.0.0
       bondage-club-mod-sdk:
         specifier: ^1.2.0
         version: 1.2.0
@@ -407,6 +407,9 @@ packages:
   '@sugarch/bc-mod-utility@0.2.11':
     resolution: {integrity: sha512-Zbr4lJp6IkM4rBUTcnb2HzW5rY9tplcrADF9wWpiFfRPOdRy0iE4u7usGIZy9HS6TCBW5uwcYfgWgU73oz7rnw==}
 
+  '@total-typescript/ts-reset@0.6.1':
+    resolution: {integrity: sha512-cka47fVSo6lfQDIATYqb/vO1nvFfbPw7uWLayIXIhGETj0wcOOlrlkobOMDNQOFr9QOafegUPq13V2+6vtD7yg==}
+
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
@@ -479,8 +482,8 @@ packages:
     resolution: {integrity: sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==}
     engines: {node: '>= 0.8'}
 
-  bc-stubs@123.0.0-Beta.3:
-    resolution: {integrity: sha512-RELyHtkCkK4b06YbYwYmVk5IPfZWmzdjQDCaEEjLglxznEf/LXE9444GnUUpQDFJ3wSCWnIUBLNAQUHA/4x/JA==}
+  bc-stubs@129.0.0:
+    resolution: {integrity: sha512-NxmYlDGRaV1CHpOzPy8o4sTeaFmAksw1TAWmGsg0dRSK6KGWPVhS0meVd09RylV4b7o4qKEIGxcS6auS4CxYpw==}
 
   bondage-club-mod-sdk@1.2.0:
     resolution: {integrity: sha512-S+li+PgX7Qo5yccS/R/eAXC4Opq8lc5AdhTPjC2XhWxDGTieUQKj3QJ4ZLgL8x0ySnK7h+DvlkRZd8+OT5JErQ==}
@@ -1226,8 +1229,8 @@ packages:
     resolution: {integrity: sha512-5UswCV6hpaRsNg5kkEHVcbBIXEYoVbMQaHJBXJCyEQ+CiFPV1NIOY0XOFWG4XR4GZcB8Kn6AsRs/9cy9TbqVMQ==}
     engines: {node: '>=10.0.0'}
 
-  socket.io-parser@4.2.5:
-    resolution: {integrity: sha512-bPMmpy/5WWKHea5Y/jYAP6k74A+hvmRCQaJuJB6I/ML5JZq/KfNieUVo/3Mh7SAqn7TyFdIo6wqYHInG1MU1bQ==}
+  socket.io-parser@4.2.6:
+    resolution: {integrity: sha512-asJqbVBDsBCJx0pTqw3WfesSY0iRX+2xzWEWzrpcH7L6fLzrhyF8WPI8UaeM4YCuDfpwA/cgsdugMsmtz8EJeg==}
     engines: {node: '>=10.0.0'}
 
   source-map-support@0.5.21:
@@ -1656,6 +1659,8 @@ snapshots:
       '@types/semver': 7.7.0
       semver: 7.7.2
 
+  '@total-typescript/ts-reset@0.6.1': {}
+
   '@types/estree@1.0.8': {}
 
   '@types/fs-extra@8.1.5':
@@ -1720,8 +1725,9 @@ snapshots:
     dependencies:
       safe-buffer: 5.1.2
 
-  bc-stubs@123.0.0-Beta.3:
+  bc-stubs@129.0.0:
     dependencies:
+      '@total-typescript/ts-reset': 0.6.1
       socket.io-client: 4.6.1
     transitivePeerDependencies:
       - bufferutil
@@ -2490,13 +2496,13 @@ snapshots:
       '@socket.io/component-emitter': 3.1.2
       debug: 4.3.7
       engine.io-client: 6.4.0
-      socket.io-parser: 4.2.5
+      socket.io-parser: 4.2.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - utf-8-validate
 
-  socket.io-parser@4.2.5:
+  socket.io-parser@4.2.6:
     dependencies:
       '@socket.io/component-emitter': 3.1.2
       debug: 4.4.3
