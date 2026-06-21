@@ -43,5 +43,15 @@ function createTranslationConfig({ destDir, beta = false, debug = false }) {
 
 module.exports = async (cliArgs) => {
     const env = parseEnv(__dirname, cliArgs);
-    return [await createModRollupConfig({ env, packageJSON, banner }), createTranslationConfig(env)];
+    return await createModRollupConfig({
+        env,
+        packageJSON,
+        banner,
+        output: {
+            file: undefined,
+            dir: env.destDir,
+            format: "esm",
+            chunkFileNames: "[name]-[hash].js",
+        },
+    });
 };

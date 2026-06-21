@@ -26,7 +26,7 @@
     },
     "rollupSetting": {
         "output": "bc-activity.js",
-        "input": "src/main.js",
+        "input": "src/bc-activity.js",
         "componentDir": "src/components",
         "loaderName": "bc-activity.user.js",
         "assets": {
