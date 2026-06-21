@@ -63,7 +63,7 @@ const activity = [
                         InventoryRemove(TargetC, groupName);
                         Object.assign(item, { ...TargetItem, Asset });
                         ChatRoomCharacterItemUpdate(TargetC, groupName);
-                        ChatRoomCharacterItemUpdate(player, "ItemMouth");
+                        ChatRoomCharacterUpdate(player);
                     });
             }
         },
@@ -172,7 +172,7 @@ const activity = [
                         InventoryRemove(player, "ItemHandheld");
 
                         // 更新外观
-                        ChatRoomCharacterItemUpdate(TargetC, ActivityGroup.Name);
+                        ChatRoomCharacterUpdate(TargetC);
                         ChatRoomCharacterItemUpdate(player, "ItemHandheld");
                         CharacterRefresh(player, true);
                     });
@@ -208,7 +208,7 @@ const activity = [
                     .then((item, { MouthItem }) => Object.assign(item, MouthItem))
                     .then((_, { TargetC }) => {
                         InventoryRemove(player, "ItemMouth");
-                        ChatRoomCharacterItemUpdate(TargetC, "ItemMouth");
+                        ChatRoomCharacterUpdate(TargetC);
                         ChatRoomCharacterItemUpdate(player, "ItemMouth");
                     });
             }
