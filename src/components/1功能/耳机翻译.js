@@ -119,14 +119,14 @@ function validItemCraftingDesc(vAssets) {
 async function translateText(sourceText, targetLang) {
     try {
         const response = await fetch(
-            `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURI(
+            `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(
                 sourceText
             )}`
         );
         const data = await response.json();
-        const [translatedText, retSourceText] = data[0][0];
+        const translatedText = data[0].map((i) => i[0]).join(" ");
         const retSourceLang = data[2];
-        const valid = retSourceLang !== targetLang && retSourceText === sourceText && translatedText !== sourceText;
+        const valid = retSourceLang !== targetLang && translatedText !== sourceText;
         return { valid, translatedText };
     } catch (e) {
         console.error(e);
