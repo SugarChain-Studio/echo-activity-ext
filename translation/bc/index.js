@@ -86,7 +86,7 @@ export function setup(hook) {
                     if (Content === "Beep") return "msg";
                     return `MISSING TEXT IN "Interface.csv": ${Content}`;
                 } else if (Type === "Activity") {
-                    return `MISSING ACTIVITY DESCRIPTION FOR KEYWORD ${Content}`;
+                    return `MISSING TEXT IN "ActivityDictionary.csv": ${Content}`;
                 }
                 return undefined;
             })();
